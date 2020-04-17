@@ -1,5 +1,21 @@
+<%@ page import="FunctionLayer.GenerateLists" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
+
+<%!
+    @Override
+    public void jspInit() {
+        GenerateLists.initLists();
+    }
+%>
+<%
+    if (request.getServletContext().getAttribute("roofMaterials") == null) {
+        request.getServletContext().setAttribute("roofMaterials", GenerateLists.getRoffMaterialList());
+    }
+    if (request.getServletContext().getAttribute("carportMaterials") == null) {
+        request.getServletContext().setAttribute("carportMaterials", GenerateLists.getCarportMaterialList());
+    }
+%>
 
 <%@include file="include/header.inc" %>
 
@@ -105,24 +121,23 @@
 
 
 <div class="dropdown">
-    <label for="exampleFormControlSelect1">Materialer til taget:</label>
-    <select class="form-control dropbtn btn-secondary btn-style btn-block" name="height" id="exampleFormControlSelect4">
-        <option value="1">option1</option>
-        <option value="1">option2</option>
-        <option value="1">option3</option>
-        <option value="1">option4</option>
-        <option value="1">option5</option>
-    </select>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Materialer til taget:</label>
+        <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block" name="toppingname"
+                id="topping">
+            <c:forEach var="roofMaterialName" items="${applicationScope.roofMaterials}">
+                <option value="${roofMaterialName.materialName}">${roofMaterialName.materialName} </option>
+            </c:forEach>
+        </select>
+    </div>
 </div>
 
 <div class="dropdown">
     <label for="exampleFormControlSelect1">Materialer til carporten:</label>
     <select class="form-control dropbtn btn-secondary btn-style btn-block" name="height" id="exampleFormControlSelect5">
-        <option value="1">option1</option>
-        <option value="1">option2</option>
-        <option value="1">option3</option>
-        <option value="1">option4</option>
-        <option value="1">option5</option>
+        <c:forEach var="carportMaterialName" items="${applicationScope.carportMaterials}">
+            <option value="${carportMaterialName.materialName}">${carportMaterialName.materialName} </option>
+        </c:forEach>
     </select>
 </div>
 
