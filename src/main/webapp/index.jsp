@@ -119,7 +119,6 @@
     </select>
 </div>
 
-
 <div class="dropdown">
     <div class="form-group">
         <label for="exampleFormControlSelect1">Materialer til taget:</label>
@@ -143,7 +142,6 @@
 
 <button type="input" class="btn btn-primary btn-style mt-2 mr-4">Beregn anslået pris</button>
 <h5>Anslået pris: 19.995kr</h5>
-
 
 <button type="input" class="btn btn-primary btn-style mt-2 mr-4">Send til sælger</button>
 
