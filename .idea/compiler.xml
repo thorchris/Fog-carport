@@ -16,7 +16,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Fog-carport" options="-endorseddirs C:\Users\fuzzboltuzzen\Desktop\Datamatiker\Fog-carport\Fog-carport\target/endorsed" />
+      <module name="Fog-carport" options="-endorseddirs &quot;$PROJECT_DIR$/target/endorsed&quot;" />
       <module name="ProjektSkabelon-master" options="-endorseddirs &quot;$PROJECT_DIR$/../../../Projektskabelon-master/target/endorsed&quot;" />
       <module name="Projektskabelon" options="-endorseddirs &quot;$PROJECT_DIR$/../../../Projektskabelon-master/target/endorsed&quot;" />
       <module name="Projektskabelon-master" options="-endorseddirs &quot;C:\Users\fuzzboltuzzen\Desktop\Datamatiker\Java projekter\Projektskabelon-master\target/endorsed&quot;" />
