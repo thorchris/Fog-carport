@@ -1,6 +1,6 @@
 package Util;
 
-public class RoofCalc {
+public class CalculateRoof {
     private final double spærPrisPrMeter = 14;
     private final double beslagPris = 50;
     private final double skruerPris = 5;
@@ -125,12 +125,4 @@ public class RoofCalc {
         return totalPris;
     }
 
-    public static void main(String[] args) {
-        int bredde = 4;
-        int længde = 6;
-        int hældning = 15;
-        RoofCalc rc = new RoofCalc();
-        System.out.println(rc.flatRoof(bredde, længde));
-        System.out.println(rc.highRoof(hældning, bredde, længde));
-    }
 }
