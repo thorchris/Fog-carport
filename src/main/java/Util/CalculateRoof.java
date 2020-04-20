@@ -41,7 +41,7 @@ public class CalculateRoof {
         return totalPris;
     }
 
-    public double highRoof(int hældning, int længde, int bredde) {
+    public double highRoof(int hældning, double længde, double bredde) {
         double totalPris = 0;
         bredde += 0.15;
         længde += 0.15;
