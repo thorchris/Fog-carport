@@ -12,6 +12,7 @@ abstract class Command {
 
     private static void initCommands() {
         commands = new HashMap<>();
+        commands.put("calculatePrice", new CalculatePrice());
 
     }
 
