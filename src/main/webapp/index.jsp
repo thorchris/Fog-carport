@@ -12,62 +12,61 @@
     if (request.getServletContext().getAttribute("roofMaterials") == null) {
         request.getServletContext().setAttribute("roofMaterials", GenerateLists.getRoffMaterialList());
     }
-    if (request.getServletContext().getAttribute("carportMaterials") == null) {
-        request.getServletContext().setAttribute("carportMaterials", GenerateLists.getCarportMaterialList());
-    }
+
 %>
 
 <%@include file="include/header.inc" %>
 
 <h1>Velkommen</h1>
 <h2>Design din carport her</h2>
-
+<form action="FrontController" method="post">
+    <input type="hidden" name="taget" value="calculatePrice"/>
 <div class="dropdown">
     <label for="exampleFormControlSelect1">Længde</label>
-    <select class="form-control dropbtn btn-secondary btn-style btn-block" name="height" id="exampleFormControlSelect1">
-        <option value="1">240</option>
-        <option value="2">270</option>
-        <option value="3">300</option>
-        <option value="4">330</option>
-        <option value="5">360</option>
-        <option value="6">390</option>
-        <option value="7">420</option>
-        <option value="8">450</option>
-        <option value="9">480</option>
-        <option value="10">510</option>
-        <option value="10">540</option>
-        <option value="10">570</option>
-        <option value="10">600</option>
-        <option value="10">630</option>
-        <option value="10">660</option>
-        <option value="10">690</option>
-        <option value="10">720</option>
-        <option value="10">750</option>
-        <option value="10">780</option>
+    <select class="form-control dropbtn btn-secondary btn-style btn-block" name="length" id="exampleFormControlSelect1">
+        <option value="240">240</option>
+        <option value="270">270</option>
+        <option value="300">300</option>
+        <option value="330">330</option>
+        <option value="360">360</option>
+        <option value="390">390</option>
+        <option value="420">420</option>
+        <option value="450">450</option>
+        <option value="480">480</option>
+        <option value="510">510</option>
+        <option value="540">540</option>
+        <option value="570">570</option>
+        <option value="600">600</option>
+        <option value="630">630</option>
+        <option value="660">660</option>
+        <option value="690">690</option>
+        <option value="720">720</option>
+        <option value="750">750</option>
+        <option value="780">780</option>
     </select>
 </div>
 
 <div class="dropdown">
     <label for="exampleFormControlSelect1">Bredde</label>
-    <select class="form-control dropbtn btn-secondary btn-style btn-block" name="height" id="exampleFormControlSelect2">
-        <option value="1">240</option>
-        <option value="2">270</option>
-        <option value="3">300</option>
-        <option value="4">330</option>
-        <option value="5">360</option>
-        <option value="6">390</option>
-        <option value="7">420</option>
-        <option value="8">450</option>
-        <option value="9">480</option>
-        <option value="10">510</option>
-        <option value="10">540</option>
-        <option value="10">570</option>
-        <option value="10">600</option>
-        <option value="10">630</option>
-        <option value="10">660</option>
-        <option value="10">690</option>
-        <option value="10">720</option>
-        <option value="10">750</option>
+    <select class="form-control dropbtn btn-secondary btn-style btn-block" name="width" id="exampleFormControlSelect2">
+        <option value="240">240</option>
+        <option value="270">270</option>
+        <option value="300">300</option>
+        <option value="330">330</option>
+        <option value="360">360</option>
+        <option value="390">390</option>
+        <option value="420">420</option>
+        <option value="450">450</option>
+        <option value="480">480</option>
+        <option value="510">510</option>
+        <option value="540">540</option>
+        <option value="570">570</option>
+        <option value="600">600</option>
+        <option value="630">630</option>
+        <option value="660">660</option>
+        <option value="690">690</option>
+        <option value="720">720</option>
+        <option value="750">750</option>
     </select>
 </div>
 
@@ -131,18 +130,13 @@
     </div>
 </div>
 
-<div class="dropdown">
-    <label for="exampleFormControlSelect1">Materialer til carporten:</label>
-    <select class="form-control dropbtn btn-secondary btn-style btn-block" name="height" id="exampleFormControlSelect5">
-        <c:forEach var="carportMaterialName" items="${applicationScope.carportMaterials}">
-            <option value="${carportMaterialName.materialName}">${carportMaterialName.materialName} </option>
-        </c:forEach>
-    </select>
-</div>
+
 
 <button type="input" class="btn btn-primary btn-style mt-2 mr-4">Beregn anslået pris</button>
 <h5>Anslået pris: 19.995kr</h5>
+</form>
 
 <button type="input" class="btn btn-primary btn-style mt-2 mr-4">Send til sælger</button>
+
 
 <%@include file="include/footer.inc" %>
