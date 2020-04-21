@@ -2,11 +2,7 @@ package Util;
 
 public class CalculateCarport {
     double price;
-    double length = 2.4;
-    double width = 3.5;
-    double postsPrice =  29;
-    double skrewPrice =  20;
-    double strapPrice =  20;
+
 
     public double calculateCarportPrice(double length, double width, double postPrice, double skrewPrice, double strapPrice){
 
@@ -35,7 +31,7 @@ public class CalculateCarport {
         double framePricePrM = 25;
         double framePrice = (length * framePricePrM) + (width * framePricePrM)* frame;
 
-        price = (totalPosts * postsPrice) + (totalScrews * skrewPrice) + (totalStraps * strapPrice) + framePrice;
+        price = (totalPosts * postPrice) + (totalScrews * skrewPrice) + (totalStraps * strapPrice) + framePrice;
 
         return price;
 
