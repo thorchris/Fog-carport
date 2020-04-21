@@ -4,7 +4,7 @@ public class CalculateTotalPriceCarport {
     //carport
     double length = 7.8;
     double width = 3.9;
-    double materialPrice = 29;
+    double materialPriceM2 = 29;
     double postsPrice = 50;
     double skrewPrice = 20;
     double strapPrice = 20;
@@ -17,14 +17,24 @@ public class CalculateTotalPriceCarport {
     double doorHinges = 50;
     boolean isHalf = false;
 
-    public double calculateTotalPrice(){
-       return new CalculateCarport().calculateCarportPrice(length, width, postsPrice, skrewPrice, strapPrice)
-               + new CalculateShed().shedPrice(isHalf, shedLength, woodWidth, pricePrWoodM, doorKnobsPrice, doorHinges)
-               + new CalculateRoof().highRoof(25,length, width);
-    }
 
-    public static void main(String[] args) {
-        System.out.println(new CalculateTotalPriceCarport().calculateTotalPrice());
+/*
+
+    public double calculateTotalPrice(boolean isRoofHigh){
+        double totalPrice = 0;
+        totalPrice += new CalculateCarport().calculateCarportPrice(length, width, postsPrice, skrewPrice, strapPrice);
+        totalPrice += new CalculateShed().shedPrice(isHalf, shedLength, woodWidth, pricePrWoodM, doorKnobsPrice, doorHinges):
+
+        if(isRoofHigh){
+            totalPrice += new CalculateRoof().highRoof(angle, length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, roofmaterial);
+        }else {
+            totalPrice += new CalculateRoof().flatRoof(length, width, roofmaterialPriceM2, screwPrice, fasciaPrice, rafterPrice, bracketPrice, roofmaterial);
+        }
+
+
+        return totalPrice;
     }
+*/
+
 
 }

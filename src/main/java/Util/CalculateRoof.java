@@ -1,128 +1,130 @@
 package Util;
 
+import FunctionLayer.RoofMaterials;
+
 public class CalculateRoof {
-    private final double spærPrisPrMeter = 14;
-    private final double beslagPris = 50;
-    private final double skruerPris = 5;
-    private final double sternPrisPrMeter = 30;
-    private final double tagPlastPladePris = 280;
-    private final double teglPrisPrM2 = 2000;
 
 
-    public double flatRoof(double længde, double bredde) {
-        double totalPris = 0;
-        bredde += 0.15;
-        længde += 0.15;
-        double antalSpær = længde/1;
-        double antalBeslag = antalSpær * 2;
-        double antalSkruer = (antalBeslag * 4) + (antalSpær * 5);
 
-        //Plast plade pris:
-        double tagPlastLængde = 2.4;
-        double tagPlastBredde = 1.06;
-        double totalTagPlastAreal = (tagPlastLængde / længde) + (tagPlastBredde / bredde);
-        double tagPlastPris = totalTagPlastAreal * tagPlastPladePris;
+    public double flatRoof(double length, double width, double screwPrice, double fasciaPrice, double rafterPrice, double bracketPrice, RoofMaterials roofmaterial) {
+        double totalPrice = 0;
+        width += 0.15;
+        length += 0.15;
+        double amountOfRafter = length/1;
+        double amountOfBrackets = amountOfRafter * 2;
+        double amountOfScrews = (amountOfBrackets * 4) + (amountOfRafter * 5);
+
+        //Roof size
+        double roofLength = roofmaterial.getLength();
+        double roofWidth = roofmaterial.getWidth();
+        double totalRoofAreal = (roofLength / length) + (roofWidth / width);
+
+        double roofmaterialPriceM2 = roofmaterial.getmaterialPriceM2();
+
+        double totalRoofPrice = totalRoofAreal * roofmaterialPriceM2;
 
         //Stern pris:
-        int stern = 4;
-        double totalSternPris = (bredde * sternPrisPrMeter) + (længde * sternPrisPrMeter);
+        int fascia = 2;
+        double totalFasciaPrice = ((width * fasciaPrice)*fascia) + ((length * fasciaPrice)*fascia);
 
         //Spær pris:
-        double totalSpærPris = antalSpær * (bredde * spærPrisPrMeter);
+        double totalRafterPrice = amountOfRafter * (width * rafterPrice);
 
         //Beslag pris:
-        double totalPrisBeslag = antalBeslag * beslagPris;
+        double totalBracketPrice = amountOfBrackets * bracketPrice;
 
         //Skruer pris:
-        double totalPrisSkruer = antalSkruer * skruerPris;
+        double totalScrewPrice = amountOfScrews * screwPrice;
 
-        totalPris = tagPlastPris + totalSternPris + totalSpærPris + totalPrisSkruer + totalPrisBeslag;
+        totalPrice = totalRoofPrice + totalFasciaPrice + totalRafterPrice + totalScrewPrice + totalBracketPrice;
 
-        return totalPris;
+        return totalPrice;
     }
 
-    public double highRoof(int hældning, double længde, double bredde) {
-        double totalPris = 0;
-        bredde += 0.15;
-        længde += 0.15;
-        double antalSpær = længde/1;
-        double antalBeslag = antalSpær * 2;
-        double antalSkruer = (antalBeslag * 4) + (antalSpær * 5);
+    public double highRoof(int angle, double length, double width, double screwPrice, double fasciaPrice, double rafterPrice, double bracketPrice, RoofMaterials roofmaterial) {
+        double totalPrice = 0;
+        width += 0.15;
+        length += 0.15;
+        double amountOfRafter = length/1;
+        double amountOfBrackets = amountOfRafter * 2;
+        double amountOfScrews = (amountOfBrackets * 4) + (amountOfRafter * 5);
 
         //Stern pris:
-        int stern = 4;
-        double totalSternPris = (bredde * sternPrisPrMeter) + (længde * sternPrisPrMeter);
+        int fascia = 2;
+        double totalFasciaPrice = ((width * fasciaPrice)*fascia) + ((length * fasciaPrice)*fascia);
 
         //Spær pris:
-        double totalSpærPris = antalSpær * (bredde * spærPrisPrMeter);
+        double totalRafterPrice = amountOfRafter * (width * rafterPrice);
 
         //Beslag pris:
-        double totalPrisBeslag = antalBeslag * beslagPris;
+        double totalBracketPrice = amountOfBrackets * bracketPrice;
 
         //Skruer pris:
-        double totalPrisSkruer = antalSkruer * skruerPris;
+        double totalScrewPrice = amountOfScrews * screwPrice;
 
-        double højeSpærPris = 0;
-        double tagHøjde = 0;
-        double tagAreal;
-        double tagMaterialePris = 0;
+        double highRafterPrice = 0;
+        double roofHeight = 0;
+        double roofAreal;
+        double roofMaterialPrice = 0;
+
+        double roofMaterialPricePrm2 = roofmaterial.getmaterialPriceM2();
 
         //Tag areal udregning : https://www.bolius.dk/hvor-stort-er-mit-tag-89636
 
-        switch (hældning) {
+        switch (angle) {
             case 15:
-                højeSpærPris = antalSpær * ((bredde * 0.5)  * spærPrisPrMeter);
-                tagHøjde = 0.5;
-                tagAreal = længde * tagHøjde * 2;
-                tagMaterialePris = teglPrisPrM2 * tagAreal;
+                highRafterPrice = amountOfRafter * ((width * 0.5)  * rafterPrice);
+                roofHeight = 0.5;
+                roofAreal = length * roofHeight * 2;
+                roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 20:
-                højeSpærPris = antalSpær * ((bredde * 0.55)  * spærPrisPrMeter);
-                tagHøjde = 0.55;
-                tagAreal = længde * tagHøjde * 2;
-                tagMaterialePris = teglPrisPrM2 * tagAreal;
+                highRafterPrice = amountOfRafter * ((width * 0.55)  * rafterPrice);
+                roofHeight = 0.55;
+                roofAreal = length * roofHeight * 2;
+                roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 25:
-                højeSpærPris = antalSpær * ((bredde * 0.6)  * spærPrisPrMeter);
-                tagHøjde = 0.6;
-                tagAreal = længde * tagHøjde * 2;
-                tagMaterialePris = teglPrisPrM2 * tagAreal;
+                highRafterPrice = amountOfRafter * ((width * 0.6)  * rafterPrice);
+                roofHeight = 0.6;
+                roofAreal = length * roofHeight * 2;
+                roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 30:
-                højeSpærPris = antalSpær * ((bredde * 0.65)  * spærPrisPrMeter);
-                tagHøjde = 0.65;
-                tagAreal = længde * tagHøjde * 2;
-                tagMaterialePris = teglPrisPrM2 * tagAreal;
+                highRafterPrice = amountOfRafter * ((width * 0.65)  * rafterPrice);
+                roofHeight = 0.65;
+                roofAreal = length * roofHeight * 2;
+                roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 35:
-                højeSpærPris = antalSpær * ((bredde * 0.7)  * spærPrisPrMeter);
-                tagHøjde = 0.7;
-                tagAreal = længde * tagHøjde * 2;
-                tagMaterialePris = teglPrisPrM2 * tagAreal;
+                highRafterPrice = amountOfRafter * ((width * 0.7)  * rafterPrice);
+                roofHeight = 0.7;
+                roofAreal = length * roofHeight * 2;
+                roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 40:
-                højeSpærPris = antalSpær * ((bredde * 0.75)  * spærPrisPrMeter);
-                tagHøjde = 0.75;
-                tagAreal = længde * tagHøjde * 2;
-                tagMaterialePris = teglPrisPrM2 * tagAreal;
+                highRafterPrice = amountOfRafter * ((width * 0.75)  * rafterPrice);
+                roofHeight = 0.75;
+                roofAreal = length * roofHeight * 2;
+                roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 45:
-                højeSpærPris = antalSpær * ((bredde * 0.80)  * spærPrisPrMeter);
-                tagHøjde = 0.8;
-                tagAreal = længde * tagHøjde * 2;
-                tagMaterialePris = teglPrisPrM2 * tagAreal;
+                highRafterPrice = amountOfRafter * ((width * 0.80)  * rafterPrice);
+                roofHeight = 0.8;
+                roofAreal = length * roofHeight * 2;
+                roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 50:
-                højeSpærPris = antalSpær * ((bredde * 0.85)  * spærPrisPrMeter);
-                tagHøjde = 0.85;
-                tagAreal = længde * tagHøjde * 2;
-                tagMaterialePris = teglPrisPrM2 * tagAreal;
+                highRafterPrice = amountOfRafter * ((width * 0.85)  * rafterPrice);
+                roofHeight = 0.85;
+                roofAreal = length * roofHeight * 2;
+                roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
         }
 
-        totalPris = tagMaterialePris + højeSpærPris + totalSternPris + totalSpærPris + totalPrisSkruer + totalPrisBeslag;
+        totalPrice = roofMaterialPrice + highRafterPrice + totalFasciaPrice + totalRafterPrice + totalScrewPrice + totalBracketPrice;
 
-        return totalPris;
+        return totalPrice;
     }
 
 }
