@@ -1,9 +1,6 @@
 package PresentationLayer;
 
-import FunctionLayer.LogicFacade;
-import FunctionLayer.LoginSampleException;
-import FunctionLayer.Product;
-import FunctionLayer.RoofMaterials;
+import FunctionLayer.*;
 import Util.CalculateCarport;
 import Util.CalculateRoof;
 import Util.CalculateShed;
@@ -30,8 +27,17 @@ public class CalculatePrice extends Command {
         Product wood = null;
         Product doorKnob = null;
         Product doorHinges = null;
+        Product rafter = null;
 
-        RoofMaterials roofMaterial = (RoofMaterials) session.getAttribute("roofMaterial");
+        String roofMaterialAsString = request.getParameter("roofMaterial");
+        RoofMaterials userRoofMaterial = null;
+
+        List<RoofMaterials> roofMaterialsList = GenerateLists.getRoffMaterialList();
+        for (RoofMaterials roofMaterials : roofMaterialsList) {
+            if(roofMaterials.getMaterialName().equals(roofMaterialAsString)){
+                 userRoofMaterial = roofMaterials;
+            }
+        }
 
         for (Product product : LogicFacade.getProductList()) {
             if(product.getName().equals("skrue")) {
@@ -58,6 +64,9 @@ public class CalculatePrice extends Command {
             if(product.getName().equals("dørhængsel")){
                 doorHinges = product;
             }
+            if(product.getName().equals("spær")){
+                rafter = product;
+            }
         }
         double screwPrice = screw.getPrice();
         double postPrice = post.getPrice();
@@ -67,6 +76,7 @@ public class CalculatePrice extends Command {
         double woodPrice = wood.getPrice();
         double doorKnobPrice = doorKnob.getPrice();
         double doorHingesPrice = doorHinges.getPrice();
+        double rafterPrice = rafter.getPrice();
 
         double length = Double.parseDouble(request.getParameter("length"));
         double width = Double.parseDouble(request.getParameter("width"));
@@ -81,17 +91,18 @@ public class CalculatePrice extends Command {
             shedPrice = new CalculateShed().shedPrice(isHalf, length, width, woodPrice, doorKnobPrice, doorHingesPrice);
         }
 
+        double roofPrice = 0;
+        boolean isHighRoof = Boolean.parseBoolean(request.getParameter("isHighRoof"));
+        int roofAngle = Integer.parseInt(request.getParameter("angle"));
+        if(isHighRoof){
+             roofPrice = new CalculateRoof().highRoof(roofAngle, length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, userRoofMaterial);
+        } else {
+             roofPrice = new CalculateRoof().flatRoof(length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, userRoofMaterial);
+        }
 
-
-        double totalPrice = carportPrice + shedPrice;
+        double totalPrice = carportPrice + shedPrice + roofPrice;
 
         session.setAttribute("totalPrice", totalPrice);
-
-
-
-
-
-
 
         return "../index";
     }

@@ -97,24 +97,25 @@
 
 <h5>Hvilken tagtype ønsker du?</h5>
 <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="option1">
-    <label class="form-check-label" for="inlineRadio1">Flat tag</label>
+    <input class="form-check-input" type="radio" name="isHighRoof" id="inlineRadio6" value="false">
+    <label class="form-check-label" for="inlineRadio1">Fladt tag</label>
 </div>
 <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="option2">
+    <input class="form-check-input" type="radio" name="isHighRoof" id="inlineRadio7" value="true">
     <label class="form-check-label" for="inlineRadio2">Rejsning på tag</label>
 </div>
 
 <div class="dropdown">
     <label for="exampleFormControlSelect1">Hvis tag med rejsning ønskes, vælg venligst antal grader på taget:</label>
-    <select class="form-control dropbtn btn-secondary btn-style btn-block" name="height" id="exampleFormControlSelect4">
-        <option value="1">15</option>
-        <option value="2">20</option>
-        <option value="3">25</option>
-        <option value="4">30</option>
-        <option value="5">35</option>
-        <option value="6">40</option>
-        <option value="6">45</option>
+    <select class="form-control dropbtn btn-secondary btn-style btn-block" name="angle" id="exampleFormControlSelect4">
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        <option value="45">45</option>
+        <option value="50">50</option>
     </select>
 </div>
 
