@@ -26,8 +26,10 @@ DROP TABLE IF EXISTS `carport_materials`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `carport_materials` (
   `material_id` int(11) NOT NULL AUTO_INCREMENT,
-  `material_name` varchar(45) NOT NULL,
-  `material_price_m` double NOT NULL,
+  `material_name` varchar(45) NOT NULL DEFAULT 'DEFAULT CHARSET=utf8',
+  `material_piece_price` double NOT NULL,
+  `width` double NOT NULL,
+  `length` double NOT NULL,
   PRIMARY KEY (`material_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +40,7 @@ CREATE TABLE `carport_materials` (
 
 LOCK TABLES `carport_materials` WRITE;
 /*!40000 ALTER TABLE `carport_materials` DISABLE KEYS */;
-INSERT INTO `carport_materials` VALUES (1,'Egetræsplader',795),(2,'Bøgetræsplade',1000),(3,'Plastiktræ',400);
+INSERT INTO `carport_materials` VALUES (1,'Egetræsbrædder',14, 0.15, 3),(2,'Bøgetræsplade',12, 0.15, 3),(3,'Plastiktræ',10, 0.15, 3);
 /*!40000 ALTER TABLE `carport_materials` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,9 +82,9 @@ CREATE TABLE `products` (
   `productID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `uom` varchar(45) NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` double NOT NULL,
   PRIMARY KEY (`productID`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +93,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Bræt 25x200 trykimp.','m',5495),(2,'Bræt 25x125 trykimp.','m',3195),(3,'Lægte 38x73 ubeh.','m',1395),(4,'Spærtræ 45x195 ubeh.','m',4395),(5,'Stolpe 97x97 trykimp.','stk.',32700),(6,'Bræt 19x100 trykimp.','m',795),(7,'Tagplader Plastmo blåtonet','stk.',33000),(8,'Plastmo bundskruer','stk.',250),(9,'Hulbånd, 1x20mm','m',2100),(10,'Universalbeslag 190mm højre','stk.',4400),(11,'Universalbeslag 190mm venstre','stk.',4400),(12,'Skruer, 4,5x60mm','stk.',25),(13,'Beslagskruer, 4,0x50mm','stk.',110),(14,'Bræddebolte 10x120mm','stk.',500),(15,'Firkantskiver 40x40x11mm','stk.',400),(16,'Lægte 38x73 ubeh.','m',1495),(17,'Reglar 45x95mm, ubeh.','m',1895),(18,'Bræt 25x150 trykimp.','m',3395),(19,'Byg-selv-spær','stk.',39995),(20,'Bræt 25x50mm, trykimp.','m',995),(21,'Tagsten B&C dobbelt-S sort','stk.',795),(22,'Rygsten B&C sort','stk.',4995),(23,'Toplægteholder B&C','stk.',2495),(24,'Rygstenbeslag B&C','stk.',995),(25,'Bindere B&C','stk.',200),(26,'Skruer, 5,0x100mm','stk.',190),(27,'Skruer, 4,5x70mm','stk.',50),(28,'Skruer, 4,5x50mm','stk.',60),(29,'Stalddørsgreb 50x75','sæt',21900),(30,'T-hængsel 390mm','stk.',10900),(31,'Vinkelbeslag 35','stk.',595);
+INSERT INTO `products` VALUES (1,'skrue','stk',20),(2,'stolpe','stk',50),(3,'rem','m',20),(4,'spær','m',14),(5,'stern','m',30),(6,'beslag','stk',50),(7,'beklædning','m',30),(8,'dørhåndtag','stk',100),(9,'dørhængsel','stk',55);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,10 +106,12 @@ DROP TABLE IF EXISTS `roof_materials`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `roof_materials` (
   `material_id` int(11) NOT NULL AUTO_INCREMENT,
-  `material_name` varchar(45) NOT NULL,
-  `material_price_m` double DEFAULT NULL,
+  `material_name` varchar(45) NOT NULL DEFAULT 'DEFAULT CHARSET=utf8',
+  `material_price_m2` double NOT NULL,
+  `width` double NOT NULL,
+  `length` double NOT NULL,
   PRIMARY KEY (`material_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,7 +120,7 @@ CREATE TABLE `roof_materials` (
 
 LOCK TABLES `roof_materials` WRITE;
 /*!40000 ALTER TABLE `roof_materials` DISABLE KEYS */;
-INSERT INTO `roof_materials` VALUES (1,'Tagplader Plastmo blåtonet',33000),(2,'Tagsten B&C dobbelt-S sort',795),(6,'plasttrapezplader',400);
+INSERT INTO `roof_materials` VALUES (1,'Tagplader Plastmo blåtonet',250,1.06,2.4),(2,'Betontagsten - rød',450,1,2),(6,'Betontagsten - teglrød ',450,1,2),(7,'Betontagsten - rødbrun',450,1,2),(8,'Betontagsten - sort',450,1,2),(9,'Eternittag B6 - grå',350,1.5,2.5),(10,'Eternittag B6 - sort',350,1.5,2.5),(11,'Eternittag B6 - mokkabrun',350,1.5,2.5),(12,'Eternittag B6 - rødbrun',350,1.5,2.5),(13,'Eternittag B6 - teglrød',350,1.5,2.5),(14,'Eternittag B7 - grå',400,2,3),(15,'Eternittag B7 - sort',400,2,3),(16,'Eternittag B7 - mokkabrun',400,2,3),(17,'Eternittag B7 - rødbrun',400,2,3),(18,'Eternittag B7 - teglrød ',400,2,3),(19,'Eternittag B7 - rødflammet ',400,2,3);
 /*!40000 ALTER TABLE `roof_materials` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -129,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-17 12:16:34
+-- Dump completed on 2020-04-23  9:12:56

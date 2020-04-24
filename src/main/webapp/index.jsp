@@ -12,7 +12,9 @@
     if (request.getServletContext().getAttribute("roofMaterials") == null) {
         request.getServletContext().setAttribute("roofMaterials", GenerateLists.getRoffMaterialList());
     }
-
+    if (request.getServletContext().getAttribute("carportMaterials") == null) {
+        request.getServletContext().setAttribute("carportMaterials", GenerateLists.getCarportMaterialsList());
+    }
 %>
 
 <%@include file="include/header.inc" %>
@@ -71,6 +73,28 @@
             <option value="7.50">750</option>
         </select>
     </div>
+
+
+    <h5>Ønsker de beklædning til carporten?</h5>
+    <input type="radio" id="claddingCheckbox" onclick="myFunction3()" name="claddingYesOrNo" value="true"> Ja </input>
+    <input type="radio" name="claddingYesOrNo" value="false" onclick="myFunction3()"> Nej </input>
+
+        <div class="dropdown" style="display:none" id="carportDropdowns" >
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Beklædning til carporten:</label>
+                <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block" name="carportMaterial"
+                        id="carportMat">
+                    <c:forEach var="carportMaterialName" items="${applicationScope.carportMaterials}">
+                        <option value="${carportMaterialName.materialName}">${carportMaterialName.materialName} </option>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
     <h5>Ønsker de et skur?</h5>
     <input type="radio" id="shedCheckbox" onclick="myFunction1()" name="shedYesOrNo" value="true"> Ja </input>
