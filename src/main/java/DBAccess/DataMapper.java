@@ -1,5 +1,6 @@
 package DBAccess;
 
+import FunctionLayer.CarportMaterials;
 import FunctionLayer.Product;
 import FunctionLayer.RoofMaterials;
 
@@ -56,6 +57,35 @@ public class DataMapper {
         }
         return productsList;
     }
+
+
+    public static List<CarportMaterials> getCarportMaterialsList() {
+        List<CarportMaterials> CarportMaterialNames = new ArrayList<>();
+        try {
+            Connection con = Connector.connection();
+            Statement stmt = con.createStatement();
+            String SQL = "SELECT * FROM fogcarport.carport_materials";
+            ResultSet rs = stmt.executeQuery(SQL);
+
+            while (rs.next()) {
+                String name = rs.getString("material_name");
+                int id = rs.getInt("material_id");
+                double materialPiecePrice = rs.getDouble("material_piece_price");
+                double width = rs.getDouble("width");
+                double length = rs.getDouble("length");
+                CarportMaterials carportMat = new CarportMaterials(name, id, materialPiecePrice,width,length);
+                CarportMaterialNames.add(carportMat);
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex);
+        }
+        return CarportMaterialNames;
+    }
+
+
+
+
+
 
     public static void main(String[] args) {
         List<RoofMaterials> test2 = getRoffMaterialsList();
