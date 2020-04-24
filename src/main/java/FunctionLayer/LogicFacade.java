@@ -14,6 +14,10 @@ public class LogicFacade {
         return DataMapper.getRoffMaterialsList();
     }
 
+    public static List<CarportMaterials> getCarportMaterialList(){
+        return DataMapper.getCarportMaterialsList();
+    }
+
     public static List<Product> getProductList(){
         return DataMapper.getProductList();
     }

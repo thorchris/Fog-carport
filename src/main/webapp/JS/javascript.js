@@ -18,3 +18,13 @@ function myFunction2(){
         roofDropdowns.style.display = "none";
     }
 }
+
+function myFunction3(){
+    var claddingCheckbox = document.getElementById("claddingCheckbox");
+    var claddingDropdowns = document.getElementById("carportDropdowns");
+    if (claddingCheckbox.checked == true) {
+        claddingDropdowns.style.display = "block";
+    } else {
+        claddingDropdowns.style.display = "none";
+    }
+}
