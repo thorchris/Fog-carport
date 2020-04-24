@@ -93,16 +93,23 @@ public class CalculatePrice extends Command {
 
         double roofPrice = 0;
         boolean isHighRoof = Boolean.parseBoolean(request.getParameter("isHighRoof"));
-        int roofAngle = Integer.parseInt(request.getParameter("angle"));
+
         if(isHighRoof){
-             roofPrice = new CalculateRoof().highRoof(roofAngle, length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, userRoofMaterial);
+            int roofAngle = Integer.parseInt(request.getParameter("angle"));
+            roofPrice = new CalculateRoof().highRoof(roofAngle, length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, userRoofMaterial);
         } else {
-             roofPrice = new CalculateRoof().flatRoof(length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, userRoofMaterial);
+            for (RoofMaterials roofMaterials : roofMaterialsList) {
+                if (roofMaterials.getMaterialName().equals("Tagplader Plastmo blåtonet")) {
+                    userRoofMaterial = roofMaterials;
+                }
+                 roofPrice = new CalculateRoof().flatRoof(length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, userRoofMaterial);
+            }
         }
 
         double totalPrice = carportPrice + shedPrice + roofPrice;
+        String price = (String.format("%,.0f ,-", totalPrice));
 
-        session.setAttribute("totalPrice", totalPrice);
+        session.setAttribute("totalPrice", price);
 
         return "../index";
     }
