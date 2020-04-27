@@ -74,6 +74,18 @@
         </select>
     </div>
 
+    <h5>Ønsker de et skur?</h5>
+    <input type="radio" id="shedCheckbox" onclick="myFunction1()" name="shedYesOrNo" value="true"> Ja </input>
+    <input type="radio" name="shedYesOrNo" onclick="myFunction1()" value="false"> Nej </input>
+    <div class="form-group" id="shedDropdowns" style="display: none">
+        <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
+                id="emptyDropdown1" type="text" name="shedLength">
+            <option value="" disabled selected> Skurets størrelse</option>
+            <option name="isHalf" id="inlineRadio3" value="false">Halv bredde af carport</option>
+            <option name="isHalf" id="inlineRadio4" value="true">Hel bredde af carport</option>
+        </select>
+    </div>
+
 
     <h5>Ønsker de beklædning til carporten?</h5>
     <input type="radio" id="claddingCheckbox" onclick="myFunction3()" name="claddingYesOrNo" value="true"> Ja </input>
@@ -90,32 +102,34 @@
                 </select>
             </div>
         </div>
+
     </div>
 
 
-
-    <h5>Ønsker de et skur?</h5>
-    <input type="radio" id="shedCheckbox" onclick="myFunction1()" name="shedYesOrNo" value="true"> Ja </input>
-    <input type="radio" name="shedYesOrNo" onclick="myFunction1()" value="false"> Nej </input>
-    <div class="form-group" id="shedDropdowns" style="display: none">
-        <select class="form-control" style="margin-bottom: 30px; margin-top: 30px"
-                id="emptyDropdown1" type="text" name="shedLength">
-            <option value="" disabled selected> Skurets størrelse</option>
-            <option name="isHalf" id="inlineRadio3" value="false">Halv bredde af carport</option>
-            <option name="isHalf" id="inlineRadio4" value="true">Hel bredde af carport</option>
+    <div class="form-group" id="numberOfCladdingSides" style="display: none">
+        <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
+                id="emptyDropdown3" type="text" name="claddingsides">
+            <option value="1">En langside</option>
+            <option value="2">To langsider</option>
+            <option value="3">En langside og bagsiden</option>
+            <option value="4">Begge langsider og bagsiden</option>
         </select>
     </div>
 
+    <div class="form-group" id="numberOfCladdingSides1" style="display: none">
+        <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
+                id="emptyDropdown4" type="text" name="claddingsides1">
+            <option value="1">En langside</option>
+            <option value="2">To langsider</option>
+        </select>
     </div>
 
-
-    <h5>Hvilken tagtype ønsker du?</h5>
+        <h5>Hvilken tagtype ønsker du?</h5>
     <input type="radio" name="isHighRoof" value="false" onclick="myFunction2()"> Fladt tag </input>
-    <input type="radio" id="roofCheckbox" onclick="myFunction2()" name="isHighRoof" value="true"> Rejsning på
-    taget </input>
+    <input type="radio" id="roofCheckbox" onclick="myFunction2()" name="isHighRoof" value="true"> Rejsning på taget </input>
 
     <div class="form-group" id="roofDropdowns" style="display: none">
-        <select class="form-control" style="margin-bottom: 30px; margin-top: 30px"
+        <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
                 id="emptyDropdown2" type="text" name="angle">
             <option value="0" disabled selected> Tagets hældning</option>
             <option value="15">15</option>
@@ -140,10 +154,6 @@
             </div>
         </div>
     </div>
-
-
-    </div>
-
     <br>
     <button type="input" class="btn btn-primary btn-style mt-2 mr-4">Beregn anslået pris</button>
     <h5>Anslået pris: ${sessionScope.totalPrice}</h5>
@@ -152,6 +162,5 @@
 <button type="input" class="btn btn-primary btn-style mt-2 mr-4">Send til sælger</button>
 
 <script src="JS/javascript.js"></script>
-
 
 <%@include file="include/footer.inc" %>

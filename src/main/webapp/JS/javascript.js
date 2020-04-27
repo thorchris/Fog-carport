@@ -21,10 +21,21 @@ function myFunction2(){
 
 function myFunction3(){
     var claddingCheckbox = document.getElementById("claddingCheckbox");
+    var shedCheckbox = document.getElementById("shedCheckbox");
     var claddingDropdowns = document.getElementById("carportDropdowns");
-    if (claddingCheckbox.checked == true) {
+    var numberOfCladdingSides = document.getElementById("numberOfCladdingSides");
+    var numberOfCladdingSides1 = document.getElementById("numberOfCladdingSides1");
+
+    if(shedCheckbox.checked && claddingCheckbox.checked === true){
         claddingDropdowns.style.display = "block";
+        numberOfCladdingSides1.style.display ="block";
+    }
+    else if (claddingCheckbox.checked === true) {
+        claddingDropdowns.style.display = "block";
+        numberOfCladdingSides.style.display = "block";
     } else {
         claddingDropdowns.style.display = "none";
+        numberOfCladdingSides.style.display = "none";
+        numberOfCladdingSides1.style.display ="none";
     }
 }

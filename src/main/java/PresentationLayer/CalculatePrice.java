@@ -2,6 +2,7 @@ package PresentationLayer;
 
 import FunctionLayer.*;
 import Util.CalculateCarport;
+import Util.CalculateMaterials;
 import Util.CalculateRoof;
 import Util.CalculateShed;
 
@@ -29,13 +30,29 @@ public class CalculatePrice extends Command {
         Product doorHinges = null;
         Product rafter = null;
 
+        CalculateMaterials cm = new CalculateMaterials();
+
+
+        //Roof Materials
+        List<RoofMaterials> roofMaterialsList = GenerateLists.getRoffMaterialList();
         String roofMaterialAsString = request.getParameter("roofMaterial");
         RoofMaterials userRoofMaterial = null;
 
-        List<RoofMaterials> roofMaterialsList = GenerateLists.getRoffMaterialList();
+
         for (RoofMaterials roofMaterials : roofMaterialsList) {
             if(roofMaterials.getMaterialName().equals(roofMaterialAsString)){
-                 userRoofMaterial = roofMaterials;
+                userRoofMaterial = roofMaterials;
+            }
+        }
+
+        //Carport materials
+        List<CarportMaterials> carportMaterials = GenerateLists.getCarportMaterialsList();
+        String carportMaterialAsString = request.getParameter("carportMaterial");
+        CarportMaterials userCarportMaterial = null;
+
+        for (CarportMaterials carportMaterial : carportMaterials) {
+            if(carportMaterial.getMaterialName().equals(carportMaterialAsString)){
+                userCarportMaterial = carportMaterial;
             }
         }
 
@@ -107,7 +124,22 @@ public class CalculatePrice extends Command {
             }
         }
 
-        double totalPrice = carportPrice + shedPrice + roofPrice;
+
+        //Beklædning
+        double claddingPrice = 0;
+        if(wantAShed){
+            int amountOfSides = Integer.parseInt(request.getParameter("claddingsides1"));
+            double woodWidth = userCarportMaterial.getWidth();
+            int amountOfCladding = cm.calculateCladding(amountOfSides, length, width, woodWidth);
+            claddingPrice = amountOfCladding * userCarportMaterial.getMaterialPriceM();
+        } else {
+            int amountOfSides = Integer.parseInt(request.getParameter("claddingsides"));
+            double woodWidth = userCarportMaterial.getWidth();
+            int amountOfCladding = cm.calculateCladding(amountOfSides, length, width, woodWidth);
+            claddingPrice = amountOfCladding * userCarportMaterial.getMaterialPriceM();
+        }
+        //Total pris
+        double totalPrice = carportPrice + shedPrice + roofPrice + claddingPrice;
         String price = (String.format("%,.0f ,-", totalPrice));
 
         session.setAttribute("totalPrice", price);
