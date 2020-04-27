@@ -36,22 +36,28 @@ public class CalculateMaterials {
         return amountOfScrews;
     }
 
-    //Beklædning
+    //Beklædning (antal træ)
     public int calculateCladding(int amountOfSides,double length, double width, double woodWidth){
         int amountOfCladding = 0;
 
         switch (amountOfSides) {
+            //En langside
             case 1:
-                amountOfCladding = (int) (woodWidth / length);
+                amountOfCladding = (int) (length / woodWidth);
                 break;
+            //To langside
             case 2:
-                amountOfCladding = (int) ((woodWidth / length) * 2);
+                amountOfCladding = (int) ((length / woodWidth) * 2);
                 break;
+            //En langside og bagsiden
             case 3:
-                amountOfCladding = (int) ((2 * (woodWidth / length)) + (woodWidth / width));
+                amountOfCladding = (int) (((length / woodWidth)) + (width / woodWidth));
+                break;
+            //Begge langsider og bagsiden
+            case 4:
+                amountOfCladding = (int) ((2 * (length / woodWidth)) + (width / woodWidth));
                 break;
         }
         return amountOfCladding;
     }
-
 }
