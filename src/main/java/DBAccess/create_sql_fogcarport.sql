@@ -27,7 +27,9 @@ DROP TABLE IF EXISTS `carport_materials`;
 CREATE TABLE `carport_materials` (
   `material_id` int(11) NOT NULL AUTO_INCREMENT,
   `material_name` varchar(45) NOT NULL DEFAULT 'DEFAULT CHARSET=utf8',
-  `material_price_m` double NOT NULL,
+  `material_piece_price` double NOT NULL,
+  `width` double NOT NULL,
+  `length` double NOT NULL,
   PRIMARY KEY (`material_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +40,7 @@ CREATE TABLE `carport_materials` (
 
 LOCK TABLES `carport_materials` WRITE;
 /*!40000 ALTER TABLE `carport_materials` DISABLE KEYS */;
-INSERT INTO `carport_materials` VALUES (1,'Egetræsplader',795),(2,'Bøgetræsplade',1000),(3,'Plastiktræ',400);
+INSERT INTO `carport_materials` VALUES (1,'Egetræsbrædder',14, 0.15, 3),(2,'Bøgetræsplade',12, 0.15, 3),(3,'Plastiktræ',10, 0.15, 3);
 /*!40000 ALTER TABLE `carport_materials` ENABLE KEYS */;
 UNLOCK TABLES;
 
