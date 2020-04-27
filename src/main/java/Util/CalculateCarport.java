@@ -1,40 +1,26 @@
 package Util;
 
+import FunctionLayer.LogicFacade;
+import FunctionLayer.Product;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class CalculateCarport {
     double price;
 
 
     public double calculateCarportPrice(double length, double width, double postPrice, double skrewPrice, double strapPrice){
+        CalculateMaterials cm = new CalculateMaterials();
 
-        double lengthPosts = 0;
-        double widthPosts = 0;
-        double totalStraps = 0;
-        double totalPosts;
-        double totalScrews;
+        int totalStraps = cm.calculateStraps(width);
+        int totalPosts = cm.calculateAmountOfPosts(length, width);
+        int totalScrews = cm.calculateScrews(totalPosts);
 
 
-        totalStraps = width * 2;
-
-        if(length > 4) {
-            lengthPosts += 4 + (length / 2);
-        }
-
-        if(width > 4) {
-            widthPosts += 4 + (width / 2);
-        }
-
-        totalPosts = lengthPosts + widthPosts;
-        totalScrews = 4 * totalPosts;
-
-        //Altid 4 frame
-        int frame = 4;
-        double framePricePrM = 25;
-        double framePrice = (length * framePricePrM) + (width * framePricePrM)* frame;
-
-        price = (totalPosts * postPrice) + (totalScrews * skrewPrice) + (totalStraps * strapPrice) + framePrice;
+        price = (totalPosts * postPrice) + (totalScrews * skrewPrice) + (totalStraps * strapPrice);
 
         return price;
-
     }
 
     public double getPrice() {

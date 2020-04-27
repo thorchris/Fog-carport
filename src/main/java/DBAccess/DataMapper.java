@@ -58,7 +58,6 @@ public class DataMapper {
         return productsList;
     }
 
-
     public static List<CarportMaterials> getCarportMaterialsList() {
         List<CarportMaterials> CarportMaterialNames = new ArrayList<>();
         try {

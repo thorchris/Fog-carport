@@ -67,6 +67,7 @@ public class CalculatePrice extends Command {
             if(product.getName().equals("spær")){
                 rafter = product;
             }
+
         }
         double screwPrice = screw.getPrice();
         double postPrice = post.getPrice();
