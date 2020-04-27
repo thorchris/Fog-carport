@@ -104,11 +104,6 @@ public class CalculatePrice extends Command {
         boolean wantAShed = Boolean.parseBoolean(request.getParameter("shedYesOrNo"));
         boolean isHalf = Boolean.parseBoolean(request.getParameter("isHalf"));
 
-        double shedPrice = 0;
-        if(wantAShed){
-            shedPrice = new CalculateShed().shedPrice(isHalf, length, woodWith, woodPrice, doorKnobPrice, doorHingesPrice, width);
-        }
-
         double roofPrice = 0;
         boolean isHighRoof = Boolean.parseBoolean(request.getParameter("isHighRoof"));
 
@@ -126,17 +121,23 @@ public class CalculatePrice extends Command {
 
 
         //Beklædning
+        double woodWidth = 0;
         double claddingPrice = 0;
         if(wantAShed){
             int amountOfSides = Integer.parseInt(request.getParameter("claddingsides1"));
-            double woodWidth = userCarportMaterial.getWidth();
+            woodWidth = userCarportMaterial.getWidth();
             int amountOfCladding = cm.calculateCladding(amountOfSides, length, width, woodWidth);
             claddingPrice = amountOfCladding * userCarportMaterial.getMaterialPriceM();
         } else {
             int amountOfSides = Integer.parseInt(request.getParameter("claddingsides"));
-            double woodWidth = userCarportMaterial.getWidth();
+            woodWidth = userCarportMaterial.getWidth();
             int amountOfCladding = cm.calculateCladding(amountOfSides, length, width, woodWidth);
             claddingPrice = amountOfCladding * userCarportMaterial.getMaterialPriceM();
+        }
+
+        double shedPrice = 0;
+        if(wantAShed){
+            shedPrice = new CalculateShed().shedPrice(isHalf, length, woodWidth, woodPrice, doorKnobPrice, doorHingesPrice, width);
         }
         //Total pris
         double totalPrice = carportPrice + shedPrice + roofPrice + claddingPrice;
