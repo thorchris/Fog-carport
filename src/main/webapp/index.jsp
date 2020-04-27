@@ -115,7 +115,7 @@
 
     <div class="form-group" id="numberOfCladdingSides1" style="display: none">
         <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
-                id="emptyDropdown4" type="text" name="claddingsides">
+                id="emptyDropdown4" type="text" name="claddingsides1">
             <option value="1">En langside</option>
             <option value="2">To langsider</option>
         </select>
