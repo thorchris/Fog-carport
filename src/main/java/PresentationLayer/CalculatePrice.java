@@ -89,7 +89,7 @@ public class CalculatePrice extends Command {
 
         double shedPrice = 0;
         if(wantAShed){
-            shedPrice = new CalculateShed().shedPrice(isHalf, length, width, woodPrice, doorKnobPrice, doorHingesPrice);
+            shedPrice = new CalculateShed().shedPrice(isHalf, length, woodWith, woodPrice, doorKnobPrice, doorHingesPrice, width);
         }
 
         double roofPrice = 0;

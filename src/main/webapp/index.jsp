@@ -92,7 +92,7 @@
         </div>
     </div>
 
-    
+
 
     <h5>Ønsker de et skur?</h5>
     <input type="radio" id="shedCheckbox" onclick="myFunction1()" name="shedYesOrNo" value="true"> Ja </input>
