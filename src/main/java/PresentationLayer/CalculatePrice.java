@@ -9,7 +9,6 @@ import Util.CalculateShed;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CalculatePrice extends Command {
@@ -126,12 +125,12 @@ public class CalculatePrice extends Command {
         if(wantAShed){
             int amountOfSides = Integer.parseInt(request.getParameter("claddingsides1"));
             woodWidth = userCarportMaterial.getWidth();
-            int amountOfCladding = cm.calculateCladding(amountOfSides, length, width, woodWidth);
+            int amountOfCladding = cm.calculateCladdingCarport(amountOfSides, length, width, woodWidth);
             claddingPrice = amountOfCladding * userCarportMaterial.getMaterialPriceM();
         } else {
             int amountOfSides = Integer.parseInt(request.getParameter("claddingsides"));
             woodWidth = userCarportMaterial.getWidth();
-            int amountOfCladding = cm.calculateCladding(amountOfSides, length, width, woodWidth);
+            int amountOfCladding = cm.calculateCladdingCarport(amountOfSides, length, width, woodWidth);
             claddingPrice = amountOfCladding * userCarportMaterial.getMaterialPriceM();
         }
 
