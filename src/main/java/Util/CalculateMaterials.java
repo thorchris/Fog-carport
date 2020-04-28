@@ -2,12 +2,11 @@ package Util;
 
 public class CalculateMaterials {
 
-    private int totalPosts;
-    private int amountOfStraps;
-    private int amountOfScrews;
-    private int amountOfCladding;
-    private double totalAmountOfCladding;
-
+    private int totalPosts = 0;
+    private int amountOfStraps = 0;
+    private int amountOfScrews = 0;
+    private int amountOfCladding = 0;
+    private double totalAmountOfCladding = 0;
 
 
     //Stolper
@@ -16,7 +15,6 @@ public class CalculateMaterials {
 
         int lengthPosts = 0;
         int widthPosts = 0;
-        totalPosts = 0;
 
         //starter med værdien 4 idet det er min antal stolper i en carport
         if (length < 4) {
@@ -44,7 +42,7 @@ public class CalculateMaterials {
     }
 
     //Spær rafters
-    public int calculateStraps( double width) {
+    public int calculateStraps(double width) {
         amountOfStraps = (int) (width * 2);
         return amountOfStraps;
     }
@@ -57,7 +55,6 @@ public class CalculateMaterials {
 
     //Beklædning (antal træ)
     public int calculateCladdingCarport(int amountOfSides, double length, double width, double woodWidth) {
-        amountOfCladding = 0;
 
         switch (amountOfSides) {
             //En langside
@@ -85,7 +82,6 @@ public class CalculateMaterials {
         double shedWidth = 0;
         double amountOfCladdingWidth = 0;
         double amountOfCladdingLength = 0;
-        totalAmountOfCladding = 0;
         double shedLength = 0;
 
 
@@ -142,13 +138,7 @@ public class CalculateMaterials {
         //For hver meter er der 2 straps.
         amountOfStraps = (int) (width * 2);
         return amountOfStraps;
-
-
-
-
     }
-
-
 
 
     //Skruer til skur
