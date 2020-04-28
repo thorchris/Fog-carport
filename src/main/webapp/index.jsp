@@ -103,6 +103,9 @@
             </div>
         </div>
 
+    </div>
+
+
     <div class="form-group" id="numberOfCladdingSides" style="display: none">
         <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
                 id="emptyDropdown3" type="text" name="claddingsides">

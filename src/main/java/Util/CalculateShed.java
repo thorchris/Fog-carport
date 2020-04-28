@@ -1,9 +1,8 @@
 package Util;
 
 public class CalculateShed {
-    double carportWidth = 3.5;
 
-    public double shedPrice(boolean isHalfWidth, double shedLength, double woodWidth, double pricePrWoodM, double doorKnobsPrice, double doorHinges){
+    public double shedPrice(boolean isHalfWidth, double shedLength, double woodWidth, double pricePrWoodM, double doorKnobsPrice, double doorHinges, double carportWidth){
         double shedPrice = 0;
 
         if(isHalfWidth){
@@ -24,7 +23,8 @@ public class CalculateShed {
         double pricePrWoodM = 29;
         double doorKnobsPrice = 100;
         double doorHinges = 50;
-        System.out.println(new CalculateShed().shedPrice(true, shedLength, woodWidth, pricePrWoodM, doorKnobsPrice, doorHinges));
+        double carportWidth = 3.5;
+        System.out.println(new CalculateShed().shedPrice(true, shedLength, woodWidth, pricePrWoodM, doorKnobsPrice, doorHinges, carportWidth));
 
     }
 }
