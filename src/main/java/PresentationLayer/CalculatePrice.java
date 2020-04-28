@@ -14,8 +14,7 @@ import java.util.List;
 
 public class CalculatePrice extends Command {
 
-
-
+    
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         HttpSession session = request.getSession();
@@ -123,7 +122,6 @@ public class CalculatePrice extends Command {
                  roofPrice = new CalculateRoof().flatRoof(length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, userRoofMaterial);
             }
         }
-
 
         //Beklædning
         double claddingPrice = 0;
