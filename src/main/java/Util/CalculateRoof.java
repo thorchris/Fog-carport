@@ -2,15 +2,21 @@ package Util;
 
 import FunctionLayer.RoofMaterials;
 
+import java.util.HashMap;
+
 public class CalculateRoof {
+    public CalculateMaterials cm = new CalculateMaterials();
 
     public double flatRoof(double length, double width, double screwPrice, double fasciaPrice, double rafterPrice, double bracketPrice, RoofMaterials roofmaterial) {
         double totalPrice = 0;
+
         width += 0.15;
         length += 0.15;
-        double amountOfRafter = length/1;
+
+        double amountOfRafter = cm.getAmountOfRafters();
         double amountOfBrackets = amountOfRafter * 2;
         double amountOfScrews = (amountOfBrackets * 4) + (amountOfRafter * 5);
+
 
         //Roof size
         double roofLength = roofmaterial.getLength();
@@ -22,8 +28,9 @@ public class CalculateRoof {
         double totalRoofPrice = totalRoofAreal * roofmaterialPriceM2;
 
         //Stern pris:
-        int fascia = 2;
+        int fascia = 4;
         double totalFasciaPrice = ((width * fasciaPrice)*fascia) + ((length * fasciaPrice)*fascia);
+
 
         //Spær pris:
         double totalRafterPrice = amountOfRafter * (width * rafterPrice);
@@ -34,6 +41,11 @@ public class CalculateRoof {
         //Skruer pris:
         double totalScrewPrice = amountOfScrews * screwPrice;
 
+        CalculateMaterials.itemList.put("Antal beslag til taget: ", amountOfBrackets);
+        CalculateMaterials.itemList.put("Antal skruer til taget: ", amountOfScrews);
+        CalculateMaterials.itemList.put("Antal stern til taget: ", (double) fascia);
+        CalculateMaterials.itemList.put("Antal"  + roofmaterial.getMaterialName()+ " m2 : ", totalRoofAreal);
+
         totalPrice = totalRoofPrice + totalFasciaPrice + totalRafterPrice + totalScrewPrice + totalBracketPrice;
 
         return totalPrice;
@@ -43,12 +55,12 @@ public class CalculateRoof {
         double totalPrice = 0;
         width += 0.15;
         length += 0.15;
-        double amountOfRafter = length/1;
+        double amountOfRafter =  cm.getAmountOfRafters();;
         double amountOfBrackets = amountOfRafter * 2;
         double amountOfScrews = (amountOfBrackets * 4) + (amountOfRafter * 5);
 
         //Stern pris:
-        int fascia = 2;
+        int fascia = 4;
         double totalFasciaPrice = ((width * fasciaPrice)*fascia) + ((length * fasciaPrice)*fascia);
 
         //Spær pris:
@@ -62,7 +74,7 @@ public class CalculateRoof {
 
         double highRafterPrice = 0;
         double roofHeight = 0;
-        double roofAreal;
+        double roofAreal = 0;
         double roofMaterialPrice = 0;
 
         double roofMaterialPricePrm2 = roofmaterial.getmaterialPriceM2();
@@ -120,9 +132,16 @@ public class CalculateRoof {
                 break;
         }
 
+        CalculateMaterials.itemList.put("Antal beslag til taget: ", amountOfBrackets);
+        CalculateMaterials.itemList.put("Antal skruer til taget: ", amountOfScrews);
+        CalculateMaterials.itemList.put("Antal stern til taget: ", (double) fascia);
+        CalculateMaterials.itemList.put("Antal " + roofmaterial.getMaterialName()+ " m2 : ", roofAreal);
+
         totalPrice = roofMaterialPrice + highRafterPrice + totalFasciaPrice + totalRafterPrice + totalScrewPrice + totalBracketPrice;
 
         return totalPrice;
     }
+
+
 
 }

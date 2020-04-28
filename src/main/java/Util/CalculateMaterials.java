@@ -1,22 +1,31 @@
 package Util;
 
 
+import FunctionLayer.RoofMaterials;
+
 import java.util.HashMap;
 
 public class CalculateMaterials {
 
     private int totalPosts = 0;
     private int amountOfScrews = 0;
-    private int amountOfStraps = 0;
     private int amountOfRafters = 0;
+
+    public int getAmountOfRafters() {
+        return amountOfRafters;
+    }
+
     private int amountOfCladding = 0;
     private double TOTALSTRAPS = 4;
-    private int amountOfLengthStrap;
-    private int amountOfWidthStrap;
     private double totalAmountOfShedCladding = 0;
+    public static HashMap<String, Double> itemList = new HashMap<>();
 
-
-    private static HashMap<String, Double> itemList = new HashMap<>();
+    //Spær rafters
+    public int calculateRafters(double width) {
+        amountOfRafters = (int) (width * 2);
+        itemList.put("Antal spær", (double) amountOfRafters);
+        return amountOfRafters;
+    }
 
     //Stolper
     public int calculateAmountOfPosts(boolean hasShed, boolean isHalfWidth, double length, double width) {
@@ -49,12 +58,7 @@ public class CalculateMaterials {
         return totalPosts;
     }
 
-    //Spær rafters
-    public int calculateRafters(double width) {
-        amountOfRafters = (int) (width * 2);
-        itemList.put("Antal spær", (double) amountOfRafters);
-        return amountOfRafters;
-    }
+
 
     //Skruer
     public int calculateScrews(int totalPosts) {
@@ -128,6 +132,10 @@ public class CalculateMaterials {
     }
 
     public static void main(String[] args) {
+        //highRoof(int angle, double length, double width, double screwPrice, double fasciaPrice, double rafterPrice, double bracketPrice, RoofMaterials roofmaterial)
+
+
+        CalculateRoof cr = new CalculateRoof();
         CalculateMaterials cm = new CalculateMaterials();
 
         boolean hasShed = true;
@@ -137,6 +145,12 @@ public class CalculateMaterials {
         int amountOfSides = 2;
         double woodWidth = 0.15;
 
+        int angle = 15;
+        double screwPrice = 20;
+        double fasciaPrice = 20;
+        double rafterPrice = 50;
+        double bracketPrice = 60;
+        RoofMaterials roofMaterials = new RoofMaterials("Blåtonet plast", 1, 20, 15, 15);
 
         int totalPosts = cm.calculateAmountOfPosts(hasShed, isHalfWidth, length, width);
         cm.calculateRafters(width);
@@ -145,10 +159,11 @@ public class CalculateMaterials {
         cm.calculateShedCladding(isHalfWidth, woodWidth, width, length);
         cm.calculateStraps(isHalfWidth, width, length);
 
+        cr.highRoof(angle, length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, roofMaterials);
+
         System.out.println(itemList);
 
     }
-
 
     //Remme til skur
     //Rem strap, samme længde og bredde som carport
@@ -166,7 +181,5 @@ public class CalculateMaterials {
         itemList.put("2 x Remme til carportens bredde på: ", width);
         return strapLengthShed;
     }
-
-
 
 }
