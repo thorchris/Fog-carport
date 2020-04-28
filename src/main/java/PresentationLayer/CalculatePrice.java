@@ -97,10 +97,11 @@ public class CalculatePrice extends Command {
         double length = Double.parseDouble(request.getParameter("length"));
         double width = Double.parseDouble(request.getParameter("width"));
 
-        double carportPrice = new CalculateCarport().calculateCarportPrice(length, width, postPrice, screwPrice, strapPrice);
 
         boolean wantAShed = Boolean.parseBoolean(request.getParameter("shedYesOrNo"));
         boolean isHalf = Boolean.parseBoolean(request.getParameter("isHalf"));
+
+        double carportPrice = new CalculateCarport().calculateCarportPrice(length, width, postPrice, screwPrice, strapPrice, wantAShed, isHalf);
 
         double roofPrice = 0;
         boolean isHighRoof = Boolean.parseBoolean(request.getParameter("isHighRoof"));

@@ -2,17 +2,11 @@ package Util;
 
 public class CalculateShed {
 
-    public double shedPrice(boolean isHalfWidth, double shedLength, double woodWidth, double pricePrWoodM, double doorKnobsPrice, double doorHinges, double carportWidth){
+    public double shedPrice(boolean isHalfWidth, double woodWidth, double pricePrWoodM, double carportLength, double doorKnobsPrice, double doorHingesPrice, double carportWidth){
         double shedPrice = 0;
 
-        if(isHalfWidth){
-            double shedWidth = carportWidth/2;
-            shedPrice = (2*(shedWidth / woodWidth) * pricePrWoodM) + (2*(shedLength / woodWidth)* pricePrWoodM) + doorHinges + doorKnobsPrice;
-
-        } else {
-            double shedWidth = carportWidth;
-            shedPrice = (2*(shedWidth / woodWidth)* pricePrWoodM) + (2*(shedLength / woodWidth) * pricePrWoodM) + doorHinges + doorKnobsPrice;
-        }
+        double amountOfShedCladding = new CalculateMaterials().calculateShedCladding(isHalfWidth, woodWidth, carportWidth, carportLength);
+        shedPrice += amountOfShedCladding * pricePrWoodM + doorHingesPrice + doorKnobsPrice;
 
         return shedPrice;
     }

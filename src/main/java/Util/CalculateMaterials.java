@@ -1,18 +1,25 @@
 package Util;
 
+
+import java.util.HashMap;
+
 public class CalculateMaterials {
 
     private int totalPosts = 0;
-    private int amountOfStraps = 0;
     private int amountOfScrews = 0;
+    private int amountOfStraps = 0;
+    private int amountOfRafters = 0;
     private int amountOfCladding = 0;
-    private double totalAmountOfCladding = 0;
+    private double TOTALSTRAPS = 4;
+    private int amountOfLengthStrap;
+    private int amountOfWidthStrap;
+    private double totalAmountOfShedCladding = 0;
 
+
+    private static HashMap<String, Double> itemList = new HashMap<>();
 
     //Stolper
     public int calculateAmountOfPosts(boolean hasShed, boolean isHalfWidth, double length, double width) {
-
-
         int lengthPosts = 0;
         int widthPosts = 0;
 
@@ -37,19 +44,24 @@ public class CalculateMaterials {
                 totalPosts += 4;
             }
         }
+        itemList.put("Antal stolper", (double) totalPosts);
 
         return totalPosts;
     }
 
     //Spær rafters
-    public int calculateStraps(double width) {
-        amountOfStraps = (int) (width * 2);
-        return amountOfStraps;
+    public int calculateRafters(double width) {
+        amountOfRafters = (int) (width * 2);
+        itemList.put("Antal spær", (double) amountOfRafters);
+        return amountOfRafters;
     }
 
     //Skruer
     public int calculateScrews(int totalPosts) {
+       //TODO ÆNDRE TIL 500 skruer????
         amountOfScrews = 4 * totalPosts;
+
+        itemList.put("Antal skruer", (double) amountOfScrews);
         return amountOfScrews;
     }
 
@@ -74,11 +86,11 @@ public class CalculateMaterials {
                 amountOfCladding = (int) ((2 * (length / woodWidth)) + (width / woodWidth));
                 break;
         }
+        itemList.put("Antal brædder til beklædning på carport", (double) amountOfCladding);
         return amountOfCladding;
     }
 
     public double calculateShedCladding(boolean isHalfWidth, double woodWidth, double carportWidth, double carportLength) {
-
         double shedWidth = 0;
         double amountOfCladdingWidth = 0;
         double amountOfCladdingLength = 0;
@@ -104,48 +116,57 @@ public class CalculateMaterials {
             amountOfCladdingLength++;
         }
 
-
         amountOfCladdingWidth = (shedWidth / woodWidth);
         if (shedWidth % woodWidth > 0) {
             amountOfCladdingWidth++; // If we need an extra to get 100% coverage.
         }
 
+        itemList.put("Antal brædder til beklædning på skur ", totalAmountOfShedCladding);
+        totalAmountOfShedCladding = amountOfCladdingLength + amountOfCladdingWidth;
 
-        totalAmountOfCladding = amountOfCladdingLength + amountOfCladdingWidth;
-
-        return totalAmountOfCladding;
+        return totalAmountOfShedCladding;
     }
 
     public static void main(String[] args) {
         CalculateMaterials cm = new CalculateMaterials();
 
-        boolean test = true;
-        double woodwidth = 0.15;
-        double carportWidth = 7.2;
-        double carportLength = 7.2;
+        boolean hasShed = true;
+        boolean isHalfWidth = true;
+        double length = 3.20;
+        double width = 2.80;
+        int amountOfSides = 2;
+        double woodWidth = 0.15;
 
 
-        double pis = cm.calculateShedCladding(test, woodwidth, carportWidth, carportLength);
+        int totalPosts = cm.calculateAmountOfPosts(hasShed, isHalfWidth, length, width);
+        cm.calculateRafters(width);
+        cm.calculateScrews(totalPosts);
+        cm.calculateCladdingCarport(amountOfSides, length, width, woodWidth);
+        cm.calculateShedCladding(isHalfWidth, woodWidth, width, length);
+        cm.calculateStraps(isHalfWidth, width, length);
 
-        System.out.println(pis);
+        System.out.println(itemList);
 
     }
 
 
     //Remme til skur
-    public int calculateStrapsShed(boolean isHalfWidth, double width) {
+    //Rem strap, samme længde og bredde som carport
+    // skal bruge 2 til længde og 2 til bredde
+    public double calculateStraps(boolean isHalfWidth, double width, double length) {
+        double strapLengthShed = 0;
+        if(isHalfWidth){
+            strapLengthShed = width/2;
+        } else {
+            strapLengthShed = width;
+        }
 
-        //For hver meter er der 2 straps.
-        amountOfStraps = (int) (width * 2);
-        return amountOfStraps;
+        itemList.put("2 x Remme til skurets bredde på: ", strapLengthShed);
+        itemList.put("2 x Remme til carportens længde på: ", length);
+        itemList.put("2 x Remme til carportens bredde på: ", width);
+        return strapLengthShed;
     }
 
-
-    //Skruer til skur
-    public int calculateScrewsShed(int totalPosts) {
-        int amountOfScrews = 4 * totalPosts;
-        return amountOfScrews;
-    }
 
 
 }
