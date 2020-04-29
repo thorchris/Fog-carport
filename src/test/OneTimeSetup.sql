@@ -1,5 +1,5 @@
 -- There is a schema named "useradmin" with one table: "Users"
--- The test schema is named "useradminTest"
+-- The java schema is named "useradminTest"
 -- make a copy of the table
 CREATE TABLE useradminTest.Users LIKE useradmin.Users;
 -- make an other copy, this time naming it UsersTest
@@ -10,6 +10,6 @@ INSERT INTO `UsersTest` VALUES
     (3,'robin@somewhere.com','batman','employee'),
     (4,'someone@nowhere.com','sesam','customer');
 
--- make a new user for the test database
+-- make a new user for the java database
 CREATE USER 'testinguser' IDENTIFIED BY 'try1try2tryAgain';
 GRANT ALL PRIVILEGES ON useradminTest.* TO 'testinguser';

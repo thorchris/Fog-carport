@@ -4,6 +4,7 @@ package Util;
 import FunctionLayer.RoofMaterials;
 
 import java.util.HashMap;
+import java.util.InputMismatchException;
 
 public class CalculateMaterials {
 
@@ -21,12 +22,22 @@ public class CalculateMaterials {
 
     //Spær rafters
     public int calculateRafters(double width) {
+        if (width < 0) {
+            throw new InputMismatchException("Only positive numbers");
+        }
+
         double rafters = (int) ((width * 2));
-        if(rafters % width != 0){
+        if (rafters % width != 0) {
             rafters++;
         }
+        try{
         amountOfRafters = (int) rafters;
         itemList.put("Antal spær", (double) amountOfRafters);
+
+
+    }catch (InputMismatchException e) {
+            System.out.println("Only positive numbers please");
+        }
         return amountOfRafters;
     }
 
@@ -62,10 +73,9 @@ public class CalculateMaterials {
     }
 
 
-
     //Skruer
     public int calculateScrews(int totalPosts) {
-       //TODO ÆNDRE TIL 500 skruer????
+        //TODO ÆNDRE TIL 500 skruer????
         amountOfScrews = 4 * totalPosts;
 
         itemList.put("Antal skruer", (double) amountOfScrews);
@@ -139,7 +149,7 @@ public class CalculateMaterials {
     // skal bruge 2 til længde og 2 til bredde
     public double calculateStraps(boolean hasAShed, boolean isHalfWidth, double width, double length) {
         double strapLengthShed = 0;
-        if(hasAShed) {
+        if (hasAShed) {
             if (isHalfWidth) {
                 strapLengthShed = width / 2;
                 itemList.put("2 x Remme til skurets bredde på: ", strapLengthShed);
