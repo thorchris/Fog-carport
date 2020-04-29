@@ -64,6 +64,19 @@ public class CalculateMaterialsTest {
     }
 
     @Test
+    public void calculateAmountOfPostsPosNegSmallLength() {
+        boolean hasShed = true;
+        boolean isHalfWidth = false;
+        double length = 3.20;
+        double width = 3.40;
+        int result = cm.calculateAmountOfPosts(hasShed, isHalfWidth, length, width);
+        // Length post = 4, width post = 2, shed post = 4
+        int expected = 10;
+
+        assertEquals(result, expected);
+    }
+
+    @Test
     public void calculateAmountOfPostFalseBool() {
         boolean hasShed = false;
         boolean isHalfWidth = false;
