@@ -4,6 +4,7 @@ import FunctionLayer.RoofMaterials;
 
 public class CalculateRoof {
     public CalculateMaterials cm = new CalculateMaterials();
+    private double roofHeight;
 
     public double flatRoof(double length, double width, double screwPrice, double fasciaPrice, double rafterPrice, double bracketPrice, RoofMaterials roofmaterial) {
         double totalPrice = 0;
@@ -71,7 +72,6 @@ public class CalculateRoof {
         double totalScrewPrice = amountOfScrews * screwPrice;
 
         double highRafterPrice = 0;
-        double roofHeight = 0;
         double roofAreal = 0;
         double roofMaterialPrice = 0;
 
@@ -145,5 +145,9 @@ public class CalculateRoof {
 
     public double calcFlatRoofAreal(double roofLength, double length, double roofWidth, double width){
         return (roofLength / length) + (roofWidth / width);
+    }
+
+    public double getRoofHeight(){
+        return roofHeight; 
     }
 }
