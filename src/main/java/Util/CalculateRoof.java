@@ -85,49 +85,49 @@ public class CalculateRoof {
             case 15:
                 highRafterPrice = amountOfRafter * ((width * 0.5)  * rafterPrice);
                 roofHeight = 0.5;
-                roofAreal = length * roofHeight * 2;
+                roofAreal = calcRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 20:
                 highRafterPrice = amountOfRafter * ((width * 0.55)  * rafterPrice);
                 roofHeight = 0.55;
-                roofAreal = length * roofHeight * 2;
+                roofAreal = calcRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 25:
                 highRafterPrice = amountOfRafter * ((width * 0.6)  * rafterPrice);
                 roofHeight = 0.6;
-                roofAreal = length * roofHeight * 2;
+                roofAreal = calcRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 30:
                 highRafterPrice = amountOfRafter * ((width * 0.65)  * rafterPrice);
                 roofHeight = 0.65;
-                roofAreal = length * roofHeight * 2;
+                roofAreal = calcRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 35:
                 highRafterPrice = amountOfRafter * ((width * 0.7)  * rafterPrice);
                 roofHeight = 0.7;
-                roofAreal = length * roofHeight * 2;
+                roofAreal = calcRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 40:
                 highRafterPrice = amountOfRafter * ((width * 0.75)  * rafterPrice);
                 roofHeight = 0.75;
-                roofAreal = length * roofHeight * 2;
+                roofAreal = calcRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 45:
                 highRafterPrice = amountOfRafter * ((width * 0.80)  * rafterPrice);
                 roofHeight = 0.8;
-                roofAreal = length * roofHeight * 2;
+                roofAreal = calcRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 50:
                 highRafterPrice = amountOfRafter * ((width * 0.85)  * rafterPrice);
                 roofHeight = 0.85;
-                roofAreal = length * roofHeight * 2;
+                roofAreal = calcRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
         }
@@ -141,7 +141,7 @@ public class CalculateRoof {
 
         return totalPrice;
     }
-
-
-
+    public double calcRoofAreal(double length, double roofHeight){
+        return length * roofHeight * 2;
+    }
 }
