@@ -10,15 +10,14 @@ public class CalculateMaterials {
     private int totalPosts = 0;
     private int amountOfScrews = 0;
     private int amountOfRafters = 0;
-
-    public int getAmountOfRafters() {
-        return amountOfRafters;
-    }
-
     private int amountOfCladding = 0;
     private double TOTALSTRAPS = 4;
     private double totalAmountOfShedCladding = 0;
     public static HashMap<String, Double> itemList = new HashMap<>();
+
+    public int getAmountOfRafters() {
+        return amountOfRafters;
+    }
 
     //Spær rafters
     public int calculateRafters(double width) {
@@ -131,10 +130,27 @@ public class CalculateMaterials {
         return totalAmountOfShedCladding;
     }
 
+    //Remme til skur
+    //Rem strap, samme længde og bredde som carport
+    // skal bruge 2 til længde og 2 til bredde
+    public double calculateStraps(boolean hasAShed, boolean isHalfWidth, double width, double length) {
+        double strapLengthShed = 0;
+        if(hasAShed) {
+            if (isHalfWidth) {
+                strapLengthShed = width / 2;
+                itemList.put("2 x Remme til skurets bredde på: ", strapLengthShed);
+            } else {
+                strapLengthShed = width;
+                itemList.put("2 x Remme til skurets bredde på: ", strapLengthShed);
+            }
+        }
+        itemList.put("2 x Remme til carportens længde på: ", length);
+        itemList.put("2 x Remme til carportens bredde på: ", width);
+        return strapLengthShed;
+    }
+
     public static void main(String[] args) {
         //highRoof(int angle, double length, double width, double screwPrice, double fasciaPrice, double rafterPrice, double bracketPrice, RoofMaterials roofmaterial)
-
-
         CalculateRoof cr = new CalculateRoof();
         CalculateMaterials cm = new CalculateMaterials();
 
@@ -163,23 +179,6 @@ public class CalculateMaterials {
 
         System.out.println(itemList);
 
-    }
-
-    //Remme til skur
-    //Rem strap, samme længde og bredde som carport
-    // skal bruge 2 til længde og 2 til bredde
-    public double calculateStraps(boolean isHalfWidth, double width, double length) {
-        double strapLengthShed = 0;
-        if(isHalfWidth){
-            strapLengthShed = width/2;
-        } else {
-            strapLengthShed = width;
-        }
-
-        itemList.put("2 x Remme til skurets bredde på: ", strapLengthShed);
-        itemList.put("2 x Remme til carportens længde på: ", length);
-        itemList.put("2 x Remme til carportens bredde på: ", width);
-        return strapLengthShed;
     }
 
 }
