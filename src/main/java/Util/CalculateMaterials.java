@@ -21,7 +21,11 @@ public class CalculateMaterials {
 
     //Spær rafters
     public int calculateRafters(double width) {
-        amountOfRafters = (int) (width * 2);
+        double rafters = (int) ((width * 2));
+        if(rafters % width != 0){
+            rafters++;
+        }
+        amountOfRafters = (int) rafters;
         itemList.put("Antal spær", (double) amountOfRafters);
         return amountOfRafters;
     }
