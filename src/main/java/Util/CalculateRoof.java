@@ -2,8 +2,6 @@ package Util;
 
 import FunctionLayer.RoofMaterials;
 
-import java.util.HashMap;
-
 public class CalculateRoof {
     public CalculateMaterials cm = new CalculateMaterials();
 
@@ -21,7 +19,7 @@ public class CalculateRoof {
         //Roof size
         double roofLength = roofmaterial.getLength();
         double roofWidth = roofmaterial.getWidth();
-        double totalRoofAreal = (roofLength / length) + (roofWidth / width);
+        double totalRoofAreal = calcFlatRoofAreal(roofLength, length, roofWidth, width);
 
         double roofmaterialPriceM2 = roofmaterial.getmaterialPriceM2();
 
@@ -85,49 +83,49 @@ public class CalculateRoof {
             case 15:
                 highRafterPrice = amountOfRafter * ((width * 0.5)  * rafterPrice);
                 roofHeight = 0.5;
-                roofAreal = calcRoofAreal(length, roofHeight);;
+                roofAreal = calcHighRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 20:
                 highRafterPrice = amountOfRafter * ((width * 0.55)  * rafterPrice);
                 roofHeight = 0.55;
-                roofAreal = calcRoofAreal(length, roofHeight);;
+                roofAreal = calcHighRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 25:
                 highRafterPrice = amountOfRafter * ((width * 0.6)  * rafterPrice);
                 roofHeight = 0.6;
-                roofAreal = calcRoofAreal(length, roofHeight);;
+                roofAreal = calcHighRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 30:
                 highRafterPrice = amountOfRafter * ((width * 0.65)  * rafterPrice);
                 roofHeight = 0.65;
-                roofAreal = calcRoofAreal(length, roofHeight);;
+                roofAreal = calcHighRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 35:
                 highRafterPrice = amountOfRafter * ((width * 0.7)  * rafterPrice);
                 roofHeight = 0.7;
-                roofAreal = calcRoofAreal(length, roofHeight);;
+                roofAreal = calcHighRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 40:
                 highRafterPrice = amountOfRafter * ((width * 0.75)  * rafterPrice);
                 roofHeight = 0.75;
-                roofAreal = calcRoofAreal(length, roofHeight);;
+                roofAreal = calcHighRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 45:
                 highRafterPrice = amountOfRafter * ((width * 0.80)  * rafterPrice);
                 roofHeight = 0.8;
-                roofAreal = calcRoofAreal(length, roofHeight);;
+                roofAreal = calcHighRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
             case 50:
                 highRafterPrice = amountOfRafter * ((width * 0.85)  * rafterPrice);
                 roofHeight = 0.85;
-                roofAreal = calcRoofAreal(length, roofHeight);;
+                roofAreal = calcHighRoofAreal(length, roofHeight);;
                 roofMaterialPrice = roofMaterialPricePrm2 * roofAreal;
                 break;
         }
@@ -141,7 +139,11 @@ public class CalculateRoof {
 
         return totalPrice;
     }
-    public double calcRoofAreal(double length, double roofHeight){
+    public double calcHighRoofAreal(double length, double roofHeight){
         return length * roofHeight * 2;
+    }
+
+    public double calcFlatRoofAreal(double roofLength, double length, double roofWidth, double width){
+        return (roofLength / length) + (roofWidth / width);
     }
 }
