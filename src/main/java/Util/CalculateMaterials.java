@@ -67,9 +67,9 @@ public class CalculateMaterials {
 
 
     //Skruer
-    public int calculateScrews(int totalPosts) {
+    public int calculateScrews() {
         //TODO ÆNDRE TIL 500 skruer????
-        amountOfScrews = 4 * totalPosts;
+        amountOfScrews = 500;
 
         itemList.put("Antal skruer", (double) amountOfScrews);
         return amountOfScrews;
@@ -156,6 +156,10 @@ public class CalculateMaterials {
         return strapLengthShed;
     }
 
+    public double calculateBrackets(double amountOfRafter){
+        return amountOfRafter * 2;
+    }
+
     public static void main(String[] args) {
         //highRoof(int angle, double length, double width, double screwPrice, double fasciaPrice, double rafterPrice, double bracketPrice, RoofMaterials roofmaterial)
         CalculateRoof cr = new CalculateRoof();
@@ -177,7 +181,7 @@ public class CalculateMaterials {
 
         int totalPosts = cm.calculateAmountOfPosts(hasAShed, isHalfWidth, length, width);
         cm.calculateRafters(width);
-        cm.calculateScrews(totalPosts);
+        cm.calculateScrews();
         cm.calculateCladdingCarport(amountOfSides, length, width, woodWidth);
         cm.calculateShedCladding(isHalfWidth, woodWidth, width, length);
         cm.calculateStraps(hasAShed, isHalfWidth, width, length);
