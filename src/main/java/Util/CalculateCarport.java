@@ -11,7 +11,6 @@ public class CalculateCarport {
         int totalPosts = cm.calculateAmountOfPosts(hasShed, isHalfWidth,length, width);
         int totalScrews = cm.calculateScrews();
 
-
         price = (totalPosts * postPrice) + (totalScrews * skrewPrice) + (totalRafters * rafterPrice);
 
         return price;
