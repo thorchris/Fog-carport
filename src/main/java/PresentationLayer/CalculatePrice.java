@@ -97,7 +97,6 @@ public class CalculatePrice extends Command {
         double length = Double.parseDouble(request.getParameter("length"));
         double width = Double.parseDouble(request.getParameter("width"));
 
-
         boolean wantAShed = Boolean.parseBoolean(request.getParameter("shedYesOrNo"));
         boolean isHalf = Boolean.parseBoolean(request.getParameter("isHalf"));
 
@@ -106,8 +105,10 @@ public class CalculatePrice extends Command {
         double roofPrice = 0;
         boolean isHighRoof = Boolean.parseBoolean(request.getParameter("isHighRoof"));
 
+        int roofAngle = 0;
+
         if(isHighRoof){
-            int roofAngle = Integer.parseInt(request.getParameter("angle"));
+            roofAngle = Integer.parseInt(request.getParameter("angle"));
             roofPrice = new CalculateRoof().highRoof(roofAngle, length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, userRoofMaterial);
         } else {
             for (RoofMaterials roofMaterials : roofMaterialsList) {
@@ -118,30 +119,42 @@ public class CalculatePrice extends Command {
             }
         }
 
+
         //Beklædning
         double woodWidth = 0;
         double claddingPrice = 0;
+        int amountOfCladding = 0;
+        int amountOfSides = 0;
+
         if(wantAShed){
-            int amountOfSides = Integer.parseInt(request.getParameter("claddingsides1"));
+            amountOfSides = Integer.parseInt(request.getParameter("claddingsides1"));
             woodWidth = userCarportMaterial.getWidth();
-            int amountOfCladding = cm.calculateCladdingCarport(amountOfSides, length, width, woodWidth);
+            amountOfCladding = cm.calculateCladdingCarport(amountOfSides, length, width, woodWidth);
             claddingPrice = amountOfCladding * userCarportMaterial.getMaterialPriceM();
         } else {
-            int amountOfSides = Integer.parseInt(request.getParameter("claddingsides"));
+            amountOfSides = Integer.parseInt(request.getParameter("claddingsides"));
             woodWidth = userCarportMaterial.getWidth();
-            int amountOfCladding = cm.calculateCladdingCarport(amountOfSides, length, width, woodWidth);
+            amountOfCladding = cm.calculateCladdingCarport(amountOfSides, length, width, woodWidth);
             claddingPrice = amountOfCladding * userCarportMaterial.getMaterialPriceM();
         }
 
+
+        //Skur
         double shedPrice = 0;
         if(wantAShed){
             shedPrice = new CalculateShed().shedPrice(isHalf, length, woodWidth, woodPrice, doorKnobPrice, doorHingesPrice, width);
         }
+
         //Total pris
         double totalPrice = carportPrice + shedPrice + roofPrice + claddingPrice;
         String price = (String.format("%,.0f ,-", totalPrice));
 
         session.setAttribute("totalPrice", price);
+
+        request.setAttribute("roofAngle", roofAngle);
+        request.setAttribute("amountOfCladding", amountOfCladding);
+        request.setAttribute("woodwidth", woodWidth);
+        request.setAttribute("amountOfSides", amountOfSides);
 
         return "../index";
     }
