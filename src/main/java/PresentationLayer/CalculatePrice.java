@@ -84,7 +84,7 @@ public class CalculatePrice extends Command {
             }
 
         }
-        double screwPrice = screw.getPrice();
+        double screwPrice = 0.1; //TODO DEBUGMASTER FIXER DEN HER MED DET SAMME INDEN HAN BLIVER GAMMEL
         double postPrice = post.getPrice();
         double strapPrice = strap.getPrice();
         double fasciaPrice = fascia.getPrice();
@@ -96,10 +96,8 @@ public class CalculatePrice extends Command {
 
         double length = Double.parseDouble(request.getParameter("length"));
         double width = Double.parseDouble(request.getParameter("width"));
-
         boolean wantAShed = Boolean.parseBoolean(request.getParameter("shedYesOrNo"));
         boolean isHalf = Boolean.parseBoolean(request.getParameter("isHalf"));
-
         double carportPrice = new CalculateCarport().calculateCarportPrice(length, width, postPrice, screwPrice, strapPrice, wantAShed, isHalf);
 
         double roofPrice = 0;

@@ -23,6 +23,8 @@
 <h2>Design din carport her</h2>
 <form action="FrontController" method="post">
     <input type="hidden" name="taget" value="calculatePrice"/>
+    <input type="hidden" name="taget" value="cc"/>
+
     <div class="dropdown">
         <label for="exampleFormControlSelect1">length</label>
         <select class="form-control dropbtn btn-secondary btn-style btn-block" name="length"
@@ -157,9 +159,12 @@
     <br>
     <button type="input" class="btn btn-primary btn-style mt-2 mr-4">Beregn anslået pris</button>
     <h5>Anslået pris: ${sessionScope.totalPrice}</h5>
+
+
+    <button type="input" class="btn btn-primary btn-style mt-2 mr-4">Send til sælger</button>
+    ${sessionScope.cc}
 </form>
 
-<button type="input" class="btn btn-primary btn-style mt-2 mr-4">Send til sælger</button>
 
 
 <script src="JS/javascript.js"></script>

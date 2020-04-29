@@ -5,12 +5,12 @@ import FunctionLayer.RoofMaterials;
 public class CalculateRoof {
     public CalculateMaterials cm = new CalculateMaterials();
     private double roofHeight;
+    private double roofWidth;
+    private double roofLength;
 
     public double flatRoof(double length, double width, double screwPrice, double fasciaPrice, double rafterPrice, double bracketPrice, RoofMaterials roofmaterial) {
         double totalPrice = 0;
 
-        width += 0.15;
-        length += 0.15;
 
         double amountOfRafter = cm.getAmountOfRafters();
         double amountOfBrackets = cm.calculateBrackets(amountOfRafter);
@@ -18,8 +18,9 @@ public class CalculateRoof {
 
 
         //Roof size
-        double roofLength = roofmaterial.getLength();
-        double roofWidth = roofmaterial.getWidth();
+        roofWidth = width + 0.15;
+        roofLength = length + 0.15;
+
         double totalRoofAreal = calcFlatRoofAreal(roofLength, length, roofWidth, width);
 
         double roofmaterialPriceM2 = roofmaterial.getmaterialPriceM2();
@@ -52,8 +53,8 @@ public class CalculateRoof {
 
     public double highRoof(int angle, double length, double width, double screwPrice, double fasciaPrice, double rafterPrice, double bracketPrice, RoofMaterials roofmaterial) {
         double totalPrice = 0;
-        width += 0.15;
-        length += 0.15;
+        roofWidth = width + 0.15;
+        roofLength = length + 0.15;
         double amountOfRafter =  cm.getAmountOfRafters();;
         double amountOfBrackets = cm.calculateBrackets(amountOfRafter);
         double amountOfScrews = cm.calculateScrews();
@@ -149,5 +150,13 @@ public class CalculateRoof {
 
     public double getRoofHeight(){
         return roofHeight; 
+    }
+
+    public double getRoofWidth() {
+        return roofWidth;
+    }
+
+    public double getRoofLength() {
+        return roofLength;
     }
 }

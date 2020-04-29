@@ -105,4 +105,20 @@ public class CarportCombined {
     public void setRoofHeight(double roofHeight) {
         this.roofHeight = roofHeight;
     }
+
+    @Override
+    public String toString() {
+        return "CarportCombined" +
+                "totalPosts=" + totalPosts +
+                ", amountOfScrews=" + amountOfScrews +
+                ", amountOfRafters=" + amountOfRafters +
+                ", amountOfCladding=" + amountOfCladding +
+                ", totalAmountOfShedCladding=" + totalAmountOfShedCladding +
+                ", amountOfRafter=" + amountOfRafter +
+                ", amountOfBrackets=" + amountOfBrackets +
+                ", fascia=" + fascia +
+                ", totalRoofAreal=" + totalRoofAreal +
+                ", roofHeight=" + roofHeight +
+                '}';
+    }
 }
