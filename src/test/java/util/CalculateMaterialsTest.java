@@ -43,7 +43,6 @@ public class CalculateMaterialsTest {
         double width = 3.40;
 
         int result = cm.calculateAmountOfPosts(hasShed, isHalfWidth, length, width);
-        // Length post = 6, width post = 2, shed post = 3
         int expected = 11;
 
         assertEquals(result, expected);
@@ -57,7 +56,6 @@ public class CalculateMaterialsTest {
         double width = 3.40;
 
         int result = cm.calculateAmountOfPosts(hasShed, isHalfWidth, length, width);
-        // Length post = 6, width post = 2, shed post = 4
         int expected = 12;
 
         assertEquals(result, expected);
@@ -70,7 +68,6 @@ public class CalculateMaterialsTest {
         double length = 3.20;
         double width = 3.40;
         int result = cm.calculateAmountOfPosts(hasShed, isHalfWidth, length, width);
-        // Length post = 4, width post = 2, shed post = 4
         int expected = 10;
 
         assertEquals(result, expected);
@@ -84,7 +81,6 @@ public class CalculateMaterialsTest {
         double width = 3.40;
 
         int result = cm.calculateAmountOfPosts(hasShed, isHalfWidth, length, width);
-        // Length post = 6, width post = 2
         int expected = 8;
 
         assertEquals(result, expected);
