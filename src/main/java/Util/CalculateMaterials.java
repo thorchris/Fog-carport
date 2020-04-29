@@ -154,7 +154,7 @@ public class CalculateMaterials {
         CalculateRoof cr = new CalculateRoof();
         CalculateMaterials cm = new CalculateMaterials();
 
-        boolean hasShed = true;
+        boolean hasAShed = true;
         boolean isHalfWidth = true;
         double length = 3.20;
         double width = 2.80;
@@ -168,12 +168,12 @@ public class CalculateMaterials {
         double bracketPrice = 60;
         RoofMaterials roofMaterials = new RoofMaterials("Blåtonet plast", 1, 20, 15, 15);
 
-        int totalPosts = cm.calculateAmountOfPosts(hasShed, isHalfWidth, length, width);
+        int totalPosts = cm.calculateAmountOfPosts(hasAShed, isHalfWidth, length, width);
         cm.calculateRafters(width);
         cm.calculateScrews(totalPosts);
         cm.calculateCladdingCarport(amountOfSides, length, width, woodWidth);
         cm.calculateShedCladding(isHalfWidth, woodWidth, width, length);
-        cm.calculateStraps(isHalfWidth, width, length);
+        cm.calculateStraps(hasAShed, isHalfWidth, width, length);
 
         cr.highRoof(angle, length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, roofMaterials);
 
