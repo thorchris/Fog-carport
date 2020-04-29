@@ -86,7 +86,7 @@ public class CalculateMaterialsTest {
         assertEquals(result, expected);
     }
 
-    @Test
+    /*@Test
     public void calculateCladdingCarport() {
     }
 
@@ -96,5 +96,5 @@ public class CalculateMaterialsTest {
 
     @Test
     public void calculateStraps() {
-    }
+    }*/
 }

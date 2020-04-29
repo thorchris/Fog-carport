@@ -161,6 +161,7 @@
 
 <button type="input" class="btn btn-primary btn-style mt-2 mr-4">Send til sælger</button>
 
+
 <script src="JS/javascript.js"></script>
 
 <%@include file="include/footer.inc" %>

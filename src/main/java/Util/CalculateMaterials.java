@@ -1,6 +1,5 @@
 package Util;
 
-
 import FunctionLayer.RoofMaterials;
 
 import java.util.HashMap;
@@ -29,11 +28,8 @@ public class CalculateMaterials {
         if (rafters % width != 0) {
             rafters++;
         }
-
         amountOfRafters = (int) rafters;
         itemList.put("Antal spær", (double) amountOfRafters);
-
-
 
         return amountOfRafters;
     }
