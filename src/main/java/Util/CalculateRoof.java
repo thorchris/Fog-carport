@@ -14,8 +14,8 @@ public class CalculateRoof {
         length += 0.15;
 
         double amountOfRafter = cm.getAmountOfRafters();
-        double amountOfBrackets = amountOfRafter * 2;
-        double amountOfScrews = (amountOfBrackets * 4) + (amountOfRafter * 5);
+        double amountOfBrackets = cm.calculateBrackets(amountOfRafter);
+        double amountOfScrews = cm.calculateScrews();
 
 
         //Roof size
@@ -56,8 +56,8 @@ public class CalculateRoof {
         width += 0.15;
         length += 0.15;
         double amountOfRafter =  cm.getAmountOfRafters();;
-        double amountOfBrackets = amountOfRafter * 2;
-        double amountOfScrews = (amountOfBrackets * 4) + (amountOfRafter * 5);
+        double amountOfBrackets = cm.calculateBrackets(amountOfRafter);
+        double amountOfScrews = cm.calculateScrews();
 
         //Stern pris:
         int fascia = 4;
