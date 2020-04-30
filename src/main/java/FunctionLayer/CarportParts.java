@@ -19,8 +19,8 @@ public class CarportParts {
         this.hasAShed = hasAShed;
         this.isHalfWidth = isHalfWidth;
         this.carportMaterials = carportMaterials;
-        this.carportCladding = calcCarportMaterials.calculateCarportCladding();
         this.sidesWithCladding = sidesWithCladding;
+        this.carportCladding = calcCarportMaterials.calculateCarportCladding();
     }
 
     public double getLength() {
