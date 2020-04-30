@@ -23,10 +23,10 @@
 <h2>Design din carport her</h2>
 <form action="FrontController" method="post">
     <input type="hidden" name="taget" value="calculatePrice"/>
-    <input type="hidden" name="taget" value="cc"/>
+
 
     <div class="dropdown">
-        <label for="exampleFormControlSelect1">length</label>
+        <label for="exampleFormControlSelect1">Længde</label>
         <select class="form-control dropbtn btn-secondary btn-style btn-block" name="length"
                 id="exampleFormControlSelect1">
             <option value="2.40">240</option>
@@ -52,7 +52,7 @@
     </div>
 
     <div class="dropdown">
-        <label for="exampleFormControlSelect1">width</label>
+        <label for="exampleFormControlSelect1">Bredde</label>
         <select class="form-control dropbtn btn-secondary btn-style btn-block" name="width"
                 id="exampleFormControlSelect2">
             <option value="2.40">240</option>
@@ -93,17 +93,17 @@
     <input type="radio" id="claddingCheckbox" onclick="myFunction3()" name="claddingYesOrNo" value="true"> Ja </input>
     <input type="radio" name="claddingYesOrNo" value="false" onclick="myFunction3()"> Nej </input>
 
-        <div class="dropdown" style="display:none" id="carportDropdowns" >
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Beklædning til carporten:</label>
-                <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block" name="carportMaterial"
-                        id="carportMat">
-                    <c:forEach var="carportMaterialName" items="${applicationScope.carportMaterials}">
-                        <option value="${carportMaterialName.materialName}">${carportMaterialName.materialName} </option>
-                    </c:forEach>
-                </select>
-            </div>
+    <div class="dropdown" style="display:none" id="carportDropdowns">
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Beklædning til carporten:</label>
+            <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block" name="carportMaterial"
+                    id="carportMat">
+                <c:forEach var="carportMaterialName" items="${applicationScope.carportMaterials}">
+                    <option value="${carportMaterialName.materialName}">${carportMaterialName.materialName} </option>
+                </c:forEach>
+            </select>
         </div>
+    </div>
 
     </div>
 
@@ -126,9 +126,10 @@
         </select>
     </div>
 
-        <h5>Hvilken tagtype ønsker du?</h5>
+    <h5>Hvilken tagtype ønsker du?</h5>
     <input type="radio" name="isHighRoof" value="false" onclick="myFunction2()"> Fladt tag </input>
-    <input type="radio" id="roofCheckbox" onclick="myFunction2()" name="isHighRoof" value="true"> Rejsning på taget </input>
+    <input type="radio" id="roofCheckbox" onclick="myFunction2()" name="isHighRoof" value="true"> Rejsning på
+    taget </input>
 
     <div class="form-group" id="roofDropdowns" style="display: none">
         <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
@@ -161,12 +162,14 @@
     <h5>Anslået pris: ${sessionScope.totalPrice}</h5>
 
 
-    <button type="input" class="btn btn-primary btn-style mt-2 mr-4">Send til sælger</button>
-    ${sessionScope.cc}
+
 </form>
+<form action="FrontController" method="post">
+    <button type="input" class="btn btn-primary btn-style mt-2 mr-4">Send til sælger</button>
+    <input type="hidden" name="taget" value="createCarport"/>
 
-
-
+</form>
+${sessionScope.fullCarport.toString()}
 <script src="JS/javascript.js"></script>
 
 <%@include file="include/footer.inc" %>
