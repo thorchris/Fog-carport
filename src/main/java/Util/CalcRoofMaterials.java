@@ -1,7 +1,6 @@
 package Util;
 
 import FunctionLayer.Roof;
-import FunctionLayer.RoofMaterials;
 
 import java.util.InputMismatchException;
 
@@ -36,9 +35,8 @@ public class CalcRoofMaterials {
     }
 
     public double calcRoofAreal() {
-        roofAreal = 0;
         if (roof.isHighRoof()) {
-            roofAreal = HighRoofArealCalc();
+            roofAreal = highRoofArealCalc();
         } else {
             roofAreal = calcFlatRoofAreal();
         }
@@ -49,60 +47,8 @@ public class CalcRoofMaterials {
         return roof.getLength() * roof.getWidth();
     }
 
-    public double roofArealCalc(double length, double roofHeight) {
-        return (length * roofHeight) * 2;
+    public double highRoofArealCalc() {
+        return (roof.getLength() * roof.getRoofHeight() * 2);
     }
 
-    public double HighRoofArealCalc() {
-        int angle = roof.getRoofAngle();
-        double length = roof.getLength();
-        double roofAreal = 0;
-        switch (angle) {
-            case 15:
-                roofHeight = (0.5);
-                roof.setRoofHeight(0.5);
-                roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                break;
-            case 20:
-                roofHeight = (0.55);
-                roof.setRoofHeight(0.55);
-                roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                break;
-            case 25:
-                roofHeight = (0.6);
-                roof.setRoofHeight(0.6);
-                roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                break;
-            case 30:
-                roofHeight = (0.65);
-                roof.setRoofHeight(0.65);
-                roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                break;
-            case 35:
-                roofHeight = (0.7);
-                roof.setRoofHeight(0.7);
-                roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                break;
-            case 40:
-                roofHeight = (0.75);
-                roof.setRoofHeight(0.75);
-                roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                break;
-            case 45:
-                roofHeight = (0.5);
-                roof.setRoofHeight(0.58);
-                roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                break;
-            case 50:
-                roof.setRoofHeight(0.85);
-                roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                break;
-            case 0:
-                roofAreal = calcFlatRoofAreal();
-        }
-
-        return roofAreal;
-    }
-
-
-}
+ }
