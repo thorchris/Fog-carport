@@ -15,6 +15,11 @@ public class CalculateRoofPrice {
         double totalFasciaPrice = roof.getFascia()*fasciaPricePrPiece;
         double totalRafterPrice = roof.getRafter()*rafterPricePrPiece;
         double totalBracketPrice = roof.getBracket()*bracketPricePrPiece;
+        if(roof.isHighRoof()){
+            roof.setRoofHeight(roof.getRoofAngle());
+            roof.setRoofAngle((roof.getRoofAngle()));
+        }
+        roof.setRoofAreal(new CalcRoofMaterials(roof).calcRoofAreal(roof));
         double totalPriceRoofMaterial = roof.getRoofmaterial().getmaterialPriceM2()*roof.getRoofAreal();
         totalPrice = totalScrewPrice + totalFasciaPrice + totalRafterPrice + totalBracketPrice+totalPriceRoofMaterial;
         return totalPrice;

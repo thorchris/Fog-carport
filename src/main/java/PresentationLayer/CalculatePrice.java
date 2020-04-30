@@ -88,7 +88,7 @@ public class CalculatePrice extends Command {
 
         //TAG - NY MÅDE
         Roof roof = (Roof) session.getAttribute("roof");
-        roof.setRoofAreal(new CalcRoofMaterials(roof).calcRoofAreal());
+       // roof.setRoofAreal(new CalcRoofMaterials(roof).calcRoofAreal());
         double roofPrice = new CalculateRoofPrice(roof).calcRoofPrice(screwPrice,fasciaPrice,rafterPrice,bracketPrice);
 
         //Total pris
