@@ -1,10 +1,7 @@
 package PresentationLayer;
 
 import FunctionLayer.*;
-import Util.CalculateCarport;
-import Util.CalculateMaterials;
-import Util.CalculateRoof;
-import Util.CalculateShed;
+import Util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +13,7 @@ public class CalculatePrice extends Command {
     
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+        new CreateCarport().execute(request,response);
         HttpSession session = request.getSession();
 
         Product screw = null;
@@ -27,32 +25,6 @@ public class CalculatePrice extends Command {
         Product doorKnob = null;
         Product doorHinges = null;
         Product rafter = null;
-
-        CalculateMaterials cm = new CalculateMaterials();
-
-
-        //Roof Materials
-        List<RoofMaterials> roofMaterialsList = GenerateLists.getRoffMaterialList();
-        String roofMaterialAsString = request.getParameter("roofMaterial");
-        RoofMaterials userRoofMaterial = null;
-
-
-        for (RoofMaterials roofMaterials : roofMaterialsList) {
-            if(roofMaterials.getMaterialName().equals(roofMaterialAsString)){
-                userRoofMaterial = roofMaterials;
-            }
-        }
-
-        //Carport materials
-        List<CarportMaterials> carportMaterials = GenerateLists.getCarportMaterialsList();
-        String carportMaterialAsString = request.getParameter("carportMaterial");
-        CarportMaterials userCarportMaterial = null;
-
-        for (CarportMaterials carportMaterial : carportMaterials) {
-            if(carportMaterial.getMaterialName().equals(carportMaterialAsString)){
-                userCarportMaterial = carportMaterial;
-            }
-        }
 
         for (Product product : LogicFacade.getProductList()) {
             if(product.getName().equals("skrue")) {
@@ -89,70 +61,40 @@ public class CalculatePrice extends Command {
         double strapPrice = strap.getPrice();
         double fasciaPrice = fascia.getPrice();
         double bracketPrice = bracket.getPrice();
-        double woodPrice = wood.getPrice();
         double doorKnobPrice = doorKnob.getPrice();
         double doorHingesPrice = doorHinges.getPrice();
         double rafterPrice = rafter.getPrice();
 
         double length = Double.parseDouble(request.getParameter("length"));
+        session.setAttribute("length", length);
         double width = Double.parseDouble(request.getParameter("width"));
+        session.setAttribute("width", width);
         boolean wantAShed = Boolean.parseBoolean(request.getParameter("shedYesOrNo"));
+        session.setAttribute("wantAShed", wantAShed);
         boolean isHalf = Boolean.parseBoolean(request.getParameter("isHalf"));
-        double carportPrice = new CalculateCarport().calculateCarportPrice(length, width, postPrice, screwPrice, strapPrice, wantAShed, isHalf);
+        session.setAttribute("isHalf",isHalf);
 
-        double roofPrice = 0;
         boolean isHighRoof = Boolean.parseBoolean(request.getParameter("isHighRoof"));
+        session.setAttribute("isHighRoof",isHighRoof);
 
-        int roofAngle = 0;
+        //CARPORT - NY MÅDE
+        CarportParts carportParts = (CarportParts) session.getAttribute("carportParts");
+        CarportMaterials carportMaterial = carportParts.getCarportMaterials();
+        double carportPrice = new CalculateCarportPartsPrice(carportParts).calculateCarportPartPrice(screwPrice, rafterPrice, postPrice,carportMaterial);
 
-        if(isHighRoof){
-            roofAngle = Integer.parseInt(request.getParameter("angle"));
-            roofPrice = new CalculateRoof().highRoof(roofAngle, length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, userRoofMaterial);
-        } else {
-            for (RoofMaterials roofMaterials : roofMaterialsList) {
-                if (roofMaterials.getMaterialName().equals("Tagplader Plastmo blåtonet")) {
-                    userRoofMaterial = roofMaterials;
-                }
-                 roofPrice = new CalculateRoof().flatRoof(length, width, screwPrice, fasciaPrice, rafterPrice, bracketPrice, userRoofMaterial);
-            }
-        }
+        //Skur - NY MÅDE
+        Shed shed = (Shed) session.getAttribute("shed");
+        double shedPrice = new CalculateShedPrice(shed).calcShedPrice(shed.getShedMaterials().getPricePrM2(), strapPrice, doorKnobPrice, doorHingesPrice);
 
-
-        //Beklædning
-        double woodWidth = 0;
-        double claddingPrice = 0;
-        int amountOfCladding = 0;
-        int amountOfSides = 0;
-
-        if(wantAShed){
-            amountOfSides = Integer.parseInt(request.getParameter("claddingsides1"));
-            woodWidth = userCarportMaterial.getWidth();
-            amountOfCladding = cm.calculateCladdingCarport(amountOfSides, length, width, woodWidth);
-            claddingPrice = amountOfCladding * userCarportMaterial.getMaterialPriceM();
-        } else {
-            amountOfSides = Integer.parseInt(request.getParameter("claddingsides"));
-            woodWidth = userCarportMaterial.getWidth();
-            amountOfCladding = cm.calculateCladdingCarport(amountOfSides, length, width, woodWidth);
-            claddingPrice = amountOfCladding * userCarportMaterial.getMaterialPriceM();
-        }
-
-
-        //Skur
-        double shedPrice = 0;
-        if(wantAShed){
-            shedPrice = new CalculateShed().shedPrice(isHalf, length, woodWidth, woodPrice, doorKnobPrice, doorHingesPrice, width);
-        }
+        //TAG - NY MÅDE
+        Roof roof = (Roof) session.getAttribute("roof");
+        double roofPrice = new CalculateRoofPrice(roof).calcRoofPrice(screwPrice,fasciaPrice,rafterPrice,bracketPrice);
 
         //Total pris
-        double totalPrice = carportPrice + shedPrice + roofPrice + claddingPrice;
+        double totalPrice = carportPrice + shedPrice + roofPrice;
         String price = (String.format("%,.0f ,-", totalPrice));
 
         session.setAttribute("totalPrice", price);
-
-        request.setAttribute("roofAngle", roofAngle);
-        request.setAttribute("amountOfCladding", amountOfCladding);
-        request.setAttribute("woodwidth", woodWidth);
-        request.setAttribute("amountOfSides", amountOfSides);
 
         return "../index";
     }

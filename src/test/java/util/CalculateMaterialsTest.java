@@ -1,6 +1,6 @@
+
 package util;
 
-import Util.CalculateMaterials;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,11 +9,13 @@ import java.util.InputMismatchException;
 import static org.junit.Assert.*;
 
 public class CalculateMaterialsTest {
-    private CalculateMaterials cm;
+
+/*
+    private CalculateMaterials_NOUSE cm;
 
     @Before
     public void setup() {
-        cm = new CalculateMaterials();
+        cm = new CalculateMaterials_NOUSE();
     }
 
     @Test //positive test with input requiring the method to use the % operator.
@@ -85,6 +87,7 @@ public class CalculateMaterialsTest {
 
         assertEquals(result, expected);
     }
+*/
 
     /*@Test
     public void calculateCladdingCarport() {
