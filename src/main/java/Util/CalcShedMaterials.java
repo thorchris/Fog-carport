@@ -62,7 +62,6 @@ public class CalcShedMaterials {
     }
 
 
-
     public double calculateStraps(boolean hasAShed, boolean isHalfWidth, double width, double length) {
         double strapLengthShed = 0;
         if (hasAShed) {

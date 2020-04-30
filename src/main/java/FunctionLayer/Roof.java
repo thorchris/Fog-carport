@@ -20,7 +20,7 @@ public class Roof {
         this.bracket = calcRoofMat.amountOfBrackets(); //calling calc method to get amount of brackets
         this.roofmaterial = roofmaterial;
         this.roofAngle = 0; //standard is set to 0.
-        this.roofAreal = calcRoofMat.calcRoofAreal();
+        setRoofHeight(roofAngle);
 
     }
 
@@ -81,8 +81,36 @@ public class Roof {
         return roofHeight;
     }
 
-    public void setRoofHeight(double roofHeight) {
-        this.roofHeight = roofHeight;
+    public void setRoofHeight(int roofAngle) {
+        switch (roofAngle) {
+            case 15:
+                roofHeight = (0.5);
+                break;
+            case 20:
+                roofHeight = (0.55);
+                break;
+            case 25:
+                roofHeight = (0.6);
+                break;
+            case 30:
+                roofHeight = (0.65);
+                break;
+            case 35:
+                roofHeight = (0.7);
+                break;
+            case 40:
+                roofHeight = (0.75);
+                break;
+            case 45:
+                roofHeight = (0.8);
+                break;
+            case 50:
+                roofHeight = (0.85);
+                break;
+            case 0:
+                roofHeight = (0);
+                break;
+        }
     }
 
     public double getScrew() {
@@ -97,7 +125,9 @@ public class Roof {
         return roofAreal;
     }
 
-
+    public void setRoofAreal(double roofAreal) {
+        this.roofAreal = roofAreal;
+    }
 
     @Override
     public String toString() {
@@ -109,9 +139,11 @@ public class Roof {
                 ", rafter=" + rafter +
                 ", bracket=" + bracket +
                 ", roofHeight=" + roofHeight +
+                ", roofAreal=" + roofAreal +
                 ", roofmaterial=" + roofmaterial +
                 ", isHighRoof=" + isHighRoof +
                 ", roofAngle=" + roofAngle +
+                ", roofAreal=" + roofAreal +
                 '}';
     }
 }

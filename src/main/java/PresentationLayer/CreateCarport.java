@@ -1,6 +1,7 @@
 package PresentationLayer;
 
 import FunctionLayer.*;
+import Util.CalculateRoofPrice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,6 +54,7 @@ public class CreateCarport extends Command {
         boolean isHighRoof = Boolean.parseBoolean(request.getParameter("isHighRoof"));
         session.setAttribute("isHighRoof",isHighRoof);
 
+
         List<RoofMaterials> roofMaterialsList = GenerateLists.getRoffMaterialList();
         String roofMaterialAsString = request.getParameter("roofMaterial");
         RoofMaterials userRoofMaterial = null;
@@ -66,8 +68,10 @@ public class CreateCarport extends Command {
         Roof roof = new Roof(isHighRoof, userRoofMaterial,length, width);
         if(isHighRoof){
             int roofAngle = Integer.parseInt(request.getParameter("angle"));
+            roof.setRoofHeight(roofAngle);
             roof.setRoofAngle((roofAngle));
         }
+
         session.setAttribute("roof",roof);
 
         //CREATING FULL CARPORT
