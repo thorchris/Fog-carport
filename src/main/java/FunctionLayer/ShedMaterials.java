@@ -19,4 +19,12 @@ public class ShedMaterials {
     public double getPricePrM2() {
         return pricePrM2;
     }
+
+    @Override
+    public String toString() {
+        return "ShedMaterials{" +
+                "woodWith=" + woodWith +
+                ", pricePrM2=" + pricePrM2 +
+                '}';
+    }
 }

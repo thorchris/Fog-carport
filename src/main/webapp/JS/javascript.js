@@ -6,7 +6,6 @@ function myFunction1() {
     } else {
         shedDropdowns.style.display = "none";
     }
-
 }
 
 function myFunction2(){

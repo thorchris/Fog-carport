@@ -60,5 +60,19 @@ public class CalcShedMaterials {
         }
         return strapLengthShed;
     }
+
+
+
+    public double calculateStraps(boolean hasAShed, boolean isHalfWidth, double width, double length) {
+        double strapLengthShed = 0;
+        if (hasAShed) {
+            if (isHalfWidth) {
+                strapLengthShed = width / 2;
+            } else {
+                strapLengthShed = width;
+            }
+        }
+        return strapLengthShed;
+    }
 }
 

@@ -9,6 +9,7 @@ public class CalcRoofMaterials {
 
     private Roof roof;
     private double roofAreal;
+    private double roofHeight;
 
     public CalcRoofMaterials(Roof roof) {
         this.roof = roof;
@@ -58,44 +59,43 @@ public class CalcRoofMaterials {
         double roofAreal = 0;
         switch (angle) {
             case 15:
+                roofHeight = (0.5);
                 roof.setRoofHeight(0.5);
                 roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                ;
                 break;
             case 20:
+                roofHeight = (0.55);
                 roof.setRoofHeight(0.55);
                 roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                ;
                 break;
             case 25:
+                roofHeight = (0.6);
                 roof.setRoofHeight(0.6);
                 roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                ;
                 break;
             case 30:
+                roofHeight = (0.65);
                 roof.setRoofHeight(0.65);
                 roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                ;
                 break;
             case 35:
+                roofHeight = (0.7);
                 roof.setRoofHeight(0.7);
                 roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                ;
                 break;
             case 40:
+                roofHeight = (0.75);
                 roof.setRoofHeight(0.75);
                 roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                ;
                 break;
             case 45:
+                roofHeight = (0.5);
                 roof.setRoofHeight(0.58);
                 roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                ;
                 break;
             case 50:
                 roof.setRoofHeight(0.85);
                 roofAreal = roofArealCalc(length, roof.getRoofHeight());
-                ;
                 break;
             case 0:
                 roofAreal = calcFlatRoofAreal();
