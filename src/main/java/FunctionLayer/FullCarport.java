@@ -11,8 +11,6 @@ public class FullCarport {
         this.shed = shed;
     }
 
-
-
     @Override
     public String toString() {
         return "FullCarport{" +
