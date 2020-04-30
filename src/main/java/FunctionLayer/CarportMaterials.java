@@ -54,4 +54,15 @@ public class CarportMaterials {
     public void setMaterialPriceM(double materialPriceM) {
         this.materialPriceM = materialPriceM;
     }
+
+    @Override
+    public String toString() {
+        return "CarportMaterials{" +
+                "materialName='" + materialName + '\'' +
+                ", materialID=" + materialID +
+                ", materialPriceM=" + materialPriceM +
+                ", width=" + width +
+                ", length=" + length +
+                '}';
+    }
 }

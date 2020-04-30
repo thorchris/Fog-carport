@@ -21,6 +21,7 @@ public class Roof {
         this.roofmaterial = roofmaterial;
         this.roofAngle = 0; //standard is set to 0.
         this.roofAreal = calcRoofMat.calcRoofAreal();
+
     }
 
     public double getLength() {
@@ -95,6 +96,8 @@ public class Roof {
     public double getRoofAreal() {
         return roofAreal;
     }
+
+
 
     @Override
     public String toString() {
