@@ -21,6 +21,7 @@ public class Roof {
         this.roofmaterial = roofmaterial;
         this.roofAngle = 0; //standard is set to 0.
         setRoofHeight(roofAngle);
+        //this.roofAreal = calcRoofMat.calcRoofAreal(this);
 
     }
 

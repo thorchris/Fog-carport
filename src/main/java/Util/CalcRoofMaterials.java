@@ -11,12 +11,13 @@ public class CalcRoofMaterials {
 
     public CalcRoofMaterials(Roof roof) {
         this.roof = roof;
-        roofAreal = calcRoofAreal();
+        roofAreal = calcRoofAreal(this.roof);
+        this.roof.setRoofAreal(roofAreal);
     }
 
     //Spær / rafters
-    public double amountOfRafter() {
-        double width = roof.getWidth();
+    public int amountOfRafter() {
+        double width = roof.getLength();
         if (width < 0) {
             throw new InputMismatchException("Only positive numbers");
         }
@@ -24,19 +25,19 @@ public class CalcRoofMaterials {
         if (rafters % width != 0) {
             rafters++;
         }
-        double amountOfRafters = rafters;
+        int amountOfRafters = (int) rafters;
 
         return amountOfRafters;
     }
-
-    public double amountOfBrackets() {
+    //TODO: GENNEMGÅ OM DET ER NOK BRACKETS
+    public int amountOfBrackets() {
         return amountOfRafter() * 2;
     }
 
-    public double calcRoofAreal() {
+    public double calcRoofAreal(Roof roof) {
         if (roof.isHighRoof()) {
             roofAreal = highRoofArealCalc();
-        } else {
+        } else if(!roof.isHighRoof()) {
             roofAreal = calcFlatRoofAreal();
         }
         return roofAreal;
