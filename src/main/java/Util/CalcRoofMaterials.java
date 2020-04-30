@@ -8,7 +8,6 @@ public class CalcRoofMaterials {
 
     private Roof roof;
     private double roofAreal;
-    private double roofHeight;
 
     public CalcRoofMaterials(Roof roof) {
         this.roof = roof;
