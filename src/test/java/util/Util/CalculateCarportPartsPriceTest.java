@@ -50,7 +50,7 @@ public class CalculateCarportPartsPriceTest {
     @Test
     public void carportPartsPrice() {
 
-
+        // evt hente priser i fremtiden fra DB
         double testScrews = carportParts.getTotalSkrew() * screwPrice;
         double testRafters = carportParts.getTotalRafters() * rafterPrice;
         double testPosts = carportParts.getTotalPosts() * postPrice;
