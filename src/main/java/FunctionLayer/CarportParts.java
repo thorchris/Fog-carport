@@ -9,15 +9,17 @@ public class CarportParts {
     private boolean hasAShed, isHalfWidth;
     private CarportMaterials carportMaterials;
 
+
+    // MEGET VIGTIGT RÆKKEFØLGE
     public CarportParts(double length, double width, boolean hasAShed, boolean isHalfWidth, CarportMaterials carportMaterials, int sidesWithCladding) {
         CalcCarportMaterials calcCarportMaterials = new CalcCarportMaterials(this);
         this.length = length;
         this.width = width;
-        this.totalPosts = calcCarportMaterials.calculateAmountOfPosts();
         this.totalSkrew = 300; //you need 500 screws to do the carport parts
-        this.totalRafters = calcCarportMaterials.calculateRafters();
         this.hasAShed = hasAShed;
         this.isHalfWidth = isHalfWidth;
+        this.totalRafters = calcCarportMaterials.calculateRafters();
+        this.totalPosts = calcCarportMaterials.calculateAmountOfPosts();
         this.carportMaterials = carportMaterials;
         this.sidesWithCladding = sidesWithCladding;
         this.carportCladding = calcCarportMaterials.calculateCarportCladding();

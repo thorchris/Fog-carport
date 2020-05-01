@@ -1,7 +1,8 @@
-package Util;
+package util.Util;
 
 import FunctionLayer.Roof;
 import FunctionLayer.RoofMaterials;
+import Util.CalcRoofMaterials;
 import org.junit.Before;
 import org.junit.Test;
 
