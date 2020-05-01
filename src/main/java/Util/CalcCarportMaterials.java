@@ -68,19 +68,19 @@ public class CalcCarportMaterials {
         switch (carportParts.getSidesWithCladding()) {
             //En langside
             case 1:
-                amountOfCladding = (int) (length / woodWidth);
+                amountOfCladding = (length / woodWidth);
                 break;
             //To langside
             case 2:
-                amountOfCladding = (int) ((length / woodWidth) * 2);
+                amountOfCladding =((length / woodWidth) * 2);
                 break;
             //En langside og bagsiden
             case 3:
-                amountOfCladding = (int) (((length / woodWidth)) + (width / woodWidth));
+                amountOfCladding = (((length / woodWidth)) + (width / woodWidth));
                 break;
             //Begge langsider og bagsiden
             case 4:
-                amountOfCladding = (int) ((2 * (length / woodWidth)) + (width / woodWidth));
+                amountOfCladding = ((2 * (length / woodWidth)) + (width / woodWidth));
                 break;
         }
         return amountOfCladding;
