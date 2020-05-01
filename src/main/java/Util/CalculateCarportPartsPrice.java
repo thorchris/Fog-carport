@@ -19,4 +19,10 @@ public class CalculateCarportPartsPrice {
         return totalPrice;
     }
 
+    @Override
+    public String toString() {
+        return "CalculateCarportPartsPrice{" +
+                "carportParts=" + carportParts +
+                '}';
+    }
 }
