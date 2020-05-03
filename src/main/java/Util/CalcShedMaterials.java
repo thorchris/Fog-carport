@@ -17,18 +17,6 @@ public class CalcShedMaterials {
         double amountOfCladdingLength = 0;
         double carportLength = shed.getCarportLength();
 
-        if (carportLength <= 3.6) {
-            shedLength = 1.0;
-            shed.setShedLength(shedLength);
-
-        } else if (carportLength <= 5.1) {
-            shedLength = 2.0;
-            shed.setShedLength(shedLength);
-        } else if (carportLength <= 7.8) {
-            shedLength = 3.0;
-            shed.setShedLength(shedLength);
-        }
-
         double woodWidth = shed.getShedMaterials().getWoodWith();
 
         amountOfCladdingLength = (shedLength / woodWidth);
