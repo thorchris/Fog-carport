@@ -52,7 +52,7 @@ public class CalcShedMaterials {
     //Straps i m
 
     public double calculateStraps() {
-        double shedWidth = shed.getShedWidth(); //TODO ER DET HER SHED WIDTH ELLER SKAL DET VÆRE CARPORT?
+        double shedWidth = shed.getShedWidth(); 
         double strapLengthShed = 0;
             if (shed.isHalfWidth()) {
                 strapLengthShed = shedWidth / 2;
@@ -62,17 +62,5 @@ public class CalcShedMaterials {
         return strapLengthShed;
     }
 
-
-    public double calculateStraps(boolean hasAShed, boolean isHalfWidth, double width, double length) {
-        double strapLengthShed = 0;
-        if (hasAShed) {
-            if (isHalfWidth) {
-                strapLengthShed = width / 2;
-            } else {
-                strapLengthShed = width;
-            }
-        }
-        return strapLengthShed;
-    }
 }
 
