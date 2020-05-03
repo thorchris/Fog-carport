@@ -1,7 +1,6 @@
 package FunctionLayer;
 
 import Util.CalcShedMaterials;
-import Util.CalculateShedPrice;
 
 public class Shed {
 
@@ -20,7 +19,7 @@ public class Shed {
         this.carportWidth = carportWidth;
         this.isHalfWidth = isHalfWidth;
         this.shedMaterials = shedMaterials;
-        this.shedLength = calcShedMaterials.getShedLength();
+        setShedLength();
         this.totalShedCladding = calcShedMaterials.calculateShedCladding();
         this.straps = calcShedMaterials.calculateStraps();
 
@@ -65,8 +64,14 @@ public class Shed {
         return shedMaterials;
     }
 
-    public void setShedLength(double shedLength) {
-        this.shedLength = shedLength;
+    public void setShedLength() {
+        if (carportLength <= 3.6) {
+            shedLength = 1.0;
+        } else if (carportLength <= 5.1) {
+            shedLength = 2.0;
+        } else if (carportLength <= 7.8) {
+            shedLength = 3.0;
+        }
     }
 
     public double getShedLength() {
