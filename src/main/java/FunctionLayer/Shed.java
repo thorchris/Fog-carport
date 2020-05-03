@@ -3,7 +3,17 @@ package FunctionLayer;
 import Util.CalcShedMaterials;
 
 public class Shed {
-
+    /**
+     * @globalvar: carportLength
+     * @globalvar: carportWidth
+     * @globalvar: shedWidth
+     * @globalvar: shedLength
+     * @globalvar: totalShedCladding
+     * @globalvar: straps 
+     * @globalvar: totalShedCladding
+     * @globalvar: totalShedCladding
+     *
+     */
 
     private double carportLength, carportWidth, shedWidth, shedLength, totalShedCladding, straps;
     private boolean isHalfWidth;
