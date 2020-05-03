@@ -4,11 +4,36 @@ import Util.CalcRoofMaterials;
 
 public class Roof {
 
+    /**
+     * Roof class:
+     * @gbl length: Variable that stores the length of the roof
+     * @gbl width: Variable that stores the width of the roof
+     * @gbl screw: Variable that stores amount of screws for the roof 
+     * @gbl fascia: Variable that stores amount of fascia for the roof 
+     * @gbl rafter: Variable that stores amount of rafters for the roof 
+     * @gbl bracket: Variable that stores amount of brackets for the roof 
+     * @gbl roofHeight: Variable that stores the height of the roof 
+     * @gbl roofAreal: Variable that stores the areal of the roof
+     * @gbl roofmaterial: Variable that stores the material of the roof
+     * @gbl isHighRoof: Variable that stores if it is a flat roof or not
+     * @gbl roofAngle: Variable that stores the angle of the roof
+     *
+     *
+     */
     private double length, width, screw, fascia, rafter, bracket, roofHeight, roofAreal;
     private RoofMaterials roofmaterial;
     private boolean isHighRoof;
     private int roofAngle;
 
+    /**
+     * The constructor for roof calls calculation methods from the class CalcRoofMaterials.
+     * I uses these to determine the values for roof - The global variabels are set upon creating a instance of roof.
+     * @param isHighRoof: Boolean value to show if the roof is high or flat
+     * @param roofmaterial: Material of the roof
+     * @param carportLength: Length of the carport, roof length is determined upon this value
+     * @param carportWidth: Width of the carport, roof width is determined upon this value.
+     *
+     */
     public Roof(boolean isHighRoof, RoofMaterials roofmaterial,double carportLength, double carportWidth) {
         CalcRoofMaterials calcRoofMat = new CalcRoofMaterials(this);
         this.isHighRoof = isHighRoof; //boolean to see if roof is high
