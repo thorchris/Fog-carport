@@ -15,7 +15,6 @@ public class CalcShedMaterials {
         double shedWidth = shed.getCarportWidth();
         double amountOfCladdingWidth = 0;
         double amountOfCladdingLength = 0;
-        double carportLength = shed.getCarportLength();
 
         double woodWidth = shed.getShedMaterials().getWoodWith();
 
@@ -33,11 +32,6 @@ public class CalcShedMaterials {
 
         return totalShedCladding;
     }
-
-    public double getShedLength() {
-        return shedLength;
-    }
-    //Straps i m
 
     public double calculateStraps() {
         double shedWidth = shed.getShedWidth();
