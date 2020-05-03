@@ -52,7 +52,7 @@ public class CalcShedMaterials {
     //Straps i m
 
     public double calculateStraps() {
-        double shedWidth = shed.getShedWidth(); 
+        double shedWidth = shed.getShedWidth();
         double strapLengthShed = 0;
             if (shed.isHalfWidth()) {
                 strapLengthShed = shedWidth / 2;
