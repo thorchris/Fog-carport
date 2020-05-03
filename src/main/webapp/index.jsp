@@ -19,11 +19,8 @@
 
 <%@include file="include/header.inc" %>
 
-<h1>Velkommen</h1>
-<h2>Design din carport her</h2>
 <form action="FrontController" method="post">
     <input type="hidden" name="taget" value="calculatePrice"/>
-
 
     <div class="dropdown">
         <label for="exampleFormControlSelect1">Længde</label>
