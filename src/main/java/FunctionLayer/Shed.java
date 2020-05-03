@@ -9,17 +9,15 @@ public class Shed {
      * @globalvar: shedWidth
      * @globalvar: shedLength
      * @globalvar: totalShedCladding
-     * @globalvar: straps 
+     * @globalvar: straps
      * @globalvar: totalShedCladding
      * @globalvar: totalShedCladding
-     *
      */
 
     private double carportLength, carportWidth, shedWidth, shedLength, totalShedCladding, straps;
     private boolean isHalfWidth;
     private int doorKnob, doorHinges;
     private ShedMaterials shedMaterials;
-
 
     public Shed(double carportLength, double carportWidth,boolean isHalfWidth, ShedMaterials shedMaterials) {
         CalcShedMaterials calcShedMaterials = new CalcShedMaterials(this);
