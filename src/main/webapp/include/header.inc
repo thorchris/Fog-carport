@@ -12,4 +12,14 @@
 
     <title>Fog carport</title>
 </head>
+
+<nav class="navbar-expand-lg navbar">
+    <a class="navbar-brand" href="FrontController?taget=redirect&modtagerside=index">FOG CARPORT</a>
+    <ul class="navbar-nav ml-auto">
+        <li><a class="nav-link" href="FrontController?taget=redirect&modtagerside=register">DESIGN CARPORT</a></li>
+        <li class="nav-item "><a class="nav-link " href="FrontController?taget=logout">KONTAKT OS</a> </li>
+        <li class="nav-item "><a class="nav-link " href="FrontController?taget=redirect&modtagerside=checkout">OM OS</a> </li>
+        <li class="nav-item "><a class="nav-link " href="FrontController?taget=redirect&modtagerside=checkout">LOGIN</a> </li>
+    </ul>
+</nav>
 <body>

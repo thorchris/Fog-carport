@@ -50,6 +50,7 @@ public class CalcShedMaterials {
         return shedLength;
     }
     //Straps i m
+
     public double calculateStraps() {
         double shedWidth = shed.getShedWidth(); //TODO ER DET HER SHED WIDTH ELLER SKAL DET VÆRE CARPORT?
         double strapLengthShed = 0;
