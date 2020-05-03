@@ -5,7 +5,7 @@ import FunctionLayer.Shed;
 public class CalcShedMaterials {
 
     private Shed shed;
-    private double totalShedCladding, shedLength;
+    private double totalShedCladding;
 
     public CalcShedMaterials(Shed shed) {
         this.shed = shed;
@@ -18,8 +18,8 @@ public class CalcShedMaterials {
 
         double woodWidth = shed.getShedMaterials().getWoodWith();
 
-        amountOfCladdingLength = (shedLength / woodWidth);
-        if (shedLength % woodWidth > 0) {
+        amountOfCladdingLength = (shed.getShedLength() / woodWidth);
+        if (shed.getShedLength() % woodWidth > 0) {
             amountOfCladdingLength++; //if we need extra to get 100% coverage
         }
 
