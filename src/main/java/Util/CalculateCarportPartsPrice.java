@@ -11,7 +11,7 @@ public class CalculateCarportPartsPrice {
     }
 
     public double calculateCarportPartPrice(double screwPrice, double rafterPrice, double postPrice, CarportMaterials carportMaterials){
-        double totalScrewPrice = carportParts.getTotalSkrew() * screwPrice;
+        double totalScrewPrice = carportParts.getTotalScrews() * screwPrice;
         double totalRafterPrice = carportParts.getTotalRafters() * rafterPrice;
         double totalPostPrice = carportParts.getTotalPosts() * postPrice;
         double totalCladdingPrice = carportParts.getCarportCladding() * carportMaterials.getMaterialPriceM();
