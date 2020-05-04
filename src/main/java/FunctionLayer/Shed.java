@@ -21,7 +21,6 @@ public class Shed {
     private ShedMaterials shedMaterials;
 
     /**
-     *
      * @param carportLength The carport length is used to determine the length of the shed you can choose.
      * @param carportWidth  The carport width is used to determine the width of the shed
      * @param isHalfWidth This boolean is used for two options to chose size of the shed - half the width of the carport or the whole width of the carport
