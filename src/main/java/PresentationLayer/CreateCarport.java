@@ -76,7 +76,7 @@ public class CreateCarport extends Command {
 
         //CREATING FULL CARPORT
         FullCarport fullCarport = new FullCarport(carportParts, roof, shed);
-        LogicFacade.insertData(2,fullCarport);
+        //LogicFacade.insertData(user,fullCarport);
         session.setAttribute("fullCarport", fullCarport) ;
 
         return "../index";

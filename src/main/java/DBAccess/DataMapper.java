@@ -1,9 +1,6 @@
 package DBAccess;
 
-import FunctionLayer.CarportMaterials;
-import FunctionLayer.FullCarport;
-import FunctionLayer.Product;
-import FunctionLayer.RoofMaterials;
+import FunctionLayer.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -78,7 +75,7 @@ public class DataMapper {
         }
         return CarportMaterialNames;
     }
-    public static void addOrder(int user_Id, FullCarport carport) {
+    public static void addOrder(User user, FullCarport carport) {
         int rafters = (int) carport.getCarportParts().getTotalRafters();
         int cladding = (int) carport.getCarportParts().getCarportCladding();
         int screws = (int) ((int) carport.getCarportParts().getTotalScrews() + carport.getRoof().getScrew()); ;
@@ -88,6 +85,7 @@ public class DataMapper {
         int straps = (int) (carport.getShed().getStrapLength() + carport.getRoof().getStraps());
         int doorKnobs = carport.getShed().getDoorKnob();
         int doorHinges = carport.getShed().getDoorHinges();
+        int user_Id = user.getId();
 
         try {
             Connection con = Connector.connection();
