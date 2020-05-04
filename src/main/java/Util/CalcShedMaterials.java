@@ -47,8 +47,5 @@ public class CalcShedMaterials {
         return strapLengthShed;
     }
 
-    public int calculateAmountOfStraps() {
-        return 2;
-    }
 }
 

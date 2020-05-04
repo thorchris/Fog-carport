@@ -82,7 +82,7 @@ public class DataMapper {
         int posts = carport.getCarportParts().getTotalPosts();
         int fascia = (int) carport.getRoof().getFascia();
         int brackets = (int) carport.getRoof().getBracket();
-        int straps = (int) (carport.getShed().getStrapLength() + carport.getRoof().getStraps());
+        int straps = carport.getCarportParts().getAmountOfStraps();
         int doorKnobs = carport.getShed().getDoorKnob();
         int doorHinges = carport.getShed().getDoorHinges();
         int user_Id = user.getId();
