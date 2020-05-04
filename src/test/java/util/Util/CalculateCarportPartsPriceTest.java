@@ -15,7 +15,7 @@ public class CalculateCarportPartsPriceTest {
     private int sidesWithCladding;
     private boolean hasAShed, isHalfWidth;
 
-    double screwPrice, rafterPrice, postPrice;
+    double screwPrice, rafterPrice, postPrice, strapPrice;
 
     CarportParts carportParts;
     CarportMaterials carportMaterials;
@@ -36,7 +36,7 @@ public class CalculateCarportPartsPriceTest {
         screwPrice = 20;
         rafterPrice = 14;
         postPrice = 50;
-
+        strapPrice = 20;
 
         // adding data
         // double materialPriceM, double width, double length, samme værdier som fra DB
@@ -54,10 +54,11 @@ public class CalculateCarportPartsPriceTest {
         double testScrews = carportParts.getTotalScrews() * screwPrice;
         double testRafters = carportParts.getTotalRafters() * rafterPrice;
         double testPosts = carportParts.getTotalPosts() * postPrice;
+        double testStraps = carportParts.getStrapLength() * strapPrice;
         double testMaterial = carportParts.getCarportCladding() * carportMaterials.getMaterialPriceM();
 
-        double expected = testScrews + testRafters + testPosts + testMaterial;
-        double result = calculateCarportPartPrice.calculateCarportPartPrice(screwPrice, rafterPrice, postPrice, carportMaterials);
+        double expected = testScrews + testRafters + testPosts + testMaterial + testStraps;
+        double result = calculateCarportPartPrice.calculateCarportPartPrice(screwPrice, rafterPrice, postPrice, strapPrice,carportMaterials);
 
         assertEquals(expected, result, 0);
 
