@@ -86,4 +86,9 @@ public class CalcRoofMaterials {
         return ((roof.getLength() * roof.getWidth() * 2));
     }
 
- }
+    public double amountOfStraps() {
+        return 4;
+    }
+
+
+}

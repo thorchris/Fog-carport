@@ -15,9 +15,9 @@ public class Shed {
      * @globalvar: shedMaterials - Shed Materials is the materials you can choose to have your shed built from
      */
 
-    private double carportLength, carportWidth, shedWidth, shedLength, totalShedCladding, straps;
+    private double carportLength, carportWidth, shedWidth, shedLength, totalShedCladding, strapLength;
     private boolean isHalfWidth;
-    private int doorKnob, doorHinges;
+    private int doorKnob, doorHinges, amountOfStraps;
     private ShedMaterials shedMaterials;
 
     /**
@@ -38,7 +38,8 @@ public class Shed {
         setShedLength();
         setShedWidth();
         this.totalShedCladding = calcShedMaterials.calculateShedCladding();
-        this.straps = calcShedMaterials.calculateStrapsLength();
+        this.strapLength = calcShedMaterials.calculateStrapsLength();
+        this.amountOfStraps = calcShedMaterials.calculateAmountOfStraps();
     }
 
      public double getCarportLength() {
@@ -100,8 +101,8 @@ public class Shed {
         return totalShedCladding;
     }
 
-    public double getStraps() {
-        return straps;
+    public double getStrapLength() {
+        return strapLength;
     }
 
     public int getDoorKnob() {
@@ -120,7 +121,7 @@ public class Shed {
                 ", shedWidth=" + shedWidth +
                 ", shedLength=" + shedLength +
                 ", totalShedCladding=" + totalShedCladding +
-                ", straps=" + straps +
+                ", straps=" + strapLength +
                 ", isHalfWidth=" + isHalfWidth +
                 ", doorKnob=" + doorKnob +
                 ", doorHinges=" + doorHinges +

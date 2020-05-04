@@ -4,8 +4,8 @@ import Util.CalcCarportMaterials;
 
 public class CarportParts {
 
-    private double length, width, totalScrews, totalRafters, carportCladding;
-    private int totalPosts, sidesWithCladding;
+    private double length, width, totalScrews, totalRafters, carportCladding, strapLength;
+    private int totalPosts, sidesWithCladding, amountOfStraps;
     private boolean hasAShed, isHalfWidth;
     private CarportMaterials carportMaterials;
 
@@ -23,6 +23,9 @@ public class CarportParts {
         this.carportMaterials = carportMaterials;
         this.sidesWithCladding = sidesWithCladding;
         this.carportCladding = calcCarportMaterials.calculateCarportCladding();
+        this.amountOfStraps =  calcCarportMaterials.amountOfStraps();
+        this.strapLength = calcCarportMaterials.calcStrapLength();
+
     }
 
     public double getLength() {
@@ -95,6 +98,14 @@ public class CarportParts {
 
     public double getCarportCladding() {
         return carportCladding;
+    }
+
+    public double getStrapLength() {
+        return strapLength;
+    }
+
+    public int getAmountOfStraps() {
+        return amountOfStraps;
     }
 
     @Override

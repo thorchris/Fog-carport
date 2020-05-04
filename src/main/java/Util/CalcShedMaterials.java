@@ -43,8 +43,12 @@ public class CalcShedMaterials {
 
     //TODO Altid to straps til et skur
     public double calculateStrapsLength() {
-        double strapLengthShed = shed.getShedWidth();
+        double strapLengthShed = shed.getShedWidth() * 2;
         return strapLengthShed;
+    }
+
+    public int calculateAmountOfStraps() {
+        return 2;
     }
 }
 

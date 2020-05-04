@@ -20,7 +20,7 @@ public class Roof {
      *
      *
      */
-    private double length, width, screw, fascia, rafter, bracket, roofHeight, roofAreal;
+    private double length, width, screw, fascia, rafter, bracket, straps, roofHeight, roofAreal;
     private RoofMaterials roofmaterial;
     private boolean isHighRoof;
     private int roofAngle;
@@ -45,6 +45,7 @@ public class Roof {
         this.bracket = calcRoofMat.amountOfBrackets(); //calling calc method to get amount of brackets
         this.roofmaterial = roofmaterial;
         this.roofAngle = 0; //standard is set to 0.
+
         setRoofHeight(roofAngle);
         //this.roofAreal = calcRoofMat.calcRoofAreal(this);
 
@@ -56,6 +57,10 @@ public class Roof {
 
     public void setLength(double length) {
         this.length = length;
+    }
+
+    public double getStraps() {
+        return straps;
     }
 
     public void setWidth(double width) {
@@ -172,4 +177,6 @@ public class Roof {
                 ", roofAreal=" + roofAreal +
                 '}';
     }
+
+
 }

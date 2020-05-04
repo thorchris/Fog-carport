@@ -44,7 +44,7 @@ public class CalcShedPriceTest {
 
         double testDoorKnob = shed.getDoorKnob() * doorKnobPrice;
         double testDoorHinges = shed.getDoorHinges() * doorHingesPrice;
-        double testStraps = shed.getStraps() * strapsPricePrM;
+        double testStraps = shed.getStrapLength() * strapsPricePrM;
         double testMaterial = shed.getTotalShedCladding() * shedMaterials.getPricePrM2();
 
         double expected = testDoorKnob+testDoorHinges+testStraps+testMaterial;

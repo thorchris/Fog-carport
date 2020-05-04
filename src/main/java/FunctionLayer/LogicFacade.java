@@ -22,12 +22,11 @@ public class LogicFacade {
         return DataMapper.getProductList();
     }
 
-    public static void insertData(int order_Id, int user_Id, FullCarport carport){
-        DataMapper.addOrder(order_Id, user_Id, carport);
+    public static void insertData(int user_Id, FullCarport carport){
+        DataMapper.addOrder(user_Id, carport);
     }
 
     public static void main(String[] args) {
-        int order_Id = 1;
         int user_Id = 1;
 
         double length = 2;
@@ -47,6 +46,6 @@ public class LogicFacade {
         Roof roof = new Roof(isHighRoof, roofMaterials,length, width);
         FullCarport carport = new FullCarport(carportParts, roof, shed);
 
-        LogicFacade.insertData(order_Id, user_Id, carport);
+        LogicFacade.insertData(user_Id, carport);
     }
 }
