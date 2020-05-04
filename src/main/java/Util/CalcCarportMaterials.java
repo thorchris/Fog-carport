@@ -72,7 +72,7 @@ public class CalcCarportMaterials {
                 break;
             //To langside
             case 2:
-                amountOfCladding =((length / woodWidth) * 2);
+                amountOfCladding = ((length / woodWidth) * 2);
                 break;
             //En langside og bagsiden
             case 3:
@@ -87,10 +87,13 @@ public class CalcCarportMaterials {
     }
 
     public int amountOfStraps() {
+        if (carportParts.isHasAShed()) {
+            return 6;
+        }
         return 4;
     }
 
-    public double calcStrapLength(){
-        return (2*carportParts.getWidth()) + (2*carportParts.getLength());
+    public double calcStrapLength() {
+        return (2 * carportParts.getWidth()) + (2 * carportParts.getLength());
     }
 }

@@ -17,7 +17,7 @@ public class Shed {
 
     private double carportLength, carportWidth, shedWidth, shedLength, totalShedCladding, strapLength;
     private boolean isHalfWidth;
-    private int doorKnob, doorHinges, amountOfStraps;
+    private int doorKnob, doorHinges;
     private ShedMaterials shedMaterials;
 
     /**
@@ -39,11 +39,6 @@ public class Shed {
         setShedWidth();
         this.totalShedCladding = calcShedMaterials.calculateShedCladding();
         this.strapLength = calcShedMaterials.calculateStrapsLength();
-        this.amountOfStraps = calcShedMaterials.calculateAmountOfStraps();
-    }
-
-    public int getAmountOfStraps() {
-        return amountOfStraps;
     }
 
     public double getCarportLength() {

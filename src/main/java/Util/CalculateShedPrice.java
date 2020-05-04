@@ -22,10 +22,9 @@ public class CalculateShedPrice {
     //totalShedCladding, straps, doorKnob, doorHinges, shedMaterial
     public double calcShedPrice(double strapsPrice, double doorKnobPrice, double doorHingePrice){
         double totalShedMaterialPrice = shed.getTotalShedCladding() * shed.getShedMaterials().getPricePrM2();
-        double totalStrapsPrice = shed.getStrapLength() * strapsPrice * shed.getAmountOfStraps();
         double totalDoorKnobPrice = shed.getDoorKnob() * doorKnobPrice;
         double totalDoorHingePrice = shed.getDoorHinges() * doorHingePrice;
-        double totalPriceForShed = totalShedMaterialPrice+totalStrapsPrice+totalDoorKnobPrice+totalDoorHingePrice;
+        double totalPriceForShed = totalShedMaterialPrice+totalDoorKnobPrice+totalDoorHingePrice;
         return totalPriceForShed;
 
     }
