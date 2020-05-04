@@ -1,6 +1,7 @@
 package FunctionLayer;
 
 import DBAccess.DataMapper;
+import DBAccess.UserMapper;
 
 import java.util.List;
 
@@ -22,12 +23,17 @@ public class LogicFacade {
         return DataMapper.getProductList();
     }
 
-    public static void insertData(int user_Id, FullCarport carport){
-        DataMapper.addOrder(user_Id, carport);
+    public static void insertData(User user, FullCarport carport){
+        DataMapper.addOrder(user, carport);
     }
 
     public static void main(String[] args) {
-        int user_Id = 1;
+        User user = new User("Josef@ja.dk", "kode");
+        User user2 = new User("sefef@ja.dk", "kode");
+
+        user.setId(1);
+
+
 
         double length = 2;
         double width = 2;
@@ -46,6 +52,6 @@ public class LogicFacade {
         Roof roof = new Roof(isHighRoof, roofMaterials,length, width);
         FullCarport carport = new FullCarport(carportParts, roof, shed);
 
-        LogicFacade.insertData(user_Id, carport);
+        LogicFacade.insertData(user, carport);
     }
 }

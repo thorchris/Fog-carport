@@ -12,7 +12,7 @@ public class UserMapper {
     public static void createUser(User user) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO fogcarport.customer (email, password) VALUES (?, ?)";
+            String SQL = "INSERT INTO fogcarport.users (email, password) VALUES (?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getPassword());
@@ -25,7 +25,7 @@ public class UserMapper {
     public static User login( String email, String password ) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT customer_id, credit, role FROM fogcarport.customer "
+            String SQL = "SELECT customer_id, credit, role FROM fogcarport.users "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement( SQL );
             ps.setString( 1, email );
@@ -47,32 +47,32 @@ public class UserMapper {
         }
     }
 
-    public static int getCustomerId(String email){
-        int customerId = 0;
+    public static int getUserId(String email){
+        int userId = 0;
 
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
-            String SQL = "SELECT * FROM fogcarport.customer where email = '" + email + "';";
+            String SQL = "SELECT * FROM fogcarport.users where email = '" + email + "';";
             ResultSet rs = stmt.executeQuery(SQL);
 
-            customerId = 0;
+            userId = 0;
 
             while (rs.next()) {
-                customerId = rs.getInt("customer_id");
+                userId = rs.getInt("user_id");
             }
-            return customerId;
+            return userId;
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);
         }
-        return customerId;
+        return userId;
     }
 
 
 
     public static void deleteMember(String email) {
         try {
-            String SQL = "DELETE FROM fogcarport.customer WHERE email = (?)";
+            String SQL = "DELETE FROM fogcarport.users WHERE email = (?)";
             Connection con = Connector.connection();
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, email);
@@ -88,7 +88,7 @@ public class UserMapper {
     public static void changePassword(String password, String email) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "UPDATE fogcarport.customer SET password = (?) WHERE email = (?)";
+            String SQL = "UPDATE fogcarport.users SET password = (?) WHERE email = (?)";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, password);
             ps.setString(2, email);
@@ -106,7 +106,7 @@ public class UserMapper {
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
-            String SQL = "SELECT * FROM fogcarport.customer";
+            String SQL = "SELECT * FROM fogcarport.users";
             ResultSet rs = stmt.executeQuery(SQL);
             while (rs.next()) {
                 String email = rs.getString("email");
