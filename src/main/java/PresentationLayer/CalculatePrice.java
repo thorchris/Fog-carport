@@ -80,7 +80,7 @@ public class CalculatePrice extends Command {
         //CARPORT - NY MÅDE
         CarportParts carportParts = (CarportParts) session.getAttribute("carportParts");
         CarportMaterials carportMaterial = carportParts.getCarportMaterials();
-        double carportPrice = new CalculateCarportPartsPrice(carportParts).calculateCarportPartPrice(screwPrice, rafterPrice, postPrice,carportMaterial);
+        double carportPrice = new CalculateCarportPartsPrice(carportParts).calculateCarportPartPrice(screwPrice, rafterPrice, postPrice,strapPrice,carportMaterial);
 
         //Skur - NY MÅDE
         Shed shed = (Shed) session.getAttribute("shed");

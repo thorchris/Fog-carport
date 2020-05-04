@@ -10,12 +10,13 @@ public class CalculateCarportPartsPrice {
         this.carportParts = carportParts;
     }
 
-    public double calculateCarportPartPrice(double screwPrice, double rafterPrice, double postPrice, CarportMaterials carportMaterials){
+    public double calculateCarportPartPrice(double screwPrice, double rafterPrice, double postPrice, double strapPrice, CarportMaterials carportMaterials){
         double totalScrewPrice = carportParts.getTotalScrews() * screwPrice;
         double totalRafterPrice = carportParts.getTotalRafters() * rafterPrice;
         double totalPostPrice = carportParts.getTotalPosts() * postPrice;
         double totalCladdingPrice = carportParts.getCarportCladding() * carportMaterials.getMaterialPriceM();
-        double totalPrice = totalScrewPrice + totalRafterPrice + totalPostPrice + totalCladdingPrice;
+        double totalStrapsPrice = carportParts.getStrapLength() *strapPrice;
+        double totalPrice = totalScrewPrice + totalRafterPrice + totalPostPrice + totalCladdingPrice + totalStrapsPrice;
         return totalPrice;
     }
 

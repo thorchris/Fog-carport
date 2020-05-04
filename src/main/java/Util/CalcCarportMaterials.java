@@ -86,4 +86,11 @@ public class CalcCarportMaterials {
         return amountOfCladding;
     }
 
+    public int amountOfStraps() {
+        return 4;
+    }
+
+    public double calcStrapLength(){
+        return (2*carportParts.getWidth()) + (2*carportParts.getLength());
+    }
 }
