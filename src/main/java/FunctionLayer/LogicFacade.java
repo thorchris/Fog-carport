@@ -28,13 +28,15 @@ public class LogicFacade {
     }
 
     public static void main(String[] args) {
+        UserMapper um = new UserMapper();
+
         User user = new User("Josef@ja.dk", "kode");
+        user.setId(12);
         User user2 = new User("sefef@ja.dk", "kode");
 
-        user.setId(1);
 
-
-
+        um.getUserId("josef@tis.dk");
+        System.out.println(um.getUserId("josef@tis.dk"));
         double length = 2;
         double width = 2;
         boolean hasAShed = true;
