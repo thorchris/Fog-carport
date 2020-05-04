@@ -51,7 +51,7 @@ public class CalculateCarportPartsPriceTest {
     public void carportPartsPrice() {
 
         // evt hente priser i fremtiden fra DB
-        double testScrews = carportParts.getTotalSkrew() * screwPrice;
+        double testScrews = carportParts.getTotalScrews() * screwPrice;
         double testRafters = carportParts.getTotalRafters() * rafterPrice;
         double testPosts = carportParts.getTotalPosts() * postPrice;
         double testMaterial = carportParts.getCarportCladding() * carportMaterials.getMaterialPriceM();

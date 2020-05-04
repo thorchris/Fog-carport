@@ -4,7 +4,7 @@ import Util.CalcCarportMaterials;
 
 public class CarportParts {
 
-    private double length, width, totalSkrew, totalRafters, carportCladding;
+    private double length, width, totalScrews, totalRafters, carportCladding;
     private int totalPosts, sidesWithCladding;
     private boolean hasAShed, isHalfWidth;
     private CarportMaterials carportMaterials;
@@ -15,7 +15,7 @@ public class CarportParts {
         CalcCarportMaterials calcCarportMaterials = new CalcCarportMaterials(this);
         this.length = length;
         this.width = width;
-        this.totalSkrew = 300; //you need 500 screws to do the carport parts
+        this.totalScrews = 300; //you need 500 screws to do the carport parts
         this.hasAShed = hasAShed;
         this.isHalfWidth = isHalfWidth;
         this.totalRafters = calcCarportMaterials.calculateRafters();
@@ -41,12 +41,12 @@ public class CarportParts {
         this.width = width;
     }
 
-    public double getTotalSkrew() {
-        return totalSkrew;
+    public double getTotalScrews() {
+        return totalScrews;
     }
 
-    public void setTotalSkrew(double totalSkrew) {
-        this.totalSkrew = totalSkrew;
+    public void setTotalScrews(double totalScrews) {
+        this.totalScrews = totalScrews;
     }
 
     public double getTotalRafters() {
@@ -102,7 +102,7 @@ public class CarportParts {
         return "CarportParts{" +
                 "length=" + length +
                 ", width=" + width +
-                ", totalSkrew=" + totalSkrew +
+                ", totalSkrew=" + totalScrews +
                 ", totalRafters=" + totalRafters +
                 ", carportCladding=" + carportCladding +
                 ", totalPosts=" + totalPosts +

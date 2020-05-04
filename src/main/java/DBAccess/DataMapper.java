@@ -78,21 +78,36 @@ public class DataMapper {
         }
         return CarportMaterialNames;
     }
+    public static void addOrder(int order_Id, int user_Id, FullCarport carport) {
+        int rafters = (int) carport.getCarportParts().getTotalRafters();
+        int cladding = (int) carport.getCarportParts().getCarportCladding();
+        int screws = (int) ((int) carport.getCarportParts().getTotalScrews() + carport.getRoof().getScrew()); ;
+        int posts = carport.getCarportParts().getTotalPosts();
+        int fascia = (int) carport.getRoof().getFascia();
+        int brackets = (int) carport.getRoof().getBracket();
+        int straps = (int) carport.getShed().getStraps();
+        int doorKnobs = carport.getShed().getDoorKnob();
+        int doorHinges = carport.getShed().getDoorHinges();
 
-    public static void addOrder(int order_id, int user_id, FullCarport carport) {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO fogcarport.order (order_id, used_id, product_name, uom, unit_price, amount) VALUES (?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO fogcarport.order (order_id, user_id, rafters,  cladding,  posts,  screws,  fascia,  brackets,  straps,  doorKnobs,  doorHinges) VALUES (?, ?, ?, ?, ?,?, ?, ?,?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, order_id);
-            ps.setInt(2, carport.);
-            ps.setInt(3, sum);
-            ps.setInt(4, topping_id);
-            ps.setInt(5, bottom_id);
+            ps.setInt(1, order_Id);
+            ps.setInt(2, user_Id);
+            ps.setInt(3, rafters);
+            ps.setInt(4, cladding);
+            ps.setInt(5, posts);
+            ps.setInt(6, screws);
+            ps.setInt(7, fascia);
+            ps.setInt(8, brackets);
+            ps.setInt(9, straps);
+            ps.setInt(10, doorKnobs);
+            ps.setInt(11, doorHinges);
             ps.execute();
             ps.close();
         } catch (SQLException | ClassNotFoundException ex) {
-            System.out.println("FEJL! Kunne ikke finde oprette orderline");
+            System.out.println("FEJL! Kunne ikke finde oprette order med carporten");
         }
     }
 }
