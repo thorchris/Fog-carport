@@ -11,7 +11,7 @@ import java.util.List;
 public class LogicFacade {
 
     public static List<RoofMaterials> getRoofMaterialList(){
-        return DataMapper.getRoffMaterialsList();
+        return DataMapper.getRoofMaterialsList();
     }
 
     public static List<CarportMaterials> getCarportMaterialList(){
