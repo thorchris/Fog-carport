@@ -6,10 +6,9 @@ package FunctionLayer;
  */
 public class User {
 
-    public User( String email, String password, String role ) {
+    public User( String email, String password ) {
         this.email = email;
         this.password = password;
-        this.role = role;
     }
 
     private int id; // just used to demo retrieval of autogen keys in UserMapper
