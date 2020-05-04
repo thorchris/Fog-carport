@@ -63,8 +63,14 @@ public class CalcCarportMaterialsTest {
         assertEquals(expected,result,0);
     }
 
+    @Test
+    public void calcStrapLength(){
 
+        double expected = 12;
+        double result = calcCarportMaterials.calcStrapLength();
 
+        assertEquals(expected,result,0);
+    }
 
 
 }

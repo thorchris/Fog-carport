@@ -42,7 +42,11 @@ public class Shed {
         this.amountOfStraps = calcShedMaterials.calculateAmountOfStraps();
     }
 
-     public double getCarportLength() {
+    public int getAmountOfStraps() {
+        return amountOfStraps;
+    }
+
+    public double getCarportLength() {
         return carportLength;
     }
 
