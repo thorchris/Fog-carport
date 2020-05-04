@@ -11,6 +11,18 @@ public class FullCarport {
         this.shed = shed;
     }
 
+    public CarportParts getCarportParts() {
+        return carportParts;
+    }
+
+    public Roof getRoof() {
+        return roof;
+    }
+
+    public Shed getShed() {
+        return shed;
+    }
+
     @Override
     public String toString() {
         return "FullCarport{" +
