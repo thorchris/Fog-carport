@@ -1,19 +1,17 @@
 package DBAccess;
 
 import FunctionLayer.CarportMaterials;
+import FunctionLayer.FullCarport;
 import FunctionLayer.Product;
 import FunctionLayer.RoofMaterials;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataMapper {
 
-    public static List<RoofMaterials> getRoffMaterialsList() {
+    public static List<RoofMaterials> getRoofMaterialsList() {
         List<RoofMaterials> materialNames = new ArrayList<>();
         try {
             Connection con = Connector.connection();
@@ -81,13 +79,20 @@ public class DataMapper {
         return CarportMaterialNames;
     }
 
-
-
-
-
-
-    public static void main(String[] args) {
-        List<RoofMaterials> test2 = getRoffMaterialsList();
-        System.out.println(test2);
+    public static void addOrder(int order_id, int user_id, FullCarport carport) {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO fogcarport.order (order_id, used_id, product_name, uom, unit_price, amount) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, order_id);
+            ps.setInt(2, carport.);
+            ps.setInt(3, sum);
+            ps.setInt(4, topping_id);
+            ps.setInt(5, bottom_id);
+            ps.execute();
+            ps.close();
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println("FEJL! Kunne ikke finde oprette orderline");
+        }
     }
 }
