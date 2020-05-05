@@ -39,10 +39,10 @@ public class CalcRoofMaterialsTest {
         roof = new Roof(isHighRoof,roofmaterial,carportLength,carportWidth);
         calcRoofMaterials = new CalcRoofMaterials(roof);
 
-        int expected = 10;
-        int result = calcRoofMaterials.amountOfRafter();
+        double expected = roof.getRafter();
+        double result = calcRoofMaterials.amountOfRafter();
 
-        assertEquals(expected, result);
+        assertEquals(expected, result,0.1);
     }
 
     @Test
@@ -53,10 +53,10 @@ public class CalcRoofMaterialsTest {
         roof = new Roof(isHighRoof,roofmaterial,carportLength,carportWidth);
         calcRoofMaterials = new CalcRoofMaterials(roof);
 
-        int expected = 20;
-        int result = calcRoofMaterials.amountOfBrackets();
+        double expected = roof.getBracket();
+        double result = calcRoofMaterials.amountOfBrackets();
 
-        assertEquals(expected,result);
+        assertEquals(expected,result, 0.1);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class CalcRoofMaterialsTest {
         roof = new Roof(isHighRoof,roofmaterial,carportLength,carportWidth);
         calcRoofMaterials = new CalcRoofMaterials(roof);
 
-        double expected = 10;
+        double expected = roof.getRoofAreal();
         double result = calcRoofMaterials.calcFlatRoofAreal();
         assertEquals(expected,result, 2); //TODO BEDRE DELTAVÆRDI?
     }
@@ -81,7 +81,7 @@ public class CalcRoofMaterialsTest {
         roof.setRoofHeight(15);
         calcRoofMaterials = new CalcRoofMaterials(roof);
 
-        double expected = 5;
+        double expected = roof.getRoofAreal();
         double result = calcRoofMaterials.highRoofArealCalc();
         assertEquals(expected,result, 1); //TODO BEDRE DELTAVÆRDI?
     }
@@ -96,16 +96,24 @@ public class CalcRoofMaterialsTest {
         roof.setRoofHeight(15);
         calcRoofMaterials = new CalcRoofMaterials(roof);
 
-        double expected = 5;
+        double expected = roof.getRoofAreal();
         double result = calcRoofMaterials.highRoofArealCalc();
-        assertEquals(expected,result, 1);
-
-        isHighRoof = false;
-        expected = 10;
-        result = calcRoofMaterials.calcFlatRoofAreal();
-        assertEquals(expected,result, 2);
+        assertEquals(expected,result, 0.1);
     }
 
+    @Test
+    public void calcRoofArealFalse() {
+        isHighRoof = false;
+        carportLength = 5;
+        carportWidth = 2.0;
+        roof = new Roof(isHighRoof,roofmaterial,carportLength,carportWidth);
+        calcRoofMaterials = new CalcRoofMaterials(roof);
+        roof.setRoofHeight(15);
+
+        double expected = roof.getRoofAreal();
+        double result = calcRoofMaterials.calcFlatRoofAreal();
+        assertEquals(expected,result, 0.1);
+    }
 
 
 }

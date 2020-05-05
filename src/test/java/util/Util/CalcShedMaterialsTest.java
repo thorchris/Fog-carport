@@ -17,6 +17,12 @@ public class CalcShedMaterialsTest {
     boolean isHalfWidth = false;
     ShedMaterials shedMaterials = null;
 
+
+    /**
+     *@Before notation makes sure that this method is run pre every test.
+     *        Sets every local variabel equal null to assure the test starts fresh.
+     *        We instantiates the variabels to be equal to our test value in the different test methods.
+     */
     @Before
     public void setup() {
         double carportLength = 0;
@@ -27,6 +33,9 @@ public class CalcShedMaterialsTest {
 
     }
 
+    /**
+     * Test to see if the calculateShedCladding method works with a shed half the size of the carport
+     */
     @Test
     public void calculateShedCladdingTest1(){
         carportLength = 2.4;
@@ -37,12 +46,14 @@ public class CalcShedMaterialsTest {
         Shed shed = new Shed(carportLength,carportWidth ,isHalfWidth, shedMaterials);
         CalcShedMaterials csm = new CalcShedMaterials(shed);
 
-        double expected = 23;
+        double expected = shed.getTotalShedCladding();
         double result = csm.calculateShedCladding();
 
         assertEquals(expected, result, 1);
     }
-
+    /**
+     * Test to see if the calculateShedCladding method works with a shed the same size as the carport
+     */
     @Test
     public void calculateShedCladdingTest2(){
         carportLength = 7.2;
@@ -53,12 +64,15 @@ public class CalcShedMaterialsTest {
         Shed shed = new Shed(carportLength,carportWidth ,isHalfWidth, shedMaterials);
         CalcShedMaterials csm = new CalcShedMaterials(shed);
 
-        double expected = 44;
+        double expected = shed.getTotalShedCladding();
         double result = csm.calculateShedCladding();
 
         assertEquals(expected, result, 1);
     }
 
+    /**
+     * Test to see if the calculateStrapsHalfWidth method works with a shed half the size of the carport
+     */
     @Test
     public void calculateStrapsHalfWidth() {
         carportLength = 7.2;
@@ -69,12 +83,15 @@ public class CalcShedMaterialsTest {
         Shed shed = new Shed(carportLength,carportWidth ,isHalfWidth, shedMaterials);
         CalcShedMaterials csm = new CalcShedMaterials(shed);
 
-        double expected = 3.4;
+        double expected = shed.getStrapLength();
         double result = csm.calculateStrapsLength();
 
-        assertEquals(expected, result, 1);
+        assertEquals(expected, result, 0.1);
     }
 
+    /**
+     * Test to see if the calculateStrapsFullWidth method works with a shed the same size as the carport
+     */
     @Test
     public void calculateStrapsFullWidth() {
         carportLength = 7.2;
@@ -85,10 +102,10 @@ public class CalcShedMaterialsTest {
         Shed shed = new Shed(carportLength,carportWidth ,isHalfWidth, shedMaterials);
         CalcShedMaterials csm = new CalcShedMaterials(shed);
 
-        double expected = 6.8;
+        double expected = shed.getStrapLength();
         double result = csm.calculateStrapsLength();
 
-        assertEquals(expected, result, 1);
+        assertEquals(expected, result, 0.1);
     }
 
     }

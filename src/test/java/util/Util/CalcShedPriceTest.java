@@ -18,6 +18,8 @@ public class CalcShedPriceTest {
 
     double doorKnobPrice, doorHingesPrice, strapsPricePrM;
 
+
+
     @Before
     public void setup() {
 
