@@ -3,9 +3,18 @@ package Util;
 import FunctionLayer.CarportMaterials;
 import FunctionLayer.CarportParts;
 
+/**
+ * Class for calculating the price of a carport-skeleton.
+ * Materials in a carport-skeleton is defined in carportParts and calculated by the CalcCarportMaterials
+ */
 public class CalculateCarportPartsPrice {
     private CarportParts carportParts;
 
+    /**
+     * Constructor for CalculateCarportPartsPrice
+     * @param carportParts -> Makes sure that we're working on a object of the type carportParts - defined as a class variabel.
+     *             All calls for width and height etc comes from the carportParts class's getters.
+     */
     public CalculateCarportPartsPrice(CarportParts carportParts) {
         this.carportParts = carportParts;
     }
@@ -31,10 +40,4 @@ public class CalculateCarportPartsPrice {
         return totalPrice;
     }
 
-    @Override
-    public String toString() {
-        return "CalculateCarportPartsPrice{" +
-                "carportParts=" + carportParts +
-                '}';
-    }
 }
