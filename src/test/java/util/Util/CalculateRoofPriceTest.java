@@ -28,6 +28,11 @@ public class CalculateRoofPriceTest {
 
     }
 
+    /**
+     * Test method to test if the price calculation works with a high roof.
+     * Result is from the method call
+     * Expected is the expected answer calculated
+     */
     @Test
     public void calcRoofPriceHighRoof() {
         boolean isHighRoof = true;
@@ -44,13 +49,23 @@ public class CalculateRoofPriceTest {
         double rafterPricePrPiece = 20;
         double bracketPricePrPiece = 15;
 
+        double totalScrew = screwPricePrPiece * roof.getScrew();
+        double totalFascia = fasciaPricePrPiece * roof.getFascia();
+        double totalRafter = rafterPricePrPiece * roof.getRafter();
+        double totalBracket = bracketPricePrPiece * roof.getBracket();
+        double totalPriceRoofMaterial = roof.getRoofmaterial().getmaterialPriceM2()*roof.getRoofAreal();
 
-        double expected = 1172;
+        double expected = totalScrew + totalFascia + totalRafter +  totalBracket + totalPriceRoofMaterial;
         double result = calculateRoofPrice.calcRoofPrice(screwPricePrPiece, fasciaPricePrPiece, rafterPricePrPiece, bracketPricePrPiece);
 
-        assertEquals(expected,result,2);
+        assertEquals(expected,result,0.1);
     }
 
+    /**
+     * Test method to test if the price calculation works with a low roof.
+     * Result is from the method call
+     * Expected is the expected answer calculated
+     */
     @Test
     public void calcRoofPriceLowRoof() {
         boolean isHighRoof = false;
@@ -67,10 +82,16 @@ public class CalculateRoofPriceTest {
         double rafterPricePrPiece = 20;
         double bracketPricePrPiece = 15;
 
-        double expected = 1036;
+        double totalScrew = screwPricePrPiece * roof.getScrew();
+        double totalFascia = fasciaPricePrPiece * roof.getFascia();
+        double totalRafter = rafterPricePrPiece * roof.getRafter();
+        double totalBracket = bracketPricePrPiece * roof.getBracket();
+        double totalPriceRoofMaterial = roof.getRoofmaterial().getmaterialPriceM2()*roof.getRoofAreal();
+
+        double expected = totalScrew + totalFascia + totalRafter +  totalBracket + totalPriceRoofMaterial;
         double result = calculateRoofPrice.calcRoofPrice(screwPricePrPiece, fasciaPricePrPiece, rafterPricePrPiece, bracketPricePrPiece);
 
-        assertEquals(expected,result,1);
+        assertEquals(expected,result,0.1);
     }
 
     /**
