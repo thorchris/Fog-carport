@@ -107,4 +107,34 @@ public class DataMapper {
             System.out.println("FEJL! Kunne ikke finde oprette order med carporten");
         }
     }
+
+    public static List<Order> getOrderList() {
+        List<Order> CarportItemList = new ArrayList<>();
+        try {
+            Connection con = Connector.connection();
+            Statement stmt = con.createStatement();
+            String SQL = "SELECT * FROM fogcarport.order";
+            ResultSet rs = stmt.executeQuery(SQL);
+
+            while (rs.next()) {
+                int orderid = rs.getInt("order_id");
+                int userid = rs.getInt("user_id");
+                int rafters = rs.getInt("rafters");
+                int cladding = rs.getInt("cladding");
+                int posts = rs.getInt("posts");
+                int screws = rs.getInt("screws");
+                int fascia = rs.getInt("fascia");
+                int brackets = rs.getInt("brackets");
+                int straps = rs.getInt("straps");
+                int doorknobs = rs.getInt("doorknobs");
+                int doorhinges = rs.getInt("doorhinges");
+                Order order = new Order(orderid, userid, rafters, cladding, posts, screws, fascia, brackets, straps, doorknobs, doorhinges);
+                CarportItemList.add(order);
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex);
+        }
+        return CarportItemList;
+    }
+    
 }
