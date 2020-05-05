@@ -16,12 +16,15 @@ public class Redirect extends Command {
         String modtagerside = request.getParameter("modtagerside");
 
         switch (modtagerside){
-            case "checkout":
-                return "checkout";
+            case "design":
+                return "design";
 
-            case "sælger":
+            case "seller":
                 // liste med alle kundebestillinger new OrderList().execute(request, response);
-                return "sælger";
+                return "seller";
+
+            case "contact":
+                return "contact";
 
             case "index":
                 return "../index";
