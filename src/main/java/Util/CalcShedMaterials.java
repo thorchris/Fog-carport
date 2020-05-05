@@ -5,15 +5,25 @@ import FunctionLayer.Shed;
 public class CalcShedMaterials {
 
     /**
-     * In this class we are calculating the cladding for the shed aswell as the strap length.
-     *
+     * In this class we are calculating the material needed for the shed.
      */
     private Shed shed;
     private double totalShedCladding;
 
+    /**
+     * Constructor for CalcShedMaterials
+     * @param shed -> Makes sure that we're working on a object of the type shed - defined as a class variabel.
+     *             All calls for width and height etc comes from the shed class's getters.
+     */
+
     public CalcShedMaterials(Shed shed) {
         this.shed = shed;
     }
+
+    /**
+     * Calculate the amount of shedcladding using the shed width and the width of the material that the shed is made from.
+     * @return the amount of cladding needed in amount of wood
+     */
     public double calculateShedCladding() {
         double shedWidth = shed.getShedWidth();
         double amountOfCladdingWidth = 0;
@@ -37,11 +47,10 @@ public class CalcShedMaterials {
     }
 
     /**
-     * Shed always needs two straps, one each side.
-     *
+     * Calculate the length of the straps for the shed
+     * Amount of straps are set in the carportMaterial class
      */
 
-    //TODO Altid to straps til et skur
     public double calculateStrapsLength() {
         double strapLengthShed = shed.getShedWidth() * 2;
         return strapLengthShed;
