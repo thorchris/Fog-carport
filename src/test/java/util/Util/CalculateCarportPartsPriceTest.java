@@ -9,6 +9,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Test class for the CalcCarportMaterials class
+ */
 public class CalculateCarportPartsPriceTest {
 
     private double length, width;
@@ -22,9 +25,18 @@ public class CalculateCarportPartsPriceTest {
     CalcCarportMaterials calcCarportMaterials;
     CalculateCarportPartsPrice calculateCarportPartPrice;
 
-
+    /**
+     *@Before notation makes sure that this method is run pre every test.
+     *        Sets every local variabel equal null to assure the test starts fresh.
+     *        Then instantiates the variabels to be equal to our test value
+     */
     @Before
     public void setup() {
+        carportMaterials = null;
+        carportParts = null;
+        calcCarportMaterials = null;
+        calculateCarportPartPrice = null;
+
         // Test data
         length = 3;
         width = 3;
@@ -39,7 +51,6 @@ public class CalculateCarportPartsPriceTest {
         strapPrice = 20;
 
         // adding data
-        // double materialPriceM, double width, double length, samme værdier som fra DB
         carportMaterials = new CarportMaterials("testMateriale", 1, 14, 0.15, 3);
         carportParts = new CarportParts(length, width, hasAShed, isHalfWidth, carportMaterials, sidesWithCladding);
         calcCarportMaterials = new CalcCarportMaterials(carportParts);
@@ -47,10 +58,13 @@ public class CalculateCarportPartsPriceTest {
     }
 
 
+    /**
+     * Test method to test if the price calculation works for the carportParts.
+     * Result is from the method call
+     * Expected is the expected answer calculated
+     */
     @Test
     public void carportPartsPrice() {
-
-        // evt hente priser i fremtiden fra DB
         double testScrews = carportParts.getTotalScrews() * screwPrice;
         double testRafters = carportParts.getTotalRafters() * rafterPrice;
         double testPosts = carportParts.getTotalPosts() * postPrice;
