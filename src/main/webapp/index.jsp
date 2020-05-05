@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,19 +23,16 @@
                 <div class="navbar-brand">FOG-CARPORT</div>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">HJEM</a>
+                        <a class="nav-link" href="FrontController?taget=redirect&modtagerside=index">HJEM</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">OM OS</a>
+                        <a class="nav-link" href="FrontController?taget=redirect&modtagerside=contact">KONTAKT OS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">KONTAKT</a>
+                        <a class="nav-link" href="FrontController?taget=redirect&modtagerside=design">CARPORT DESIGN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CARPORT DESIGN</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">LOGIN/REGISTRER</a>
+                        <a class="nav-link" href="FrontController?taget=redirect&modtagerside=login">LOGIN/REGISTRER</a>
                     </li>
                 </ul>
             </nav>
@@ -42,10 +40,10 @@
         <div class="col-md-8 offset-md-2 info">
             <h1 class="text-center">VELKOMMEN</h1>
             <p class="text-center">
-                Velkommen til Fog trælast og byggecenter hos os kan du selv designe din carport som passer perfekt til dit hjem.
-                Hvis du har brug for hjælp kan du kontakte en sælger der kan hjælper dig med dit design.
+                Velkommen til Fog Trælast & Byggecenter. Hos os kan du designe din egen carport som passer perfekt til dit hus.
+                Hvis du har brug for hjælp kan du kontakte en sælger der kan hjælpe dig med dit design.
             </p>
-            <a href="#" class="btn btn-md text-center">START DESIGN</a>
+            <a href="FrontController?taget=redirect&modtagerside=design" class="btn btn-md text-center">START DESIGN</a>
         </div>
 
     </div>
