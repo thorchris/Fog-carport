@@ -59,7 +59,7 @@ public class CalcShedPriceTest {
         double testMaterial = shed.getTotalShedCladding() * shedMaterials.getPricePrM2();
 
         double expected = testDoorKnob+testDoorHinges+testMaterial;
-        double result = calculateShedPrice.calcShedPrice(strapsPricePrM,doorKnobPrice,doorHingesPrice);
+        double result = calculateShedPrice.calcShedPrice(doorKnobPrice,doorHingesPrice);
 
         assertEquals(expected, result, 0);
     }

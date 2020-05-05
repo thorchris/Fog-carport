@@ -84,7 +84,7 @@ public class CalculatePrice extends Command {
 
         //Skur - NY MÅDE
         Shed shed = (Shed) session.getAttribute("shed");
-        double shedPrice = new CalculateShedPrice(shed).calcShedPrice(strapPrice, doorKnobPrice, doorHingesPrice);
+        double shedPrice = new CalculateShedPrice(shed).calcShedPrice(doorKnobPrice, doorHingesPrice);
 
         //TAG - NY MÅDE
         Roof roof = (Roof) session.getAttribute("roof");
