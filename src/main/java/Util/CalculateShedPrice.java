@@ -16,7 +16,6 @@ public class CalculateShedPrice {
      */
     public CalculateShedPrice(Shed shed) {
         this.shed = shed;
-
     }
 
     /**
