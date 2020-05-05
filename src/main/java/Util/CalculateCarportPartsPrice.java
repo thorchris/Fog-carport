@@ -16,7 +16,7 @@ public class CalculateCarportPartsPrice {
      * @param rafterPrice is the price for every meter of rafter
      * @param postPrice is the price per post
      * @param strapPrice is the price for every meter of strap
-     * @param carportMaterials 
+     * @param carportMaterials
      * @return the total price for all the materials needed for a carport
      * the method get's it's values from the class carportParts, which we get through the constructor
      */
