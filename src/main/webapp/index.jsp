@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
 
 
-
     <title>Fog carport</title>
 </head>
 <body>
