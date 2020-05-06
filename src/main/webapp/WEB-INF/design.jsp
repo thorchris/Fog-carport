@@ -167,6 +167,6 @@
 
 </form>
 ${sessionScope.fullCarport.toString()}
-<script src="../JS/javascript.js"></script>
+<script src="JS/javascript.js"></script>
 
 <%@include file="../include/footer.inc" %>

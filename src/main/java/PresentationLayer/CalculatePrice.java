@@ -97,6 +97,6 @@ public class CalculatePrice extends Command {
 
         session.setAttribute("totalPrice", price);
 
-        return "../index";
+        return "design";
     }
 }
