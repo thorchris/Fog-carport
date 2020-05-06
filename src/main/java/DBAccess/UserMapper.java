@@ -25,7 +25,7 @@ public class UserMapper {
     public static User login( String email, String password ) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT customer_id, role FROM fogcarport.users "
+            String SQL = "SELECT user_id, role FROM fogcarport.users "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement( SQL );
             ps.setString( 1, email );
