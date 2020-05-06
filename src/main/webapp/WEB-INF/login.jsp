@@ -11,20 +11,22 @@
             <table class="table table-borderless table.responsive">
                 <td>
                     <form name="login" action="FrontController" method="POST">
-                        <div class="form-group ml-2 mr-2">
+                        <div class="form-group">
                             <input type="hidden" name="taget" value="login">
                             <input type="text" class="form-control" name="email" placeholder="Email" required="required">
                         </div>
-                        <div class="form-group ml-2 mr-2">
+                        <div class="form-group">
                             <input type="password" class="form-control" name="password" placeholder="Kodeord" required="required">
                         </div>
-                        <div class="form-footer text-center">
-                            <input type="submit" class="btn btn-danger btn-style " value="Login">
+                        <div class="form-footer">
+                            <input type="submit" class="btn btn-primary btn-style" value="Login">
+                            <a href="FrontController?taget=redirect&modtagerside=register" class="btn btn-primary btn-style ml-1">Opret Bruger</a>
                         </div>
                     </form>
                 </td>
                 </tr>
             </table>
+            <div class="col-4"></div>
         </div>
     </div>
 </div>

@@ -27,15 +27,16 @@ public class Login extends Command {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         User user = LogicFacade.login(email, password);
+        String role = user.getRole();
 
         HttpSession session = request.getSession();
 
         session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
         session.getServletContext().setAttribute("user", user);
 
-        switch (email) {
-            case "sælger":
-                return "sælger";
+        switch (role) {
+            case "seller":
+                return "seller";
             default:
                 return "../index";
         }
