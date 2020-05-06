@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-            <h1>Login</h1>
+            <h1 class="headerseller">Login</h1>
             <table class="table table-borderless table.responsive">
                 <td>
                     <form name="login" action="FrontController" method="POST">

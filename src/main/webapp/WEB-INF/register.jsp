@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-            <h1>Opret bruger</h1>
+            <h1 class="headerseller">Opret bruger</h1>
             <table class="table table-borderless table.responsive">
                 <td>
                     <form name="register" action="FrontController" method="POST">
@@ -25,7 +25,7 @@
                             <input type="password" class="form-control" name="password2" placeholder="Kodeord" required="required">
                         </div>
                         <div class="form-footer text-center">
-                            <input type="submit" class="btn btn-danger btn-style " value="Register dig her">
+                            <input type="submit" class="btn btn-primary btn-style " value="Register dig her">
                         </div>
                     </form>
                 </td>
