@@ -26,7 +26,7 @@
             <h1 class="headerseller"> Sælger side </h1>
             <h2 class="headerseller"> Kunders design</h2>
             <div class="table-wrap" >
-                <table class="table table-borderless table.responsive">
+                <table class="table table-borderless table.responsive ">
                     <thead>
                     <tr>
                         <th scope="col">Ordre ID</th>
