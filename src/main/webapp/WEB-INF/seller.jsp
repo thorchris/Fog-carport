@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="FunctionLayer.GenerateLists" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -17,13 +18,14 @@
 
 <div class="container col-lg-12">
     <div class="row">
-        <h1> Sælger side </h1>
-        <h2> Kunders design</h2>
 
 
-        <div class="col-lg-3"></div>
-        <div class="col-lg-5">
-            <div class="table-wrap">
+
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <h1 class="headerseller"> Sælger side </h1>
+            <h2 class="headerseller"> Kunders design</h2>
+            <div class="table-wrap" >
                 <table class="table table-borderless table.responsive">
                     <thead>
                     <tr>
@@ -63,7 +65,7 @@
                 </table>
             </div>
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-1"></div>
     </div> <!-- ROW -->
 </div>
 

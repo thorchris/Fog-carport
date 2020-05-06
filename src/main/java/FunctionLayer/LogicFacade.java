@@ -42,4 +42,7 @@ public class LogicFacade {
         return DataMapper.getOrderList();
     }
 
+    public static void main(String[] args) {
+        System.out.println(LogicFacade.getOrderList());
+    }
 }
