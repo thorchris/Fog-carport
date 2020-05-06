@@ -25,15 +25,14 @@ public class UserMapper {
     public static User login( String email, String password ) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT customer_id, credit, role FROM fogcarport.users "
+            String SQL = "SELECT customer_id, role FROM fogcarport.users "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement( SQL );
             ps.setString( 1, email );
             ps.setString( 2, password );
             ResultSet rs = ps.executeQuery();
             if ( rs.next() ) {
-                int id = rs.getInt( "customer_id" );
-                int credit = rs.getInt( "credit" );
+                int id = rs.getInt( "user_id" );
                 String role = rs.getString( "role" );
                 User user = new User( email, password );
                 user.setId( id );
@@ -112,7 +111,7 @@ public class UserMapper {
                 String email = rs.getString("email");
                 String password = rs.getString("password");
                 User user = new User(email, password);
-                user.setId(rs.getInt("customer_id"));
+                user.setId(rs.getInt("user_id"));
                 user.setRole(rs.getString("role"));
                 customerList.add(user);
             }
