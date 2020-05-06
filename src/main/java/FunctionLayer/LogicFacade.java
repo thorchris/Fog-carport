@@ -3,6 +3,7 @@ package FunctionLayer;
 import DBAccess.DataMapper;
 import DBAccess.UserMapper;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 
 /**
@@ -35,5 +36,9 @@ public class LogicFacade {
 
     public static User login(String email, String password) throws LoginSampleException {
         return UserMapper.login(email, password);
+    }
+
+    public static List<Order> getOrderList(){
+        return DataMapper.getOrderList();
     }
 }
