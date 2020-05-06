@@ -5,7 +5,7 @@ import java.util.List;
 public class GenerateLists {
 
     private static List<RoofMaterials> roffMaterialList;
-    private static  List<CarportMaterials> carportMaterials;
+    private static List<CarportMaterials> carportMaterials;
     private static List<Order> orderList;
 
     public static void initLists(){
