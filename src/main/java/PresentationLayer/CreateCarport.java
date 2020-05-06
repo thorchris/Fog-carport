@@ -82,6 +82,6 @@ public class CreateCarport extends Command {
         LogicFacade.insertData(user,fullCarport);
         session.setAttribute("fullCarport", fullCarport) ;
 
-        return "../index";
+        return "design";
     }
 }
