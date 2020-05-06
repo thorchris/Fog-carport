@@ -35,4 +35,8 @@ public class GenerateLists {
     public static List<Order> getOrderList() {
         return orderList;
     }
+
+    public static void main(String[] args) {
+        System.out.println(LogicFacade.getOrderList());
+    }
 }
