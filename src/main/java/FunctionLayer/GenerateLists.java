@@ -6,6 +6,7 @@ public class GenerateLists {
 
     private static List<RoofMaterials> roffMaterialList;
     private static  List<CarportMaterials> carportMaterials;
+    private static List<Order> orderList;
 
     public static void initLists(){
         if(roffMaterialList == null){
@@ -17,6 +18,12 @@ public class GenerateLists {
 
     }
 
+    public static void initOrderList(){
+        if(orderList == null){
+            orderList = LogicFacade.getOrderList();
+        }
+    }
+
     public static List<RoofMaterials> getRoffMaterialList() {
         return roffMaterialList; 
     }
@@ -25,4 +32,7 @@ public class GenerateLists {
         return carportMaterials;
     }
 
+    public static List<Order> getOrderList() {
+        return orderList;
+    }
 }
