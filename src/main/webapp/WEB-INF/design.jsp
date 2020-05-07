@@ -1,7 +1,5 @@
 <%@ page import="FunctionLayer.GenerateLists" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
-
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%!
     @Override
     public void jspInit() {
