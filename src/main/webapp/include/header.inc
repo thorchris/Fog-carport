@@ -35,7 +35,7 @@
                     </li>
                     <li>
                     <%
-                     User user = (User) session.getServletContext().getAttribute("user");
+                     User user = (User) session.getAttribute("user");
                       if(user == null){
                        out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=login\">LOGIN/REGISTRER</a>");
                          } else {
@@ -46,7 +46,7 @@
 
                     <li>
                         <%
-                            user = (User) session.getServletContext().getAttribute("user");
+                            user = (User) session.getAttribute("user");
                             if (user != null) {
                                 if (user.getRole().equals("seller")) {
                                     out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=seller\">SÆLGER</a>");
