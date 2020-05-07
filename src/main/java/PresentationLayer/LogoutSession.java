@@ -20,7 +20,6 @@ public class LogoutSession extends Command {
 
         HttpSession session = request.getSession();
         ServletContext context = request.getSession().getServletContext();
-        session.setAttribute("credit", null);
         session.setAttribute("email", null);
         context.setAttribute("user",null);
         session.invalidate();

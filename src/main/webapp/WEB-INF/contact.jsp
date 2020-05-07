@@ -1,6 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../include/header.inc" %>
-
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <head>
     <style>
         th, td {

@@ -1,3 +1,6 @@
+<%@ page import="FunctionLayer.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,7 +16,7 @@
 
     <title>Fog carport</title>
 </head>
-<body>
+
 <body>
 <div class="container-fluid banner">
     <div class="row">
@@ -30,8 +33,29 @@
                     <li class="nav-item">
                         <a class="nav-link" href="FrontController?taget=redirect&modtagerside=design">CARPORT DESIGN</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="FrontController?taget=redirect&modtagerside=login">LOGIN/REGISTRER</a>
+                    <li>
+                    <%
+                     User user = (User) session.getServletContext().getAttribute("user");
+                      if(user == null){
+                       out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=login\">LOGIN/REGISTRER</a>");
+                         } else {
+                       out.println("<a class=\"nav-link\" href=\"FrontController?taget=logout\">LOGUD</a>");
+                       }
+                    %>
+                    </li>
+
+                    <li>
+                        <%
+                            user = (User) session.getServletContext().getAttribute("user");
+                            if (user != null) {
+                                if (user.getRole().equals("seller")) {
+                                    out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=seller\">SÆLGER</a>");
+                                }
+                                else if (user.getRole().equals("customer")) {
+                                    out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=customer\">KUNDE</a>");
+                                }
+                            }
+                        %>
                     </li>
                 </ul>
             </nav>
