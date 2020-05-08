@@ -4,7 +4,6 @@
 
 
 <div class="col-md-8 offset-md-2 info">
-    ${requestScope.message}
     <h1 class="text-center">VELKOMMEN</h1>
     <p class="text-center">
         Velkommen til Fog Trælast & Byggecenter. Hos os kan du designe din egen carport som passer perfekt til dit hus.

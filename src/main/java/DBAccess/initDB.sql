@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `fogcarport` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `fogcarport`;
 USE `fogcarport`;
 -- MySQL dump 10.13  Distrib 8.0.18, for macos10.14 (x86_64)
 --
@@ -22,8 +22,6 @@ USE `fogcarport`;
 --
 
 DROP TABLE IF EXISTS `carport_materials`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `carport_materials` (
   `material_id` int(11) NOT NULL AUTO_INCREMENT,
   `material_name` varchar(45) NOT NULL DEFAULT 'DEFAULT CHARSET=utf8',
@@ -31,8 +29,7 @@ CREATE TABLE `carport_materials` (
   `width` double NOT NULL,
   `length` double NOT NULL,
   PRIMARY KEY (`material_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+);
 
 --
 -- Dumping data for table `carport_materials`
@@ -40,35 +37,79 @@ CREATE TABLE `carport_materials` (
 
 LOCK TABLES `carport_materials` WRITE;
 /*!40000 ALTER TABLE `carport_materials` DISABLE KEYS */;
-INSERT INTO `carport_materials` VALUES (1,'Egetræsbrædder',14, 0.15, 3),(2,'Bøgetræsplade',12, 0.15, 3),(3,'Plastiktræ',10, 0.15, 3);
+INSERT INTO `carport_materials` VALUES (1,'Egetræsbrædder',14,0.15,3),(2,'Bøgetræsplade',12,0.15,3),(3,'Plastiktræ',10,0.15,3);
 /*!40000 ALTER TABLE `carport_materials` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `customer_calcs`
+-- Table structure for table `customer_order`
 --
 
-DROP TABLE IF EXISTS `customer_calcs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `customer_calcs` (
-  `customer_calcs_id` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `customer_order`;
+CREATE TABLE `customer_order` (
+  `co_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `cp_length` int(11) NOT NULL,
   `cp_width` int(11) NOT NULL,
-  `roof_angle` int(11) DEFAULT NULL,
-  `shed_length` int(11) DEFAULT NULL,
-  `shed_width` int(11) DEFAULT NULL,
-  PRIMARY KEY (`customer_calcs_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `roof_mats` int(11) NOT NULL,
+  `shed_mats` int(11) NOT NULL,
+  `cp_mats` int(11) NOT NULL,
+  `cladding_sides` int(11) NOT NULL,
+  `roof_angle` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  PRIMARY KEY (`co_id`),
+  KEY `fk_customer_idx` (`user_id`),
+  KEY `fk_order_idx` (`order_id`),
+  KEY `shed_material` (`shed_mats`),
+  KEY `fk_cp_idx` (`cp_mats`),
+  KEY `fk_roof_idx` (`roof_mats`),
+  CONSTRAINT `fk_cp` FOREIGN KEY (`cp_mats`) REFERENCES `carport_materials` (`material_id`),
+  CONSTRAINT `fk_customer` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `fk_order` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_roof` FOREIGN KEY (`roof_mats`) REFERENCES `roof_materials` (`material_id`)
+);
 
 --
--- Dumping data for table `customer_calcs`
+-- Dumping data for table `customer_order`
 --
 
-LOCK TABLES `customer_calcs` WRITE;
-/*!40000 ALTER TABLE `customer_calcs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `customer_calcs` ENABLE KEYS */;
+LOCK TABLES `customer_order` WRITE;
+/*!40000 ALTER TABLE `customer_order` DISABLE KEYS */;
+INSERT INTO `customer_order` VALUES (1,1,1,320,200,1,1,1,2,10,2000),(3,1,1,320,200,1,1,1,2,10,2000),(4,1,1,320,200,1,1,1,2,10,2000),(5,1,1,320,200,1,1,1,2,10,2000);
+/*!40000 ALTER TABLE `customer_order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+
+CREATE TABLE `order` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `rafters` int(11) NOT NULL,
+  `cladding` int(11) NOT NULL,
+  `posts` int(11) NOT NULL,
+  `screws` int(11) NOT NULL,
+  `fascia` int(11) NOT NULL,
+  `brackets` int(11) NOT NULL,
+  `straps` int(11) NOT NULL,
+  `doorknobs` int(11) NOT NULL,
+  `doorhinges` int(11) NOT NULL,
+  PRIMARY KEY (`order_id`),
+  KEY `user_id_fk_idx` (`user_id`)
+) ;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+INSERT INTO `order` VALUES (1,2,20,24,6,400,4,4,4,1,2),(2,0,5,16,6,400,4,10,4,1,2);
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -76,16 +117,14 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `products`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+
 CREATE TABLE `products` (
   `productID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `uom` varchar(45) NOT NULL,
   `price` double NOT NULL,
   PRIMARY KEY (`productID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ;
 
 --
 -- Dumping data for table `products`
@@ -102,8 +141,7 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `roof_materials`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+
 CREATE TABLE `roof_materials` (
   `material_id` int(11) NOT NULL AUTO_INCREMENT,
   `material_name` varchar(45) NOT NULL DEFAULT 'DEFAULT CHARSET=utf8',
@@ -111,8 +149,7 @@ CREATE TABLE `roof_materials` (
   `width` double NOT NULL,
   `length` double NOT NULL,
   PRIMARY KEY (`material_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ;
 
 --
 -- Dumping data for table `roof_materials`
@@ -122,6 +159,30 @@ LOCK TABLES `roof_materials` WRITE;
 /*!40000 ALTER TABLE `roof_materials` DISABLE KEYS */;
 INSERT INTO `roof_materials` VALUES (1,'Tagplader Plastmo blåtonet',250,1.06,2.4),(2,'Betontagsten - rød',450,1,2),(6,'Betontagsten - teglrød ',450,1,2),(7,'Betontagsten - rødbrun',450,1,2),(8,'Betontagsten - sort',450,1,2),(9,'Eternittag B6 - grå',350,1.5,2.5),(10,'Eternittag B6 - sort',350,1.5,2.5),(11,'Eternittag B6 - mokkabrun',350,1.5,2.5),(12,'Eternittag B6 - rødbrun',350,1.5,2.5),(13,'Eternittag B6 - teglrød',350,1.5,2.5),(14,'Eternittag B7 - grå',400,2,3),(15,'Eternittag B7 - sort',400,2,3),(16,'Eternittag B7 - mokkabrun',400,2,3),(17,'Eternittag B7 - rødbrun',400,2,3),(18,'Eternittag B7 - teglrød ',400,2,3),(19,'Eternittag B7 - rødflammet ',400,2,3);
 /*!40000 ALTER TABLE `roof_materials` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(90) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `role` varchar(20) NOT NULL DEFAULT 'customer',
+  PRIMARY KEY (`user_id`)
+) ;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'admin','admin','seller'),(2,'user','user','customer');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -133,4 +194,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-23  9:12:56
+-- Dump completed on 2020-05-08 11:23:40

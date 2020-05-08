@@ -142,19 +142,18 @@ public class DataMapper {
      * @param user GetCustomerDesign is used to get the saved user designs from the DB, we are using a user as parameter to get the logged in useres id.
      * @return We're returning an object of a customer order
      */
-    public static CustomerOrder getCustomerDesign(User user) {
-       CustomerOrder co = null;
+    public static List<CustomerOrder> getCustomerDesign(User user) {
+        List<CustomerOrder> customerOrderList= new ArrayList();
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM fogcarport.customer_order WHERE user_id = (?)";
+            String SQL = "SELECT * FROM fogcarport.customer_order WHERE user_id = " + user.getId();
             PreparedStatement ps = con.prepareStatement( SQL );
-            ps.setInt( 1, user.getId() );
             ResultSet rs = ps.executeQuery(SQL);
 
             while (rs.next()) {
-                String roofMatName = rs.getString("roof_mats");
-                String cpMatName = rs.getString("cp_mats");
-                String shedMatName = rs.getString("shed_mats");
+                int roofMatId = rs.getInt("roof_mats");
+                int cpMatId = rs.getInt("cp_mats");
+                int shedMatId = rs.getInt("shed_mats");
                 int customerOrderId = rs.getInt("co_id");
                 int orderId = rs.getInt("order_id");
                 int userId = rs.getInt("user_id");
@@ -163,11 +162,38 @@ public class DataMapper {
                 int claddingSides = rs.getInt("cladding_sides");
                 int roofAngle = rs.getInt("roof_angle");
                 int price = rs.getInt("price");
-                co = new CustomerOrder(roofMatName, cpMatName, shedMatName, customerOrderId, orderId, userId, cpLength, cpWidth, claddingSides, roofAngle, price);
+                CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, customerOrderId, orderId, userId, cpLength, cpWidth, claddingSides, roofAngle, price);
+                customerOrderList.add(co);
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex);
         }
-        return co;
+        return customerOrderList;
     }
+
+    public static void createCustomerDesign(CustomerOrder customerOrder){
+        try {
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO fogcarport.customer_order (order_id, user_id, cp_length, cp_width, " +
+                    "roof_mats, shed_mats, cp_mats, cladding_sides, roof_angle, price) " +
+                    "VALUES (?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, customerOrder.getOrderId());
+            ps.setInt(2, customerOrder.getUserId());
+            ps.setInt(3, customerOrder.getCp_length());
+            ps.setInt(4, customerOrder.getCp_width());
+            ps.setInt(5, customerOrder.getRoofMatId());
+            ps.setInt(6, customerOrder.getShedMatId());
+            ps.setInt(7, customerOrder.getCpMatId());
+            ps.setInt(8, customerOrder.getCladdingSides());
+            ps.setInt(9, customerOrder.getRoofAngle());
+            ps.setInt(10, customerOrder.getPrice());
+            ps.executeUpdate();
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println("There was a error creating the customerOrder in the database");
+        }
+
+    }
+
+
 }

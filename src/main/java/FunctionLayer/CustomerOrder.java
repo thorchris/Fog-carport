@@ -1,13 +1,13 @@
 package FunctionLayer;
 
 public class CustomerOrder {
-    String roofMatName, cpMatName, shedMatName;
-    int customerOrderId, orderId, userId, cp_length, cp_width, claddingSides, roofAngle, price;
 
-    public CustomerOrder(String roofMatName, String cpMatName, String shedMatName, int customerOrderId, int orderId, int userId, int cp_length, int cp_width, int claddingSides, int roofAngle, int price) {
-        this.roofMatName = roofMatName;
-        this.cpMatName = cpMatName;
-        this.shedMatName = shedMatName;
+    int customerOrderId, orderId, userId, cp_length, cp_width, claddingSides, roofAngle, price,roofMatId, cpMatId, shedMatId;;
+
+    public CustomerOrder(int roofMatId, int cpMatId, int shedMatId, int customerOrderId, int orderId, int userId, int cp_length, int cp_width, int claddingSides, int roofAngle, int price) {
+        this.roofMatId = roofMatId;
+        this.cpMatId = cpMatId;
+        this.shedMatId = shedMatId;
         this.customerOrderId = customerOrderId;
         this.orderId = orderId;
         this.userId = userId;
@@ -18,28 +18,28 @@ public class CustomerOrder {
         this.price = price;
     }
 
-    public String getRoofMatName() {
-        return roofMatName;
+    public int getRoofMatId() {
+        return roofMatId;
     }
 
-    public void setRoofMatName(String roofMatName) {
-        this.roofMatName = roofMatName;
+    public void setRoofMatId(int roofMatId) {
+        this.roofMatId = roofMatId;
     }
 
-    public String getCpMatName() {
-        return cpMatName;
+    public int getCpMatId() {
+        return cpMatId;
     }
 
-    public void setCpMatName(String cpMatName) {
-        this.cpMatName = cpMatName;
+    public void setCpMatId(int cpMatId) {
+        this.cpMatId = cpMatId;
     }
 
-    public String getShedMatName() {
-        return shedMatName;
+    public int getShedMatId() {
+        return shedMatId;
     }
 
-    public void setShedMatName(String shedMatName) {
-        this.shedMatName = shedMatName;
+    public void setShedMatId(int shedMatId) {
+        this.shedMatId = shedMatId;
     }
 
     public int getCustomerOrderId() {
