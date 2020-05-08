@@ -136,5 +136,37 @@ public class DataMapper {
         }
         return CarportItemList;
     }
-    
+
+    /**
+     *
+     * @param user GetCustomerDesign is used to get the saved user designs from the DB, we are using a user as parameter to get the logged in useres id.
+     * @return We're returning an object of a customer order
+     */
+    public static CustomerOrder getCustomerDesign(User user) {
+       CustomerOrder co = null;
+        try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM fogcarport.customer_order WHERE user_id = ?";
+            PreparedStatement ps = con.prepareStatement( SQL );
+            ps.setInt( 1, user.getId() );
+            ResultSet rs = ps.executeQuery(SQL);
+            while (rs.next()) {
+                String roofMatName = rs.getString("roof_mats");
+                String cpMatName = rs.getString("cp_mats");
+                String shedMatName = rs.getString("shed_mats");
+                int customerOrderId = rs.getInt("co_id");
+                int orderId = rs.getInt("order_id");
+                int userId = rs.getInt("user_id");
+                int cpLength = rs.getInt("cp_length");
+                int cpWidth = rs.getInt("cp_width");
+                int claddingSides = rs.getInt("cladding_sides");
+                int roofAngle = rs.getInt("roof_angle");
+                int price = rs.getInt("price");
+                co = new CustomerOrder(roofMatName, cpMatName, shedMatName, customerOrderId, orderId, userId, cpLength, cpWidth, claddingSides, roofAngle, price);
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex);
+        }
+        return co;
+    }
 }
