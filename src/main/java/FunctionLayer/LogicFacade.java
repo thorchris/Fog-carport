@@ -42,13 +42,19 @@ public class LogicFacade {
         return DataMapper.getOrderList();
     }
 
-    public static CustomerOrder getCustomerDesign(User user) {
+    public static List<CustomerOrder> getCustomerDesign(User user) {
         return DataMapper.getCustomerDesign(user);
+    }
+
+    public static void createCustomerDesign(CustomerOrder customerOrder){
+        DataMapper.createCustomerDesign(customerOrder);
     }
 
     public static void main(String[] args) {
         User user = new User("user", "user");
         user.setId(1);
-        System.out.println(LogicFacade.getCustomerDesign(user));
+        List<CustomerOrder> customerOrder = LogicFacade.getCustomerDesign(user);
+        CustomerOrder customerOrderEx = customerOrder.get(0);
+        LogicFacade.createCustomerDesign(customerOrderEx);
     }
 }
