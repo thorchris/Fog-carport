@@ -32,14 +32,9 @@
                     </tr>
                     </thead>
                     <tbody>
-
                     <tr>
-                        <td><c:out value="${sessionScope.customerOrder.customerOrderId}"/></td>
-                        <td><c:out value="${sessionScope.customerOrder.userId}"/></td>
-                        <td><c:out value="${sessionScope.customerOrder.orderId}"/></td>
-                        <td><c:out value="${sessionScope.customerOrder.cp_length}"/></td>
-                        <td><c:out value="${sessionScope.customerOrder.cp_width}"/></td>
-
+                        <c:forEach var="customerOrder" items="${sessionScope.customerOrderList}">
+                    <tr>
 
 
                     </tr>

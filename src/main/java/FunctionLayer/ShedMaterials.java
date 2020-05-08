@@ -3,9 +3,10 @@ package FunctionLayer;
 public class ShedMaterials {
 
     private double woodWith, pricePrM2;
+    private int materialID;
 
     public ShedMaterials() {
-        this.woodWith = 0.15; this.pricePrM2 = 25;  //Fog uses a standard woodtype that always is 0.15m and a price off 25
+        this.woodWith = 0.15; this.pricePrM2 = 25;  this.materialID = 1; //Fog uses a standard woodtype that always is 0.15m and a price off 25
     }
 
     public double getWoodWith() {
@@ -26,5 +27,9 @@ public class ShedMaterials {
                 "woodWith=" + woodWith +
                 ", pricePrM2=" + pricePrM2 +
                 '}';
+    }
+
+    public int getMaterialID() {
+        return materialID;
     }
 }

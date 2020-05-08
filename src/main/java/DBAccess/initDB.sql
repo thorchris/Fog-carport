@@ -1,4 +1,4 @@
-drop schema if exists `fogcarport`; 
+drop schema if exists `fogcarport`;
 
 CREATE DATABASE IF NOT EXISTS `fogcarport`;
 USE `fogcarport`;
