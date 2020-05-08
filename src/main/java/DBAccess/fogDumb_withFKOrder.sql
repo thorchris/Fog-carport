@@ -163,7 +163,7 @@ DROP TABLE IF EXISTS `customer_order`;
 CREATE TABLE `customer_order` (
   `co_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `cp_length` int(11) NOT NULL,
   `cp_width` int(11) NOT NULL,
   `roof_mats` varchar(45) NOT NULL,
@@ -178,10 +178,10 @@ CREATE TABLE `customer_order` (
   UNIQUE KEY `roof_mats_UNIQUE` (`roof_mats`),
   KEY `carport_materials_idx` (`cp_mats`),
   KEY `roof_materials_idx` (`roof_mats`),
-  KEY `fk_customer_idx` (`customer_id`),
+  KEY `fk_customer_idx` (`user_id`),
   KEY `fk_order_idx` (`order_id`),
   CONSTRAINT `fk_cp` FOREIGN KEY (`cp_mats`) REFERENCES `carport_materials` (`material_name`),
-  CONSTRAINT `fk_customer` FOREIGN KEY (`customer_id`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `fk_customer` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   CONSTRAINT `fk_order` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_roof` FOREIGN KEY (`roof_mats`) REFERENCES `roof_materials` (`material_name`)
 );

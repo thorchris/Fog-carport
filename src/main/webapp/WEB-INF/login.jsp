@@ -21,6 +21,7 @@
                             <input type="submit" class="btn btn-primary btn-style" value="Login">
                             <a href="FrontController?taget=redirect&modtagerside=register" class="btn btn-primary btn-style ml-1">Opret Bruger</a>
                         </div>
+
                     </form>
                 </td>
                 </tr>
