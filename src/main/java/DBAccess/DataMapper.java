@@ -146,10 +146,11 @@ public class DataMapper {
        CustomerOrder co = null;
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM fogcarport.customer_order WHERE user_id = ?";
+            String SQL = "SELECT * FROM fogcarport.customer_order WHERE user_id = (?)";
             PreparedStatement ps = con.prepareStatement( SQL );
             ps.setInt( 1, user.getId() );
             ResultSet rs = ps.executeQuery(SQL);
+
             while (rs.next()) {
                 String roofMatName = rs.getString("roof_mats");
                 String cpMatName = rs.getString("cp_mats");
