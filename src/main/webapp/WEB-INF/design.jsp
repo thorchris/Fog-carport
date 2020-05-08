@@ -164,7 +164,7 @@
     <input type="hidden" name="taget" value="createCarport"/>
 
 </form>
-${sessionScope.fullCarport.toString()}
+
 
 <script src="JS/javascript.js"></script>
 
