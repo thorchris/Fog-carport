@@ -1,3 +1,5 @@
+drop schema if exists `fogcarport`; 
+
 CREATE DATABASE IF NOT EXISTS `fogcarport`;
 USE `fogcarport`;
 -- MySQL dump 10.13  Distrib 8.0.18, for macos10.14 (x86_64)
