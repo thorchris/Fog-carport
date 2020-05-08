@@ -4,11 +4,11 @@ public class CustomerOrder {
 
     int customerOrderId, orderId, userId, cp_length, cp_width, claddingSides, roofAngle, price,roofMatId, cpMatId, shedMatId;;
 
-    public CustomerOrder(int roofMatId, int cpMatId, int shedMatId, int customerOrderId, int orderId, int userId, int cp_length, int cp_width, int claddingSides, int roofAngle, int price) {
+    public CustomerOrder(int roofMatId, int cpMatId, int shedMatId, int orderId, int userId, int cp_length, int cp_width, int claddingSides, int roofAngle, int price) {
         this.roofMatId = roofMatId;
         this.cpMatId = cpMatId;
         this.shedMatId = shedMatId;
-        this.customerOrderId = customerOrderId;
+
         this.orderId = orderId;
         this.userId = userId;
         this.cp_length = cp_length;

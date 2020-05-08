@@ -162,7 +162,8 @@ public class DataMapper {
                 int claddingSides = rs.getInt("cladding_sides");
                 int roofAngle = rs.getInt("roof_angle");
                 int price = rs.getInt("price");
-                CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, customerOrderId, orderId, userId, cpLength, cpWidth, claddingSides, roofAngle, price);
+                CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, orderId, userId, cpLength, cpWidth, claddingSides, roofAngle, price);
+                co.setCustomerOrderId(customerOrderId);
                 customerOrderList.add(co);
             }
         } catch (ClassNotFoundException | SQLException ex) {
