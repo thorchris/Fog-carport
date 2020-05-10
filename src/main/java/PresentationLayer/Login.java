@@ -36,8 +36,8 @@ public class Login extends Command {
         request.setAttribute("message","Velkommen," + user.getEmail() + " du er nu logget ind ");
 
         switch (role) {
-            case "seller":
-                return "seller";
+            case "employee":
+                return "employee";
             default:
                 return "../index";
         }
