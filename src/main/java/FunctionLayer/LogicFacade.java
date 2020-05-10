@@ -42,8 +42,21 @@ public class LogicFacade {
         return DataMapper.getOrderList();
     }
 
+    public static List<User> getCustomerList(){
+        return UserMapper.getCustomerList();
+    }
+
     public static List<CustomerOrder> getCustomerDesign(User user) {
         return DataMapper.getCustomerDesign(user);
+    }
+
+
+    public static int getUserId(String email){return UserMapper.getUserId(email);}
+
+
+    // TIL editEmployee.jsp
+    public static List<CustomerOrder> getCustomerDesignOrder(int customerId) {
+        return DataMapper.getCustomerDesignOrder(customerId);
     }
 
     public static void createCustomerDesign(CustomerOrder customerOrder){

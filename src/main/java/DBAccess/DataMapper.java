@@ -197,4 +197,35 @@ public class DataMapper {
     }
 
 
+    public static List<CustomerOrder> getCustomerDesignOrder(int customerId){
+        List<CustomerOrder> customerOrderList= new ArrayList();
+        try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM fogcarport.customer_order WHERE user_id = " + customerId;
+            PreparedStatement ps = con.prepareStatement( SQL );
+            ResultSet rs = ps.executeQuery(SQL);
+
+            while (rs.next()) {
+                int roofMatId = rs.getInt("roof_mats");
+                int cpMatId = rs.getInt("cp_mats");
+                int shedMatId = rs.getInt("shed_mats");
+                int customerOrderId = rs.getInt("co_id");
+                int orderId = rs.getInt("order_id");
+                int userId = rs.getInt("user_id");
+                int cpLength = rs.getInt("cp_length");
+                int cpWidth = rs.getInt("cp_width");
+                int claddingSides = rs.getInt("cladding_sides");
+                int roofAngle = rs.getInt("roof_angle");
+                int price = rs.getInt("price");
+                CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, orderId, userId, cpLength, cpWidth, claddingSides, roofAngle, price);
+                co.setCustomerOrderId(customerOrderId);
+                customerOrderList.add(co);
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex);
+        }
+        return customerOrderList;
+    }
+
+
 }
