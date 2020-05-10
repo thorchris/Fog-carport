@@ -18,6 +18,6 @@ public class FindCustomerId extends Command {
         request.setAttribute("message", message);
 
 
-        return "editSeller";
+        return "editEmployee";
     }
 }

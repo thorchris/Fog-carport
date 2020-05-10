@@ -28,6 +28,6 @@ public class FindCustomerOrder extends Command{
         request.setAttribute("customerOrder",customerOrder);
         request.setAttribute("message",message);
 
-        return "editSeller";
+        return "editEmployee";
     }
 }
