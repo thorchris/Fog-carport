@@ -1,7 +1,15 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="FunctionLayer.User" %>
+<%@ page import="FunctionLayer.LogicFacade" %>
+<%@ page import="FunctionLayer.CustomerOrder" %>
+<%@ page import="java.util.List" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@include file="../include/header.inc" %>
 
+<%
+    List<CustomerOrder> customerOrderList = LogicFacade.getCustomerDesignOrder(((User)session.getAttribute("user")).getId());
+    session.setAttribute("customerOrderList", customerOrderList);
+%>
 
 
 <div class="container col-lg-12">
@@ -28,7 +36,6 @@
                         <th scope="col">Carport-skelet materiale</th>
                         <th scope="col">Tag vinkel</th>
                         <th scope="col">Pris</th>
-
                     </tr>
                     </thead>
                     <tbody>
@@ -36,10 +43,21 @@
                         <c:forEach var="customerOrder" items="${sessionScope.customerOrderList}">
                     <tr>
 
-
+                        <td><c:out value="${customerOrder.customerOrderId}"/></td>
+                        <td><c:out value="${customerOrder.userId}"/></td>
+                        <td><c:out value="${customerOrder.orderId}"/></td>
+                        <td><c:out value="${customerOrder.cp_length}"/></td>
+                        <td><c:out value="${customerOrder.cp_width}"/></td>
+                        <td><c:out value="${customerOrder.claddingSides}"/></td>
+                        <td><c:out value="${customerOrder.roofMatId}"/></td>
+                        <td><c:out value="${customerOrder.shedMatId}"/></td>
+                        <td><c:out value="${customerOrder.cpMatId}"/></td>
+                        <td><c:out value="${customerOrder.roofAngle}"/></td>
+                        <td><c:out value="${customerOrder.price}"/></td>
                     </tr>
                     </c:forEach>
                     </tr>
+
                     </tbody>
                 </table>
             </div>
