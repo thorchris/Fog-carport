@@ -11,7 +11,8 @@
     session.setAttribute("customerOrderList", customerOrderList);
 %>
 
-
+<form action="FrontController" method="post">
+    <input type="hidden" name="taget" value="openSvgDesign">
 <div class="container col-lg-12">
     <div class="row">
         <div class="col-lg-1"></div>
@@ -20,11 +21,10 @@
             <p class="text-center">
                 ${requestScope.message}
             </p>
-
-            <div class="table-wrap">
                 <table class="table table-striped table-dark table-bordered table.responsive ">
                     <thead>
                     <tr>
+                        <th scope="col">Se design</th>
                         <th scope="col">Bestillings ID</th>
                         <th scope="col">Bruger ID</th>
                         <th scope="col">Order ID</th>
@@ -42,7 +42,7 @@
                     <tr>
                         <c:forEach var="customerOrder" items="${sessionScope.customerOrderList}">
                     <tr>
-
+                        <td><button class="btn btn-primary btn-style openSvgDesign" name="openSvgDesign">Åben Design</button></td>
                         <td><c:out value="${customerOrder.customerOrderId}"/></td>
                         <td><c:out value="${customerOrder.userId}"/></td>
                         <td><c:out value="${customerOrder.orderId}"/></td>
@@ -57,14 +57,13 @@
                     </tr>
                     </c:forEach>
                     </tr>
-
                     </tbody>
                 </table>
-            </div>
         </div>
         <div class="col-lg-1"></div>
     </div> <!-- ROW -->
 </div>
+</form>
 
 
 
