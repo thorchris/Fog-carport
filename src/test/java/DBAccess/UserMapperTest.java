@@ -17,7 +17,7 @@ public class UserMapperTest {
 
     private static Connection testConnection;
     private static String USER = "root";
-    private static String USERPW = "kode";
+    private static String USERPW = "H7114bhs";
     private static String DBNAME = "fogcarport_test?serverTimezone=CET&useSSL=false";
     private static String HOST = "localhost";
 
