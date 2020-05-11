@@ -18,7 +18,7 @@
 
 <div class="container col-lg-12">
     <div class="row">
-        <div class="col-lg-7">
+        <form class="col-lg-7">
             <h1 class="headerseller"> Kunde design </h1>
             <table class="table table-striped table-dark table-bordered table.responsive">
                 <thead>
@@ -59,10 +59,9 @@
             </table>
 
             <div class="mt-4">
+                <div class="form-row">
                 <form action="FrontController" method="post">
                     <input type="hidden" name="taget" value="findCustomerOrder"/>
-                    <input type="hidden" name="taget" value="getCustomerOrder"/>
-                    <div class="form-row">
                         <div>
                             <input type="text" name="customerEmail" class="form-control"
                                    placeholder="Indtast Kunde Email">
@@ -70,17 +69,19 @@
                                 Find kunde design
                             </button>
                         </div>
+                </form>
 
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="taget" value="getCustomerOrder"/>
                         <div>
                             <input type="text" class="form-control ml-2 "
                                    placeholder="Indtast ordre ID" name="orderId">
-
                             <button type="submit"class="btn btn-primary btn-style mt-2 ml-2"  name="getCustomerOrder" >
                                 Se kunde ordre
                             </button>
-
                         </div>
                     </div>
+            </div>
                 </form>
             </div>
             <div class="alert alert-success mt-2 <c:if test = "${empty requestScope.message}">d-none</c:if> "
@@ -88,7 +89,6 @@
                 ${requestScope.message}
             </div>
 
-        </div>
         <div class="col-lg-4">
             <h1 class="headerseller"> Kunde liste </h1>
             <table class="table table-striped table-dark table-bordered table.responsive">
@@ -117,6 +117,5 @@
         </div>
         <div class="col-lg-1"></div>
     </div> <!-- ROW -->
-</div>
 
 <%@include file="../include/footer.inc" %>
