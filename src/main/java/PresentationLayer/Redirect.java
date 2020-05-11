@@ -19,9 +19,9 @@ public class Redirect extends Command {
             case "design":
                 return "design";
 
-            case "seller":
+            case "employee":
                 // liste med alle kundebestillinger new OrderList().execute(request, response);
-                return "seller";
+                return "employee";
 
             case "contact":
                 return "contact";
@@ -34,6 +34,9 @@ public class Redirect extends Command {
 
             case "login":
                 return "login";
+
+            case "editEmployee":
+                return "editEmployee";
 
             default:
                 return "index";
