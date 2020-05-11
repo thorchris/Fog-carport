@@ -1,6 +1,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.OrderException;
 
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ abstract class Command {
         commands.put("findCustomerOrder", new FindCustomerOrder());
         commands.put("createOrder", new CreateOrder());
         commands.put("manageCommand", new ManageCommand());
+        commands.put("getCustomerOrder", new GetCustomerOrder());
     }
 
     static Command from( HttpServletRequest request ) {
@@ -31,7 +33,7 @@ abstract class Command {
         return commands.getOrDefault(TagetName, new UnknownCommand() );   // unknowncommand er default.
     }
 
-    abstract String execute( HttpServletRequest request, HttpServletResponse response ) 
-            throws LoginSampleException;
+    abstract String execute( HttpServletRequest request, HttpServletResponse response )
+            throws LoginSampleException, OrderException;
 
 }

@@ -67,4 +67,8 @@ public class LogicFacade {
         return DataMapper.getUserOrderId(user);
     }
 
+    public static Order getCustomerOrder(int orderId) throws OrderException {
+        return DataMapper.getCustomerOrder(orderId);
+    }
+
 }

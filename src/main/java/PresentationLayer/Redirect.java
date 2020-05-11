@@ -38,6 +38,9 @@ public class Redirect extends Command {
             case "editEmployee":
                 return "editEmployee";
 
+            case "orderEmployee":
+                return "orderEmployee";
+
             case "customer":
                 return "customer";
 
