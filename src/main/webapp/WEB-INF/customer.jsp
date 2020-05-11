@@ -42,7 +42,6 @@
                     <tr>
                         <c:forEach var="customerOrder" items="${sessionScope.customerOrderList}">
                     <tr>
-
                         <td><c:out value="${customerOrder.customerOrderId}"/></td>
                         <td><c:out value="${customerOrder.userId}"/></td>
                         <td><c:out value="${customerOrder.orderId}"/></td>
