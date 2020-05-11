@@ -1,7 +1,23 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="PresentationLayer.GetCustomerOrder" %>
+<%@ page import="FunctionLayer.CustomerOrder" %>
+<%@ page import="java.util.List" %>
+<%@ page import="FunctionLayer.GenerateLists" %>
+<%@ page import="FunctionLayer.User" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../include/header.inc" %>
 
+<%!
+    @Override
+    public void jspInit() {
+        GenerateLists.initCustomerOrderList();
+    }
+%>
+<%
+    if (session.getAttribute("customerOrderList") == null) {
+        session.setAttribute("customerOrderList", GenerateLists.getCustomerOrderList());
+    }
+%>
 
 
 <div class="container col-lg-12">
@@ -35,11 +51,22 @@
                     <tr>
                         <c:forEach var="customerOrder" items="${sessionScope.customerOrderList}">
                     <tr>
-
-
+                        <td><c:out value="${customerOrder.customerOrderId}"/></td>
+                        <td><c:out value="${customerOrder.userId}"/></td>
+                        <td><c:out value="${customerOrder.orderId}"/></td>
+                        <td><c:out value="${customerOrder.cp_length}"/></td>
+                        <td><c:out value="${customerOrder.cp_width}"/></td>
+                        <td><c:out value="${customerOrder.claddingSides}"/></td>
+                        <td><c:out value="${customerOrder.roofMatId}"/></td>
+                        <td><c:out value="${customerOrder.shedMatId}"/></td>
+                        <td><c:out value="${customerOrder.cpMatId}"/></td>
+                        <td><c:out value="${customerOrder.roofAngle}"/></td>
+                        <td><c:out value="${customerOrder.price}"/></td>
                     </tr>
                     </c:forEach>
                     </tr>
+
+
                     </tbody>
                 </table>
             </div>
@@ -47,9 +74,6 @@
         <div class="col-lg-1"></div>
     </div> <!-- ROW -->
 </div>
-
-
-
 
 
 
