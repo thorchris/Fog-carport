@@ -63,10 +63,8 @@ public class LogicFacade {
         DataMapper.createCustomerDesign(customerOrder);
     }
 
-    public static void main(String[] args) {
-        User user = new User("user", "user");
-        user.setId(1);
-        List<CustomerOrder> customerOrder = LogicFacade.getCustomerDesign(user);
-        System.out.println(customerOrder);
+    public static int getUserOrderId(User user) {
+        return DataMapper.getUserOrderId(user);
     }
+
 }
