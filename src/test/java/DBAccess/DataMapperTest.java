@@ -22,7 +22,7 @@ public class DataMapperTest {
 
     private static Connection testConnection;
     private static String USER = "root";
-    private static String USERPW = "kode";
+    private static String USERPW = "H7114bhs";
     private static String DBNAME = "fogcarport_test?serverTimezone=CET&useSSL=false";
     private static String HOST = "localhost";
 
@@ -38,6 +38,15 @@ public class DataMapperTest {
                 // Make mappers use test
                 Connector.setConnection(testConnection);
             }
+        } catch (ClassNotFoundException | SQLException ex) {
+            testConnection = null;
+            System.out.println("Could not open connection to database: " + ex.getMessage());
+        }
+    }
+
+        @Before
+                public void beforeEachTest(){
+
             // reset test database
             try (Statement stmt = testConnection.createStatement()) {
                 stmt.execute("DROP TABLE if EXISTS carport_materials");
@@ -59,15 +68,11 @@ public class DataMapperTest {
                 stmt.execute( "DROP TABLE if EXISTS users" );
                 stmt.execute( "CREATE TABLE users LIKE fogcarport.users" );
                 stmt.execute( "INSERT INTO users SELECT * FROM fogcarport.users" );
+            } catch (SQLException ex) {
+                System.out.println("Could not open connection to database: " + ex.getMessage());
             }
 
-        } catch (ClassNotFoundException | SQLException ex) {
-            testConnection = null;
-            System.out.println("Could not open connection to database: " + ex.getMessage());
         }
-
-
-    }
 
 
     //1	Egetræsbrædder	14	0.15	3
