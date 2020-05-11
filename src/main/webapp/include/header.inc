@@ -48,7 +48,7 @@
                             user = (User) session.getAttribute("user");
                             if (user != null) {
                                 if (user.getRole().equals("employee")) {
-                                    out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=employee\">SÆLGER</a>");
+                                    out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=employee\">MEDARBEJDER SIDE</a>");
                                 }
                                 else if (user.getRole().equals("customer")) {
                                     out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=customer\">MIN SIDE</a>");
