@@ -17,15 +17,13 @@
 
 <div class="container col-lg-12">
     <div class="row">
-        <div class="col-lg-7">
+        <div class="col-lg-8">
             <h1 class="headerseller"> Kunde design </h1>
             <table class="table table-striped table-dark table-bordered table.responsive">
                 <thead>
                 <tr>
-                    <th scope="col"></th>
                     <th scope="col">Kunde Order ID</th>
                     <th scope="col">Order ID</th>
-                    <th scope="col">Kunde ID</th>
                     <th scope="col">Carport Længde</th>
                     <th scope="col">Carport Bredde</th>
                     <th scope="col">Tag ID</th>
@@ -43,7 +41,6 @@
                 <tr>
                     <td><c:out value="${customerDesign.customerOrderId}"/></td>
                     <td><c:out value="${customerDesign.orderId}"/></td>
-                    <td><c:out value="${customerDesign.userId}"/></td>
                     <td><c:out value="${customerDesign.cp_length}"/></td>
                     <td><c:out value="${customerDesign.cp_width}"/></td>
                     <td><c:out value="${customerDesign.roofMatId}"/></td>
@@ -77,7 +74,7 @@
             </div>
 
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <h1 class="headerseller"> Kunde liste </h1>
                 <table class="table table-striped table-dark table-bordered table.responsive">
                     <thead>
@@ -85,7 +82,6 @@
                         <th scope="col">Kunde id</th>
                         <th scope="col">Email</th>
                         <th scope="col">Kodeord</th>
-                        <th scope="col">Role</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -96,7 +92,6 @@
                         <td><c:out value="${customer.id}"/></td>
                         <td><c:out value="${customer.email}"/></td>
                         <td><c:out value="${customer.password}"/></td>
-                        <td><c:out value="${customer.role}"/></td>
                     </tr>
                     </c:forEach>
                     </tr>

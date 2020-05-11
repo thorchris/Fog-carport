@@ -30,10 +30,10 @@
                         <th scope="col">Order ID</th>
                         <th scope="col">Carport længde</th>
                         <th scope="col">Carport bredde</th>
-                        <th scope="col">Antal sider med beklædning</th>
+                        <th scope="col">Beklædning sider</th>
                         <th scope="col">Tag materiale</th>
                         <th scope="col">Skur materiale</th>
-                        <th scope="col">Carport-skelet materiale</th>
+                        <th scope="col">Carport materiale</th>
                         <th scope="col">Tag vinkel</th>
                         <th scope="col">Pris</th>
                     </tr>
