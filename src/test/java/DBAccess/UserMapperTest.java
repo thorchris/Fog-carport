@@ -17,7 +17,7 @@ public class UserMapperTest {
 
     private static Connection testConnection;
     private static String USER = "root";
-    private static String USERPW = "H7114bhs";
+    private static String USERPW = "kode";
     private static String DBNAME = "fogcarport_test?serverTimezone=CET&useSSL=false";
     private static String HOST = "localhost";
 
@@ -55,7 +55,7 @@ public class UserMapperTest {
     @Test
     public void testLogin01() throws LoginSampleException {
         // Can we log in
-        User user = UserMapper.login( "test@test.dk", "kode" );
+        User user = UserMapper.login( "test", "test" );
         assertTrue( user != null );
     }
 
@@ -68,7 +68,7 @@ public class UserMapperTest {
     @Test
     public void testLogin03() throws LoginSampleException {
         // test is supposed to be a customer
-        User user = UserMapper.login( "test@test.dk", "kode" );
+        User user = UserMapper.login( "test", "test" );
         assertEquals( "customer", user.getRole() );
     }
 
@@ -76,9 +76,9 @@ public class UserMapperTest {
     public void testCreateUser01() throws LoginSampleException {
         // Can we create a new user - Notice, if login fails, this will fail
         // but so would login01, so this is OK
-        User original = new User( "test", "test");
+        User original = new User( "testperson", "test");
         UserMapper.createUser( original );
-        User retrieved = UserMapper.login( "test", "test" );
+        User retrieved = UserMapper.login( "testperson", "test" );
         assertEquals( "customer", retrieved.getRole() );
     }
 }
