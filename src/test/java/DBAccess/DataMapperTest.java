@@ -22,7 +22,7 @@ public class DataMapperTest {
 
     private static Connection testConnection;
     private static String USER = "root";
-    private static String USERPW = "H7114bhs";
+    private static String USERPW = "kode";
     private static String DBNAME = "fogcarport_test?serverTimezone=CET&useSSL=false";
     private static String HOST = "localhost";
 
@@ -127,20 +127,8 @@ public class DataMapperTest {
 
         //instantierer en ny carport med alt dataet ovenfor
         FullCarport carport = new FullCarport(carportParts, roof, shed);
-        User original = new User( "josef", "hallur");
-        original.setId(2);
+        User original = new User( "person", "kode");
         UserMapper.createUser( original );
-
-        int rafters = (int) carport.getCarportParts().getTotalRafters();
-        int cladding = (int) carport.getCarportParts().getCarportCladding();
-        int screws = (int) ((int) carport.getCarportParts().getTotalScrews() + carport.getRoof().getScrew()); ;
-        int posts = carport.getCarportParts().getTotalPosts();
-        int fascia = (int) carport.getRoof().getFascia();
-        int brackets = (int) carport.getRoof().getBracket();
-        int straps = carport.getCarportParts().getAmountOfStraps();
-        int doorKnobs = carport.getShed().getDoorKnob();
-        int doorHinges = carport.getShed().getDoorHinges();
-        int user_Id = original.getId();
 
         DataMapper.addOrder(original, carport);
 
