@@ -8,24 +8,23 @@ import java.util.List;
 
 /**
  * The purpose of LogicFacade is to...
- *
  * @author kasper
  */
 public class LogicFacade {
 
-    public static List<RoofMaterials> getRoofMaterialList() {
+    public static List<RoofMaterials> getRoofMaterialList(){
         return DataMapper.getRoofMaterialsList();
     }
 
-    public static List<CarportMaterials> getCarportMaterialList() {
+    public static List<CarportMaterials> getCarportMaterialList(){
         return DataMapper.getCarportMaterialsList();
     }
 
-    public static List<Product> getProductList() {
+    public static List<Product> getProductList(){
         return DataMapper.getProductList();
     }
 
-    public static void insertData(User user, FullCarport carport) {
+    public static void insertData(User user, FullCarport carport){
         DataMapper.addOrder(user, carport);
     }
 
@@ -39,11 +38,11 @@ public class LogicFacade {
         return UserMapper.login(email, password);
     }
 
-    public static List<Order> getOrderList() {
+    public static List<Order> getOrderList(){
         return DataMapper.getOrderList();
     }
 
-    public static List<User> getCustomerList() {
+    public static List<User> getCustomerList(){
         return UserMapper.getCustomerList();
     }
 
@@ -51,30 +50,24 @@ public class LogicFacade {
         return DataMapper.getCustomerDesign(user);
     }
 
-    public static int getUserId(String email) {
-        return UserMapper.getUserId(email);
-    }
+
+    public static int getUserId(String email){return UserMapper.getUserId(email);}
+
 
     // TIL editEmployee.jsp
     public static List<CustomerOrder> getCustomerDesignOrder(int customerId) {
         return DataMapper.getCustomerDesignOrder(customerId);
     }
 
-    public static List<CustomerOrder> getCustomerOrderList() {
-        return DataMapper.getCustomerOrderList();
-    }
-
-    public static void createCustomerDesign(CustomerOrder customerOrder) {
+    public static void createCustomerDesign(CustomerOrder customerOrder){
         DataMapper.createCustomerDesign(customerOrder);
     }
 
-    public static List<Integer> getUserOrderIdList(User user) {
-        return DataMapper.getUserOrderIdList(user);
-    }
-
-
     public static void main(String[] args) {
-
-        System.out.println(LogicFacade.getCustomerOrderList());
+        User user = new User("user", "user");
+        user.setId(1);
+        List<CustomerOrder> customerOrder = LogicFacade.getCustomerDesign(user);
+        CustomerOrder customerOrderEx = customerOrder.get(0);
+        LogicFacade.createCustomerDesign(customerOrderEx);
     }
 }
