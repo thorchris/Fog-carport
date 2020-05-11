@@ -1,6 +1,6 @@
 drop schema if exists `fogcarport`;
 
-CREATE DATABASE IF NOT EXISTS `fogcarport`;
+CREATE DATABASE  IF NOT EXISTS `fogcarport` ;
 USE `fogcarport`;
 -- MySQL dump 10.13  Distrib 8.0.18, for macos10.14 (x86_64)
 --
@@ -24,6 +24,7 @@ USE `fogcarport`;
 --
 
 DROP TABLE IF EXISTS `carport_materials`;
+
 CREATE TABLE `carport_materials` (
   `material_id` int(11) NOT NULL AUTO_INCREMENT,
   `material_name` varchar(45) NOT NULL DEFAULT 'DEFAULT CHARSET=utf8',
@@ -48,6 +49,7 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `customer_order`;
+
 CREATE TABLE `customer_order` (
   `co_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
@@ -70,7 +72,7 @@ CREATE TABLE `customer_order` (
   CONSTRAINT `fk_customer` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   CONSTRAINT `fk_order` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_roof` FOREIGN KEY (`roof_mats`) REFERENCES `roof_materials` (`material_id`)
-);
+) ;
 
 --
 -- Dumping data for table `customer_order`
@@ -78,7 +80,7 @@ CREATE TABLE `customer_order` (
 
 LOCK TABLES `customer_order` WRITE;
 /*!40000 ALTER TABLE `customer_order` DISABLE KEYS */;
-INSERT INTO `customer_order` VALUES (1,1,1,320,200,1,1,1,2,10,2000),(3,1,1,320,200,1,1,1,2,10,2000),(4,1,1,320,200,1,1,1,2,10,2000),(5,1,1,320,200,1,1,1,2,10,2000);
+INSERT INTO `customer_order` VALUES (1,1,1,320,200,1,1,1,2,10,2000),(3,1,1,320,200,1,1,1,2,10,2000),(4,1,2,320,200,1,1,1,2,10,2000),(5,1,2,320,200,1,1,1,2,10,2000),(6,1,2,320,200,1,1,1,2,10,2000);
 /*!40000 ALTER TABLE `customer_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +103,8 @@ CREATE TABLE `order` (
   `doorknobs` int(11) NOT NULL,
   `doorhinges` int(11) NOT NULL,
   PRIMARY KEY (`order_id`),
-  KEY `user_id_fk_idx` (`user_id`)
+  KEY `user_id_fk_idx` (`user_id`),
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ;
 
 --
@@ -196,4 +199,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-08 11:23:40
+-- Dump completed on 2020-05-11 11:03:26
+
