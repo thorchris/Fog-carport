@@ -22,7 +22,7 @@ public class DataMapper {
                 double materialPriceM2 = rs.getDouble("material_price_m2");
                 double width = rs.getDouble("width");
                 double length = rs.getDouble("length");
-                RoofMaterials roofMaterial = new RoofMaterials(name, id, materialPriceM2,width,length);
+                RoofMaterials roofMaterial = new RoofMaterials(name, id, materialPriceM2, width, length);
                 materialNames.add(roofMaterial);
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -44,7 +44,7 @@ public class DataMapper {
                 int id = rs.getInt("productID");
                 String uom = rs.getString("uom");
                 double price = rs.getDouble("price");
-                Product product = new Product(id,name, uom, price);
+                Product product = new Product(id, name, uom, price);
                 productsList.add(product);
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -67,7 +67,7 @@ public class DataMapper {
                 double materialPiecePrice = rs.getDouble("material_piece_price");
                 double width = rs.getDouble("width");
                 double length = rs.getDouble("length");
-                CarportMaterials carportMat = new CarportMaterials(name, id, materialPiecePrice,width,length);
+                CarportMaterials carportMat = new CarportMaterials(name, id, materialPiecePrice, width, length);
                 CarportMaterialNames.add(carportMat);
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -75,10 +75,12 @@ public class DataMapper {
         }
         return CarportMaterialNames;
     }
+
     public static void addOrder(User user, FullCarport carport) {
         int rafters = (int) carport.getCarportParts().getTotalRafters();
         int cladding = (int) carport.getCarportParts().getCarportCladding();
-        int screws = (int) ((int) carport.getCarportParts().getTotalScrews() + carport.getRoof().getScrew()); ;
+        int screws = (int) ((int) carport.getCarportParts().getTotalScrews() + carport.getRoof().getScrew());
+        ;
         int posts = carport.getCarportParts().getTotalPosts();
         int fascia = (int) carport.getRoof().getFascia();
         int brackets = (int) carport.getRoof().getBracket();
@@ -138,16 +140,15 @@ public class DataMapper {
     }
 
     /**
-     *
      * @param user GetCustomerDesign is used to get the saved user designs from the DB, we are using a user as parameter to get the logged in useres id.
      * @return We're returning an object of a customer order
      */
     public static List<CustomerOrder> getCustomerDesign(User user) {
-        List<CustomerOrder> customerOrderList= new ArrayList();
+        List<CustomerOrder> customerOrderList = new ArrayList();
         try {
             Connection con = Connector.connection();
             String SQL = "SELECT * FROM fogcarport.customer_order WHERE user_id = " + user.getId();
-            PreparedStatement ps = con.prepareStatement( SQL );
+            PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery(SQL);
 
             while (rs.next()) {
@@ -172,7 +173,7 @@ public class DataMapper {
         return customerOrderList;
     }
 
-    public static void createCustomerDesign(CustomerOrder customerOrder){
+    public static void createCustomerDesign(CustomerOrder customerOrder) {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO fogcarport.customer_order (order_id, user_id, cp_length, cp_width, " +
@@ -197,12 +198,12 @@ public class DataMapper {
     }
 
 
-    public static List<CustomerOrder> getCustomerDesignOrder(int customerId){
-        List<CustomerOrder> customerOrderList= new ArrayList();
+    public static List<CustomerOrder> getCustomerDesignOrder(int customerId) {
+        List<CustomerOrder> customerOrderList = new ArrayList();
         try {
             Connection con = Connector.connection();
             String SQL = "SELECT * FROM fogcarport.customer_order WHERE user_id = " + customerId;
-            PreparedStatement ps = con.prepareStatement( SQL );
+            PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery(SQL);
 
             while (rs.next()) {
@@ -243,6 +244,42 @@ public class DataMapper {
             System.out.println("Kunne ikke finde orderID");
         }
         return orderid;
+    }
+
+
+    public static Order getCustomerOrder(int orderId) throws OrderException {
+        try {
+            Connection con = Connector.connection();
+            Statement stmt = con.createStatement();
+            String SQL = "SELECT * FROM fogcarport.order WHERE order_id = " + orderId;
+            ResultSet rs = stmt.executeQuery(SQL);
+            if (rs.next()) {
+                int orderid = rs.getInt("order_id");
+                int userid = rs.getInt("user_id");
+                int rafters = rs.getInt("rafters");
+                int cladding = rs.getInt("cladding");
+                int posts = rs.getInt("posts");
+                int screws = rs.getInt("screws");
+                int fascia = rs.getInt("fascia");
+                int brackets = rs.getInt("brackets");
+                int straps = rs.getInt("straps");
+                int doorknobs = rs.getInt("doorknobs");
+                int doorhinges = rs.getInt("doorhinges");
+                Order order = new Order(orderid, userid, rafters, cladding, posts, screws, fascia, brackets, straps, doorknobs, doorhinges);
+                return order;
+            } else {
+                throw new OrderException("Could not find order");
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            throw new OrderException(ex.getMessage());
+        }
+    }
+
+
+    public static void main(String[] args) throws OrderException {
+
+        Order order = getCustomerOrder(1);
+        System.out.println(order.toString());
     }
 
 
