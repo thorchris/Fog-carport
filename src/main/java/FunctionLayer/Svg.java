@@ -1,7 +1,5 @@
 package FunctionLayer;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
-
 public class Svg {
     private int height;
     private int width;
