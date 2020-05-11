@@ -21,10 +21,10 @@
 <form action="FrontController" method="post">
     <input type="hidden" name="taget" value="calculatePrice"/>
     <input type="hidden" name="taget" value="createCarport"/>
-    <div class="container col-lg-12">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
 
                 <div class="dropdown">
                     <label for="exampleFormControlSelect1">Længde</label>
@@ -168,7 +168,7 @@
                 </button>
                 <button type="input" class="btn btn-primary btn-style mt-2">Plantegning</button>
             </div>
-            <div class="col-lg-2"></div>
+            <div class="col-lg-4"></div>
         </div>
     </div>
 </form>
