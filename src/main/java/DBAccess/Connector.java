@@ -43,6 +43,7 @@ public class Connector {
             URL = "jdbc:mysql://localhost:3306/fogcarport?serverTimezone=CET&useSSL=false";
             USERNAME = "root";
             PASSWORD = "green8house17";
+
         }
     }
 }
