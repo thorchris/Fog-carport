@@ -19,8 +19,8 @@
 <%@include file="../include/header.inc" %>
 
 <form action="FrontController" method="post">
-    <input type="hidden" name="taget" value="calculatePrice"/>
-    <input type="hidden" name="taget" value="createCarport"/>
+    <input type="hidden" name="taget" value="manageCommand"/>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-4"></div>
@@ -161,10 +161,11 @@
                     </div>
                 </div>
                 <br>
-                <button type="input" class="btn btn-primary btn-style mt-2" value="calculatePrice">Beregn anslået pris
+                <button type="input" class="btn btn-primary btn-style mt-2" name="calcPriceButton" >Beregn anslået pris
                 </button>
                 <h5>Anslået pris: ${sessionScope.totalPrice}</h5>
-                <button type="input" class="btn btn-primary btn-style mt-2" value="createCarport">Send til sælger
+
+                <button type="input" class="btn btn-primary btn-style mt-2" name="createOrderButton" >Send til sælger
                 </button>
                 <button type="input" class="btn btn-primary btn-style mt-2">Plantegning</button>
             </div>

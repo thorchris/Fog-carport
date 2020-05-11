@@ -227,5 +227,24 @@ public class DataMapper {
         return customerOrderList;
     }
 
+    public static int getUserOrderId(User user) {
+        int orderid = 0;
+        try {
+            Connection con = Connector.connection();
+            Statement stmt = con.createStatement();
+            String SQL = "SELECT * FROM fogcarport.order WHERE user_id = " + user.getId();
+            ResultSet rs = stmt.executeQuery(SQL);
+            while (rs.next()) {
+                orderid = rs.getInt("order_id");
+
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex);
+            System.out.println("Kunne ikke finde orderID");
+        }
+        return orderid;
+    }
+
+
 
 }

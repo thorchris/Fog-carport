@@ -77,11 +77,11 @@ public class CreateCarport extends Command {
         if(user==null){
             user = new User("KundeUdenLogin", "1234");
             user.setId(0);
+            user.setRole("customer"); 
+            session.setAttribute("user",user);
         }
         //CREATING FULL CARPORT
         FullCarport fullCarport = new FullCarport(carportParts, roof, shed);
-
-        LogicFacade.createOrder(user,fullCarport);
         session.setAttribute("fullCarport", fullCarport) ;
 
         return "design";

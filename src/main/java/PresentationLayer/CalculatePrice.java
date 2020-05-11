@@ -92,6 +92,8 @@ public class CalculatePrice extends Command {
 
         //Total pris
         double totalPrice = carportPrice + shedPrice + roofPrice;
+        //Bruges på createOrder
+        session.setAttribute("price", totalPrice);
         String price = (String.format("%,.0f ,-", totalPrice));
 
         session.setAttribute("totalPrice", price);
