@@ -24,7 +24,7 @@ public class LogicFacade {
         return DataMapper.getProductList();
     }
 
-    public static void insertData(User user, FullCarport carport){
+    public static void createOrder(User user, FullCarport carport){
         DataMapper.addOrder(user, carport);
     }
 

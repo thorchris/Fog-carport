@@ -1,7 +1,6 @@
 package PresentationLayer;
 
 import FunctionLayer.*;
-import Util.CalculateRoofPrice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -82,10 +81,8 @@ public class CreateCarport extends Command {
         //CREATING FULL CARPORT
         FullCarport fullCarport = new FullCarport(carportParts, roof, shed);
 
-        LogicFacade.insertData(user,fullCarport);
-        session.setAttribute("fullCarport", fullCarport);
-
-
+        LogicFacade.createOrder(user,fullCarport);
+        session.setAttribute("fullCarport", fullCarport) ;
 
         return "design";
     }
