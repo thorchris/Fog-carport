@@ -48,11 +48,11 @@
                         <%
                             user = (User) session.getAttribute("user");
                             if (user != null) {
-                                if (user.getRole().equals("seller")) {
-                                    out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=seller\">SÆLGER</a>");
+                                if (user.getRole().equals("employee")) {
+                                    out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=employee\">SÆLGER</a>");
                                 }
                                 else if (user.getRole().equals("customer")) {
-                                    out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=customer\">KUNDE</a>");
+                                    out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=index\">KUNDE</a>");
                                 }
                             }
                         %>
