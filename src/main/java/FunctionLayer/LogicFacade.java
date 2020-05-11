@@ -67,7 +67,6 @@ public class LogicFacade {
         User user = new User("user", "user");
         user.setId(1);
         List<CustomerOrder> customerOrder = LogicFacade.getCustomerDesign(user);
-        CustomerOrder customerOrderEx = customerOrder.get(0);
-        LogicFacade.createCustomerDesign(customerOrderEx);
+        System.out.println(customerOrder);
     }
 }

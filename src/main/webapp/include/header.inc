@@ -1,6 +1,5 @@
 <%@ page import="FunctionLayer.User" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -52,7 +51,7 @@
                                     out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=employee\">SÆLGER</a>");
                                 }
                                 else if (user.getRole().equals("customer")) {
-                                    out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=index\">KUNDE</a>");
+                                    out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=customer\">MIN SIDE</a>");
                                 }
                             }
                         %>
