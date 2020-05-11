@@ -56,7 +56,7 @@ public class CalculatePrice extends Command {
             }
 
         }
-        double screwPrice = 0.1; //TODO DEBUGMASTER FIXER DEN HER MED DET SAMME INDEN HAN BLIVER GAMMEL
+        double screwPrice = screw.getPrice();
         double postPrice = post.getPrice();
         double strapPrice = strap.getPrice();
         double fasciaPrice = fascia.getPrice();
@@ -77,18 +77,17 @@ public class CalculatePrice extends Command {
         boolean isHighRoof = Boolean.parseBoolean(request.getParameter("isHighRoof"));
         session.setAttribute("isHighRoof",isHighRoof);
 
-        //CARPORT - NY MÅDE
+        //CARPORT
         CarportParts carportParts = (CarportParts) session.getAttribute("carportParts");
         CarportMaterials carportMaterial = carportParts.getCarportMaterials();
         double carportPrice = new CalculateCarportPartsPrice(carportParts).calculateCarportPartPrice(screwPrice, rafterPrice, postPrice,strapPrice,carportMaterial);
 
-        //Skur - NY MÅDE
+        //Skur
         Shed shed = (Shed) session.getAttribute("shed");
         double shedPrice = new CalculateShedPrice(shed).calcShedPrice(doorKnobPrice, doorHingesPrice);
 
-        //TAG - NY MÅDE
+        //TAG
         Roof roof = (Roof) session.getAttribute("roof");
-       // roof.setRoofAreal(new CalcRoofMaterials(roof).calcRoofAreal());
         double roofPrice = new CalculateRoofPrice(roof).calcRoofPrice(screwPrice,fasciaPrice,rafterPrice,bracketPrice);
 
         //Total pris
