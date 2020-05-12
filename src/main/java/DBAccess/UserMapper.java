@@ -12,7 +12,7 @@ public class UserMapper {
     public static void createUser(User user) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO fogcarport.users (email, password) VALUES (?, ?)";
+            String SQL = "INSERT INTO users (email, password) VALUES (?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getPassword());
@@ -52,7 +52,7 @@ public class UserMapper {
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
-            String SQL = "SELECT * FROM fogcarport.users where email = '" + email + "';";
+            String SQL = "SELECT * FROM users where email = '" + email + "';";
             ResultSet rs = stmt.executeQuery(SQL);
 
             userId = 0;
@@ -71,7 +71,7 @@ public class UserMapper {
 
     public static void deleteMember(String email) {
         try {
-            String SQL = "DELETE FROM fogcarport.users WHERE email = (?)";
+            String SQL = "DELETE FROM users WHERE email = (?)";
             Connection con = Connector.connection();
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, email);
@@ -87,7 +87,7 @@ public class UserMapper {
     public static void changePassword(String password, String email) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "UPDATE fogcarport.users SET password = (?) WHERE email = (?)";
+            String SQL = "UPDATE users SET password = (?) WHERE email = (?)";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, password);
             ps.setString(2, email);
@@ -105,7 +105,7 @@ public class UserMapper {
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
-            String SQL = "SELECT * FROM fogcarport.users";
+            String SQL = "SELECT * FROM users";
             ResultSet rs = stmt.executeQuery(SQL);
             while (rs.next()) {
                 String email = rs.getString("email");
