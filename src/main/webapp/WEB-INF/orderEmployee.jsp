@@ -11,6 +11,7 @@
             <table class="table table-striped table-dark table-bordered table.responsive">
                 <thead>
                 <tr>
+                    <th scope="col">Slet order</th>
                     <th scope="col">Order ID</th>
                     <th scope="col">Kunde ID</th>
                     <th scope="col">Spær</th>
@@ -28,6 +29,8 @@
                 <tr>
                     <!-- https://www.codejava.net/java-ee/jsp/how-to-list-records-in-a-database-table-using-jsp-and-jstl -->
                 <tr>
+
+                    <td><button class="btn btn-primary btn-style deleteOrder" name="deleteOrder" value="${sessionScope.order.orderId}">Slet</button></td>
                     <td>${sessionScope.order.orderId}</td>
                     <td>${sessionScope.order.userId}</td>
                     <td>${sessionScope.order.rafters}</td>

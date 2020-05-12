@@ -71,4 +71,10 @@ public class LogicFacade {
         return DataMapper.getCustomerOrder(orderId);
     }
 
+    public static void deleteOrder(int orderId){
+        DataMapper.deleteOrder(orderId);
+    }
+
+
+
 }
