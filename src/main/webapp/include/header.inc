@@ -1,5 +1,4 @@
 <%@ page import="FunctionLayer.User" %>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,28 +10,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/styles.css">
 
     <title>Fog carport</title>
 </head>
 
 <body>
-<div class="container-fluid banner">
-    <div class="row">
-        <div class="col-md-12">
-            <nav class="navbar navbar-md">
-                <div class="navbar-brand">FOG-CARPORT</div>
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="FrontController?taget=redirect&modtagerside=index">HJEM</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="FrontController?taget=redirect&modtagerside=contact">KONTAKT OS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="FrontController?taget=redirect&modtagerside=design">CARPORT DESIGN</a>
-                    </li>
-                    <li>
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="FrontController?taget=redirect&modtagerside=index"><img src="/img/fog.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="FrontController?taget=redirect&modtagerside=index">Hjem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="FrontController?taget=redirect&modtagerside=contact">Kontakt Os</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="FrontController?taget=redirect&modtagerside=design">Carport Design</a>
+                </li>
+                <li class="nav-item">
                     <%
                      User user = (User) session.getAttribute("user");
                       if(user == null){
@@ -43,7 +44,7 @@
                     %>
                     </li>
 
-                    <li>
+                <li class="nav-item">
                         <%
                             user = (User) session.getAttribute("user");
                             if (user != null) {
@@ -57,6 +58,7 @@
                         %>
                     </li>
                 </ul>
-            </nav>
         </div>
+    </div>
+</nav>
 
