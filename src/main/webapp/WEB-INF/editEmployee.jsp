@@ -45,7 +45,6 @@
                             <c:forEach var="customerDesign" items="${requestScope.customerOrder}">
                         <tr>
                             <td><button class="btn btn-primary btn-style openSvgDesign" name="seeCustomerDesign">Se</button></td>
-
                             <td><c:out value="${customerDesign.customerOrderId}"/></td>
                             <td><c:out value="${customerDesign.orderId}"/></td>
                             <td><c:out value="${customerDesign.userId}"/></td>

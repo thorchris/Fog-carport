@@ -276,6 +276,21 @@ public class DataMapper {
     }
 
 
+    public static void deleteOrder(int order_id) {
+        try {
+            String SQL = "DELETE FROM fogcarport.order WHERE order_id = " + order_id;
+            Connection con = Connector.connection();
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.execute();
+            ps.close();
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println("FEJL! Kunne ikke fjerne order");
+        }
+    }
+
+
+
     public static void main(String[] args) throws OrderException {
 
         Order order = getCustomerOrder(1);

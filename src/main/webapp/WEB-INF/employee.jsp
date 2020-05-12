@@ -22,7 +22,6 @@
             <div class="col-lg-10">
                 <h1 class="headerseller"> Sælger side </h1>
                 <h2 class="headerseller"> Kunders design</h2>
-                <div class="table-wrap">
                     <table class="table table-striped table-dark table-bordered table.responsive">
                         <thead>
                         <tr>
@@ -60,7 +59,6 @@
                         </tr>
                         </tbody>
                     </table>
-                </div>
             </div>
             <div class="col-lg-1"></div>
         </div> <!-- ROW -->
