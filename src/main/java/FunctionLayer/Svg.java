@@ -19,6 +19,10 @@ public class Svg {
         svg.append(String.format(headerTemplate, height, width, viewBox));
     }
 
+    public void addRect(int x, int y, int height, int width){
+        svg.append(String.format(rectTemplate, x, y, height, width));
+    }
+
     public int getHeight() {
         return height;
     }
