@@ -19,23 +19,30 @@ public class Drawing extends Command {
             fullCarport = (FullCarport) session.getAttribute("fullCarport");
         }
 
-        double height = fullCarport.getCarportParts().getLength();
-        double width = fullCarport.getCarportParts().getWidth();
+        double carportHeight = fullCarport.getCarportParts().getLength();
+        double carportWidth = fullCarport.getCarportParts().getWidth();
         //Omregnes fordi de er m på siden.
-        int intHeight = (int) (height*100);
-        int intWidth = (int) (width*100);
+        int intCarportHeight = (int) (carportHeight*100);
+        int intCarportWidth = (int) (carportWidth*100);
 
         Svg svg = new Svg(780, 750, "0,0,800,600",0,0);
 
         //Carport
-        svg.addRect(0,0,intHeight,intWidth);
+        svg.addRect(0,0,intCarportHeight,intCarportWidth);
         //svg.addRect(0,0,600,780);
 
         //Posts
-        svg.addPosts(svg, fullCarport, intWidth, intHeight);
+        svg.addPosts(svg, fullCarport, intCarportWidth, intCarportHeight);
 
-        
-
+        if(fullCarport.getCarportParts().isHasAShed()) {
+            double shedWidth = fullCarport.getShed().getShedWidth();
+            double shedLength = fullCarport.getShed().getShedLength();
+            int intShedWidth = (int) (shedWidth * 100);
+            int intShedLength = (int) (shedLength * 100);
+            //Shed
+            svg.addRect(-intCarportWidth,intShedWidth,-intShedLength,intCarportHeight);
+        }
+        //int x, int y, int height, int width
 
      /*   //Remme
         svg.addRect(0,35,4,780);
