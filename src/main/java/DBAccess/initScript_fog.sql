@@ -70,7 +70,7 @@ CREATE TABLE `customer_order` (
   KEY `fk_roof_idx` (`roof_mats`),
   CONSTRAINT `fk_cp` FOREIGN KEY (`cp_mats`) REFERENCES `carport_materials` (`material_id`),
   CONSTRAINT `fk_customer` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  CONSTRAINT `fk_orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
   CONSTRAINT `fk_roof` FOREIGN KEY (`roof_mats`) REFERENCES `roof_materials` (`material_id`)
 ) ;
 
@@ -85,7 +85,7 @@ INSERT INTO `customer_order` VALUES (1,1,1,320,200,1,1,1,2,10,2000),(3,1,1,320,2
 UNLOCK TABLES;
 
 --
--- Table structure for table `order`
+-- Table structure for table `orders`
 --
 
 DROP TABLE IF EXISTS `orders`;
@@ -108,13 +108,13 @@ CREATE TABLE `orders` (
 ) ;
 
 --
--- Dumping data for table `order`
+-- Dumping data for table `orders`
 --
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 INSERT INTO `orders` VALUES (1,2,20,24,6,400,4,4,4,1,2),(2,0,5,16,6,400,4,10,4,1,2);
-/*!40000 ALTER TABLE `ordersorders` ENABLE KEYS */;
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -200,4 +200,3 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-05-11 11:03:26
-
