@@ -80,6 +80,17 @@
                                     Se kunde ordre
                                 </button>
                             </div>
+
+                            <div>
+                                <input type="text" class="form-control ml-2 "
+                                       placeholder="Kunde ordre id" name="co_id">
+                                <input type="text" class="form-control ml-2 "
+                                       placeholder="Ny pris" name="updatePrice">
+                                <button type="submit" class="btn btn-primary btn-style mt-2 ml-2"
+                                        name="changePrice">
+                                    Ændre pris
+                                </button>
+                            </div>
                         </div>
                     </div>
 

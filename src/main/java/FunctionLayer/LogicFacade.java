@@ -75,6 +75,10 @@ public class LogicFacade {
         DataMapper.deleteOrder(orderId);
     }
 
+    public static void updatePrice(int co_id, int price){
+        DataMapper.updatePrice(co_id,price);
+    }
+
 
 
 }

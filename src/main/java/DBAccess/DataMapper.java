@@ -290,6 +290,25 @@ public class DataMapper {
     }
 
 
+    public static void updatePrice(int co_Id, int price) {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "UPDATE customer_order SET price = (?) WHERE co_Id = (?)";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, price);
+            ps.setInt(2, co_Id);
+            ps.execute();
+            ps.close();
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println("FEJL! Kunne ikke opdatere pris");
+        }
+    }
+
+
+
+
+
+
 
     public static void main(String[] args) throws OrderException {
 
