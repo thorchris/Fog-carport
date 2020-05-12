@@ -13,11 +13,8 @@ public class Drawing extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderException {
         HttpSession session = request.getSession();
-        FullCarport fullCarport = null;
-        if (fullCarport == null) {
-            new CalculatePrice().execute(request, response);
-            fullCarport = (FullCarport) session.getAttribute("fullCarport");
-        }
+        new CalculatePrice().execute(request, response);
+        FullCarport fullCarport = (FullCarport) session.getAttribute("fullCarport");
 
         double carportWidth = fullCarport.getCarportParts().getLength();
         double carportHeight = fullCarport.getCarportParts().getWidth();
@@ -34,7 +31,16 @@ public class Drawing extends Command {
         //Posts
         svg.addPosts(svg, fullCarport, intCarportHeight, intCarportWidth);
 
-        if (fullCarport.getCarportParts().isHasAShed()) {
+
+        if (fullCarport.getCarportParts().isHalfWidth() == true) {
+            double shedWidth = fullCarport.getShed().getShedWidth();
+            double shedLength = fullCarport.getShed().getShedLength();
+            int intShedWidth = (int) (shedWidth * 100);
+            int intShedHeight = (int) (shedLength * 100);
+            //Shed
+
+            svg.addRect(intCarportWidth, 0, intShedHeight, intShedWidth/2);
+        } else {
             double shedWidth = fullCarport.getShed().getShedWidth();
             double shedLength = fullCarport.getShed().getShedLength();
             int intShedWidth = (int) (shedWidth * 100);
@@ -44,6 +50,7 @@ public class Drawing extends Command {
             svg.addRect(intCarportWidth, 0, intShedHeight, intShedWidth);
 
         }
+
         //int x, int y, int height, int width
 
      /*   //Remme
