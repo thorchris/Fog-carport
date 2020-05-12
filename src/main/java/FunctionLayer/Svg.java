@@ -27,30 +27,38 @@ public class Svg {
         svg.append(String.format(rectTemplate, x, y, height, width));
     }
 
-    public void addPosts(Svg svg, FullCarport fullCarport, int width, int height) {
+    public void addPosts(Svg svg, FullCarport fullCarport, int height, int width) {
         int posts = fullCarport.getCarportParts().getTotalPosts();
         int postHeight = 9;
         int postWidth = 10;
         int posX = 0;
         int posY = 0;
         //Stolper i toppen
-        for (int i = 0; i < (posts / 2) - 1; i++) {
+        if(posts >= 5) {
             svg.addRect(posX, posY, postHeight, postWidth);
-            posX += (width / 2)-postWidth;
-        }
-
-        //sørger for den sidste stolpe er yderst
-        svg.addRect(width-postWidth, posY, postHeight, postWidth);
-        //Stolper i bunden af tegningen
-        posY = height-postHeight;
-        posX = 0;
-        for (int i = 0; i < (posts / 2) - 1; i++) {
+            posX += (width / 2) - postWidth;
             svg.addRect(posX, posY, postHeight, postWidth);
-            posX += (width / 2)-postWidth;
+            //sørger for den sidste stolpe er yderst
+            svg.addRect(width - postWidth, posY, postHeight, postWidth);
+            //Stolper i bunden
+            posY = height - postHeight;
+            posX = 0;
+            svg.addRect(posX, posY, postHeight, postWidth);
+            posX += (width / 2) - postWidth;
+            svg.addRect(posX, posY, postHeight, postWidth);
+            //Sørger for den sidste stolpe er yderst på carport
+            svg.addRect(width - postWidth, posY, postHeight, postWidth);
+        } else {
+            svg.addRect(posX, posY, postHeight, postWidth);
+            //sørger for den sidste stolpe er yderst
+            svg.addRect(width - postWidth, posY, postHeight, postWidth);
+            //Stolper i bunden
+            posY = height - postHeight;
+            posX = 0;
+            svg.addRect(posX, posY, postHeight, postWidth);
+            //Sørger for den sidste stolpe er yderst på carport
+            svg.addRect(width - postWidth, posY, postHeight, postWidth);
         }
-        //Sørger for den sidste stolpe er yderst på carport
-        svg.addRect(width-postWidth, posY, postHeight, postWidth);
-
     }
 
 
