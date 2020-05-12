@@ -15,6 +15,7 @@ public class ManageCommand extends Command {
         String getCustomerOrder = request.getParameter("getCustomerOrder");
         String findCustomerOrder = request.getParameter("findCustomerOrder");
         String deleteOrder = request.getParameter("deleteOrder");
+        String changePrice = request.getParameter("changePrice");
         String action = request.getParameter("action");
 
         if (calcPrice != null){
@@ -34,6 +35,9 @@ public class ManageCommand extends Command {
         if(deleteOrder != null){
             action = "deleteOrder";
         }
+        if(changePrice != null){
+            action = "changePrice";
+        }
 
         switch (action) {
             case "calculatePrice":
@@ -50,6 +54,9 @@ public class ManageCommand extends Command {
                 return "editEmployee";
             case "deleteOrder":
                 new DeleteCustomerOrder().execute(request,response);
+                return "orderEmployee";
+            case "changePrice":
+                new UpdateCustomerOrderPrice().execute(request,response);
                 return "orderEmployee";
             default:
                 return "design";
