@@ -20,7 +20,7 @@ public class ManageCommand extends Command {
         }
 
         switch (action) {
-            case "calcPrice":
+            case "calculatePrice":
                 new CalculatePrice().execute(request, response);
                 return "design";
             case "createOrder":
