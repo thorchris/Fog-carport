@@ -25,11 +25,7 @@ public class Drawing extends Command {
         int intHeight = (int) (height*100);
         int intWidth = (int) (width*100);
 
-
-        Svg svg = new Svg(900, 800, "0,0,800,600",0,0);
-
-        //Stor viewboks så der kan være alt i.
-       // Svg svgInnerDrawing = new Svg(900,800,"0,0,900,800",0,0);
+        Svg svg = new Svg(780, 750, "0,0,800,600",0,0);
 
         //Carport
         svg.addRect(0,0,intHeight,intWidth);
@@ -38,7 +34,7 @@ public class Drawing extends Command {
         //Posts
         svg.addPosts(svg, fullCarport, intWidth, intHeight);
 
-
+        
 
 
      /*   //Remme

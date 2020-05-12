@@ -28,7 +28,6 @@ public class Svg {
     }
 
     public void addPosts(Svg svg, FullCarport fullCarport, int width, int height) {
-        //Stolper
         int posts = fullCarport.getCarportParts().getTotalPosts();
         int postHeight = 9;
         int postWidth = 10;
@@ -43,7 +42,7 @@ public class Svg {
         //sørger for den sidste stolpe er yderst
         svg.addRect(width-postWidth, posY, postHeight, postWidth);
         //Stolper i bunden af tegningen
-        posY = height;
+        posY = height-postHeight;
         posX = 0;
         for (int i = 0; i < (posts / 2) - 1; i++) {
             svg.addRect(posX, posY, postHeight, postWidth);
@@ -51,6 +50,7 @@ public class Svg {
         }
         //Sørger for den sidste stolpe er yderst på carport
         svg.addRect(width-postWidth, posY, postHeight, postWidth);
+
     }
 
 
