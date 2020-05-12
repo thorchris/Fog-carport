@@ -4,9 +4,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: 'Raleway', sans-serif;
-    height: 100vh;
-    width: 100%;
-
+    color: #fff;
 }
 
 .headerseller{
@@ -22,20 +20,64 @@ body{
     overflow: scroll;
 }
 
-
-.navbar-brand{
-    margin-left: 10%;
+.banner{
+    height: 100vh;
+    width: 100%;
+    background: url('banner1.jpg');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.nav{
+.banner .navbar-brand{
+    color: #FFF;
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-left: 10%;
+    text-decoration: underline;
+}
+
+.banner .nav{
     margin-right: 10%;
 }
 
-.nav li a {
+.banner .nav li a {
     color: #0065ca;
     font-size: 1em;
 }
 
+.banner .info{
+    margin-top: 10%;
+    transform: translateY(-15%);
+}
+
+.banner .info h1{
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.banner .info p{
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #0065ca;
+    letter-spacing: 2px;
+}
+
+.banner .info a{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    background: #0065ca;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.banner .info a:hover{
+    background: #43a1ff;
+}
 
 
 
