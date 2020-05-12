@@ -17,13 +17,12 @@
 %>
 
 <%@include file="../include/header.inc" %>
-
+<div class="container col-lg-12">
 <form action="FrontController" method="post">
     <input type="hidden" name="taget" value="manageCommand"/>
-
     <div class="container">
         <div class="row">
-            <div class="col-lg-4"></div>
+            <div class="col-lg-8"></div>
             <div class="col-lg-4">
 
                 <div class="dropdown">
@@ -169,10 +168,11 @@
                 </button>
                 <button type="input" class="btn btn-primary btn-style mt-2">Plantegning</button>
             </div>
-            <div class="col-lg-4"></div>
+            <div class="col-lg-2"></div>
         </div>
     </div>
 </form>
+</div>
 
 <script src="JS/javascript.js"></script>
 
