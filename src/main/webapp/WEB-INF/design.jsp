@@ -166,8 +166,9 @@
 
                 <button type="input" class="btn btn-primary btn-style mt-2" name="createOrderButton" >Send til sælger
                 </button>
-                <button type="input" class="btn btn-primary btn-style mt-2">Plantegning</button>
+                <button type="input" class="btn btn-primary btn-style mt-2" name="svgDrawing">Plantegning</button>
             </div>
+            ${requestScope.svgdrawing}
             <div class="col-lg-2"></div>
         </div>
     </div>
