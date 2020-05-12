@@ -62,8 +62,8 @@ public class DataMapperTest {
                 stmt.execute("INSERT INTO products SELECT * FROM fogcarport.products");
 
                 stmt.execute("DROP TABLE if EXISTS orders");
-                stmt.execute("CREATE TABLE orders LIKE fogcarport.order");
-                stmt.execute("INSERT INTO orders SELECT * FROM fogcarport.order");
+                stmt.execute("CREATE TABLE orders LIKE fogcarport.orders");
+                stmt.execute("INSERT INTO orders SELECT * FROM fogcarport.orders");
 
                 stmt.execute( "DROP TABLE if EXISTS users" );
                 stmt.execute( "CREATE TABLE users LIKE fogcarport.users" );
@@ -136,6 +136,7 @@ public class DataMapperTest {
         UserMapper.createUser( original );
 
         DataMapper.addOrder(original, carport);
+
 
 
     }

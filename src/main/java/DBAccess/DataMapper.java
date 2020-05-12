@@ -13,7 +13,7 @@ public class DataMapper {
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
-            String SQL = "SELECT * FROM fogcarport.roof_materials";
+            String SQL = "SELECT * FROM roof_materials";
             ResultSet rs = stmt.executeQuery(SQL);
 
             while (rs.next()) {
@@ -36,7 +36,7 @@ public class DataMapper {
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
-            String SQL = "SELECT * FROM fogcarport.products";
+            String SQL = "SELECT * FROM products";
             ResultSet rs = stmt.executeQuery(SQL);
 
             while (rs.next()) {
@@ -58,7 +58,7 @@ public class DataMapper {
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
-            String SQL = "SELECT * FROM fogcarport.carport_materials";
+            String SQL = "SELECT * FROM carport_materials";
             ResultSet rs = stmt.executeQuery(SQL);
 
             while (rs.next()) {
@@ -91,7 +91,7 @@ public class DataMapper {
 
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO fogcarport.order (user_id, rafters,  cladding,  posts,  screws,  fascia,  brackets,  straps,  doorKnobs,  doorHinges) VALUES (?, ?, ?, ?,?, ?, ?,?, ?, ?)";
+            String SQL = "INSERT INTO orders (user_id, rafters,  cladding,  posts,  screws,  fascia,  brackets,  straps,  doorKnobs,  doorHinges) VALUES (?, ?, ?, ?,?, ?, ?,?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, user_Id);
             ps.setInt(2, rafters);
@@ -115,7 +115,7 @@ public class DataMapper {
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
-            String SQL = "SELECT * FROM fogcarport.order";
+            String SQL = "SELECT * FROM orders";
             ResultSet rs = stmt.executeQuery(SQL);
 
             while (rs.next()) {
@@ -147,7 +147,7 @@ public class DataMapper {
         List<CustomerOrder> customerOrderList = new ArrayList();
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM fogcarport.customer_order WHERE user_id = " + user.getId();
+            String SQL = "SELECT * FROM customer_order WHERE user_id = " + user.getId();
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery(SQL);
 
@@ -176,7 +176,7 @@ public class DataMapper {
     public static void createCustomerDesign(CustomerOrder customerOrder) {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO fogcarport.customer_order (order_id, user_id, cp_length, cp_width, " +
+            String SQL = "INSERT INTO customer_order (order_id, user_id, cp_length, cp_width, " +
                     "roof_mats, shed_mats, cp_mats, cladding_sides, roof_angle, price) " +
                     "VALUES (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -202,7 +202,7 @@ public class DataMapper {
         List<CustomerOrder> customerOrderList = new ArrayList();
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM fogcarport.customer_order WHERE user_id = " + customerId;
+            String SQL = "SELECT * FROM customer_order WHERE user_id = " + customerId;
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery(SQL);
 
@@ -233,7 +233,7 @@ public class DataMapper {
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
-            String SQL = "SELECT * FROM fogcarport.order WHERE user_id = " + user.getId();
+            String SQL = "SELECT * FROM orders WHERE user_id = " + user.getId();
             ResultSet rs = stmt.executeQuery(SQL);
             while (rs.next()) {
                 orderid = rs.getInt("order_id");
@@ -251,7 +251,7 @@ public class DataMapper {
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
-            String SQL = "SELECT * FROM fogcarport.order WHERE order_id = " + orderId;
+            String SQL = "SELECT * FROM orders WHERE order_id = " + orderId;
             ResultSet rs = stmt.executeQuery(SQL);
             if (rs.next()) {
                 int orderid = rs.getInt("order_id");
@@ -278,7 +278,7 @@ public class DataMapper {
 
     public static void deleteOrder(int order_id) {
         try {
-            String SQL = "DELETE FROM fogcarport.order WHERE order_id = " + order_id;
+            String SQL = "DELETE FROM orders WHERE order_id = " + order_id;
             Connection con = Connector.connection();
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.execute();
