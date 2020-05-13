@@ -105,4 +105,21 @@ public class CustomerOrder {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "CustomerOrder{" +
+                "customerOrderId=" + customerOrderId +
+                ", orderId=" + orderId +
+                ", userId=" + userId +
+                ", cp_length=" + cp_length +
+                ", cp_width=" + cp_width +
+                ", claddingSides=" + claddingSides +
+                ", roofAngle=" + roofAngle +
+                ", price=" + price +
+                ", roofMatId=" + roofMatId +
+                ", cpMatId=" + cpMatId +
+                ", shedMatId=" + shedMatId +
+                '}';
+    }
 }
