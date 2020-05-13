@@ -22,36 +22,23 @@ public class Drawing extends Command {
         int intCarportHeight = (int) (carportHeight * 100);
         int intCarportWidth = (int) (carportWidth * 100);
 
-        Svg svg = new Svg(780, 750, "0,0,800,600", 0, 0);
-
+        intCarportHeight = 240;
+        intCarportWidth = 240;
+        //Viewbox
+        Svg svg = new Svg(500, 750, "0,0,800,750", 0, 0);
+        svg.addRect(0,0,500,750);
         //Carport
-        svg.addRect(0, 0, intCarportHeight, intCarportWidth);
+        int startX = 200;
+        int startY = 220;
+        svg.addRect(startX, startY, intCarportHeight, intCarportWidth);
         //svg.addRect(0,0,600,780);
 
         //Posts
         svg.addPosts(svg, fullCarport, intCarportHeight, intCarportWidth);
         //Shed
-        if (fullCarport.getCarportParts().isHasAShed()) {
+        svg.addShedPosts(svg, fullCarport);
 
-            if (fullCarport.getCarportParts().isHalfWidth() == true) {
-                double shedWidth = fullCarport.getShed().getShedWidth();
-                double shedLength = fullCarport.getShed().getShedLength();
-                int intShedWidth = (int) (shedWidth * 100);
-                int intShedHeight = (int) (shedLength * 100);
-                //Shed
 
-                svg.addRect(intCarportWidth, 0, intShedHeight, intShedWidth / 2);
-            } else {
-                double shedWidth = fullCarport.getShed().getShedWidth();
-                double shedLength = fullCarport.getShed().getShedLength();
-                int intShedWidth = (int) (shedWidth * 100);
-                int intShedHeight = (int) (shedLength * 100);
-                //Shed
-
-                svg.addRect(intCarportWidth, 0, intShedHeight, intShedWidth);
-
-            }
-        }
 
         //int x, int y, int height, int width
 

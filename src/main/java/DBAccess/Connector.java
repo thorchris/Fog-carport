@@ -42,7 +42,7 @@ public class Connector {
             //LOCALHOST
             URL = "jdbc:mysql://localhost:3306/fogcarport?serverTimezone=CET&useSSL=false";
             USERNAME = "root";
-            PASSWORD = "kode";
+            PASSWORD = "green8house17";
 
         }
     }
