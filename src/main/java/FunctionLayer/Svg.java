@@ -31,8 +31,8 @@ public class Svg {
         int posts = fullCarport.getCarportParts().getTotalPosts();
         int postHeight = 9;
         int postWidth = 10;
-        int posX = 0;
-        int posY = 0;
+        int posX = 440;
+        int posY = 220;
         //Stolper i toppen
         if(posts >= 5) {
             svg.addRect(posX, posY, postHeight, postWidth);
@@ -42,7 +42,7 @@ public class Svg {
             svg.addRect(width - postWidth, posY, postHeight, postWidth);
             //Stolper i bunden
             posY = height - postHeight;
-            posX = 0;
+            posX = 440;
             svg.addRect(posX, posY, postHeight, postWidth);
             posX += (width / 2) - postWidth;
             svg.addRect(posX, posY, postHeight, postWidth);
@@ -54,10 +54,48 @@ public class Svg {
             svg.addRect(width - postWidth, posY, postHeight, postWidth);
             //Stolper i bunden
             posY = height - postHeight;
-            posX = 0;
+            posX = 440;
             svg.addRect(posX, posY, postHeight, postWidth);
             //Sørger for den sidste stolpe er yderst på carport
             svg.addRect(width - postWidth, posY, postHeight, postWidth);
+        }
+    }
+
+    public void addShedPosts(Svg svg, FullCarport fullCarport){
+        int startX = 440;
+        int startY = 220;
+
+        if (fullCarport.getCarportParts().isHasAShed() == true) {
+
+            int intShedWidth = 0;
+            int intShedHeight = 0;
+            if (fullCarport.getCarportParts().isHalfWidth() == true) {
+                intShedWidth = 120;
+                intShedHeight = 120;
+                //Shed
+                svg.addRect(startX, startY, intShedHeight, intShedWidth);
+                int postHeight = 9;
+                int postWidth = 10;
+                //Posts
+                svg.addRect(startX+intShedWidth-postWidth,(startY + (intShedHeight/2)-postHeight),postHeight,postWidth);
+                svg.addRect(startX+(intShedWidth/2),startY,postHeight,postWidth);
+                svg.addRect(startX+(intShedWidth/2),(startY+intShedHeight)-postHeight,postHeight,postWidth);
+
+            } else {
+                intShedWidth = 240;
+                intShedHeight = 120;
+                //Shed
+                svg.addRect(startX, startY, intShedHeight, intShedWidth);
+                int postHeight = 9;
+                int postWidth = 10;
+                //posts
+                svg.addRect(startX+intShedWidth-postWidth,startY,postHeight,postWidth);
+                svg.addRect(startX+intShedWidth-postWidth,startY + intShedHeight-postHeight,postHeight,postWidth);
+
+                svg.addRect(startX+(intShedWidth/2),startY,postHeight,postWidth);
+                svg.addRect(startX+(intShedWidth/2),startY +intShedHeight-postHeight,postHeight,postWidth);
+            }
+
         }
     }
 
