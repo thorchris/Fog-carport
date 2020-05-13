@@ -19,11 +19,11 @@ public class Drawing extends Command {
         double carportWidth = fullCarport.getCarportParts().getLength();
         double carportHeight = fullCarport.getCarportParts().getWidth();
         //Omregnes fordi de er m på siden.
-        int intCarportHeight = (int) (carportHeight * 100);
-        int intCarportWidth = (int) (carportWidth * 100);
+        int carportHeigthDB = (int) (carportHeight * 100);
+        int carportWidthDB = (int) (carportWidth * 100);
 
-        intCarportHeight = 240;
-        intCarportWidth = 240;
+        int intCarportHeight = 240;
+        int  intCarportWidth = 240;
         //Viewbox
         Svg svg = new Svg(500, 750, "0,0,800,750", 0, 0);
         svg.addRect(0,0,500,640);
@@ -38,7 +38,17 @@ public class Drawing extends Command {
         //Carport posts
         svg.addPosts(fullCarport, intCarportWidth);
 
+        //Pointer vertical
+        int pointerX = startX-20;
+        int pointerY = startY;
+        int finishY = 440;
+        svg.addVerticalPointer(pointerX, pointerY, pointerX,finishY, carportHeigthDB);
 
+        //Horizontal pointer
+        pointerX = startX;
+        pointerY = startY-20;
+        int finishX = 440;
+        svg.addHorizontalPointer(pointerX, pointerY, finishX, pointerY,carportWidthDB);
 
 
         //int x, int y, int height, int width
@@ -47,9 +57,6 @@ public class Drawing extends Command {
         svg.addRect(0,35,4,780);
         svg.addRect(0,565,4,780);
         svg.addRect(0,565,4,780);
-        svg.addRect(0,565,4,780);
-
-        //Stolper
         svg.addRect(0,565,4,780);
 
         //Spær
