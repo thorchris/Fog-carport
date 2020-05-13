@@ -26,18 +26,18 @@ public class Drawing extends Command {
         intCarportWidth = 240;
         //Viewbox
         Svg svg = new Svg(500, 750, "0,0,800,750", 0, 0);
-        svg.addRect(0,0,500,750);
+        svg.addRect(0,0,500,640);
         //Carport
         int startX = 200;
         int startY = 220;
         svg.addRect(startX, startY, intCarportHeight, intCarportWidth);
-        //svg.addRect(0,0,600,780);
+
+        //Shed
+        svg.addShedPosts(svg, fullCarport);
 
         //Carport posts
         svg.addPosts(fullCarport, intCarportWidth);
 
-        //Shed
-        svg.addShedPosts(svg, fullCarport);
 
 
 

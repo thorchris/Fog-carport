@@ -78,7 +78,7 @@ public class Svg {
     }
 
     public void addShedPosts(Svg svg, FullCarport fullCarport){
-        int startX = 440;
+        int startX = 200;
         int startY = 220;
 
         if (fullCarport.getCarportParts().isHasAShed() == true) {
@@ -93,8 +93,8 @@ public class Svg {
                 int postHeight = 9;
                 int postWidth = 10;
                 //Posts
-                svg.addRect(startX+intShedWidth-postWidth,(startY + (intShedHeight/2)-postHeight),postHeight,postWidth);
-                svg.addRect(startX+(intShedWidth/2),startY,postHeight,postWidth);
+                svg.addRect(startX,(startY + (intShedHeight/2)-postHeight),postHeight,postWidth);
+                svg.addRect(startX+(intShedWidth)-postWidth,(startY + (intShedHeight/2)-postHeight),postHeight,postWidth);
                 svg.addRect(startX+(intShedWidth/2),(startY+intShedHeight)-postHeight,postHeight,postWidth);
 
             } else {
@@ -108,8 +108,8 @@ public class Svg {
                 svg.addRect(startX+intShedWidth-postWidth,startY,postHeight,postWidth);
                 svg.addRect(startX+intShedWidth-postWidth,startY + intShedHeight-postHeight,postHeight,postWidth);
 
-                svg.addRect(startX+(intShedWidth/2),startY,postHeight,postWidth);
-                svg.addRect(startX+(intShedWidth/2),startY +intShedHeight-postHeight,postHeight,postWidth);
+                svg.addRect(startX,startY+intShedHeight-postHeight,postHeight,postWidth);
+                svg.addRect(startX+(intShedWidth/2),startY+intShedHeight-postHeight,postHeight,postWidth);
             }
 
         }
