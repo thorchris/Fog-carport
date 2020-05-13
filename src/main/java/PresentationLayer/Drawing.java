@@ -35,6 +35,7 @@ public class Drawing extends Command {
 
         //Posts
         svg.addPosts(svg, fullCarport, intCarportHeight, intCarportWidth);
+
         //Shed
         svg.addShedPosts(svg, fullCarport);
 
