@@ -33,7 +33,7 @@ public class Drawing extends Command {
 
         //Posts
         svg.addPosts(svg, fullCarport, intCarportHeight, intCarportWidth);
-
+        //Shed
         if (fullCarport.getCarportParts().isHasAShed()) {
             double shedWidth = fullCarport.getShed().getShedWidth();
             double shedLength = fullCarport.getShed().getShedLength();
