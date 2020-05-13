@@ -32,6 +32,9 @@ public class Drawing extends Command {
         int startY = 220;
         svg.addRect(startX, startY, intCarportHeight, intCarportWidth);
 
+        // REMME
+        svg.addRect(startX+10, startY+10, intCarportHeight-20, intCarportWidth-20);
+
         //Shed
         svg.addShedPosts(svg, fullCarport);
 

@@ -132,6 +132,9 @@ public class Svg {
                 intShedHeight = 120;
                 //Shed
                 svg.addRect(startX, startY, intShedHeight, intShedWidth);
+
+                //Shed REMME
+                svg.addRect(startX+10, startY+10, intShedHeight-20, intShedWidth-20);
                 int postHeight = 9;
                 int postWidth = 10;
                 //Posts
@@ -144,6 +147,10 @@ public class Svg {
                 intShedHeight = 120;
                 //Shed
                 svg.addRect(startX, startY, intShedHeight, intShedWidth);
+
+
+                //Shed REMME
+                svg.addRect(startX+10, startY+10, intShedHeight-20, intShedWidth-20);
                 int postHeight = 9;
                 int postWidth = 10;
                 //posts
