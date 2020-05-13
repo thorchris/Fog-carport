@@ -19,8 +19,8 @@ public class CreateCarport extends Command {
         session.setAttribute("width", width);
         boolean hasAShed = Boolean.parseBoolean(request.getParameter("shedYesOrNo"));
         session.setAttribute("wantAShed", hasAShed);
-        boolean isHalfWidth = Boolean.parseBoolean(request.getParameter("isHalf"));
-        session.setAttribute("isHalf", isHalfWidth);
+        boolean isHalfWidth = Boolean.parseBoolean(request.getParameter("shedLength"));
+        session.setAttribute("shedLength", isHalfWidth);
 
         //Carport materials from DB
         List<CarportMaterials> carportMaterials = GenerateLists.getCarportMaterialsList();
