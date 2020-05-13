@@ -23,41 +23,57 @@ public class Svg {
         svg.append(String.format(headerTemplate, height, width, viewBox));
     }
 
+    /**
+     * Used to generate a lot of the rectangles in the carport design. For an example, the frame of the carport and the posts
+     * @param x, start X point of the rectangle
+     * @param y, start Y point of the rectangle
+     * @param height, end point of the rectangle -> used to define size
+     * @param width, end point of the rectangle -> used to define size
+     */
     public void addRect(int x, int y, int height, int width) {
         svg.append(String.format(rectTemplate, x, y, height, width));
     }
 
-    public void addPosts(Svg svg, FullCarport fullCarport, int height, int width) {
+    /**
+     * Adding Posts to the SVG drawing, since the drawing is a fixed size, some values have been hardcoded.
+     * @param fullCarport, used to get amount of posts
+     * @param width
+     */
+    public void addPosts(FullCarport fullCarport, int width) {
         int posts = fullCarport.getCarportParts().getTotalPosts();
         int postHeight = 9;
         int postWidth = 10;
-        int posX = 440;
+        int posX = 200;
         int posY = 220;
         //Stolper i toppen
         if(posts >= 5) {
-            svg.addRect(posX, posY, postHeight, postWidth);
+            addRect(posX, posY, postHeight, postWidth);
             posX += (width / 2) - postWidth;
-            svg.addRect(posX, posY, postHeight, postWidth);
+            addRect(posX, posY, postHeight, postWidth);
             //sørger for den sidste stolpe er yderst
-            svg.addRect(width - postWidth, posY, postHeight, postWidth);
-            //Stolper i bunden
-            posY = height - postHeight;
-            posX = 440;
-            svg.addRect(posX, posY, postHeight, postWidth);
+            posX  = 440;
+            addRect(posX - postWidth, posY, postHeight, postWidth);
+         //Stolper i bunden
+            posY = 450;
+            posX = 200;
+            addRect(posX, posY, postHeight, postWidth);
             posX += (width / 2) - postWidth;
-            svg.addRect(posX, posY, postHeight, postWidth);
+            addRect(posX, posY, postHeight, postWidth);
             //Sørger for den sidste stolpe er yderst på carport
-            svg.addRect(width - postWidth, posY, postHeight, postWidth);
+            posX  = 440;
+            addRect(posX - postWidth, posY, postHeight, postWidth);
         } else {
-            svg.addRect(posX, posY, postHeight, postWidth);
+            addRect(posX, posY, postHeight, postWidth);
             //sørger for den sidste stolpe er yderst
-            svg.addRect(width - postWidth, posY, postHeight, postWidth);
+            posX  = 440;
+            addRect(posX - postWidth, posY, postHeight, postWidth);
             //Stolper i bunden
-            posY = height - postHeight;
-            posX = 440;
-            svg.addRect(posX, posY, postHeight, postWidth);
+            posY = 450;
+            posX = 200;
+            addRect(posX, posY, postHeight, postWidth);
             //Sørger for den sidste stolpe er yderst på carport
-            svg.addRect(width - postWidth, posY, postHeight, postWidth);
+            posX  = 440;
+            addRect(posX - postWidth, posY, postHeight, postWidth);
         }
     }
 
