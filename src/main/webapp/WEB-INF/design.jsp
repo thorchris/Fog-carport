@@ -1,6 +1,9 @@
 <%@ page import="FunctionLayer.GenerateLists" %>
+<%@ page import="FunctionLayer.User" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+
+<!-- Loading lists from DB -->
 <%!
     @Override
     public void jspInit() {
@@ -16,18 +19,80 @@
     }
 %>
 
-<%@include file="../include/header.inc" %>
-<div class="container col-lg-12">
+<!--Header imports -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fog Trælast og byggecenter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="../JS/javascript.js"></script>
+    <link href="styles/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="img/FogBrand.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="FrontController?taget=redirect&modtagerside=index">Hjem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="FrontController?taget=redirect&modtagerside=design">Carport Design</a>
+                </li>
+                <li class="nav-item">
+                    <%
+                        User user = (User) session.getAttribute("user");
+                        if(user == null){
+                            out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=login\">Login/Registrer</a>");
+                        } else {
+                            out.println("<a class=\"nav-link\" href=\"FrontController?taget=logout\">Logud</a>");
+                        }
+                    %>
+                </li>
+                <li class="nav-item">
+                    <%
+                        user = (User) session.getAttribute("user");
+                        if (user != null) {
+                            if (user.getRole().equals("employee")) {
+                                out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=employee\">Medarbejder</a>");
+                            }
+                            else if (user.getRole().equals("customer")) {
+                                out.println("<a class=\"nav-link\" href=\"FrontController?taget=redirect&modtagerside=customer\">Min side</a>");
+                            }
+                        }
+                    %>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Design form, used to design custom carport -->
 <form action="FrontController" method="post">
     <input type="hidden" name="taget" value="manageCommand"/>
-    <div class="container">
+    <div class="container-fluid padding">
         <div class="row">
-            <div class="col-lg-8"></div>
-            <div class="col-lg-4">
+            <div class="col-1"></div>
+            <div class="col-6">
+                ${requestScope.svgdrawing}
+            </div>
+            <div class="col-4">
 
                 <div class="dropdown">
-                    <label for="exampleFormControlSelect1">Længde</label>
-                    <select class="form-control dropbtn btn-secondary btn-style btn-block" name="length"
+                    <label for="exampleFormControlSelect1"><h5>Længde på carporten:</h5></label>
+                    <select class="form-control dropbtn btn-primary btn-style btn-block" name="length"
                             id="exampleFormControlSelect1">
                         <option value="2.40">240</option>
                         <option value="2.70">270</option>
@@ -52,8 +117,8 @@
                 </div>
 
                 <div class="dropdown">
-                    <label for="exampleFormControlSelect1">Bredde</label>
-                    <select class="form-control dropbtn btn-secondary btn-style btn-block" name="width"
+                    <label for="exampleFormControlSelect1"><h5>Bredde på carporten:</h5></label>
+                    <select class="form-control dropbtn btn-primary btn-style btn-block" name="width"
                             id="exampleFormControlSelect2">
                         <option value="2.40">240</option>
                         <option value="2.70">270</option>
@@ -81,7 +146,7 @@
                 Ja </input>
                 <input type="radio" name="shedYesOrNo" onclick="myFunction1()" value="false"> Nej </input>
                 <div class="form-group" id="shedDropdowns" style="display: none">
-                    <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
+                    <select class="form-control dropbtn btn-primary btn-style mb-2 btn-block"
                             id="emptyDropdown1" type="text" name="shedLength">
                         <label for="exampleFormControlSelect1">Størrelse på skuret:</label>
                         <option name="isHalf" id="inlineRadio3" value="true">Halv bredde af carport</option>
@@ -98,7 +163,7 @@
                 <div class="dropdown" style="display:none" id="carportDropdowns">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Beklædning til carporten:</label>
-                        <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
+                        <select class="form-control dropbtn btn-primary btn-style mb-2 btn-block"
                                 name="carportMaterial"
                                 id="carportMat">
                             <c:forEach var="carportMaterialName" items="${applicationScope.carportMaterials}">
@@ -109,7 +174,7 @@
                 </div>
 
                 <div class="form-group" id="numberOfCladdingSides" style="display: none">
-                    <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
+                    <select class="form-control dropbtn btn-primary btn-style mb-2 btn-block"
                             id="emptyDropdown3" type="text" name="claddingsides">
                         <option value="1">En langside</option>
                         <option value="2">To langsider</option>
@@ -119,7 +184,7 @@
                 </div>
 
                 <div class="form-group" id="numberOfCladdingSides1" style="display: none">
-                    <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
+                    <select class="form-control dropbtn btn-primary btn-style mb-2 btn-block"
                             id="emptyDropdown4" type="text" name="claddingsides1">
                         <option value="1">En langside</option>
                         <option value="2">To langsider</option>
@@ -128,12 +193,10 @@
 
                 <h5>Hvilken tagtype ønsker du?</h5>
                 <input type="radio" name="isHighRoof" value="false" onclick="myFunction2()"> Fladt tag </input>
-                <input type="radio" id="roofCheckbox" onclick="myFunction2()" name="isHighRoof" value="true"> Rejsning
-                på
-                taget </input>
+                <input type="radio" id="roofCheckbox" onclick="myFunction2()" name="isHighRoof" value="true"> Rejsning på taget </input>
 
                 <div class="form-group" id="roofDropdowns" style="display: none">
-                    <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
+                    <select class="form-control dropbtn btn-primary btn-style mb-2 btn-block"
                             id="emptyDropdown2" type="text" name="angle">
                         <option value="0" disabled selected> Tagets hældning</option>
                         <option value="15">15</option>
@@ -149,7 +212,7 @@
                     <div class="dropdown">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Materialer til taget:</label>
-                            <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
+                            <select class="form-control dropbtn btn-primary btn-style mb-2 btn-block"
                                     name="roofMaterial"
                                     id="topping">
                                 <c:forEach var="roofMaterialName" items="${applicationScope.roofMaterials}">
@@ -160,7 +223,7 @@
                     </div>
                 </div>
                 <br>
-                <button type="input" class="btn btn-primary btn-style mt-2" name="calcPriceButton" >Beregn anslået pris
+                <button type="input" class="btn btn-primary btn-style mt-2 mb-2" name="calcPriceButton" >Beregn anslået pris
                 </button>
                 <h5>Anslået pris: ${sessionScope.totalPrice}</h5>
 
@@ -168,13 +231,13 @@
                 </button>
                 <button type="input" class="btn btn-primary btn-style mt-2" name="svgDrawing">Plantegning</button>
             </div>
-            ${requestScope.svgdrawing}
-            <div class="col-lg-2"></div>
+            <div class="col-1"></div>
         </div>
     </div>
 </form>
 </div>
 
-<script src="JS/javascript.js"></script>
 
+<!-- Footer -->
+<script src="JS/javascript.js"></script>
 <%@include file="../include/footer.inc" %>

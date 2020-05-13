@@ -1,82 +1,125 @@
-@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
-body{
-    margin: 0;
-    padding: 0;
-    font-family: 'Raleway', sans-serif;
-    color: #fff;
-}
-
-.headerseller{
-    text-align: center;
-}
-
-.table{
-    color: #FFFFFF;
-}
-
-.table-wrap{
-    height: 50%;
-    overflow: scroll;
-}
-
-.banner{
-    height: 100vh;
+html, body{
+    height: 100%;
     width: 100%;
-    background: url('banner1.jpg');
-    background-position: top;
-    background-size: cover;
-    background-repeat: no-repeat;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
 }
 
-.banner .navbar-brand{
-    color: #FFF;
-    font-size: 1.8em;
-    font-weight: 700;
-    margin-left: 10%;
-    text-decoration: underline;
+.navbar{
+    padding: .8rem;
 }
 
-.banner .nav{
-    margin-right: 10%;
+.navbar-nav li{
+    padding-right: 20px;
 }
 
-.banner .nav li a {
-    color: #0065ca;
-    font-size: 1em;
+.nav-link{
+    font-size: 1.1em !important;
 }
 
-.banner .info{
-    margin-top: 10%;
-    transform: translateY(-15%);
+.carousel-inner img{
+    width: 100%;
+    height: 100%;
 }
 
-.banner .info h1{
-    font-size: 2.5em;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 2px;
+.carousel-caption{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.banner .info p{
-    font-size: 1.2em;
+.carousel-caption h1{
+    font-size: 500%;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 15px #000;
+}
+
+.carousel-caption h3{
+    font-size: 200%;
     font-weight: 500;
-    color: #0065ca;
-    letter-spacing: 2px;
+    text-shadow: 1px 1px 10px #000;
+    padding-bottom: 1rem;
 }
 
-.banner .info a{
-    margin-left: 50%;
-    transform: translateX(-50%);
-    color: #fff;
-    background: #0065ca;
-    padding: 10px 20px;
-    font-size: 1.5em;
-    font-weight: 600;
+
+
+.btn-primary{
+    background-color: #002a53;
+    border: 1px solid #001427;
 }
 
-.banner .info a:hover{
-    background: #43a1ff;
+.btn-primary:hover{
+    background-color: #02488e;
+    border: 1px solid #001427;
+}
+
+.padding{
+    padding-bottom: 2rem;
+}
+
+.welcome{
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+.welcome hr{
+    border-top: 2px solid #b4b4b4;
+    width: 95%;
+    margin-top: .3rem;
+    margin-bottom: 1rem;
+}
+
+.social a{
+    font-size: 4.5em;
+    padding: 3rem;
+}
+
+.fa-facebook{
+    color: #3b5998;
+}
+
+.fa-instagram{
+    color: #517fa4;
+}
+
+.fa-github{
+    color: rgb(255, 255, 255);
+}
+
+.fa-instagram:hover, .fa-facebook:hover{
+    color: #d5d5d5;
+}
+
+footer{
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+    padding-top: 2rem;
+}
+
+hr.light{
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
+    margin-top: .8rem;
+    margin-bottom: 1rem;
+}
+
+footer a{
+    color: #d5d5d5;
+}
+
+hr.light-100{
+    border-top: 1px solid #d5d5d5;
+    width: 100%;
+    margin-top: .8rem;
+    margin-bottom: 1rem;
+}
+
+/*--- Bootstrap Padding Fix --*/
+[class*="col-"] {
+    padding: 1rem;
 }
 
 
