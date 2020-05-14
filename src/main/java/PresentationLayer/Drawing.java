@@ -46,8 +46,10 @@ public class Drawing extends Command {
 
 
         // REMME INDENI ( STRAPS )
-        //svg.addRect(startX+60, startY,intCarportHeight,strapWidth);
         svg.addStraps(intCarportWidth,intCarportHeight);
+
+        // Rafters
+        svg.addRafters(fullCarport, intCarportWidth,intCarportHeight);
 
         //Shed
         svg.addShedPosts(fullCarport, intCarportWidth);
