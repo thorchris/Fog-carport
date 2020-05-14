@@ -1,14 +1,31 @@
-<!-- Optional JavaScript -->
-<script src="../js/javascript.js"></script>
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<!--- Footer -->
+<footer class="footer">
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-md-6">
+                <hr class="light">
+                <h5>Kontakt os.</h5>
+                <hr class="light">
+                <p>+45 45 87 10 01</p>
+                <p>Fog-carporte@fog.dk</p>
+                <p>Firskovvej 20</p>
+                <p>2800 Kongens Lyngby</p>
+            </div>
+            <div class="col-md-6">
+                <hr class="light">
+                <h5>Åbnings tider.</h5>
+                <hr class="light">
+                <p>Uge dage: 6:00 - 17:30</p>
+                <p>Lørdag: 08:00 - 14:00</p>
+                <p>Søndag: 10:00 - 14:00</p>
+            </div>
+            <div class="col-12">
+                <hr class="light-100">
+                <h5>GRUPPE 10<a href="https://github.com/thorchris/Fog-carport"><i class="fab fa-github"></i></a></h5>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
