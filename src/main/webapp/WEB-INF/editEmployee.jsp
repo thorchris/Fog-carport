@@ -40,6 +40,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <!-- Show whos logged in -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link"> ${sessionScope.message} </a>
+                </li>
+            </ul>
+            <!-- Navbar items -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="FrontController?taget=redirect&modtagerside=index">Hjem</a>
@@ -82,6 +89,7 @@
         <!-- Table showing orders with options to search and edit them -->
         <div class="col-6">
             <h3> Kunde design </h3>
+            <hr>
             <table class="table table-striped table-dark table-bordered table.responsive">
                 <thead>
                 <tr>
@@ -122,19 +130,19 @@
 
             <div class="mt-4">
                 <div class="form-row">
-                        <div>
+                        <div class="mt-2">
                             <input type="text" name="customerEmail" class="form-control" placeholder="Indtast Kunde Email">
                             <button type="submit" class="btn btn-primary btn-style mt-2" name="findCustomerOrder">Find kunde design</button>
                         </div>
-                        <div>
-                            <input type="text" class="form-control ml-2 "
+                        <div class="mt-2 ml-2">
+                            <input type="text" class="form-control"
                                    placeholder="Indtast ordre ID" name="orderId">
-                            <button type="submit" class="btn btn-primary btn-style mt-2 ml-2" name="getCustomerOrder">Se kunde ordre</button>
+                            <button type="submit" class="btn btn-primary btn-style mt-2" name="getCustomerOrder">Se kunde ordre</button>
                         </div>
-                        <div>
-                            <input type="text" class="form-control ml-2 " placeholder="Kunde ordre id" name="co_id">
-                            <input type="text" class="form-control ml-2 " placeholder="Ny pris" name="updatePrice">
-                            <button type="submit" class="btn btn-primary btn-style mt-2 ml-2" name="changePrice">Ændre pris</button>
+                        <div class="mt-2 ml-2">
+                            <input type="text" class="form-control" placeholder="Kunde ordre id" name="co_id">
+                            <input type="text" class="form-control" placeholder="Ny pris" name="updatePrice">
+                            <button type="submit" class="btn btn-primary btn-style mt-2" name="changePrice">Ændre pris</button>
                         </div>
                 </div>
             </div>
@@ -142,6 +150,7 @@
         <!-- List showing customers -->
         <div class="col-4">
             <h3> Kunde liste </h3>
+            <hr>
             <table class="table table-striped table-dark table-bordered table.responsive">
                 <thead>
                 <tr>

@@ -25,7 +25,7 @@ public class Drawing extends Command {
         int intCarportHeight = 240;
         int  intCarportWidth = 240;
         //Viewbox
-        Svg svg = new Svg(500, 750, "0,0,800,750", 0, 0);
+        Svg svg = new Svg(500, 750, "0,0,500,750", 0, 0);
         svg.addRect(0,0,500,640);
         //Carport
         int startX = 200;
