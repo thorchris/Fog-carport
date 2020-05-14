@@ -85,80 +85,89 @@ public class Svg {
         int posts = fullCarport.getCarportParts().getTotalPosts();
         int postHeight = 9;
         int postWidth = 10;
-        int posX = 200;
-        int posY = 220;
+        int posX = 0;
+        int posY = 20;
         //Stolper i toppen
         if(posts >= 5) {
             addRect(posX, posY, postHeight, postWidth);
             posX += (width / 2) - postWidth;
             addRect(posX, posY, postHeight, postWidth);
             //sørger for den sidste stolpe er yderst
-            posX  = 200 + width;
+            posX  = 0 + width;
             addRect(posX - postWidth, posY, postHeight, postWidth);
          //Stolper i bunden
-            posY = 220 + height-postHeight;
-            posX = 200;
+            posY = 20 + height-postHeight;
+            posX = 0;
             addRect(posX, posY, postHeight, postWidth);
             posX += (width / 2) - postWidth;
             addRect(posX, posY, postHeight, postWidth);
             //Sørger for den sidste stolpe er yderst på carport
-            posX  = 200 + width;
+            posX  = 0 + width;
             addRect(posX - postWidth, posY, postHeight, postWidth);
         } else {
             addRect(posX, posY, postHeight, postWidth);
             //sørger for den sidste stolpe er yderst
-            posX  = 440;
+            posX  = posX + width;
             addRect(posX - postWidth, posY, postHeight, postWidth);
             //Stolper i bunden
             posY = height + posY;
-            posX = 200;
+            posX = 0;
             addRect(posX, posY, postHeight, postWidth);
             //Sørger for den sidste stolpe er yderst på carport
-            posX  = height + posY;
+            posX  = 0 + width;
             addRect(posX - postWidth, posY, postHeight, postWidth);
         }
     }
 
-    public void addShedPosts(Svg svg, FullCarport fullCarport){
-        int startX = 200;
-        int startY = 220;
+    /**
+     * StartX = starting point for the posts in X
+     *      * Starts in  x = 0
+     *      * Changed as we go to match different positions
+     * StartY = starting point for the posts in Y
+     *      * Starts in Y = 20
+     *      * Changed as we go to match different positions
+     * @param fullCarport, the carport were working on.
+     * @param width, the width of the carport recalculated to CM
+     */
+    public void addShedPosts(FullCarport fullCarport, int width){
+        int startX = 0;
+        int startY = 20;
 
         if (fullCarport.getCarportParts().isHasAShed() == true) {
 
-            int intShedWidth = 0;
-            int intShedHeight = 0;
+            int intShedWidth = width;
+            int intShedHeight = (int) (fullCarport.getShed().getShedLength()*80);
             if (fullCarport.getCarportParts().isHalfWidth() == true) {
-                intShedWidth = 120;
-                intShedHeight = 120;
                 //Shed
-                svg.addRect(startX, startY, intShedHeight, intShedWidth);
+                intShedWidth = intShedWidth/2;
+                addRect(startX, startY, intShedHeight, intShedWidth);
 
                 //Shed REMME
-                svg.addRect(startX+10, startY+10, intShedHeight-20, intShedWidth-20);
+                addRect(startX+10, startY+10, intShedHeight-20, intShedWidth-20);
                 int postHeight = 9;
                 int postWidth = 10;
                 //Posts
-                svg.addRect(startX,(startY + (intShedHeight/2)-postHeight),postHeight,postWidth);
-                svg.addRect(startX+(intShedWidth)-postWidth,(startY + (intShedHeight/2)-postHeight),postHeight,postWidth);
-                svg.addRect(startX+(intShedWidth/2),(startY+intShedHeight)-postHeight,postHeight,postWidth);
+                addRect(startX,(startY + (intShedHeight/2)-postHeight),postHeight,postWidth);
+                addRect(startX+(intShedWidth)-postWidth,(startY + (intShedHeight/2)-postHeight),postHeight,postWidth);
+                addRect(startX+(intShedWidth/2),(startY+intShedHeight)-postHeight,postHeight,postWidth);
 
             } else {
-                intShedWidth = 240;
-                intShedHeight = 120;
+                intShedWidth = width;
+                intShedHeight = (int) (fullCarport.getShed().getShedLength()*80);
                 //Shed
-                svg.addRect(startX, startY, intShedHeight, intShedWidth);
+                addRect(startX, startY, intShedHeight, intShedWidth);
 
 
                 //Shed REMME
-                svg.addRect(startX+10, startY+10, intShedHeight-20, intShedWidth-20);
+                addRect(startX+10, startY+10, intShedHeight-20, intShedWidth-20);
                 int postHeight = 9;
                 int postWidth = 10;
                 //posts
-                svg.addRect(startX+intShedWidth-postWidth,startY,postHeight,postWidth);
-                svg.addRect(startX+intShedWidth-postWidth,startY + intShedHeight-postHeight,postHeight,postWidth);
+                addRect(startX+intShedWidth-postWidth,startY,postHeight,postWidth);
+                addRect(startX+intShedWidth-postWidth,startY + intShedHeight-postHeight,postHeight,postWidth);
 
-                svg.addRect(startX,startY+intShedHeight-postHeight,postHeight,postWidth);
-                svg.addRect(startX+(intShedWidth/2),startY+intShedHeight-postHeight,postHeight,postWidth);
+                addRect(startX,startY+intShedHeight-postHeight,postHeight,postWidth);
+                addRect(startX+(intShedWidth/2),startY+intShedHeight-postHeight,postHeight,postWidth);
             }
 
         }
