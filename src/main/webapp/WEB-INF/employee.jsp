@@ -40,6 +40,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <!-- Show whos logged in -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link"> ${sessionScope.email} </a>
+                </li>
+            </ul>
+            <!-- Navbar items -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="FrontController?taget=redirect&modtagerside=index">Hjem</a>
@@ -80,7 +87,7 @@
 
             <div class="col-1"></div>
             <div class="col-10">
-                <h3 class="text-center"> Velkommen tilbage:"Sælger navn"</h3>
+                <h3 class="text-center"> Velkommen tilbage: ${sessionScope.email}</h3>
                 <h5 class="text-center">Hvor vil du hen?</h5>
                 <a href="FrontController?taget=redirect&modtagerside=editEmployee" role="link"><h5 class="text-center">Rediger ordre</h5></a>
                 <hr>

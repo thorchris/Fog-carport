@@ -27,6 +27,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <!-- Show whos logged in -->
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link"> ${sessionScope.email} </a>
+            </li>
+            </ul>
+            <!-- Navbar items -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="FrontController?taget=redirect&modtagerside=index">Hjem</a>
