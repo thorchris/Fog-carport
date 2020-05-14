@@ -44,6 +44,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <!-- Show whos logged in -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link"> ${sessionScope.message} </a>
+                </li>
+            </ul>
+            <!-- Navbar items -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="FrontController?taget=redirect&modtagerside=index">Hjem</a>
@@ -86,10 +93,13 @@
         <div class="row">
             <div class="col-1"></div>
             <div class="col-6">
+                <h3 class="text-center">Plantegning:</h3>
+                <hr>
                 ${requestScope.svgdrawing}
             </div>
             <div class="col-4">
-
+                <h3 class="text-center">Specifikationer:</h3>
+                <hr>
                 <div class="dropdown">
                     <label for="exampleFormControlSelect1"><h5>Længde på carporten:</h5></label>
                     <select class="form-control dropbtn btn-primary btn-style btn-block" name="length"
