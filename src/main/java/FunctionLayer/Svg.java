@@ -117,6 +117,21 @@ public class Svg {
         }
     }
 
+
+    public void addStraps(int width, int height){
+        int strapWidth = 9;
+        int posX = 0;
+        int posY = 20;
+        //Første rem
+        posX += (width / 4) - strapWidth;
+        addRect(posX, posY, height, strapWidth);
+        //Anden rem
+        posX=0;
+        posX += width -(width / 4) - strapWidth;
+        addRect(posX, posY, height, strapWidth);
+    }
+
+
     /**
      * StartX = starting point for the posts in X
      *      * Starts in  x = 0

@@ -23,8 +23,17 @@ public class Drawing extends Command {
         int carportWidthDB = (int) (carportWidth * 100);
 
         //Størrelsesforhold
-        int intCarportHeight = (int) (carportHeight*80);
-        int intCarportWidth = (int) (carportWidth*80);
+        int intCarportHeight;
+        int intCarportWidth;
+
+        if(carportWidth < 5){
+            intCarportHeight = (int) (carportHeight*120);
+            intCarportWidth = (int) (carportWidth*120);
+        }else{
+            intCarportHeight = (int) (carportHeight*100);
+            intCarportWidth = (int) (carportWidth*100);
+        }
+
         //Viewbox
         Svg svg = new Svg(780, 750, "0,0,900,700", 0, 0);
         //Carport
@@ -32,8 +41,13 @@ public class Drawing extends Command {
         int startY = 20;
         svg.addRect(startX, startY, intCarportHeight, intCarportWidth);
 
-        // REMME
+        // REMME YDRE
         svg.addRect(startX+10, startY+10, intCarportHeight-20, intCarportWidth-20);
+
+
+        // REMME INDENI ( STRAPS )
+        //svg.addRect(startX+60, startY,intCarportHeight,strapWidth);
+        svg.addStraps(intCarportWidth,intCarportHeight);
 
         //Shed
         svg.addShedPosts(fullCarport, intCarportWidth);
