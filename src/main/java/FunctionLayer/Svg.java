@@ -23,9 +23,9 @@ public class Svg {
     private final String pointerTemplate = " <line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:#000000;\n" +
             "        marker-start: url(#beginArrow);\n" +
             "        marker-end: url(#endArrow);\" />";
-    private final String verticalPointerText = "<text style=\"text-anchor: middle\" transform=\"translate(165,300) rotate(-90)\"> %d cm</text>";
+    private final String verticalPointerText = "<text style=\"text-anchor: middle\" transform=\"translate(%d,%d) rotate(-90)\"> %d cm</text>";
 
-    private final String horizontalPointerText = " <text style=\"text-anchor: middle\" x=\"320\" y=\"180\"> %d cm</text>";
+    private final String horizontalPointerText = " <text style=\"text-anchor: middle\" x=\"%d\" y=\"%d\"> %d cm</text>";
 
 
     public Svg(int height, int width, String viewBox, int x, int y) {
@@ -39,30 +39,28 @@ public class Svg {
 
     /**
      * Used to make a pointer, inserts the values from the variables into a SVG string.
-     * @param x
-     * @param y
-     * @param x2
-     * @param y2
-     * @param measurement
+     * @param x starting and ending point of the pointer so that it is vertical
+     * @param y starting point in y axis
+     * @param y2 finishing point i y axis
+     * @param measurement, the value that is the carport length. Reworked into a scalable measure.
      */
-    public void addVerticalPointer(int x, int y, int x2, int y2, int measurement){
+    public void addVerticalPointer(int x, int y, int y2, int measurement){
         svg.append(arrowTemplate);
-        svg.append(String.format(pointerTemplate, x, y, x2, y2));
-        svg.append(String.format(verticalPointerText,measurement));
+        svg.append(String.format(pointerTemplate, x+20, y, x+20,y2));
+        svg.append(String.format(verticalPointerText,x,(y2/2)+10,measurement));
     }
 
     /**
      * Used to make a pointer, inserts the values from the variables into a SVG string.
-     * @param x
-     * @param y
-     * @param x2
-     * @param y2
-     * @param measurement
+     * @param y starting and ending point of the pointer so that it is horizontal
+     * @param x starting point in the x axis
+     * @param x2 finishing point in the x axis
+     * @param measurement, the value that is the carport width. Reworked into a scalable measure.
      */
-    public void addHorizontalPointer(int x, int y, int x2, int y2, int measurement){
+    public void addHorizontalPointer(int x, int y, int x2, int measurement){
         svg.append(arrowTemplate);
-        svg.append(String.format(pointerTemplate, x, y, x2, y2));
-        svg.append(String.format(horizontalPointerText,measurement));
+        svg.append(String.format(pointerTemplate, x, y+30, x2, y+30));
+        svg.append(String.format(horizontalPointerText,(x2/2),y+20,measurement));
     }
 
     /**

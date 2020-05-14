@@ -42,16 +42,16 @@ public class Drawing extends Command {
         svg.addPosts(fullCarport, intCarportWidth, intCarportHeight);
 
         //Pointer vertical
-        int pointerX = startX-20;
+        int pointerX = intCarportWidth + 20;
         int pointerY = startY;
-        int finishY = 440;
-        svg.addVerticalPointer(pointerX, pointerY, pointerX,finishY, carportHeigthDB);
+        int finishY = intCarportHeight;
+        svg.addVerticalPointer(pointerX, pointerY,finishY, carportHeigthDB);
 
         //Horizontal pointer
         pointerX = startX;
-        pointerY = startY-20;
-        int finishX = 440;
-        svg.addHorizontalPointer(pointerX, pointerY, finishX, pointerY,carportWidthDB);
+        pointerY = intCarportHeight + 20;
+        int finishX = intCarportWidth;
+        svg.addHorizontalPointer(pointerX, pointerY, finishX,carportWidthDB);
 
 
         //int x, int y, int height, int width
