@@ -92,12 +92,6 @@
                 <div class="col-1"></div>
                 <div class="col-10">
                 <h2 class="text-center"> Kunders design</h2>
-                <div class="table-wrap">
-
-            <div class="col-lg-1"></div>
-            <div class="col-lg-10">
-                <h1 class="headerseller"> Sælger side </h1>
-                <h2 class="headerseller"> Kunders design</h2>
 
                     <table class="table table-striped table-dark table-bordered table.responsive">
                         <thead>
@@ -140,5 +134,6 @@
             <div class="col-1"></div>
         </div>
     </div>
+</div>
     <!-- Footer -->
     <%@include file="../include/footer.inc" %>
