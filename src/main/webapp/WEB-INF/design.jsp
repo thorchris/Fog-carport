@@ -83,9 +83,9 @@
                 <div class="form-group" id="shedDropdowns" style="display: none">
                     <select class="form-control dropbtn btn-secondary btn-style mb-2 btn-block"
                             id="emptyDropdown1" type="text" name="shedLength">
-                        <option value="" disabled selected> Skurets størrelse</option>
-                        <option name="isHalf" id="inlineRadio3" value="false">Halv bredde af carport</option>
-                        <option name="isHalf" id="inlineRadio4" value="true">Hel bredde af carport</option>
+                        <label for="exampleFormControlSelect1">Størrelse på skuret:</label>
+                        <option name="isHalf" id="inlineRadio3" value="true">Halv bredde af carport</option>
+                        <option name="isHalf" id="inlineRadio4" value="false">Hel bredde af carport</option>
                     </select>
                 </div>
 
@@ -166,8 +166,9 @@
 
                 <button type="input" class="btn btn-primary btn-style mt-2" name="createOrderButton" >Send til sælger
                 </button>
-                <button type="input" class="btn btn-primary btn-style mt-2">Plantegning</button>
+                <button type="input" class="btn btn-primary btn-style mt-2" name="svgDrawing">Plantegning</button>
             </div>
+            ${requestScope.svgdrawing}
             <div class="col-lg-2"></div>
         </div>
     </div>

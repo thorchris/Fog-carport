@@ -71,8 +71,8 @@ public class CalculatePrice extends Command {
         session.setAttribute("width", width);
         boolean wantAShed = Boolean.parseBoolean(request.getParameter("shedYesOrNo"));
         session.setAttribute("wantAShed", wantAShed);
-        boolean isHalf = Boolean.parseBoolean(request.getParameter("isHalf"));
-        session.setAttribute("isHalf",isHalf);
+        boolean isHalf = Boolean.parseBoolean(request.getParameter("shedLength"));
+        session.setAttribute("shedLength",isHalf);
 
         boolean isHighRoof = Boolean.parseBoolean(request.getParameter("isHighRoof"));
         session.setAttribute("isHighRoof",isHighRoof);
