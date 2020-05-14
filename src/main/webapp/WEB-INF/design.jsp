@@ -47,7 +47,7 @@
             <!-- Show whos logged in -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link"> ${sessionScope.email} </a>
+                    <a class="nav-link"> ${sessionScope.message} </a>
                 </li>
             </ul>
             <!-- Navbar items -->
