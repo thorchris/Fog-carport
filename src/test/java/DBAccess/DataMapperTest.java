@@ -62,22 +62,23 @@ public class DataMapperTest {
                 stmt.execute("INSERT INTO products SELECT * FROM fogcarport.products");
 
                 stmt.execute("DROP TABLE if EXISTS orders");
-                stmt.execute("CREATE TABLE orders LIKE fogcarport.order");
-                stmt.execute("INSERT INTO orders SELECT * FROM fogcarport.order");
+                stmt.execute("CREATE TABLE orders LIKE fogcarport.orders");
+                stmt.execute("INSERT INTO orders SELECT * FROM fogcarport.orders");
 
                 stmt.execute( "DROP TABLE if EXISTS users" );
                 stmt.execute( "CREATE TABLE users LIKE fogcarport.users" );
                 stmt.execute( "INSERT INTO users SELECT * FROM fogcarport.users" );
+
+                stmt.execute("DROP TABLE if EXISTS customer_order");
+                stmt.execute("CREATE TABLE customer_order LIKE fogcarport.customer_order");
+                stmt.execute("INSERT INTO customer_order SELECT * FROM fogcarport.customer_order");
+
             } catch (SQLException ex) {
                 System.out.println("Could not open connection to database: " + ex.getMessage());
             }
 
         }
 
-
-    //1	Egetræsbrædder	14	0.15	3
-    //2	Bøgetræsplade	12	0.15	3
-    //3	Plastiktræ	10	0.15	3
 
     @Test
     public void testSetUpOK() {
@@ -116,6 +117,9 @@ public class DataMapperTest {
         assertEquals(expected, result);
     }
 
+
+
+
     @Test
     public void testAddOrder()throws LoginSampleException {
 
@@ -135,8 +139,116 @@ public class DataMapperTest {
         User original = new User( "person", "kode");
         UserMapper.createUser( original );
 
+        List<Order> orderListDB = DataMapper.getOrderList();
+        int tmp = orderListDB.size();
+
         DataMapper.addOrder(original, carport);
+
+        List<Order> updatedOrderListDB = DataMapper.getOrderList();
+        int actual = updatedOrderListDB.size();
+
+        assertNotEquals(tmp,actual);
 
 
     }
+
+    @Test
+    public void testDeleteOrder() throws LoginSampleException {
+
+        //Skaber alt data til at lave en fuld carport
+        CarportMaterials carportMaterials = new CarportMaterials("Bøgetræsplade", 2, 12, 0.15, 3);
+        CarportParts carportParts = new CarportParts(510, 330, true, false, carportMaterials, 1);
+
+        RoofMaterials roofmaterials = new RoofMaterials("Betontagsten - rød", 2, 450, 1, 2);
+        Roof roof = new Roof(false, roofmaterials, 510, 330);
+
+        ShedMaterials shedMaterials = new ShedMaterials();
+        Shed shed = new Shed(510, 330, false, shedMaterials);
+
+        //instantierer en ny carport med alt dataet ovenfor
+        FullCarport carport = new FullCarport(carportParts, roof, shed);
+        User original = new User( "person", "kode");
+        UserMapper.createUser( original );
+
+        //tilføjer en ordre til databasen
+        DataMapper.addOrder(original, carport);
+
+        //checker størrelsen af listen af ordrer på databasen, og sætter tallet ind i en variabel
+        List<Order> orderListDB = DataMapper.getOrderList();
+        int tmp = orderListDB.size();
+
+        //sletter ordre fra databasen
+        int orderId = DataMapper.getUserOrderId(original);
+        DataMapper.deleteOrder(orderId);
+
+        //checker igen størrelsen af listen af ordrer, og sætter det ind i en variabel
+        List<Order> updatedOrderListDB = DataMapper.getOrderList();
+        int actual = updatedOrderListDB.size();
+
+        //checker om der er forskel på før deleteorder blev kaldt og efter
+        assertNotEquals(tmp,actual);
+
+    }
+
+    @Test
+    public void testGetCustomerDesign(){
+        //User user = new User("hafthor", "bjornsson");
+        //CustomerOrder co = new CustomerOrder(1,1,1,7,3,510,330,1,10, 2000);
+    }
+
+    @Test
+    public void testCreateCustomerDesign() throws LoginSampleException {
+
+        User user = new User("hafthor", "bjornsson");
+        UserMapper.createUser(user);
+
+        int userId = UserMapper.getUserId("hafthor");
+
+        System.out.println(userId);
+
+        CustomerOrder co = new CustomerOrder(1,1,1,7,userId,510,330,1,10, 2100);
+
+        DataMapper.createCustomerDesign(co);
+
+        List<CustomerOrder> CustomerOrderList;
+        CustomerOrderList = DataMapper.getCustomerDesignOrder(userId);
+
+        System.out.println(CustomerOrderList.toString());
+
+    }
+
+    @Test
+    public void testGetUserOrderId() throws LoginSampleException {
+
+        //Skaber alt data til at lave en fuld carport
+        CarportMaterials carportMaterials = new CarportMaterials("Bøgetræsplade", 2, 12, 0.15, 3);
+        CarportParts carportParts = new CarportParts(510, 330, true, false, carportMaterials, 1);
+
+        RoofMaterials roofmaterials = new RoofMaterials("Betontagsten - rød", 2, 450, 1, 2);
+        Roof roof = new Roof(false, roofmaterials, 510, 330);
+
+        ShedMaterials shedMaterials = new ShedMaterials();
+        Shed shed = new Shed(510, 330, false, shedMaterials);
+
+        FullCarport carport = new FullCarport(carportParts, roof, shed);
+        User original = new User( "person", "kode");
+        UserMapper.createUser( original );
+        DataMapper.addOrder(original, carport);
+
+        DataMapper.getUserOrderId(original);
+
+        //assert et eller andet
+
+
+    }
+
+
+
+    @Test
+    public void testUpdatePrice(){
+
+        //DataMapper.updatePrice(coId, 2500);
+
+    }
+
 }

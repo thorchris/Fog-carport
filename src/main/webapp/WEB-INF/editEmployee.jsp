@@ -75,6 +75,8 @@
 </nav>
 
 <div class="container-fluid">
+    <form action="FrontController" method="post">
+        <input type="hidden" name="taget" value="manageCommand"/>
     <div class="row">
         <div class="col-1"></div>
         <!-- Table showing orders with options to search and edit them -->
@@ -120,25 +122,19 @@
 
             <div class="mt-4">
                 <div class="form-row">
-                    <form action="FrontController" method="post">
-                        <input type="hidden" name="taget" value="findCustomerOrder"/>
                         <div>
-                            <input type="text" name="customerEmail" class="form-control"
-                                   placeholder="Indtast Kunde Email">
-                            <button type="submit" class="btn btn-primary btn-style mt-2" name="findCustomerOrder">Find
-                                kunde design
-                            </button>
+                            <input type="text" name="customerEmail" class="form-control" placeholder="Indtast Kunde Email">
+                            <button type="submit" class="btn btn-primary btn-style mt-2" name="findCustomerOrder">Find kunde design</button>
                         </div>
-                    </form>
-
-                    <form action="FrontController" method="post">
-                        <input type="hidden" name="taget" value="getCustomerOrder"/>
                         <div>
                             <input type="text" class="form-control ml-2 "
                                    placeholder="Indtast ordre ID" name="orderId">
-                            <button type="submit" class="btn btn-primary btn-style mt-2 ml-2" name="getCustomerOrder">Se
-                                kunde ordre
-                            </button>
+                            <button type="submit" class="btn btn-primary btn-style mt-2 ml-2" name="getCustomerOrder">Se kunde ordre</button>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control ml-2 " placeholder="Kunde ordre id" name="co_id">
+                            <input type="text" class="form-control ml-2 " placeholder="Ny pris" name="updatePrice">
+                            <button type="submit" class="btn btn-primary btn-style mt-2 ml-2" name="changePrice">Ændre pris</button>
                         </div>
                 </div>
             </div>
@@ -172,7 +168,7 @@
         </div>
         <div class="col-1"></div>
     </div>
+    </form>
 </div>
-
 <!-- Footer -->
 <%@include file="../include/footer.inc" %>
