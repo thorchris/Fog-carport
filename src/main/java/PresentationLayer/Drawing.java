@@ -22,11 +22,12 @@ public class Drawing extends Command {
         int carportHeigthDB = (int) (carportHeight * 100);
         int carportWidthDB = (int) (carportWidth * 100);
 
-        int intCarportHeight = 240;
-        int  intCarportWidth = 240;
+        //Størrelsesforhold
+        int intCarportHeight = (int) (carportHeight*40);
+        int intCarportWidth = (int) (carportWidth*40);
         //Viewbox
-        Svg svg = new Svg(500, 750, "0,0,500,750", 0, 0);
-        svg.addRect(0,0,500,640);
+        Svg svg = new Svg(500, 500, "0,0,500,700", 0, 0);
+        svg.addRect(0,0,500,500);
         //Carport
         int startX = 200;
         int startY = 220;
@@ -39,7 +40,7 @@ public class Drawing extends Command {
         svg.addShedPosts(svg, fullCarport);
 
         //Carport posts
-        svg.addPosts(fullCarport, intCarportWidth);
+        svg.addPosts(fullCarport, intCarportWidth, intCarportHeight);
 
         //Pointer vertical
         int pointerX = startX-20;

@@ -81,7 +81,7 @@ public class Svg {
      * @param fullCarport, used to get amount of posts
      * @param width
      */
-    public void addPosts(FullCarport fullCarport, int width) {
+    public void addPosts(FullCarport fullCarport, int width, int height) {
         int posts = fullCarport.getCarportParts().getTotalPosts();
         int postHeight = 9;
         int postWidth = 10;
@@ -93,16 +93,16 @@ public class Svg {
             posX += (width / 2) - postWidth;
             addRect(posX, posY, postHeight, postWidth);
             //sørger for den sidste stolpe er yderst
-            posX  = 440;
+            posX  = 200 + width;
             addRect(posX - postWidth, posY, postHeight, postWidth);
          //Stolper i bunden
-            posY = 450;
+            posY = 220 + height-postHeight;
             posX = 200;
             addRect(posX, posY, postHeight, postWidth);
             posX += (width / 2) - postWidth;
             addRect(posX, posY, postHeight, postWidth);
             //Sørger for den sidste stolpe er yderst på carport
-            posX  = 440;
+            posX  = 200 + width;
             addRect(posX - postWidth, posY, postHeight, postWidth);
         } else {
             addRect(posX, posY, postHeight, postWidth);
@@ -110,11 +110,11 @@ public class Svg {
             posX  = 440;
             addRect(posX - postWidth, posY, postHeight, postWidth);
             //Stolper i bunden
-            posY = 450;
+            posY = height + posY;
             posX = 200;
             addRect(posX, posY, postHeight, postWidth);
             //Sørger for den sidste stolpe er yderst på carport
-            posX  = 440;
+            posX  = height + posY;
             addRect(posX - postWidth, posY, postHeight, postWidth);
         }
     }
