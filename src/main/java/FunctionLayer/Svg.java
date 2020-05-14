@@ -39,36 +39,39 @@ public class Svg {
 
     /**
      * Used to make a pointer, inserts the values from the variables into a SVG string.
-     * @param x starting and ending point of the pointer so that it is vertical
-     * @param y starting point in y axis
-     * @param y2 finishing point i y axis
+     *
+     * @param x            starting and ending point of the pointer so that it is vertical
+     * @param y            starting point in y axis
+     * @param y2           finishing point i y axis
      * @param measurement, the value that is the carport length. Reworked into a scalable measure.
      */
-    public void addVerticalPointer(int x, int y, int y2, int measurement){
+    public void addVerticalPointer(int x, int y, int y2, int measurement) {
         svg.append(arrowTemplate);
-        svg.append(String.format(pointerTemplate, x+20, y, x+20,y2));
-        svg.append(String.format(verticalPointerText,x,(y2/2)+10,measurement));
+        svg.append(String.format(pointerTemplate, x + 20, y, x + 20, y2));
+        svg.append(String.format(verticalPointerText, x, (y2 / 2) + 10, measurement));
     }
 
     /**
      * Used to make a pointer, inserts the values from the variables into a SVG string.
-     * @param y starting and ending point of the pointer so that it is horizontal
-     * @param x starting point in the x axis
-     * @param x2 finishing point in the x axis
+     *
+     * @param y            starting and ending point of the pointer so that it is horizontal
+     * @param x            starting point in the x axis
+     * @param x2           finishing point in the x axis
      * @param measurement, the value that is the carport width. Reworked into a scalable measure.
      */
-    public void addHorizontalPointer(int x, int y, int x2, int measurement){
+    public void addHorizontalPointer(int x, int y, int x2, int measurement) {
         svg.append(arrowTemplate);
-        svg.append(String.format(pointerTemplate, x, y+30, x2, y+30));
-        svg.append(String.format(horizontalPointerText,(x2/2),y+20,measurement));
+        svg.append(String.format(pointerTemplate, x, y + 30, x2, y + 30));
+        svg.append(String.format(horizontalPointerText, (x2 / 2), y + 20, measurement));
     }
 
     /**
      * Used to generate a lot of the rectangles in the carport design. For an example, the frame of the carport and the posts
-     * @param x, start X point of the rectangle
-     * @param y, start Y point of the rectangle
+     *
+     * @param x,      start X point of the rectangle
+     * @param y,      start Y point of the rectangle
      * @param height, end point of the rectangle -> used to define size
-     * @param width, end point of the rectangle -> used to define size
+     * @param width,  end point of the rectangle -> used to define size
      */
     public void addRect(int x, int y, int height, int width) {
         svg.append(String.format(rectTemplate, x, y, height, width));
@@ -76,6 +79,7 @@ public class Svg {
 
     /**
      * Adding Posts to the SVG drawing, since the drawing is a fixed size, some values have been hardcoded.
+     *
      * @param fullCarport, used to get amount of posts
      * @param width
      */
@@ -86,101 +90,131 @@ public class Svg {
         int posX = 0;
         int posY = 20;
         //Stolper i toppen
-        if(posts >= 5) {
+        if (posts >= 5) {
             addRect(posX, posY, postHeight, postWidth);
             posX += (width / 2) - postWidth;
             addRect(posX, posY, postHeight, postWidth);
             //sørger for den sidste stolpe er yderst
-            posX  = 0 + width;
+            posX = 0 + width;
             addRect(posX - postWidth, posY, postHeight, postWidth);
-         //Stolper i bunden
-            posY = 20 + height-postHeight;
+            //Stolper i bunden
+            posY = 20 + height - postHeight;
             posX = 0;
             addRect(posX, posY, postHeight, postWidth);
             posX += (width / 2) - postWidth;
             addRect(posX, posY, postHeight, postWidth);
             //Sørger for den sidste stolpe er yderst på carport
-            posX  = 0 + width;
+            posX = 0 + width;
             addRect(posX - postWidth, posY, postHeight, postWidth);
         } else {
             addRect(posX, posY, postHeight, postWidth);
             //sørger for den sidste stolpe er yderst
-            posX  = posX + width;
+            posX = posX + width;
             addRect(posX - postWidth, posY, postHeight, postWidth);
             //Stolper i bunden
             posY = height + posY;
             posX = 0;
             addRect(posX, posY, postHeight, postWidth);
             //Sørger for den sidste stolpe er yderst på carport
-            posX  = 0 + width;
+            posX = 0 + width;
             addRect(posX - postWidth, posY, postHeight, postWidth);
         }
     }
 
+    /**
+     *
+     *
+     *  Adds Straps to the SVG drawing.
+     *
+     * @param width used to find the X position to draw the straps.
+     * @param height used to find the Y position to draw the straps.
+     */
 
-    public void addStraps(int width, int height){
+    public void addStraps(int width, int height) {
         int strapWidth = 9;
         int posX = 0;
         int posY = 20;
         //Første rem
-        posX += (width / 4) - strapWidth;
-        addRect(posX, posY, height, strapWidth);
+        posY += (height / 4) - strapWidth;
+        addRect(posX, posY, strapWidth, width);
         //Anden rem
-        posX=0;
-        posX += width -(width / 4) - strapWidth;
-        addRect(posX, posY, height, strapWidth);
+        posY = 20;
+        posY += height - (height / 4) - strapWidth;
+        addRect(posX, posY, strapWidth, width);
+    }
+
+    /**
+     *
+     * Adds rafters to the SVG drawing.
+     *
+     * @param fullCarport used to get the amount of rafters for the specific carport.
+     * @param width used to find the X position to draw the rafter.
+     * @param height used to find the Y position to draw the rafter.
+     */
+    public void addRafters(FullCarport fullCarport, int width, int height) {
+        int rafters = (int) fullCarport.getCarportParts().getTotalRafters();
+
+        int rafterWidth = 4;
+        int posX = 0;
+        int posY = 20;
+        for (int i = 0; i < rafters; i++) {
+            posX += (width / rafters) - rafterWidth;
+            addRect(posX, posY, height, rafterWidth);
+        }
+
     }
 
 
     /**
      * StartX = starting point for the posts in X
-     *      * Starts in  x = 0
-     *      * Changed as we go to match different positions
+     * * Starts in  x = 0
+     * * Changed as we go to match different positions
      * StartY = starting point for the posts in Y
-     *      * Starts in Y = 20
-     *      * Changed as we go to match different positions
+     * * Starts in Y = 20
+     * * Changed as we go to match different positions
+     *
      * @param fullCarport, the carport were working on.
-     * @param width, the width of the carport recalculated to CM
+     * @param width,       the width of the carport recalculated to CM
      */
-    public void addShedPosts(FullCarport fullCarport, int width){
+    public void addShedPosts(FullCarport fullCarport, int width) {
         int startX = 0;
         int startY = 20;
 
         if (fullCarport.getCarportParts().isHasAShed() == true) {
 
             int intShedWidth = width;
-            int intShedHeight = (int) (fullCarport.getShed().getShedLength()*80);
+            int intShedHeight = (int) (fullCarport.getShed().getShedLength() * 80);
             if (fullCarport.getCarportParts().isHalfWidth() == true) {
                 //Shed
-                intShedWidth = intShedWidth/2;
+                intShedWidth = intShedWidth / 2;
                 addRect(startX, startY, intShedHeight, intShedWidth);
 
                 //Shed REMME
-                addRect(startX+10, startY+10, intShedHeight-20, intShedWidth-20);
+                addRect(startX + 10, startY + 10, intShedHeight - 20, intShedWidth - 20);
                 int postHeight = 9;
                 int postWidth = 10;
                 //Posts
-                addRect(startX,(startY + (intShedHeight/2)-postHeight),postHeight,postWidth);
-                addRect(startX+(intShedWidth)-postWidth,(startY + (intShedHeight/2)-postHeight),postHeight,postWidth);
-                addRect(startX+(intShedWidth/2),(startY+intShedHeight)-postHeight,postHeight,postWidth);
+                addRect(startX, (startY + (intShedHeight / 2) - postHeight), postHeight, postWidth);
+                addRect(startX + (intShedWidth) - postWidth, (startY + (intShedHeight / 2) - postHeight), postHeight, postWidth);
+                addRect(startX + (intShedWidth / 2), (startY + intShedHeight) - postHeight, postHeight, postWidth);
 
             } else {
                 intShedWidth = width;
-                intShedHeight = (int) (fullCarport.getShed().getShedLength()*80);
+                intShedHeight = (int) (fullCarport.getShed().getShedLength() * 80);
                 //Shed
                 addRect(startX, startY, intShedHeight, intShedWidth);
 
 
                 //Shed REMME
-                addRect(startX+10, startY+10, intShedHeight-20, intShedWidth-20);
+                addRect(startX + 10, startY + 10, intShedHeight - 20, intShedWidth - 20);
                 int postHeight = 9;
                 int postWidth = 10;
                 //posts
-                addRect(startX+intShedWidth-postWidth,startY,postHeight,postWidth);
-                addRect(startX+intShedWidth-postWidth,startY + intShedHeight-postHeight,postHeight,postWidth);
+                addRect(startX + intShedWidth - postWidth, startY, postHeight, postWidth);
+                addRect(startX + intShedWidth - postWidth, startY + intShedHeight - postHeight, postHeight, postWidth);
 
-                addRect(startX,startY+intShedHeight-postHeight,postHeight,postWidth);
-                addRect(startX+(intShedWidth/2),startY+intShedHeight-postHeight,postHeight,postWidth);
+                addRect(startX, startY + intShedHeight - postHeight, postHeight, postWidth);
+                addRect(startX + (intShedWidth / 2), startY + intShedHeight - postHeight, postHeight, postWidth);
             }
 
         }

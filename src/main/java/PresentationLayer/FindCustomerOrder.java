@@ -1,14 +1,11 @@
 package PresentationLayer;
 
-import DBAccess.DataMapper;
 import FunctionLayer.CustomerOrder;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.crypto.Data;
 import java.util.List;
 
 public class FindCustomerOrder extends Command{
