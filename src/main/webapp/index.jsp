@@ -71,7 +71,7 @@
     </ul>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="img/background1.png">
+            <img class="img-fluid" src="img/background1.png">
             <div class="carousel-caption">
                 <h1 class="display-2">Fog Carporte</h1>
                 <h3>Carporte efter dit design</h3>
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img src="img/background4.png">
+            <img class="img-fluid" src="img/background4.png">
             <div class="carousel-caption">
                 <h1 class="display-2">Fog Carporte</h1>
                 <h3>Carporte efter dit design</h3>
@@ -87,7 +87,7 @@
             </div>
         </div>
         <div class="carousel-item ">
-            <img src="img/background5.png">
+            <img class="img-fluid" src="img/background5.png">
             <div class="carousel-caption">
                 <h1 class="display-2">Fog Carporte</h1>
                 <h3>Carporte efter dit design</h3>
