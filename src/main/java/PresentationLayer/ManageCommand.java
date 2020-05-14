@@ -9,19 +9,23 @@ import javax.servlet.http.HttpServletResponse;
 public class ManageCommand extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderException {
-
-        String calcPrice = request.getParameter("calcPriceButton");
-        String createOrder = request.getParameter("createOrderButton");
         String getCustomerOrder = request.getParameter("getCustomerOrder");
         String findCustomerOrder = request.getParameter("findCustomerOrder");
         String deleteOrder = request.getParameter("deleteOrder");
         String changePrice = request.getParameter("changePrice");
+
+        String calcPrice = request.getParameter("calcPriceButton");
+        String createOrder = request.getParameter("createOrderButton");
+        String svgDrawing = request.getParameter("svgDrawing");
+
         String action = request.getParameter("action");
 
         if (calcPrice != null){
             action = "calculatePrice";
         } else if (createOrder != null){
             action = "createOrder";
+        } else if (svgDrawing != null){
+            action = "svgDrawing";
         }
 
         if (getCustomerOrder != null){
@@ -58,6 +62,10 @@ public class ManageCommand extends Command {
             case "changePrice":
                 new UpdateCustomerOrderPrice().execute(request,response);
                 return "orderEmployee";
+            case "svgDrawing":
+                new Drawing().execute(request, response);
+                return "design";
+
             default:
                 return "design";
         }
