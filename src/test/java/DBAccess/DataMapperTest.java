@@ -204,8 +204,6 @@ public class DataMapperTest {
 
         int userId = UserMapper.getUserId("hafthor");
 
-        System.out.println(userId);
-
         CustomerOrder co = new CustomerOrder(1,1,1,7,userId,510,330,1,10, 2100);
 
         DataMapper.createCustomerDesign(co);
@@ -213,7 +211,10 @@ public class DataMapperTest {
         List<CustomerOrder> CustomerOrderList;
         CustomerOrderList = DataMapper.getCustomerDesignOrder(userId);
 
-        System.out.println(CustomerOrderList.toString());
+        int expected = UserMapper.getUserId("hafthor");
+        int result = CustomerOrderList.get(0).getUserId();
+
+        assertEquals(expected,result);
 
     }
 
@@ -232,23 +233,37 @@ public class DataMapperTest {
 
         FullCarport carport = new FullCarport(carportParts, roof, shed);
         User original = new User( "person", "kode");
+
         UserMapper.createUser( original );
+
         DataMapper.addOrder(original, carport);
 
-        DataMapper.getUserOrderId(original);
-
-        //assert et eller andet
+        List<Order> sizeOfOrderList = DataMapper.getOrderList();
 
 
-    }
+        int expected = sizeOfOrderList.size();
+        int result = DataMapper.getUserOrderId(original);
 
+        assertEquals(expected,result);
 
-
-    @Test
-    public void testUpdatePrice(){
-
-        //DataMapper.updatePrice(coId, 2500);
 
     }
+
+
+
+   /* @Test
+    public void testUpdatePrice() throws LoginSampleException {
+
+        CustomerOrder co = new CustomerOrder(1,1,1,7,1,510,330,1,10, 2100);
+
+        DataMapper.createCustomerDesign(co);
+        co.setCustomerOrderId(1);
+
+        DataMapper.updatePrice(1, 2500);
+
+
+        assertEquals(2500,co.getPrice());
+
+    }*/
 
 }
