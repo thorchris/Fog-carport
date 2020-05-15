@@ -68,19 +68,7 @@ public class Drawing extends Command {
         pointerY = intCarportHeight + 20;
         int finishX = intCarportWidth;
         svg.addHorizontalPointer(pointerX, pointerY, finishX,carportWidthDB);
-
-
-        //int x, int y, int height, int width
-
-     /*   //Remme
-        svg.addRect(0,35,4,780);
-        svg.addRect(0,565,4,780);
-        svg.addRect(0,565,4,780);
-        svg.addRect(0,565,4,780);
-
-        //Spær
-        svg.addRect(0,565,4,780);*/
-
+        
         request.setAttribute("svgdrawing", svg.toString());
         return "design";
     }
