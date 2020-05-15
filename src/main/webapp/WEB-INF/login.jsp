@@ -73,7 +73,7 @@
                     <form name="login" action="FrontController" method="POST" class="was-validated">
                         <div class="form-group">
                             <input type="hidden" name="taget" value="login">
-                            <input type="text" class="form-control" name="email" placeholder="Email" required="required">
+                            <input type="text" class="form-control" name="email" placeholder="Email" required="required" pattern="[ÆØÅæøåA-Za-z0-9._%+-]+@[ÆØÅæøåA-Za-z0-9.-]+\.[ÆØÅæøåA-Za-z]{2,}$">
                             <div class="valid-feedback">Godkendt.</div>
                             <div class="invalid-feedback">Indtast email.</div>
                         </div>
@@ -85,6 +85,10 @@
                         <div class="form-footer">
                             <input type="submit" class="btn btn-primary btn-style" value="Login">
                             <a href="FrontController?taget=redirect&modtagerside=register" class="btn btn-primary btn-style ml-1">Opret Bruger</a>
+                        </div>
+                        <div class="alert alert-danger mt-4 <c:if test = "${empty requestScope.message}">d-none</c:if> "
+                             role="alert">
+                            ${requestScope.message}
                         </div>
 
                     </form>
