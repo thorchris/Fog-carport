@@ -82,7 +82,6 @@ public class DataMapper {
         int rafters = (int) carport.getCarportParts().getTotalRafters();
         int cladding = (int) carport.getCarportParts().getCarportCladding();
         int screws = (int) ((int) carport.getCarportParts().getTotalScrews() + carport.getRoof().getScrew());
-        ;
         int posts = carport.getCarportParts().getTotalPosts();
         int fascia = (int) carport.getRoof().getFascia();
         int brackets = (int) carport.getRoof().getBracket();
@@ -305,19 +304,6 @@ public class DataMapper {
             System.out.println("FEJL! Kunne ikke opdatere pris");
         }
     }
-
-
-
-
-
-
-
-    public static void main(String[] args) throws OrderException {
-
-        Order order = getCustomerOrder(1);
-        System.out.println(order.toString());
-    }
-
 
 
 }
