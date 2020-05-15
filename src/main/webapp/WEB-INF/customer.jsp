@@ -30,7 +30,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/FogBrand.png"></a>
+        <a class="navbar-brand" href="FrontController?taget=redirect&modtagerside=index"><img src="img/FogBrand.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -78,14 +78,14 @@
 </nav>
 
 <!-- Table showing customer orders -->
-<form action="FrontController" method="post">
+<form action="FrontController" method="post" target="_blank">
     <input type="hidden" name="taget" value="manageCommand">
 <div class="container-fluid padding">
     <div class="row">
         <div class="col-1"></div>
         <div class="col-10">
-            <h3 class="text-center">Velkommen til din side.</h3>
-            <h4 class="text-center">Her kan se en liste over dine tidligere designs.</h4>
+            <h3 class="text-center">Velkommen til din side: ${sessionScope.user.email}.</h3>
+            <h4 class="text-center">Her kan du se en liste over dine tidligere designs.</h4>
             <hr>
                 <table class="table table-striped table-dark table-bordered table.responsive ">
                     <thead>
