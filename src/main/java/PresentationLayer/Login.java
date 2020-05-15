@@ -23,23 +23,27 @@ public class Login extends Command {
      * @version - Færdige version for cupcake projektet.
      */
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        User user = LogicFacade.login(email, password);
-        String role = user.getRole();
+    String execute(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            User user = LogicFacade.login(email, password);
+            String role = user.getRole();
 
-        HttpSession session = request.getSession();
+            HttpSession session = request.getSession();
+            session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
+            session.setAttribute("user", user);
+            request.setAttribute("message", "Du er logget ind som: " + user.getEmail());
 
-        session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
-        session.setAttribute("user", user);
-        session.setAttribute("message","Du er logget ind som: " + user.getEmail());
-
-        switch (role) {
-            case "employee":
-                return "employee";
-            default:
-                return "../index";
+            switch (role) {
+                case "employee":
+                    return "employee";
+                default:
+                    return "../index";
+            }
+        } catch (LoginSampleException e) {
+            request.setAttribute("message", "FEJL UNDER LOGIN, PRØV IGEN ELLER OPRET EN BRUGER");
+            return "login";
         }
 
     }

@@ -22,48 +22,52 @@ public class Drawing extends Command {
         int carportHeigthDB = (int) (carportHeight * 100);
         int carportWidthDB = (int) (carportWidth * 100);
 
-        int intCarportHeight = 240;
-        int  intCarportWidth = 240;
+        //Størrelsesforhold
+        int intCarportHeight;
+        int intCarportWidth;
+
+        if(carportWidth < 5){
+            intCarportHeight = (int) (carportHeight*120);
+            intCarportWidth = (int) (carportWidth*120);
+        }else{
+            intCarportHeight = (int) (carportHeight*100);
+            intCarportWidth = (int) (carportWidth*100);
+        }
+
         //Viewbox
-        Svg svg = new Svg(500, 750, "0,0,500,750", 0, 0);
-        svg.addRect(0,0,500,640);
+        Svg svg = new Svg(780, 750, "0,0,900,700", 0, 0);
         //Carport
-        int startX = 200;
-        int startY = 220;
+        int startX = 0;
+        int startY = 20;
         svg.addRect(startX, startY, intCarportHeight, intCarportWidth);
 
-        // REMME
+        // REMME YDRE
         svg.addRect(startX+10, startY+10, intCarportHeight-20, intCarportWidth-20);
 
+
+        // REMME INDENI ( STRAPS )
+        svg.addStraps(intCarportWidth,intCarportHeight);
+
+        // Rafters
+        svg.addRafters(fullCarport, intCarportWidth,intCarportHeight);
+
         //Shed
-        svg.addShedPosts(svg, fullCarport);
+        svg.addShedPosts(fullCarport, intCarportWidth);
 
         //Carport posts
-        svg.addPosts(fullCarport, intCarportWidth);
+        svg.addPosts(fullCarport, intCarportWidth, intCarportHeight);
 
         //Pointer vertical
-        int pointerX = startX-20;
+        int pointerX = intCarportWidth + 20;
         int pointerY = startY;
-        int finishY = 440;
-        svg.addVerticalPointer(pointerX, pointerY, pointerX,finishY, carportHeigthDB);
+        int finishY = intCarportHeight;
+        svg.addVerticalPointer(pointerX, pointerY,finishY, carportHeigthDB);
 
         //Horizontal pointer
         pointerX = startX;
-        pointerY = startY-20;
-        int finishX = 440;
-        svg.addHorizontalPointer(pointerX, pointerY, finishX, pointerY,carportWidthDB);
-
-
-        //int x, int y, int height, int width
-
-     /*   //Remme
-        svg.addRect(0,35,4,780);
-        svg.addRect(0,565,4,780);
-        svg.addRect(0,565,4,780);
-        svg.addRect(0,565,4,780);
-
-        //Spær
-        svg.addRect(0,565,4,780);*/
+        pointerY = intCarportHeight + 20;
+        int finishX = intCarportWidth;
+        svg.addHorizontalPointer(pointerX, pointerY, finishX,carportWidthDB);
 
         request.setAttribute("svgdrawing", svg.toString());
         return "design";
