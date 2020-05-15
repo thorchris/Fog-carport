@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 public class Drawing extends Command {
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         HttpSession session = request.getSession();
         new CalculatePrice().execute(request, response);
         FullCarport fullCarport = (FullCarport) session.getAttribute("fullCarport");
