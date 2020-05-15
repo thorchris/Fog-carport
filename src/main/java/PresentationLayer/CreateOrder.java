@@ -10,7 +10,7 @@ import java.text.DecimalFormat;
 public class CreateOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-
+        new CalculatePrice().execute(request, response);
         HttpSession session = request.getSession();
         FullCarport fullCarport = (FullCarport) session.getAttribute("fullCarport");
         if(fullCarport == null){
@@ -46,6 +46,8 @@ public class CreateOrder extends Command {
         //double price = Double.parseDouble(String.format("%.2f",session.getAttribute("price")));
 
         CustomerOrder customerOrder = new CustomerOrder(roofMatId, carportMatId, shedMatId, orderID, userId, cp_length, cp_width,hasShed,shedHalf, claddingSides, roofAngle, price);
+        //We only want two digits
+        price = (int)(price * 100 + 0.5) / 100.0;;
         LogicFacade.createCustomerDesign(customerOrder);
 
         request.setAttribute("message","DIN CARPORT ER NU GEMT OG DU KAN FINDE DEN PÅ DIN SIDE");
