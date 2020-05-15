@@ -240,6 +240,10 @@
                 <button type="input" class="btn btn-primary btn-style mt-2" name="createOrderButton" >Send til sælger
                 </button>
                 <button type="input" class="btn btn-primary btn-style mt-2" name="svgDrawing">Plantegning</button>
+                <div class="alert alert-success mt-4 <c:if test = "${empty requestScope.message}">d-none</c:if> "
+                     role="alert">
+                    ${requestScope.message}
+                </div>
             </div>
             <div class="col-1"></div>
         </div>

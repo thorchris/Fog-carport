@@ -10,8 +10,6 @@ import javax.servlet.http.HttpSession;
 public class DrawingCustomer extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderException {
-
-
         HttpSession session = request.getSession();
 
         int orderId = Integer.parseInt(request.getParameter("openSvgDrawing"));
@@ -20,7 +18,6 @@ public class DrawingCustomer extends Command {
 
         CustomerOrder customerOrder = LogicFacade.getCustomerOrder(orderId);
         Order order = DataMapper.getOrder(orderId);
-
 
         double carportWidth = customerOrder.getCp_width();
         double carportHeight = customerOrder.getCp_height();

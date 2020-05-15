@@ -40,14 +40,10 @@ public class CreateOrder extends Command {
         int roofAngle = roof.getRoofAngle();
 
         double price = (double) session.getAttribute("price");
-        //DecimalFormat df = new DecimalFormat("#,##");
-        //double p = Double.parseDouble(df.format(price));
 
-        //double price = Double.parseDouble(String.format("%.2f",session.getAttribute("price")));
-
-        CustomerOrder customerOrder = new CustomerOrder(roofMatId, carportMatId, shedMatId, orderID, userId, cp_length, cp_width,hasShed,shedHalf, claddingSides, roofAngle, price);
         //We only want two digits
         price = (int)(price * 100 + 0.5) / 100.0;;
+        CustomerOrder customerOrder = new CustomerOrder(roofMatId, carportMatId, shedMatId, orderID, userId, cp_length, cp_width,hasShed,shedHalf, claddingSides, roofAngle, price);
         LogicFacade.createCustomerDesign(customerOrder);
 
         request.setAttribute("message","DIN CARPORT ER NU GEMT OG DU KAN FINDE DEN PÅ DIN SIDE");
