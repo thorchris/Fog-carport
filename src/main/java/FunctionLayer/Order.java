@@ -1,8 +1,24 @@
 package FunctionLayer;
 
 public class Order {
+
     private int orderId, userId, rafters, cladding, posts,
             screws, fascia, brackets, straps, doorKnobs, doorHinges;
+
+    /**
+     *
+     * @param orderId Id for the specific order
+     * @param userId Id for the user which the order belongs to
+     * @param rafters Variable that stores amount of rafters for the order
+     * @param cladding Variable that stores amount of cladding for the order
+     * @param posts Variable that stores amount of posts for the order
+     * @param screws Variable that stores amount of screws for the order
+     * @param fascia Variable that stores amount of fascia for the order
+     * @param brackets Variable that stores amount of brackets for the order
+     * @param straps Variable that stores amount of straps for the order
+     * @param doorKnobs Variable that stores amount of doorknobs for the order
+     * @param doorHinges Variable that stores amount of doorhinges for the order
+     */
 
     public Order(int orderId, int userId, int rafters, int cladding, int posts, int screws, int fascia, int brackets, int straps, int doorKnobs, int doorHinges) {
         this.orderId = orderId;
