@@ -5,6 +5,14 @@ public class RoofMaterials {
     private int materialID;
     private double materialPriceM2, length, width;
 
+    /**
+     * @param materialName variable containing the name of the specific material
+     * @param materialID variable containing the ID for the specific material
+     * @param materialPriceM2 variable with the price per square meter
+     * @param width varibale with the width of material
+     * @param length variable with the length of material
+     */
+
     public RoofMaterials(String materialName, int materialID, double materialPriceM2, double width, double length) {
         this.materialName = materialName;
         this.materialID = materialID;

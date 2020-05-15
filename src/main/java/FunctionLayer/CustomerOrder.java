@@ -4,6 +4,19 @@ public class CustomerOrder {
 
     int customerOrderId, orderId, userId, cp_length, cp_width, claddingSides, roofAngle, price,roofMatId, cpMatId, shedMatId;;
 
+    /**
+     * @param roofMatId the ID specifying which roof material is used
+     * @param cpMatId the ID specifying which carport material is used
+     * @param shedMatId the ID specifying which shed material is used
+     * @param orderId the ID for the order
+     * @param userId the ID of the user that the order belongs to
+     * @param cp_length variable with the length of the carport
+     * @param cp_width variable with the width of the carport
+     * @param claddingSides variable containing the number of sides with cladding
+     * @param roofAngle variable with the roof angle
+     * @param price variable containing the price for the customer order
+     */
+
     public CustomerOrder(int roofMatId, int cpMatId, int shedMatId, int orderId, int userId, int cp_length, int cp_width, int claddingSides, int roofAngle, int price) {
         this.roofMatId = roofMatId;
         this.cpMatId = cpMatId;
