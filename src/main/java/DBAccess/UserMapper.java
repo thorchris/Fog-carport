@@ -19,6 +19,15 @@ public class UserMapper {
             ps.setString(2, user.getPassword());
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
+            if(ex.getMessage().contains("Duplicate Entry")){
+                Log.finest("Create user " + user.getEmail() + "Duplicate Entry");
+                throw new LoginSampleException("En bruger med det brugernavn findes allerede");
+            }
+            if(ex.getMessage().contains("link failure")){
+                Log.severe("Registrer (DB er måske nede) " + ex.getMessage());
+                throw new LoginSampleException("Databasen er nede. Kontakt admin.");
+            }
+            Log.severe("Create user " + ex.getMessage());
             throw new LoginSampleException(ex.getMessage());
         }
     }
@@ -73,7 +82,7 @@ public class UserMapper {
         }
         return userId;
     }
-    
+
     public static List<User> getCustomerList() {
         List<User> customerList = new ArrayList<>();
         try {

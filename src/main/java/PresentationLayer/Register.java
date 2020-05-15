@@ -38,7 +38,7 @@ public class Register extends Command {
                 return "register";
             }
         } catch (LoginSampleException e) {
-            Log.finest("registrer " + "Der opstod en fejl ved oprettelse af bruger");
+            Log.finest("registrer " + "Der opstod en fejl ved oprettelse af bruger - Tjek duplicate entry");
             request.setAttribute("message", "DER SKETE EN FEJL VED OPRETTELSE AF BRUGER, ELLER KONTAKT IT AFDELINGEN");
             return "register";
         }
