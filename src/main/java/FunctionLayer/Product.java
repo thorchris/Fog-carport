@@ -5,6 +5,12 @@ public class Product {
     private String name, uom;
     private double price;
 
+    /**
+     * @param id variable containing the id for the specific product
+     * @param name name of the product
+     * @param uom unit of measurement of the product
+     * @param price price of the product
+     */
 
     public Product(int id, String name, String uom, double price) {
         this.id = id;
