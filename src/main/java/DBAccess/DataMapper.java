@@ -1,6 +1,7 @@
 package DBAccess;
 
 import FunctionLayer.*;
+import PresentationLayer.Log;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class DataMapper {
                 materialNames.add(roofMaterial);
             }
         } catch (ClassNotFoundException | SQLException ex) {
+            Log.severe("GetRoofMaterials " + ex.getMessage() + "Databasen er nede.");
             System.out.println(ex);
         }
         return materialNames;
@@ -50,6 +52,7 @@ public class DataMapper {
                 productsList.add(product);
             }
         } catch (ClassNotFoundException | SQLException ex) {
+            Log.severe("GetProductList " + ex.getMessage() + "Databasen er nede.");
             System.out.println(ex);
         }
         return productsList;
@@ -73,6 +76,7 @@ public class DataMapper {
                 CarportMaterialNames.add(carportMat);
             }
         } catch (ClassNotFoundException | SQLException ex) {
+            Log.severe("CarportMaterialsList " + ex.getMessage() + "Databasen er nede.");
             System.out.println(ex);
         }
         return CarportMaterialNames;
@@ -107,6 +111,7 @@ public class DataMapper {
             ps.execute();
             ps.close();
         } catch (SQLException | ClassNotFoundException ex) {
+            Log.severe("AddOrder " + ex.getMessage() + "Der kunne ikke oprettes en order i databasen(måske er den nede??)");
             System.out.println("FEJL! Kunne ikke finde oprette order med carporten");
         }
     }
@@ -135,6 +140,7 @@ public class DataMapper {
                 CarportItemList.add(order);
             }
         } catch (ClassNotFoundException | SQLException ex) {
+            Log.severe("getOrderList " + ex.getMessage() + "Databasen er nede.");
             System.out.println(ex);
         }
         return CarportItemList;
@@ -169,6 +175,7 @@ public class DataMapper {
                 customerOrderList.add(co);
             }
         } catch (ClassNotFoundException | SQLException ex) {
+            Log.severe("getCustomerDesign " + ex.getMessage() + "Databasen er nede.");
             System.out.println(ex);
         }
         return customerOrderList;
@@ -193,6 +200,7 @@ public class DataMapper {
             ps.setDouble(10, customerOrder.getPrice());
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
+            Log.severe("createCustomerDesign " + ex.getMessage() + "Kunne ikke oprette design i DB eller databasen er nede.");
             System.out.println("There was a error creating the customerOrder in the database");
         }
 
@@ -224,6 +232,7 @@ public class DataMapper {
                 customerOrderList.add(co);
             }
         } catch (ClassNotFoundException | SQLException ex) {
+            Log.severe("getCustomerDesignOrder " + ex.getMessage() + "Databasen er nede.");
             System.out.println(ex);
         }
         return customerOrderList;
@@ -241,6 +250,7 @@ public class DataMapper {
 
             }
         } catch (ClassNotFoundException | SQLException ex) {
+            Log.severe("getUserOrderId " + ex.getMessage() + "Databasen er nede.");
             System.out.println(ex);
             System.out.println("Kunne ikke finde orderID");
         }
@@ -269,9 +279,11 @@ public class DataMapper {
                 Order order = new Order(orderid, userid, rafters, cladding, posts, screws, fascia, brackets, straps, doorknobs, doorhinges);
                 return order;
             } else {
+                Log.finest("getCustomerOrder " + "Kunne ikke finde order");
                 throw new OrderException("Could not find order");
             }
         } catch (ClassNotFoundException | SQLException ex) {
+            Log.severe("getCustomerOrder " + "Databasen er nede.");
             throw new OrderException(ex.getMessage());
         }
     }
@@ -286,6 +298,7 @@ public class DataMapper {
             ps.close();
 
         } catch (SQLException | ClassNotFoundException ex) {
+            Log.severe("deleteOrder " + "Kunne ikke fjerne order eller databasen er nede.");
             System.out.println("FEJL! Kunne ikke fjerne order");
         }
     }
@@ -301,9 +314,8 @@ public class DataMapper {
             ps.execute();
             ps.close();
         } catch (SQLException | ClassNotFoundException ex) {
+            Log.severe("deleteOrder " + "Kunne ikke opdatere pris eller databasen er nede.");
             System.out.println("FEJL! Kunne ikke opdatere pris");
         }
     }
-
-
 }
