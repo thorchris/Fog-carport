@@ -34,16 +34,18 @@ public class CreateOrder extends Command {
         int userId = user.getId();
         double cp_length = carportParts.getLength();
         double  cp_width = carportParts.getWidth();
+        boolean hasShed = fullCarport.getCarportParts().isHasAShed();
+        boolean shedHalf = fullCarport.getCarportParts().isHalfWidth();
         int claddingSides = carportParts.getSidesWithCladding();
         int roofAngle = roof.getRoofAngle();
 
         double price = (double) session.getAttribute("price");
-        DecimalFormat df = new DecimalFormat("#,##");
-        double p = Double.parseDouble(df.format(price));
+        //DecimalFormat df = new DecimalFormat("#,##");
+        //double p = Double.parseDouble(df.format(price));
 
         //double price = Double.parseDouble(String.format("%.2f",session.getAttribute("price")));
 
-        CustomerOrder customerOrder = new CustomerOrder(roofMatId, carportMatId, shedMatId, orderID, userId, cp_length, cp_width, claddingSides, roofAngle, p);
+        CustomerOrder customerOrder = new CustomerOrder(roofMatId, carportMatId, shedMatId, orderID, userId, cp_length, cp_width,hasShed,shedHalf, claddingSides, roofAngle, price);
         LogicFacade.createCustomerDesign(customerOrder);
 
         request.setAttribute("message","DIN CARPORT ER NU GEMT OG DU KAN FINDE DEN PÅ DIN SIDE");

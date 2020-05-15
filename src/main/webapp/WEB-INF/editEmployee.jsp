@@ -114,7 +114,7 @@
                     <td><c:out value="${customerDesign.customerOrderId}"/></td>
                     <td><c:out value="${customerDesign.orderId}"/></td>
                     <td><c:out value="${customerDesign.userId}"/></td>
-                    <td><c:out value="${customerDesign.cp_length}"/></td>
+                    <td><c:out value="${customerDesign.cp_height}"/></td>
                     <td><c:out value="${customerDesign.cp_width}"/></td>
                     <td><c:out value="${customerDesign.roofMatId}"/></td>
                     <td><c:out value="${customerDesign.shedMatId}"/></td>
