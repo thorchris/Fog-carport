@@ -1,13 +1,11 @@
 package PresentationLayer;
 
 import FunctionLayer.*;
-import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class CreateOrder extends Command {
     @Override
