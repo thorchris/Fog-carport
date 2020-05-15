@@ -9,7 +9,11 @@ import java.util.List;
 
 public class DataMapper {
 
-
+    /**
+     * Return a list of roof materials from the database. Used in roof class to get material.
+     * @return a List<> containing all the roofmaterials.
+     * If connections is not established it catches an exception and logs it
+     */
     public static List<RoofMaterials> getRoofMaterialsList() {
         List<RoofMaterials> materialNames = new ArrayList<>();
         try {
@@ -34,6 +38,11 @@ public class DataMapper {
         return materialNames;
     }
 
+    /**
+     * Returns a list of products  from the database. Used to calculate prices.
+     * @return a List<> containing all the products.
+     * If connections is not established it catches an exception and logs it
+     */
     public static List<Product> getProductList() {
         List<Product> productsList = new ArrayList<>();
         try {
@@ -57,6 +66,11 @@ public class DataMapper {
         return productsList;
     }
 
+    /**
+     * Returns a list of carport materials  from the database, used in the carportParts class
+     * @return a List<> containing all the carport materials.
+     * If connections is not established it catches an exception and logs it
+     */
     public static List<CarportMaterials> getCarportMaterialsList() {
         List<CarportMaterials> CarportMaterialNames = new ArrayList<>();
         try {
@@ -81,6 +95,13 @@ public class DataMapper {
         return CarportMaterialNames;
     }
 
+    /**
+     * Adds order to the database using an SQL query.
+     * @param user The user which order we want to add.
+     *             The user needs to be in the database and have an ID since the UserID is foreign key.
+     * @param carport The carport we want to add to the database.
+     * If connections is not established it catches an exception and logs it
+     */
     public static void addOrder(User user, FullCarport carport) {
         int rafters = (int) carport.getCarportParts().getTotalRafters();
         int cladding = (int) carport.getCarportParts().getCarportCladding();
@@ -115,6 +136,11 @@ public class DataMapper {
         }
     }
 
+    /**
+     * Returns a list of orders  from the database
+     * @return a List<> containing all the orders.
+     * If connections is not established it catches an exception and logs it
+     */
     public static List<Order> getOrderList() {
         List<Order> CarportItemList = new ArrayList<>();
         try {
@@ -146,42 +172,17 @@ public class DataMapper {
     }
 
     /**
-     * @param user GetCustomerDesign is used to get the saved user designs from the DB, we are using a user as parameter to get the logged in useres id.
-     * @return We're returning an object of a customer order
+     * Adds customerOrder to the database using an SQL query.
+     * @param customerOrder The customerOrder which order we want to add.
+     *                      The customerOrder contains all information regarding user, orderID etc.
+     * In this database there are alot of foreign keys:
+     *                      orderId
+     *                      userId
+     *                      roof_mats
+     *                      cp_mats
+     * These are used to ensure the program is working on existing orders, users and materials.
+     * If connections is not established it catches an exception and logs it
      */
-    public static List<CustomerOrder> getCustomerDesign(User user) {
-        List<CustomerOrder> customerOrderList = new ArrayList();
-        try {
-            Connection con = Connector.connection();
-            String SQL = "SELECT * FROM customer_order WHERE user_id = " + user.getId();
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery(SQL);
-
-            while (rs.next()) {
-                int roofMatId = rs.getInt("roof_mats");
-                int cpMatId = rs.getInt("cp_mats");
-                int shedMatId = rs.getInt("shed_mats");
-                int customerOrderId = rs.getInt("co_id");
-                int orderId = rs.getInt("order_id");
-                int userId = rs.getInt("user_id");
-                double cpLength = rs.getDouble("cp_length");
-                double cpWidth = rs.getDouble("cp_width");
-                boolean hasShed = rs.getBoolean("hasShed");
-                boolean shedHalf = rs.getBoolean("shedHalf");
-                int claddingSides = rs.getInt("cladding_sides");
-                int roofAngle = rs.getInt("roof_angle");
-                double price = rs.getDouble("price");
-                CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, orderId, userId, cpLength, cpWidth, hasShed, shedHalf, claddingSides, roofAngle, price);
-                co.setCustomerOrderId(customerOrderId);
-                customerOrderList.add(co);
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            Log.severe("getCustomerDesign " + ex.getMessage() + "Databasen er nede.");
-            System.out.println(ex);
-        }
-        return customerOrderList;
-    }
-
     public static void createCustomerDesign(CustomerOrder customerOrder) {
         try {
             Connection con = Connector.connection();
@@ -209,7 +210,12 @@ public class DataMapper {
 
     }
 
-
+    /**
+     * @param customerId GetCustomerDesign is used to get the saved user designs from the DB,
+     *             we are using a user as parameter to get the logged in users id.
+     * @return We're returning an object of a customer order
+     *  If connections is not established it catches an exception and logs it
+     */
     public static List<CustomerOrder> getCustomerDesignOrder(int customerId) {
         List<CustomerOrder> customerOrderList = new ArrayList();
         try {
@@ -243,6 +249,12 @@ public class DataMapper {
         return customerOrderList;
     }
 
+    /**
+     * Used to get the userId from the databse
+     * @param user, the user which we want to get the user id from.
+     * @return the user from the input parameters id.
+     * If connections is not established it catches an exception and logs it
+     */
     public static int getUserOrderId(User user) {
         int orderid = 0;
         try {
@@ -262,8 +274,14 @@ public class DataMapper {
         return orderid;
     }
 
-
-    public static Order getCustomerOrder(int orderId) throws OrderException {
+    /**
+     * Returns the order with the orderId given as input parameter
+     * @param orderId the id of the order we want to return
+     * @return the order found from orderId
+     * @throws OrderException, "homemade" exception thrown when the method cannot return the order.
+     * If connections is not established it catches an exception and logs it
+     */
+    public static Order getOrder(int orderId) throws OrderException {
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
@@ -293,6 +311,11 @@ public class DataMapper {
         }
     }
 
+    /**
+     * Method used to delete a customerOrder
+     * @param order_id deletes the customerOrder with the given order_Id.
+     * If connections is not established it catches an exception and logs it
+     */
     public static void deleteCustomerOrder(int order_id) {
         try {
             String SQL = "DELETE FROM customer_order WHERE order_id = " + order_id;
@@ -307,7 +330,11 @@ public class DataMapper {
         }
     }
 
-
+    /**
+     * Method used to delete an order
+     * @param order_id deletes the order with the given order_Id.
+     * If connections is not established it catches an exception and logs it
+     */
     public static void deleteOrder(int order_id) {
         try {
             String SQL = "DELETE FROM orders WHERE order_id = " + order_id;
@@ -322,7 +349,12 @@ public class DataMapper {
         }
     }
 
-
+    /**
+     * Updates price on a customerOrder
+     * @param co_Id, the id of the customerOrder which we want to change the price.
+     * @param price, the new price of customerOrder.
+     * If connections is not established it catches an exception and logs it
+     */
     public static void updatePrice(int co_Id, double price) {
         try {
             Connection con = Connector.connection();
@@ -338,7 +370,14 @@ public class DataMapper {
         }
     }
 
-    public static CustomerOrder getCustomerSingleOrder(int orderid) throws OrderException {
+    /**
+     *
+     * @param orderid the orderId we want to find mathing customerOrders for
+     * @return the given CustomerOrder
+     * @throws OrderException, "homemade" exception thrown when the method cannot return the order.
+     * If connections is not established it catches an exception and logs it
+     */
+    public static CustomerOrder getCustomerOrder(int orderid) throws OrderException {
         try {
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
