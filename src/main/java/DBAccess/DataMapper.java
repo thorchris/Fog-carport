@@ -10,7 +10,6 @@ import java.util.List;
 public class DataMapper {
 
 
-
     public static List<RoofMaterials> getRoofMaterialsList() {
         List<RoofMaterials> materialNames = new ArrayList<>();
         try {
@@ -167,10 +166,12 @@ public class DataMapper {
                 int userId = rs.getInt("user_id");
                 double cpLength = rs.getDouble("cp_length");
                 double cpWidth = rs.getDouble("cp_width");
+                boolean hasShed = rs.getBoolean("hasShed");
+                boolean shedHalf = rs.getBoolean("shedHalf");
                 int claddingSides = rs.getInt("cladding_sides");
                 int roofAngle = rs.getInt("roof_angle");
                 double price = rs.getDouble("price");
-                CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, orderId, userId, cpLength, cpWidth, claddingSides, roofAngle, price);
+                CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, orderId, userId, cpLength, cpWidth, hasShed, shedHalf, claddingSides, roofAngle, price);
                 co.setCustomerOrderId(customerOrderId);
                 customerOrderList.add(co);
             }
@@ -184,20 +185,22 @@ public class DataMapper {
     public static void createCustomerDesign(CustomerOrder customerOrder) {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO customer_order (order_id, user_id, cp_length, cp_width, " +
+            String SQL = "INSERT INTO customer_order (order_id, user_id, cp_length, cp_width,hasShed, shedHalf, " +
                     "roof_mats, shed_mats, cp_mats, cladding_sides, roof_angle, price) " +
-                    "VALUES (?,?,?,?,?,?,?,?,?,?)";
+                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, customerOrder.getOrderId());
             ps.setInt(2, customerOrder.getUserId());
-            ps.setDouble(3, customerOrder.getCp_length());
+            ps.setDouble(3, customerOrder.getCp_height());
             ps.setDouble(4, customerOrder.getCp_width());
-            ps.setInt(5, customerOrder.getRoofMatId());
-            ps.setInt(6, customerOrder.getShedMatId());
-            ps.setInt(7, customerOrder.getCpMatId());
-            ps.setInt(8, customerOrder.getCladdingSides());
-            ps.setInt(9, customerOrder.getRoofAngle());
-            ps.setDouble(10, customerOrder.getPrice());
+            ps.setBoolean(5, customerOrder.getHasShed());
+            ps.setBoolean(6, customerOrder.getShedHalf());
+            ps.setInt(7, customerOrder.getRoofMatId());
+            ps.setInt(8, customerOrder.getShedMatId());
+            ps.setInt(9, customerOrder.getCpMatId());
+            ps.setInt(10, customerOrder.getCladdingSides());
+            ps.setInt(11, customerOrder.getRoofAngle());
+            ps.setDouble(12, customerOrder.getPrice());
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
             Log.severe("createCustomerDesign " + ex.getMessage() + "Kunne ikke oprette design i DB eller databasen er nede.");
@@ -224,10 +227,12 @@ public class DataMapper {
                 int userId = rs.getInt("user_id");
                 double cpLength = rs.getDouble("cp_length");
                 double cpWidth = rs.getDouble("cp_width");
+                boolean hasShed = rs.getBoolean("hasShed");
+                boolean shedHalf = rs.getBoolean("shedHalf");
                 int claddingSides = rs.getInt("cladding_sides");
                 int roofAngle = rs.getInt("roof_angle");
                 double price = rs.getDouble("price");
-                CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, orderId, userId, cpLength, cpWidth, claddingSides, roofAngle, price);
+                CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, orderId, userId, cpLength, cpWidth, hasShed, shedHalf, claddingSides, roofAngle, price);
                 co.setCustomerOrderId(customerOrderId);
                 customerOrderList.add(co);
             }
@@ -288,6 +293,20 @@ public class DataMapper {
         }
     }
 
+    public static void deleteCustomerOrder(int order_id) {
+        try {
+            String SQL = "DELETE FROM customer_order WHERE order_id = " + order_id;
+            Connection con = Connector.connection();
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.execute();
+            ps.close();
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            Log.severe("deleteOrder " + "Kunne ikke fjerne order eller databasen er nede.");
+            System.out.println("FEJL! Kunne ikke fjerne order");
+        }
+    }
+
 
     public static void deleteOrder(int order_id) {
         try {
@@ -318,4 +337,36 @@ public class DataMapper {
             System.out.println("FEJL! Kunne ikke opdatere pris");
         }
     }
+
+    public static CustomerOrder getCustomerSingleOrder(int orderid) throws OrderException {
+        try {
+            Connection con = Connector.connection();
+            Statement stmt = con.createStatement();
+            String SQL = "SELECT * FROM customer_order WHERE order_id = " + orderid;
+            ResultSet rs = stmt.executeQuery(SQL);
+            if (rs.next()) {
+                int roofMatId = rs.getInt("roof_mats");
+                int cpMatId = rs.getInt("cp_mats");
+                int shedMatId = rs.getInt("shed_mats");
+                int orderId = rs.getInt("order_id");
+                int userId = rs.getInt("user_id");
+                double cpLength = rs.getDouble("cp_length");
+                double cpWidth = rs.getDouble("cp_width");
+                boolean hasShed = rs.getBoolean("hasShed");
+                boolean shedHalf = rs.getBoolean("shedHalf");
+                int claddingSides = rs.getInt("cladding_sides");
+                int roofAngle = rs.getInt("roof_angle");
+                double price = rs.getDouble("price");
+                CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, orderId, userId, cpLength, cpWidth, hasShed, shedHalf, claddingSides, roofAngle, price);
+                return co;
+            } else {
+                Log.finest("getCustomerSingleOrder " + "Kunne ikke finde order");
+                throw new OrderException("Could not find customer order");
+            }
+        } catch (ClassNotFoundException | SQLException | OrderException ex) {
+            Log.severe("getCustomerOrder " + "Databasen er nede.");
+            throw new OrderException(ex.getMessage());
+        }
+    }
 }
+

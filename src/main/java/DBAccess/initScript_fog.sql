@@ -3,9 +3,6 @@ drop schema if exists `fogcarport`;
 CREATE DATABASE  IF NOT EXISTS `fogcarport` ;
 USE `fogcarport`;
 
--- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
---
--- Host: 127.0.0.1    Database: fogcarport
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
@@ -60,6 +57,8 @@ CREATE TABLE `customer_order` (
   `user_id` int NOT NULL,
   `cp_length` double NOT NULL,
   `cp_width` double NOT NULL,
+  `hasShed` tinyint DEFAULT NULL,
+  `shedHalf` tinyint DEFAULT NULL,
   `roof_mats` int NOT NULL,
   `shed_mats` int NOT NULL,
   `cp_mats` int NOT NULL,
@@ -76,7 +75,7 @@ CREATE TABLE `customer_order` (
   CONSTRAINT `fk_customer` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   CONSTRAINT `fk_orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
   CONSTRAINT `fk_roof` FOREIGN KEY (`roof_mats`) REFERENCES `roof_materials` (`material_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +109,7 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`order_id`),
   KEY `user_id_fk_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,4 +210,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-15 12:05:28
+-- Dump completed on 2020-05-15 17:51:43

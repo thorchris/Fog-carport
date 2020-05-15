@@ -236,7 +236,7 @@ public class DataMapperTest {
 
         int userId = UserMapper.getUserId("hafthor");
 
-        CustomerOrder co = new CustomerOrder(1,1,1,7,userId,510,330,1,10, 2100);
+        CustomerOrder co = new CustomerOrder(1,1,1,7,userId,510,330,true,false, 2,2,2100);
 
         DataMapper.createCustomerDesign(co);
 

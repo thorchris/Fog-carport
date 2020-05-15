@@ -3,6 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
+
+
 <!--Header imports -->
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <script src="../js/javascript.js"></script>
+    <script src="../JS/javascript.js"></script>
     <link href="styles/styles.css" rel="stylesheet">
 </head>
 <body>
@@ -70,56 +72,23 @@
     </div>
 </nav>
 
-<div class="container-fluid">
-    <form action="FrontController" method="post">
-        <input type="hidden" name="taget" value="manageCommand"/>
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
-            <h1 class="text-center"> Kunde Ordre </h1>
-            <table class="table table-striped table-dark table-bordered table.responsive">
-                <thead>
-                <tr>
-                    <th scope="col">Slet order</th>
-                    <th scope="col">Order ID</th>
-                    <th scope="col">Kunde ID</th>
-                    <th scope="col">Spær</th>
-                    <th scope="col">Beklædning</th>
-                    <th scope="col">Stolper</th>
-                    <th scope="col">Skuer</th>
-                    <th scope="col">Stern</th>
-                    <th scope="col">Beslag</th>
-                    <th scope="col">Straps</th>
-                    <th scope="col">Dørhåndtag</th>
-                    <th scope="col">Hængsler</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <!-- https://www.codejava.net/java-ee/jsp/how-to-list-records-in-a-database-table-using-jsp-and-jstl -->
-                <tr>
-
-                    <td><button class="btn btn-primary btn-style deleteOrder" name="deleteOrder" value="${sessionScope.order.orderId}">Slet</button></td>
-                    <td>${sessionScope.order.orderId}</td>
-                    <td>${sessionScope.order.userId}</td>
-                    <td>${sessionScope.order.rafters}</td>
-                    <td>${sessionScope.order.cladding}</td>
-                    <td>${sessionScope.order.posts}</td>
-                    <td>${sessionScope.order.screws}</td>
-                    <td>${sessionScope.order.fascia}</td>
-                    <td>${sessionScope.order.brackets}</td>
-                    <td>${sessionScope.order.straps}</td>
-                    <td>${sessionScope.order.doorknobs}</td>
-                    <td>${sessionScope.order.doorhinges}</td>
-                </tr>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-1"></div>
+<form action="FrontController" method="post">
+    <input type="hidden" name="taget" value="manageCommand"/>
+    <div class="container-fluid padding">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-6">
+                <h3 class="text-center">Plantegning:</h3>
+                <hr>
+                ${requestScope.svgCustomerDrawing}
+            </div>
     </div>
-    </form>
+    </div>
+</form>
 </div>
 
+</body>
+
 <!-- Footer -->
+<script src="JS/javascript.js"></script>
 <%@include file="../include/footer.inc" %>

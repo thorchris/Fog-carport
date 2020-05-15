@@ -98,7 +98,7 @@
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-10">
-                <h2 class="text-center"> Kunders design</h2>
+                <h2 class="text-center"> Kunders ordre</h2>
 
                     <table class="table table-striped table-dark table-bordered table.responsive">
                         <thead>

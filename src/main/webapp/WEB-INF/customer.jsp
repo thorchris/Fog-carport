@@ -79,7 +79,7 @@
 
 <!-- Table showing customer orders -->
 <form action="FrontController" method="post">
-    <input type="hidden" name="taget" value="openSvgDesign">
+    <input type="hidden" name="taget" value="manageCommand">
 <div class="container-fluid padding">
     <div class="row">
         <div class="col-1"></div>
@@ -96,10 +96,10 @@
                         <th scope="col">Order ID</th>
                         <th scope="col">Carport længde</th>
                         <th scope="col">Carport bredde</th>
-                        <th scope="col">Antal sider med beklædning</th>
+                        <th scope="col">Beklædning sider</th>
                         <th scope="col">Tag materiale</th>
                         <th scope="col">Skur materiale</th>
-                        <th scope="col">Carport-skelet materiale</th>
+                        <th scope="col">Carport materiale</th>
                         <th scope="col">Tag vinkel</th>
                         <th scope="col">Pris</th>
                     </tr>
@@ -108,12 +108,12 @@
                     <tr>
                         <c:forEach var="customerOrder" items="${sessionScope.customerOrderList}">
                     <tr>
-                        <td><button class="btn btn-primary btn-style openSvgDesign" name="openSvgDesign">Åben Design</button></td>
 
+                        <td><button class="btn btn-primary btn-style openSvgDesign" name="openSvgDrawing" value="${customerOrder.orderId}">Åben Design</button></td>
                         <td><c:out value="${customerOrder.customerOrderId}"/></td>
                         <td><c:out value="${customerOrder.userId}"/></td>
                         <td><c:out value="${customerOrder.orderId}"/></td>
-                        <td><c:out value="${customerOrder.cp_length}"/></td>
+                        <td><c:out value="${customerOrder.cp_height}"/></td>
                         <td><c:out value="${customerOrder.cp_width}"/></td>
                         <td><c:out value="${customerOrder.claddingSides}"/></td>
                         <td><c:out value="${customerOrder.roofMatId}"/></td>
