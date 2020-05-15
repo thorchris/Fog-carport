@@ -1,15 +1,11 @@
 package PresentationLayer;
 
 import FunctionLayer.*;
-import com.sun.javafx.binding.StringFormatter;
-import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CreateOrder extends Command {
     @Override
@@ -50,6 +46,7 @@ public class CreateOrder extends Command {
         CustomerOrder customerOrder = new CustomerOrder(roofMatId, carportMatId, shedMatId, orderID, userId, cp_length, cp_width, claddingSides, roofAngle, p);
         LogicFacade.createCustomerDesign(customerOrder);
 
+        request.setAttribute("message","DIN CARPORT ER NU GEMT OG DU KAN FINDE DEN PÅ DIN SIDE");
         return "design";
     }
 

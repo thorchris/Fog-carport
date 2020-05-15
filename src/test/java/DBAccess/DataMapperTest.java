@@ -85,6 +85,7 @@ public class DataMapperTest {
         assertNotNull(testConnection);
     }
 
+
     @Test
     public void testGetCarportMaterialListSize() {
         List<CarportMaterials> carportMatListDB;
@@ -93,6 +94,16 @@ public class DataMapperTest {
         int result = carportMatListDB.size();
         int expected = 3;
         assertEquals(expected, result);
+    }
+
+    @Test
+    public void testGetCarportMaterialListSizeDoesNotMatch() {
+        List<CarportMaterials> carportMatListDB;
+        carportMatListDB = DataMapper.getCarportMaterialsList();
+
+        int result = carportMatListDB.size();
+        int expected = 1000;
+        assertNotEquals(expected, result);
     }
 
     @Test
@@ -148,6 +159,28 @@ public class DataMapperTest {
 
         assertNotEquals(tmp,actual);
 
+
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testAddOrderException()throws LoginSampleException {
+
+
+        //Skaber alt data til at lave en fuld carport
+        CarportMaterials carportMaterials = new CarportMaterials("Bøgetræsplade", 2, 12, 0.15, 3);
+        CarportParts carportParts = new CarportParts(510, 330, true, false, carportMaterials, 1);
+
+        RoofMaterials roofmaterials = new RoofMaterials("Betontagsten - rød", 2, 450, 1, 2);
+        Roof roof = new Roof(false, roofmaterials, 510, 330);
+
+        ShedMaterials shedMaterials = new ShedMaterials();
+        Shed shed = new Shed(510, 330, false, shedMaterials);
+
+        //instantierer en ny carport med alt dataet ovenfor
+        FullCarport carport = new FullCarport(carportParts, roof, shed);
+        User original = new User( "hej", "kode");
+
+        DataMapper.addOrder(null, carport);
 
     }
 

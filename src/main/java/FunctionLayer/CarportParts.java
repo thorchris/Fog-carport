@@ -4,10 +4,36 @@ import Util.CalcCarportMaterials;
 
 public class CarportParts {
 
+    /**
+     * CarportParts class:
+     * @gbl length: Variable that stores the length of the carport
+     * @gbl width: Variable that stores the width of the carport
+     * @gbl totalRafters: Variable that stores the total amount of rafters for the carport
+     * @gbl carportCladding: Variable that stores amount of cladding for the carport
+     * @gbl strapLength: Variable that stores length of Straps for the carport
+     * @gbl totalPosts: Variable that stores the total amount of posts for the carport
+     * @gbl sidesWithCladding: Variable that stores the amount of sides with cladding
+     * @gbl amountOfStraps: Variable that stores the amount of straps for the carport
+     * @gbl hasAShed: Boolean variable that determines if the carport has a shed
+     * @gbl isHalfWidh: Boolean variable that determines if the shed is half or full width of the carport
+     * @gbl carportMaterials: Carport Materials is the materials you can choose to have your carport built from
+     */
+
     private double length, width, totalScrews, totalRafters, carportCladding, strapLength;
     private int totalPosts, sidesWithCladding, amountOfStraps;
     private boolean hasAShed, isHalfWidth;
     private CarportMaterials carportMaterials;
+
+    /**
+     * The constructor for CarportParts calls calculation methods from the class CalcCarportMaterials.
+     * I uses these to determine the values for CarportParts - The global variabels are set upon creating a instance of carportParts.
+     * @param length Variable that stores the length
+     * @param width Variable that stores the Width
+     * @param hasAShed Boolean variable that determines if there is a shed
+     * @param isHalfWidth Boolean variable that determines if the shed is full or half width
+     * @param carportMaterials Variable that contains the material the carport is built out of
+     * @param sidesWithCladding contains the amount of sides with cladding
+     */
 
 
     // MEGET VIGTIGT RÆKKEFØLGE

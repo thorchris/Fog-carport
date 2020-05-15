@@ -70,6 +70,8 @@ public class Drawing extends Command {
         svg.addHorizontalPointer(pointerX, pointerY, finishX,carportWidthDB);
 
         request.setAttribute("svgdrawing", svg.toString());
+
+        request.setAttribute("message","DIN PLANTEGNING ER NU KLAR");
         return "design";
     }
 }

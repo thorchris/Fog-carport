@@ -33,7 +33,7 @@ public class Login extends Command {
             HttpSession session = request.getSession();
             session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
             session.setAttribute("user", user);
-            request.setAttribute("message", "Du er logget ind som: " + user.getEmail());
+            session.setAttribute("HeaderMessage", "Du er logget ind som: " + user.getEmail());
 
             switch (role) {
                 case "employee":
