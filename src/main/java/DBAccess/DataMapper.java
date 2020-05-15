@@ -157,11 +157,11 @@ public class DataMapper {
                 int customerOrderId = rs.getInt("co_id");
                 int orderId = rs.getInt("order_id");
                 int userId = rs.getInt("user_id");
-                int cpLength = rs.getInt("cp_length");
-                int cpWidth = rs.getInt("cp_width");
+                double cpLength = rs.getDouble("cp_length");
+                double cpWidth = rs.getDouble("cp_width");
                 int claddingSides = rs.getInt("cladding_sides");
                 int roofAngle = rs.getInt("roof_angle");
-                int price = rs.getInt("price");
+                double price = rs.getDouble("price");
                 CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, orderId, userId, cpLength, cpWidth, claddingSides, roofAngle, price);
                 co.setCustomerOrderId(customerOrderId);
                 customerOrderList.add(co);
@@ -181,14 +181,14 @@ public class DataMapper {
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, customerOrder.getOrderId());
             ps.setInt(2, customerOrder.getUserId());
-            ps.setInt(3, customerOrder.getCp_length());
-            ps.setInt(4, customerOrder.getCp_width());
+            ps.setDouble(3, customerOrder.getCp_length());
+            ps.setDouble(4, customerOrder.getCp_width());
             ps.setInt(5, customerOrder.getRoofMatId());
             ps.setInt(6, customerOrder.getShedMatId());
             ps.setInt(7, customerOrder.getCpMatId());
             ps.setInt(8, customerOrder.getCladdingSides());
             ps.setInt(9, customerOrder.getRoofAngle());
-            ps.setInt(10, customerOrder.getPrice());
+            ps.setDouble(10, customerOrder.getPrice());
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println("There was a error creating the customerOrder in the database");
@@ -212,11 +212,11 @@ public class DataMapper {
                 int customerOrderId = rs.getInt("co_id");
                 int orderId = rs.getInt("order_id");
                 int userId = rs.getInt("user_id");
-                int cpLength = rs.getInt("cp_length");
-                int cpWidth = rs.getInt("cp_width");
+                double cpLength = rs.getDouble("cp_length");
+                double cpWidth = rs.getDouble("cp_width");
                 int claddingSides = rs.getInt("cladding_sides");
                 int roofAngle = rs.getInt("roof_angle");
-                int price = rs.getInt("price");
+                double price = rs.getDouble("price");
                 CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, orderId, userId, cpLength, cpWidth, claddingSides, roofAngle, price);
                 co.setCustomerOrderId(customerOrderId);
                 customerOrderList.add(co);
@@ -289,12 +289,12 @@ public class DataMapper {
     }
 
 
-    public static void updatePrice(int co_Id, int price) {
+    public static void updatePrice(int co_Id, double price) {
         try {
             Connection con = Connector.connection();
             String SQL = "UPDATE customer_order SET price = (?) WHERE co_Id = (?)";
             PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, price);
+            ps.setDouble(1, price);
             ps.setInt(2, co_Id);
             ps.execute();
             ps.close();

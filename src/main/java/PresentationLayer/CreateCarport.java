@@ -1,5 +1,6 @@
 package PresentationLayer;
 
+import DBAccess.UserMapper;
 import FunctionLayer.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -75,9 +76,7 @@ public class CreateCarport extends Command {
 
         User user = (User) session.getAttribute("user");
         if(user==null){
-            user = new User("KundeUdenLogin", "1234");
-            user.setId(0);
-            user.setRole("customer"); 
+            user = UserMapper.login("KundeUdenLogin@user.com", "1234");
             session.setAttribute("user",user);
         }
         //CREATING FULL CARPORT

@@ -15,7 +15,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 
-import javax.xml.crypto.Data;
 
 public class DataMapperTest {
 
