@@ -42,7 +42,7 @@ public class Login extends Command {
                     return "../index";
             }
         } catch (LoginSampleException e) {
-            request.setAttribute("message", "FEJL UNDER LOGIN, PRØV IGEN ELLER OPRET EN BRUGER");
+            request.setAttribute("message", "FEJL UNDER LOGIN, PRØV IGEN ELLER KONTAKT IT AFDELINGEN");
             return "login";
         }
 
