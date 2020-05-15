@@ -109,7 +109,7 @@
                         <c:forEach var="customerOrder" items="${sessionScope.customerOrderList}">
                     <tr>
 
-                        <td><button class="btn btn-primary btn-style openSvgDesign" name="openSvgDrawing" value="${customerOrder.orderId}">Åben Design</button></td>
+                        <td><button class="btn btn-primary btn-style openSvgDesign" name="openSvgDrawing" value="${customerOrder.orderId}">Se Design</button></td>
                         <td><c:out value="${customerOrder.customerOrderId}"/></td>
                         <td><c:out value="${customerOrder.userId}"/></td>
                         <td><c:out value="${customerOrder.orderId}"/></td>
