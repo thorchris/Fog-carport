@@ -67,6 +67,7 @@ public class CreateCarport extends Command {
         Roof roof = new Roof(isHighRoof, userRoofMaterial,length, width);
         if(isHighRoof){
             int roofAngle = Integer.parseInt(request.getParameter("angle"));
+            session.setAttribute("roofAngle",roofAngle);
             roof.setRoofHeight(roofAngle);
             roof.setRoofAngle((roofAngle));
         }
