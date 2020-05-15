@@ -10,7 +10,7 @@ import java.text.DecimalFormat;
 public class CreateOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-
+        new CalculatePrice().execute(request, response);
         HttpSession session = request.getSession();
         FullCarport fullCarport = (FullCarport) session.getAttribute("fullCarport");
         if(fullCarport == null){
