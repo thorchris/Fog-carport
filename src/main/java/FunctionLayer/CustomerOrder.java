@@ -2,9 +2,10 @@ package FunctionLayer;
 
 public class CustomerOrder {
 
-    int customerOrderId, orderId, userId, cp_length, cp_width, claddingSides, roofAngle, price,roofMatId, cpMatId, shedMatId;;
+    double cp_length, cp_width, price;
+    int customerOrderId, orderId, userId, claddingSides, roofAngle,roofMatId, cpMatId, shedMatId;;
 
-    public CustomerOrder(int roofMatId, int cpMatId, int shedMatId, int orderId, int userId, int cp_length, int cp_width, int claddingSides, int roofAngle, int price) {
+    public CustomerOrder(int roofMatId, int cpMatId, int shedMatId, int orderId, int userId, double cp_length, double cp_width, int claddingSides, int roofAngle, double price) {
         this.roofMatId = roofMatId;
         this.cpMatId = cpMatId;
         this.shedMatId = shedMatId;
@@ -66,7 +67,7 @@ public class CustomerOrder {
         this.userId = userId;
     }
 
-    public int getCp_length() {
+    public double getCp_length() {
         return cp_length;
     }
 
@@ -74,7 +75,7 @@ public class CustomerOrder {
         this.cp_length = cp_length;
     }
 
-    public int getCp_width() {
+    public double getCp_width() {
         return cp_width;
     }
 
@@ -98,7 +99,7 @@ public class CustomerOrder {
         this.roofAngle = roofAngle;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

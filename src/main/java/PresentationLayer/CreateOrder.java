@@ -1,11 +1,13 @@
 package PresentationLayer;
 
 import FunctionLayer.*;
+import com.sun.javafx.binding.StringFormatter;
 import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,13 +36,18 @@ public class CreateOrder extends Command {
         int shedMatId = shed.getShedMaterials().getMaterialID();
         int orderID = LogicFacade.getUserOrderId(user);
         int userId = user.getId();
-        int cp_length = (int) carportParts.getLength();
-        int cp_width = (int) carportParts.getWidth();
+        double cp_length = carportParts.getLength();
+        double  cp_width = carportParts.getWidth();
         int claddingSides = carportParts.getSidesWithCladding();
         int roofAngle = roof.getRoofAngle();
-        double price = (double) session.getAttribute("price");
 
-        CustomerOrder customerOrder = new CustomerOrder(roofMatId, carportMatId, shedMatId, orderID, userId, cp_length, cp_width, claddingSides, roofAngle, (int) price);
+        double price = (double) session.getAttribute("price");
+        DecimalFormat df = new DecimalFormat("#,##");
+        double p = Double.parseDouble(df.format(price));
+
+        //double price = Double.parseDouble(String.format("%.2f",session.getAttribute("price")));
+
+        CustomerOrder customerOrder = new CustomerOrder(roofMatId, carportMatId, shedMatId, orderID, userId, cp_length, cp_width, claddingSides, roofAngle, p);
         LogicFacade.createCustomerDesign(customerOrder);
 
         return "design";

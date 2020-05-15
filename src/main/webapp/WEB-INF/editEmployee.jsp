@@ -131,7 +131,7 @@
             <div class="mt-4">
                 <div class="form-row">
                         <div class="mt-2">
-                            <input type="text" name="customerEmail" class="form-control" placeholder="Indtast Kunde Email">
+                            <input type="text" name="customerEmail" class="form-control" placeholder="Indtast Kunde Email" pattern="[ÆØÅæøåA-Za-z0-9._%+-]+@[ÆØÅæøåA-Za-z0-9.-]+\.[ÆØÅæøåA-Za-z]{2,}$">
                             <button type="submit" class="btn btn-primary btn-style mt-2" name="findCustomerOrder">Find kunde design</button>
                         </div>
                         <div class="mt-2 ml-2">
