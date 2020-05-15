@@ -45,11 +45,6 @@ public class LogicFacade {
         return UserMapper.getCustomerList();
     }
 
-    public static List<CustomerOrder> getCustomerDesign(User user) {
-        return DataMapper.getCustomerDesign(user);
-    }
-
-
     public static int getUserId(String email){return UserMapper.getUserId(email);}
 
 
@@ -66,7 +61,11 @@ public class LogicFacade {
         return DataMapper.getUserOrderId(user);
     }
 
-    public static Order getCustomerOrder(int orderId) throws OrderException {
+    public static Order getOrder(int orderId) throws OrderException {
+        return DataMapper.getOrder(orderId);
+    }
+
+    public static CustomerOrder getCustomerOrder(int orderId) throws OrderException {
         return DataMapper.getCustomerOrder(orderId);
     }
 

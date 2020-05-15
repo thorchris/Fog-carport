@@ -14,11 +14,12 @@ public class DrawingCustomer extends Command {
 
         HttpSession session = request.getSession();
 
-        int customerOrderId = Integer.parseInt(request.getParameter("openSvgDrawing"));
+        int orderId = Integer.parseInt(request.getParameter("openSvgDrawing"));
 
         // hent orderId fra kunden.
-        CustomerOrder customerOrder = DataMapper.getCustomerSingleOrder(customerOrderId);
-        Order order = DataMapper.getCustomerOrder(customerOrderId);
+
+        CustomerOrder customerOrder = LogicFacade.getCustomerOrder(orderId);
+        Order order = DataMapper.getOrder(orderId);
 
 
         double carportWidth = customerOrder.getCp_width();
