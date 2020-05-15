@@ -33,11 +33,13 @@ public class Register extends Command {
                 session.setAttribute("email", email);
                 return "../index";
             } else {
+                Log.finest("registrer " + "De to password passede ikke sammen under oprettelse");
                 request.setAttribute("message", "DE TO PASSWORD PASSEDE IKKE SAMMEN");
                 return "register";
             }
         } catch (LoginSampleException e) {
-            request.setAttribute("message", "DER SKETE EN FEJL VED OPRETTELSE AF BRUGER, PRØV IGEN");
+            Log.finest("registrer " + "Der opstod en fejl ved oprettelse af bruger");
+            request.setAttribute("message", "DER SKETE EN FEJL VED OPRETTELSE AF BRUGER, ELLER KONTAKT IT AFDELINGEN");
             return "register";
         }
     }
