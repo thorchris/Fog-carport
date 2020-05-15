@@ -1,11 +1,20 @@
 package FunctionLayer;
 
 public class CarportMaterials {
+
     private String materialName;
     private int materialID;
     private double materialPriceM;
     private double width;
     private double length;
+
+    /**
+     * @param materialName variable containing the name of the specific material
+     * @param materialID variable containing the ID for the specific material
+     * @param materialPriceM variable with the price for each material
+     * @param width varibale with the width of material
+     * @param length variable with the length of material
+     */
 
     public CarportMaterials(String materialName, int materialID, double materialPriceM, double width, double length) {
         this.materialName = materialName;

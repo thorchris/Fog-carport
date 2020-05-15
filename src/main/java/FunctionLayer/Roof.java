@@ -27,7 +27,7 @@ public class Roof {
 
     /**
      * The constructor for roof calls calculation methods from the class CalcRoofMaterials.
-     * I uses these to determine the values for roof - The global variabels are set upon creating a instance of roof.
+     * I use these to determine the values for roof - The global variabels are set upon creating a instance of roof.
      * @param isHighRoof: Boolean value to show if the roof is high or flat
      * @param roofmaterial: Material of the roof
      * @param carportLength: Length of the carport, roof length is determined upon this value

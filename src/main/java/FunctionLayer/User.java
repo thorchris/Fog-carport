@@ -6,6 +6,11 @@ package FunctionLayer;
  */
 public class User {
 
+    /**
+     * @param email users email
+     * @param password users password
+     */
+
     public User( String email, String password ) {
         this.email = email;
         this.password = password;

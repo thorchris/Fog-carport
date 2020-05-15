@@ -5,6 +5,12 @@ public class FullCarport {
     private Roof roof;
     private Shed shed;
 
+    /**
+     * @param carportParts variable containing an object of the class CarportParts
+     * @param roof variable containing an object of the class Roof
+     * @param shed variable containing an object of the class Shed
+     */
+
     public FullCarport(CarportParts carportParts, Roof roof, Shed shed) {
         this.carportParts = carportParts;
         this.roof = roof;
