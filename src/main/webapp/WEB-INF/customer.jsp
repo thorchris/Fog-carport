@@ -38,7 +38,7 @@
             <!-- Show whos logged in -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link"> ${sessionScope.message} </a>
+                    <a class="nav-link"> ${sessionScope.HeaderMessage} </a>
                 </li>
             </ul>
             <!-- Navbar items -->
