@@ -68,7 +68,7 @@ public class Drawing extends Command {
         pointerY = intCarportHeight + 20;
         int finishX = intCarportWidth;
         svg.addHorizontalPointer(pointerX, pointerY, finishX,carportWidthDB);
-        
+
         request.setAttribute("svgdrawing", svg.toString());
         return "design";
     }
