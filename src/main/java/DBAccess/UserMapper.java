@@ -2,6 +2,7 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+import PresentationLayer.Log;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -39,9 +40,15 @@ public class UserMapper {
                 user.setRole(role);
                 return user;
             } else {
+                Log.info("Login " + "Could not validate user");
                 throw new LoginSampleException( "Could not validate user" );
             }
         } catch ( ClassNotFoundException | SQLException ex ) {
+            if(ex.getMessage().contains("link failure")){
+                Log.severe("Login (DB er måske nede) " + ex.getMessage());
+                throw new LoginSampleException("Databasen er nede. Kontakt admin.");
+            }
+            Log.severe("Login " + ex.getMessage());
             throw new LoginSampleException(ex.getMessage());
         }
     }
@@ -66,40 +73,7 @@ public class UserMapper {
         }
         return userId;
     }
-
-
-
-    public static void deleteMember(String email) {
-        try {
-            String SQL = "DELETE FROM users WHERE email = (?)";
-            Connection con = Connector.connection();
-            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, email);
-            ps.execute();
-            ps.close();
-
-
-        } catch (SQLException | ClassNotFoundException ex) {
-            System.out.println("FEJL! Kunne ikke fjerne medlem.");
-        }
-    }
-
-    public static void changePassword(String password, String email) throws LoginSampleException {
-        try {
-            Connection con = Connector.connection();
-            String SQL = "UPDATE users SET password = (?) WHERE email = (?)";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setString(1, password);
-            ps.setString(2, email);
-            ps.execute();
-            ps.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
+    
     public static List<User> getCustomerList() {
         List<User> customerList = new ArrayList<>();
         try {
