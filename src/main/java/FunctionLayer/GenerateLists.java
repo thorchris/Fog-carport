@@ -1,5 +1,6 @@
 package FunctionLayer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GenerateLists {
@@ -7,7 +8,7 @@ public class GenerateLists {
     private static List<RoofMaterials> roffMaterialList;
     private static List<CarportMaterials> carportMaterials;
     private static List<User> customerList;
-    private static List<Order> orderList;
+    private List<Order> orderList;
 
     public static void initLists(){
         if(roffMaterialList == null){
@@ -22,7 +23,7 @@ public class GenerateLists {
 
     }
 
-    public static void initOrderList(){
+    public void initOrderList(){
         if(orderList == null){
             orderList = LogicFacade.getOrderList();
         }
@@ -36,7 +37,7 @@ public class GenerateLists {
         return carportMaterials;
     }
 
-    public static List<Order> getOrderList() {
+    public List<Order> getOrderList() {
         return orderList;
     }
 
@@ -45,6 +46,9 @@ public class GenerateLists {
 
 
     public static void main(String[] args) {
-        System.out.println(LogicFacade.getOrderList());
+        GenerateLists generateLists = new GenerateLists();
+        generateLists.initOrderList();
+        System.out.println("Fra klassen:" + generateLists.getOrderList());
+        System.out.println("Fra dm" + LogicFacade.getOrderList());
     }
 }

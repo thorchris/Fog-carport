@@ -3,16 +3,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%!
-    @Override
-    public void jspInit() {
-        GenerateLists.initOrderList();
-    }
-%>
 <%
-    if (request.getServletContext().getAttribute("orderList") == null) {
-        request.getServletContext().setAttribute("orderList", GenerateLists.getOrderList());
-    }
+    GenerateLists generateLists = new GenerateLists();
+    generateLists.initOrderList();
+    request.getServletContext().setAttribute("orderList", generateLists.getOrderList());
 %>
 
 <!--Header imports -->
