@@ -13,6 +13,7 @@ public class DeleteCustomerOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderException {
 
+
         int orderid = Integer.parseInt(request.getParameter("deleteOrder"));
 
         LogicFacade.deleteCustomerOrder(orderid);

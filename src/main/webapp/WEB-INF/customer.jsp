@@ -78,7 +78,7 @@
 </nav>
 
 <!-- Table showing customer orders -->
-<form action="FrontController" method="post">
+<form action="FrontController" method="post" target="_blank">
     <input type="hidden" name="taget" value="manageCommand">
 <div class="container-fluid padding">
     <div class="row">

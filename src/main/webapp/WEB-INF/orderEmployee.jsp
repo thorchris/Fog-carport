@@ -99,18 +99,18 @@
                     <!-- https://www.codejava.net/java-ee/jsp/how-to-list-records-in-a-database-table-using-jsp-and-jstl -->
                 <tr>
 
-                    <td><button class="btn btn-primary btn-style deleteOrder" name="deleteOrder" value="${requestScope.order.orderId}">Slet</button></td>
-                    <td>${requestScope.order.orderId}</td>
-                    <td>${requestScope.order.userId}</td>
-                    <td>${requestScope.order.rafters}</td>
-                    <td>${requestScope.order.cladding}</td>
-                    <td>${requestScope.order.posts}</td>
-                    <td>${requestScope.order.screws}</td>
-                    <td>${requestScope.order.fascia}</td>
-                    <td>${requestScope.order.brackets}</td>
-                    <td>${requestScope.order.straps}</td>
-                    <td>${requestScope.order.doorknobs}</td>
-                    <td>${requestScope.order.doorhinges}</td>
+                    <td><button class="btn btn-primary btn-style deleteOrder" name="deleteOrder" value="${sessionScope.order.orderId}">Slet</button></td>
+                    <td>${sessionScope.order.orderId}</td>
+                    <td>${sessionScope.order.userId}</td>
+                    <td>${sessionScope.order.rafters}</td>
+                    <td>${sessionScope.order.cladding}</td>
+                    <td>${sessionScope.order.posts}</td>
+                    <td>${sessionScope.order.screws}</td>
+                    <td>${sessionScope.order.fascia}</td>
+                    <td>${sessionScope.order.brackets}</td>
+                    <td>${sessionScope.order.straps}</td>
+                    <td>${sessionScope.order.doorknobs}</td>
+                    <td>${sessionScope.order.doorhinges}</td>
                 </tr>
                 </tr>
                 </tbody>
