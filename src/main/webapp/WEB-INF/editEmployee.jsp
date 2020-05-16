@@ -93,7 +93,7 @@
             <table class="table table-striped table-dark table-bordered table.responsive">
                 <thead>
                 <tr>
-                    <th scope="col">Kunde Order ID</th>
+                    <th scope="col">Design</th>
                     <th scope="col">Order ID</th>
                     <th scope="col">Kunde ID</th>
                     <th scope="col">Carport Længde</th>
@@ -111,6 +111,8 @@
                     <!-- https://www.codejava.net/java-ee/jsp/how-to-list-records-in-a-database-table-using-jsp-and-jstl -->
                     <c:forEach var="customerDesign" items="${requestScope.customerOrder}">
                 <tr>
+                    <td><button class="btn btn-primary btn-style openSvgDesign" name="openSvgDrawing" value="${customerDesign.orderId}">Se Design</button></td>
+
                     <td><c:out value="${customerDesign.customerOrderId}"/></td>
                     <td><c:out value="${customerDesign.orderId}"/></td>
                     <td><c:out value="${customerDesign.userId}"/></td>
