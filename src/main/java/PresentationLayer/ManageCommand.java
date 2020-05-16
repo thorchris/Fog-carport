@@ -18,18 +18,15 @@ public class ManageCommand extends Command {
 
         String calcPrice = request.getParameter("calcPriceButton");
         String createOrder = request.getParameter("createOrderButton");
-        String svgDrawing = request.getParameter("svgDrawing");
 
         String openSvgDrawing = request.getParameter("openSvgDrawing");
 
         String action = request.getParameter("action");
 
         if (calcPrice != null){
-            action = "calculatePrice";
+            action = "svgDrawing";
         } else if (createOrder != null){
             action = "createOrder";
-        } else if (svgDrawing != null){
-            action = "svgDrawing";
         }
 
         if (getCustomerOrder != null){
@@ -53,10 +50,6 @@ public class ManageCommand extends Command {
 
 
         switch (action) {
-            case "calculatePrice":
-                new CalculatePrice().execute(request, response);
-                return "design";
-
             case "createOrder":
                 new CreateOrder().execute(request, response);
                 return "design";

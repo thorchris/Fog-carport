@@ -82,7 +82,7 @@
             <div class="col-1"></div>
             <div class="col-10">
                 <h3 class="text-center"> Velkommen tilbage: ${sessionScope.email}</h3>
-                <h5 class="text-center">Hvor vil du hen?</h5>
+                <h5 class="text-center">Hvad vil du arbejde med?</h5>
                 <a href="FrontController?taget=redirect&modtagerside=editEmployee" role="link"><h5 class="text-center">Rediger ordre</h5></a>
                 <hr>
             </div>
