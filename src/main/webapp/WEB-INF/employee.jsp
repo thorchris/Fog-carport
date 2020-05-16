@@ -118,7 +118,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                                <c:forEach var="order" items="${applicationScope.orderList}">
+                            <c:forEach var="order" items="${applicationScope.orderList}">
                         <tr>
                             <td><c:out value="${order.orderId}"/></td>
                             <td><c:out value="${order.userId}"/></td>
