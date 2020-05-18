@@ -94,6 +94,7 @@
                 <thead>
                 <tr>
                     <th scope="col">Design</th>
+                    <th scope="col">Kunde Order ID</th>
                     <th scope="col">Order ID</th>
                     <th scope="col">Kunde ID</th>
                     <th scope="col">Carport Længde</th>
