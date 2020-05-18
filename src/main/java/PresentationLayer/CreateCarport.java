@@ -83,6 +83,8 @@ public class CreateCarport extends Command {
         if(user==null){
             user = UserMapper.login("KundeUdenLogin@user.com", "1234");
             session.setAttribute("user",user);
+            request.setAttribute("loginMessage", "Du var ikke logget ind ved oprettelse. " +
+                    "Du er logget ind som en midlertidig bruger: " + user.getEmail());
         }
         //CREATING FULL CARPORT
         FullCarport fullCarport = new FullCarport(carportParts, roof, shed);
