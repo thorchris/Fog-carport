@@ -131,6 +131,70 @@ public class DataMapperTest {
         assertNotEquals(expected, result);
     }
 
+    @Test(expected = SQLException.class)
+    public void testGetCarportMaterialListSQLExpection() throws SQLException {
+        String url = "fakeurl";
+        USERPW = "fakePassword";
+        testConnection = DriverManager.getConnection(url, USER, USERPW);
+        List<CarportMaterials> carportMaterialsList = DataMapper.getCarportMaterialsList();
+    }
+
+    @Test
+    public void testGetRoofMaterialListSize() {
+        List<RoofMaterials> roofMaterialsList;
+        roofMaterialsList = DataMapper.getRoofMaterialsList();
+
+        int result = roofMaterialsList.size();
+        int expected = 16;
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testGetRoofMaterialListSizeDoesNotMatch() {
+        List<RoofMaterials> roofMaterialsList;
+        roofMaterialsList = DataMapper.getRoofMaterialsList();
+
+        int result = roofMaterialsList.size();
+        int expected = 1000;
+        assertNotEquals(expected, result);
+    }
+
+    @Test(expected = SQLException.class)
+    public void testGetRoofMaterialSQLException() throws SQLException {
+        String url = "fakeurl";
+        USERPW = "fakePassword";
+        testConnection = DriverManager.getConnection(url, USER, USERPW);
+        List<RoofMaterials> roofMaterialsList = DataMapper.getRoofMaterialsList();
+    }
+
+    @Test
+    public void testProductListSize() {
+        List<Product> productList;
+        productList = DataMapper.getProductList();
+
+        int result = productList.size();
+        int expected = 9;
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testGetProductListSizeDoesNotMatch() {
+        List<Product> productList;
+        productList = DataMapper.getProductList();
+
+        int result = productList.size();
+        int expected = 1000;
+        assertNotEquals(expected, result);
+    }
+
+    @Test(expected = SQLException.class)
+    public void testGetProductListSQLException() throws SQLException {
+        String url = "fakeurl";
+        USERPW = "fakePassword";
+        testConnection = DriverManager.getConnection(url, USER, USERPW);
+        List<Product> productList = DataMapper.getProductList();
+    }
+
     @Test
     public void testGetCarportMaterialList() {
         List<CarportMaterials> carportMatList = new ArrayList<>();
@@ -174,6 +238,15 @@ public class DataMapperTest {
     }
 
     @Test
+    public void testGetOrder() throws OrderException {
+        Order expectedOrder = new Order(1,1,2,1,4,300,2,4,4,1,2);
+        Order resultOrder = LogicFacade.getOrder(1);
+        String result = resultOrder.toString();
+        String expected = expectedOrder.toString();
+        assertEquals(expected, result);
+    }
+
+    @Test
     public void testDeleteOrder() throws LoginSampleException {
         User original = new User("person", "kode");
         UserMapper.createUser(original);
@@ -213,6 +286,11 @@ public class DataMapperTest {
         int result = getCustomerDesignOrderList.size();
 
         assertEquals(expected, result);
+    }
+
+    @Test(expected = OrderException.class)
+    public void testGetCustomerOrderException() throws OrderException {
+        LogicFacade.getCustomerOrder(5);
     }
 
     @Test
@@ -265,6 +343,26 @@ public class DataMapperTest {
         double resultUpdatedPrice = co.getPrice();
         double expectedUpdatedPrice = 2500;
         assertEquals(resultUpdatedPrice,expectedUpdatedPrice, 0.1);
+    }
+
+    @Test
+    public void testDeleteCustomerOrder() throws OrderException {
+        List<CustomerOrder> startExpectedList = LogicFacade.getCustomerDesignOrder(1);
+        int orderId = 1;
+        LogicFacade.getCustomerOrder(orderId);
+
+        CustomerOrder actual = startExpectedList.get(1);
+
+        CustomerOrder expected = new CustomerOrder(1,1, 1, 2, 1, 240, 240, true, true, 2, 25, 10000);
+        expected.setCustomerOrderId(3);
+
+        String actualAsString = actual.toString();
+        String expectedAsString = expected.toString();
+        assertEquals(expectedAsString, actualAsString);
+
+        LogicFacade.deleteCustomerOrder(2);
+        startExpectedList = LogicFacade.getCustomerDesignOrder(1);
+        assertTrue(startExpectedList.isEmpty());
     }
 
 }

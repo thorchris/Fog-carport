@@ -23,3 +23,20 @@
 2020-05-18T12:00:58.662+02:00 FINEST  getCustomerOrder Kunne ikke finde order
 2020-05-18T12:02:31.704+02:00 FINEST  getCustomerOrder Kunne ikke finde order
 2020-05-18T12:50:07.137+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T19:18:38.579+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T19:19:06.067+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T19:34:13.374+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T19:59:36.287+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T20:09:24.293+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-18T20:09:24.305+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-18T20:13:07.825+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T20:13:10.948+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-18T20:13:10.950+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-18T20:57:46.329+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-18T20:57:46.343+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-18T21:52:26.942+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T21:52:28.703+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-18T21:52:28.705+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-18T21:54:31.905+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T21:54:33.758+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-18T21:54:33.759+02:00 SEVERE  getCustomerOrder Databasen er nede.
