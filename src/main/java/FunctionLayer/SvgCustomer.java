@@ -1,5 +1,8 @@
 package FunctionLayer;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class SvgCustomer {
     private int height;
     private int width;
@@ -27,7 +30,14 @@ public class SvgCustomer {
 
     private final String horizontalPointerText = " <text style=\"text-anchor: middle\" x=\"%d\" y=\"%d\"> %d cm</text>";
 
-
+    /**
+     * The constructor of the SVG object used to determine the size of the SVG drawing.
+     * @param height of the drawing
+     * @param width of the drawing
+     * @param viewBox size of the SVG viewbox -> "like a frame for the drawing"
+     * @param x starting point in X axis of the drawing
+     * @param y starting point in Y axis of the drawing
+     */
     public SvgCustomer(int height, int width, String viewBox, int x, int y) {
         this.height = height;
         this.width = width;
@@ -39,7 +49,6 @@ public class SvgCustomer {
 
     /**
      * Used to make a pointer, inserts the values from the variables into a SVG string.
-     *
      * @param x            starting and ending point of the pointer so that it is vertical
      * @param y            starting point in y axis
      * @param y2           finishing point i y axis

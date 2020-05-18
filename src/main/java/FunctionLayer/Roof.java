@@ -2,6 +2,9 @@ package FunctionLayer;
 
 import Util.CalcRoofMaterials;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class Roof {
 
     /**

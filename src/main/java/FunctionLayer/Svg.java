@@ -1,5 +1,8 @@
 package FunctionLayer;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class Svg {
     private int height;
     private int width;
@@ -27,7 +30,14 @@ public class Svg {
 
     private final String horizontalPointerText = " <text style=\"text-anchor: middle\" x=\"%d\" y=\"%d\"> %d cm</text>";
 
-
+    /**
+     * The constructor of the SVG object used to determine the size of the SVG drawing.
+     * @param height of the drawing
+     * @param width of the drawing
+     * @param viewBox size of the SVG viewbox -> "like a frame for the drawing"
+     * @param x starting point in X axis of the drawing
+     * @param y starting point in Y axis of the drawing
+     */
     public Svg(int height, int width, String viewBox, int x, int y) {
         this.height = height;
         this.width = width;
@@ -122,10 +132,7 @@ public class Svg {
     }
 
     /**
-     *
-     *
      *  Adds Straps to the SVG drawing.
-     *
      * @param width used to find the X position to draw the straps.
      * @param height used to find the Y position to draw the straps.
      */
@@ -144,9 +151,7 @@ public class Svg {
     }
 
     /**
-     *
      * Adds rafters to the SVG drawing.
-     *
      * @param fullCarport used to get the amount of rafters for the specific carport.
      * @param width used to find the X position to draw the rafter.
      * @param height used to find the Y position to draw the rafter.

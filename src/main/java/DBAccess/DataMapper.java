@@ -7,6 +7,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Datamapper class is used to get information from the database regarding products, orders etc.
+ * It uses the connection, that is created with the singleton principle.
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class DataMapper {
 
     /**
@@ -250,7 +255,7 @@ public class DataMapper {
     }
 
     /**
-     * Used to get the userId from the databse
+     * Used to get the orderID mathing the user ID from the databse
      * @param user, the user which we want to get the user id from.
      * @return the user from the input parameters id.
      * If connections is not established it catches an exception and logs it
