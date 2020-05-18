@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class CreateCarport extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {

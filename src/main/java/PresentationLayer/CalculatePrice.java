@@ -6,7 +6,10 @@ import Util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ * METHOD USED TO CALCULATE THE PRICE OF A CARPORT 
+ */
 public class CalculatePrice extends Command {
 
     @Override
