@@ -18,3 +18,8 @@
 2020-05-18T11:11:02.613+02:00 SEVERE  getCustomerDesignOrder Table 'fogcarport_test.customer_order' doesn't existDatabasen er nede.
 2020-05-18T11:54:53.157+02:00 FINEST  getCustomerOrder Kunne ikke finde order
 2020-05-18T11:55:56.346+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T12:00:19.658+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T12:00:35.542+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T12:00:58.662+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T12:02:31.704+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T12:50:07.137+02:00 FINEST  getCustomerOrder Kunne ikke finde order

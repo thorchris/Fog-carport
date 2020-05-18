@@ -177,24 +177,31 @@ public class DataMapperTest {
     public void testDeleteOrder() throws LoginSampleException {
         User original = new User("person", "kode");
         UserMapper.createUser(original);
-        //tilføjer en ordre til databasen
         DataMapper.addOrder(original, carport);
-        //checker størrelsen af listen af ordrer på databasen, og sætter tallet ind i en variabel
         List<Order> orderListDB = DataMapper.getOrderList();
         int tmp = orderListDB.size();
-        //sletter ordre fra databasen
         int orderId = DataMapper.getUserOrderId(original);
         DataMapper.deleteOrder(orderId);
-        //checker igen størrelsen af listen af ordrer, og sætter det ind i en variabel
         List<Order> updatedOrderListDB = DataMapper.getOrderList();
         int actual = updatedOrderListDB.size();
-        //checker om der er forskel på før deleteorder blev kaldt og efter
         assertNotEquals(tmp, actual);
     }
 
     @Test(expected = OrderException.class)
     public void testGetOrderExpectedOrderException() throws OrderException {
         LogicFacade.getOrder(5);
+    }
+
+    /**
+     *
+     * @throws SQLException exception is thrown when the connection is unestablished.
+     */
+    @Test(expected = SQLException.class)
+    public void testGetCustomerDesignSQLException() throws SQLException {
+        String url = "fakeurl";
+        USERPW = "fakePassword";
+        testConnection = DriverManager.getConnection(url, USER, USERPW);
+        LogicFacade.getCustomerDesignOrder(1);
     }
 
     @Test
