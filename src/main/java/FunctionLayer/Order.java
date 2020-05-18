@@ -1,5 +1,8 @@
 package FunctionLayer;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class Order {
 
     private int orderId, userId, rafters, cladding, posts,

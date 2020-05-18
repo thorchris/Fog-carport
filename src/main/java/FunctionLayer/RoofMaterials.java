@@ -1,5 +1,8 @@
 package FunctionLayer;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class RoofMaterials {
     private String materialName;
     private int materialID;

@@ -1,11 +1,42 @@
 package FunctionLayer;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
+
 public class CustomerOrder {
 
     double cp_height, cp_width, price;
     int customerOrderId, orderId, userId, claddingSides, roofAngle,roofMatId, cpMatId, shedMatId;
     boolean hasShed, shedHalf;
 
+    /**
+     * @param roofMatId the ID specifying which roof material is used
+     * @param cpMatId the ID specifying which carport material is used
+     * @param shedMatId the ID specifying which shed material is used
+     * @param orderId the ID for the order
+     * @param userId the ID of the user that the order belongs to
+     * @param cp_height variable with the length of the carport
+     * @param cp_width variable with the width of the carport
+     * @param claddingSides variable containing the number of sides with cladding
+     * @param roofAngle variable with the roof angle
+     * @param price variable containing the price for the customer order
+     */
+
+    public CustomerOrder(int roofMatId, int cpMatId, int shedMatId, int orderId, int userId, double cp_height, double cp_width, boolean hasShed, boolean shedHalf, int claddingSides, int roofAngle, double price) {
+        this.roofMatId = roofMatId;
+        this.cpMatId = cpMatId;
+        this.shedMatId = shedMatId;
+        this.orderId = orderId;
+        this.userId = userId;
+        this.cp_height = cp_height;
+        this.cp_width = cp_width;
+        this.claddingSides = claddingSides;
+        this.roofAngle = roofAngle;
+        this.hasShed=hasShed;
+        this.shedHalf =shedHalf;
+        this.price = price;
+    }
 
     public boolean getHasShed() {
         return hasShed;
@@ -22,37 +53,6 @@ public class CustomerOrder {
     public void setShedHalf(boolean shedHalf) {
         this.shedHalf = shedHalf;
     }
-
-    /**
-     * @param roofMatId the ID specifying which roof material is used
-     * @param cpMatId the ID specifying which carport material is used
-     * @param shedMatId the ID specifying which shed material is used
-     * @param orderId the ID for the order
-     * @param userId the ID of the user that the order belongs to
-     * @param cp_height variable with the length of the carport
-     * @param cp_width variable with the width of the carport
-     * @param claddingSides variable containing the number of sides with cladding
-     * @param roofAngle variable with the roof angle
-     * @param price variable containing the price for the customer order
-     */
-
-
-    public CustomerOrder(int roofMatId, int cpMatId, int shedMatId, int orderId, int userId, double cp_height, double cp_width, boolean hasShed, boolean shedHalf, int claddingSides, int roofAngle, double price) {
-        this.roofMatId = roofMatId;
-        this.cpMatId = cpMatId;
-        this.shedMatId = shedMatId;
-
-        this.orderId = orderId;
-        this.userId = userId;
-        this.cp_height = cp_height;
-        this.cp_width = cp_width;
-        this.claddingSides = claddingSides;
-        this.roofAngle = roofAngle;
-        this.hasShed=hasShed;
-        this.shedHalf =shedHalf;
-        this.price = price;
-    }
-
     public int getRoofMatId() {
         return roofMatId;
     }

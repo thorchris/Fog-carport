@@ -1,10 +1,12 @@
 package FunctionLayer;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class FullCarport {
     private CarportParts carportParts;
     private Roof roof;
     private Shed shed;
-    private Order order;
 
     /**
      * @param carportParts variable containing an object of the class CarportParts

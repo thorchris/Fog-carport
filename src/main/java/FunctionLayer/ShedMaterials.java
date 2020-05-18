@@ -1,5 +1,8 @@
 package FunctionLayer;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class ShedMaterials {
 
     private double woodWith, pricePrM2;
@@ -7,6 +10,7 @@ public class ShedMaterials {
 
     /**
      * Fog uses a standard woodtype that always is 0.15m and a price off 25
+     *      // COULD LATER BE INSERTED IN TO THE DATABASE LIKE CARPORTMATERIALS AND ROOFMATERIALS //
      */
 
     public ShedMaterials() {

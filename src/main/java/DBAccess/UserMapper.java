@@ -8,8 +8,19 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The usermapper class is used to get information regarding the users from the database.
+ * It uses the connection created with the singleton principle.
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class UserMapper {
 
+    /**
+     * Creates a user in the database
+     * @param user, containing user information.
+     * @throws LoginSampleException, if the user cannot be made it throws an exception.
+     * If connections is not established it catches an exception and logs it
+     */
     public static void createUser(User user) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
@@ -32,6 +43,15 @@ public class UserMapper {
         }
     }
 
+    /**
+     * Used for login
+     * @param email, the users email
+     * @param password, the users password
+     * @return returns the user with these informations.
+     * @throws LoginSampleException, throws an exception if users cannot be found in DATABASE
+     * or if connection to the database cannot be made.
+     * If connections is not established it catches an exception and logs it
+     */
     public static User login( String email, String password ) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
@@ -62,6 +82,10 @@ public class UserMapper {
         }
     }
 
+    /**
+     * @param email, the users email which userID we want to return
+     * @return the users ID
+     */
     public static int getUserId(String email){
         int userId = 0;
 
@@ -83,6 +107,10 @@ public class UserMapper {
         return userId;
     }
 
+    /**
+     * Used to get a list of all users in the database.
+     * @return list of users.
+     */
     public static List<User> getCustomerList() {
         List<User> customerList = new ArrayList<>();
         try {
