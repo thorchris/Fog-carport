@@ -177,54 +177,11 @@ public class DataMapper {
         }
         return CarportItemList;
     }
-
-    /**
-     * Adds customerOrder to the database using an SQL query.
-     * @param customerOrder The customerOrder which order we want to add.
-     *                      The customerOrder contains all information regarding user, orderID etc.
-     * In this database there are alot of foreign keys:
-     *                      orderId
-     *                      userId
-     *                      roof_mats
-     *                      cp_mats
-     * These are used to ensure the program is working on existing orders, users and materials.
-     * If connections is not established it catches an exception and logs it
-     */
-    public static List<CustomerOrder> getCustomerDesign(User user) {
-        List<CustomerOrder> customerOrderList = new ArrayList();
-        try {
-            Connection con = Connector.connection();
-            String SQL = "SELECT * FROM customer_order WHERE user_id = " + user.getId();
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery(SQL);
-
-            while (rs.next()) {
-                int roofMatId = rs.getInt("roof_mats");
-                int cpMatId = rs.getInt("cp_mats");
-                int shedMatId = rs.getInt("shed_mats");
-                int customerOrderId = rs.getInt("co_id");
-                int orderId = rs.getInt("order_id");
-                int userId = rs.getInt("user_id");
-                int cpLength = rs.getInt("cp_length");
-                int cpWidth = rs.getInt("cp_width");
-                int claddingSides = rs.getInt("cladding_sides");
-                int roofAngle = rs.getInt("roof_angle");
-                int price = rs.getInt("price");
-                CustomerOrder co = new CustomerOrder(roofMatId, cpMatId, shedMatId, orderId, userId, cpLength, cpWidth, claddingSides, roofAngle, price);
-                co.setCustomerOrderId(customerOrderId);
-                customerOrderList.add(co);
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println(ex);
-        }
-        return customerOrderList;
-    }
-
+    
     /**
      * method inserts an object of customerOrder into database table 'customer_order'
      * @param customerOrder is an object of the CustomerOrder class
      */
-
     public static void createCustomerDesign(CustomerOrder customerOrder) {
         try {
             Connection con = Connector.connection();

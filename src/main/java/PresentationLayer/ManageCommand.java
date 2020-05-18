@@ -69,7 +69,7 @@ public class ManageCommand extends Command {
 
             case "changePrice":
                 new UpdateCustomerOrderPrice().execute(request,response);
-                return "orderEmployee";
+                return "editEmployee";
 
             case "svgDrawing":
                 new Drawing().execute(request, response);

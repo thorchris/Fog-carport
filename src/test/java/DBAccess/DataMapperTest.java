@@ -52,29 +52,29 @@ public class DataMapperTest {
                 stmt.execute("CREATE SCHEMA fogcarport_test ");
                 stmt.execute("use fogcarport_test; ");
 
-                stmt.execute("DROP TABLE if EXISTS carport_materials");
-                stmt.execute("CREATE TABLE carport_materials LIKE fogcarport.carport_materials");
-                stmt.execute("INSERT INTO carport_materials SELECT * FROM fogcarport.carport_materials");
+                stmt.execute("DROP TABLE if EXISTS fogcarport_test.carport_materials");
+                stmt.execute("CREATE TABLE fogcarport_test.carport_materials LIKE fogcarport.carport_materials");
+                stmt.execute("INSERT INTO fogcarport_test.carport_materials SELECT * FROM fogcarport.carport_materials");
 
-                stmt.execute("DROP TABLE if EXISTS roof_materials");
-                stmt.execute("CREATE TABLE roof_materials LIKE fogcarport.roof_materials");
-                stmt.execute("INSERT INTO roof_materials SELECT * FROM fogcarport.roof_materials");
+                stmt.execute("DROP TABLE if EXISTS fogcarport_test.roof_materials");
+                stmt.execute("CREATE TABLE fogcarport_test.roof_materials LIKE fogcarport.roof_materials");
+                stmt.execute("INSERT INTO fogcarport_test.roof_materials SELECT * FROM fogcarport.roof_materials");
 
-                stmt.execute("DROP TABLE if EXISTS products");
-                stmt.execute("CREATE TABLE products LIKE fogcarport.products");
-                stmt.execute("INSERT INTO products SELECT * FROM fogcarport.products");
+                stmt.execute("DROP TABLE if EXISTS fogcarport_test.products");
+                stmt.execute("CREATE TABLE fogcarport_test.products LIKE fogcarport.products");
+                stmt.execute("INSERT INTO fogcarport_test.products SELECT * FROM fogcarport.products");
 
-                stmt.execute("DROP TABLE if EXISTS orders");
-                stmt.execute("CREATE TABLE orders LIKE fogcarport.orders");
-                stmt.execute("INSERT INTO orders SELECT * FROM fogcarport.orders");
+                stmt.execute("DROP TABLE if EXISTS fogcarport_test.orders");
+                stmt.execute("CREATE TABLE fogcarport_test.orders LIKE fogcarport.orders");
+                stmt.execute("INSERT INTO fogcarport_test.orders SELECT * FROM fogcarport.orders");
 
-                stmt.execute( "DROP TABLE if EXISTS users" );
-                stmt.execute( "CREATE TABLE users LIKE fogcarport.users" );
-                stmt.execute( "INSERT INTO users SELECT * FROM fogcarport.users" );
+                stmt.execute( "DROP TABLE if EXISTS fogcarport_test.users" );
+                stmt.execute( "CREATE TABLE fogcarport_test.users LIKE fogcarport.users" );
+                stmt.execute( "INSERT INTO fogcarport_test.users SELECT * FROM fogcarport.users" );
 
-                stmt.execute("DROP TABLE if EXISTS customer_order");
-                stmt.execute("CREATE TABLE customer_order LIKE fogcarport.customer_order");
-                stmt.execute("INSERT INTO customer_order SELECT * FROM fogcarport.customer_order");
+                //stmt.execute("DROP TABLE if EXISTS fogcarport_test.customer_order");
+                stmt.execute("CREATE TABLE fogcarport_test.customer_order LIKE fogcarport.customer_order");
+                stmt.execute("INSERT INTO fogcarport_test.customer_order SELECT * FROM fogcarport.customer_order");
 
             } catch (SQLException ex) {
                 System.out.println("Could not open connection to database: " + ex.getMessage());
@@ -131,13 +131,8 @@ public class DataMapperTest {
         assertEquals(expected, result);
     }
 
-
-
-
     @Test
     public void testAddOrder()throws LoginSampleException {
-
-
         //Skaber alt data til at lave en fuld carport
         CarportMaterials carportMaterials = new CarportMaterials("Bøgetræsplade", 2, 12, 0.15, 3);
         CarportParts carportParts = new CarportParts(510, 330, true, false, carportMaterials, 1);
@@ -234,7 +229,6 @@ public class DataMapperTest {
 
     @Test
     public void testCreateCustomerDesign() throws LoginSampleException {
-
         User user = new User("hafthor", "bjornsson");
         UserMapper.createUser(user);
 

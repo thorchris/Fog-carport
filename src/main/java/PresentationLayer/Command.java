@@ -6,7 +6,10 @@ import FunctionLayer.OrderException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ * EVERY COMMAND IN JSP IS CALLED FROM THIS HASHMAP.
+ */
 abstract class Command {
 
     private static HashMap<String, Command> commands;
