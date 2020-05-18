@@ -87,8 +87,8 @@
     <div class="row">
         <div class="col-1"></div>
         <!-- Table showing orders with options to search and edit them -->
-        <div class="col-6">
-            <h3> Kunde design </h3>
+        <div class="col-10">
+            <h3 class="text-center"> Kunde design </h3>
             <hr>
             <table class="table table-striped table-dark table-bordered table.responsive">
                 <thead>
@@ -142,16 +142,20 @@
                             <button type="submit" class="btn btn-primary btn-style mt-2" name="getCustomerOrder">Se kunde ordre</button>
                         </div>
                         <div class="mt-2 ml-2">
-                            <input type="text" class="form-control" placeholder="Kunde ordre id" name="co_id">
+                            <input type="text" class="form-control" placeholder="Indtast Ordre id" name="co_id">
                             <input type="text" class="form-control" placeholder="Ny pris" name="updatePrice">
                             <button type="submit" class="btn btn-primary btn-style mt-2" name="changePrice">Ændre pris</button>
                         </div>
                 </div>
             </div>
         </div>
+        <div class="col-1"></div>
+    </div>
         <!-- List showing customers -->
+        <div class="row">
+            <div class="col-4"></div>
         <div class="col-4">
-            <h3> Kunde liste </h3>
+            <h3 class="text-center"> Kunde liste </h3>
             <hr>
             <table class="table table-striped table-dark table-bordered table.responsive">
                 <thead>
@@ -177,9 +181,10 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-1"></div>
+        <div class="col-4"></div>
     </div>
     </form>
 </div>
+
 <!-- Footer -->
 <%@include file="../include/footer.inc" %>
