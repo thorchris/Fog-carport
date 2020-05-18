@@ -6,6 +6,7 @@ import FunctionLayer.CarportParts;
 /**
  * Class for calculating the price of a carport-skeleton.
  * Materials in a carport-skeleton is defined in carportParts and calculated by the CalcCarportMaterials
+ * @Author Josef, Hallur, Thor og Frederik
  */
 public class CalculateCarportPartsPrice {
     private CarportParts carportParts;

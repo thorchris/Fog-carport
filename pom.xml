@@ -4,7 +4,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>Fogcarport</artifactId>
-    <version>0.1-ALPHA</version>
+    <version>0.9-BETA</version>
     <packaging>war</packaging>
 
     <name>Fogcarport</name>

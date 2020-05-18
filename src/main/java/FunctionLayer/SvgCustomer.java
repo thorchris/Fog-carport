@@ -3,7 +3,7 @@ package FunctionLayer;
 /**
  * @Author Josef, Hallur, Thor og Frederik
  */
-public class Svg {
+public class SvgCustomer {
     private int height;
     private int width;
     private String viewBox;
@@ -38,7 +38,7 @@ public class Svg {
      * @param x starting point in X axis of the drawing
      * @param y starting point in Y axis of the drawing
      */
-    public Svg(int height, int width, String viewBox, int x, int y) {
+    public SvgCustomer(int height, int width, String viewBox, int x, int y) {
         this.height = height;
         this.width = width;
         this.viewBox = viewBox;
@@ -49,7 +49,6 @@ public class Svg {
 
     /**
      * Used to make a pointer, inserts the values from the variables into a SVG string.
-     *
      * @param x            starting and ending point of the pointer so that it is vertical
      * @param y            starting point in y axis
      * @param y2           finishing point i y axis
@@ -90,11 +89,11 @@ public class Svg {
     /**
      * Adding Posts to the SVG drawing, since the drawing is a fixed size, some values have been hardcoded.
      *
-     * @param fullCarport, used to get amount of posts
+     * @param order, used to get amount of posts
      * @param width
      */
-    public void addPosts(FullCarport fullCarport, int width, int height) {
-        int posts = fullCarport.getCarportParts().getTotalPosts();
+    public void addPosts(Order order, int width, int height) {
+        int posts = order.getPosts();
         int postHeight = 9;
         int postWidth = 10;
         int posX = 0;
@@ -132,7 +131,10 @@ public class Svg {
     }
 
     /**
+     *
+     *
      *  Adds Straps to the SVG drawing.
+     *
      * @param width used to find the X position to draw the straps.
      * @param height used to find the Y position to draw the straps.
      */
@@ -151,13 +153,15 @@ public class Svg {
     }
 
     /**
+     *
      * Adds rafters to the SVG drawing.
-     * @param fullCarport used to get the amount of rafters for the specific carport.
+     *
+     * @param order used to get the amount of rafters for the specific carport.
      * @param width used to find the X position to draw the rafter.
      * @param height used to find the Y position to draw the rafter.
      */
-    public void addRafters(FullCarport fullCarport, int width, int height) {
-        int rafters = (int) fullCarport.getCarportParts().getTotalRafters();
+    public void addRafters(Order order, int width, int height) {
+        int rafters = order.getRafters();
 
         int rafterWidth = 4;
         int posX = 0;
@@ -178,18 +182,28 @@ public class Svg {
      * * Starts in Y = 20
      * * Changed as we go to match different positions
      *
-     * @param fullCarport, the carport were working on.
+     * @param customerOrder, to see if the carport has a shed.
      * @param width,       the width of the carport recalculated to CM
      */
-    public void addShedPosts(FullCarport fullCarport, int width) {
+    public void addShedPosts(CustomerOrder customerOrder, int width) {
         int startX = 0;
         int startY = 20;
 
-        if (fullCarport.getCarportParts().isHasAShed() == true) {
+        double carportLength = customerOrder.getCp_height();
+        int intShedHeight = 0;
 
+
+        if (customerOrder.hasShed == true) {
+
+            if (carportLength <= 3.6) {
+                    intShedHeight = (int) (1.0 * 80);
+                }else if (carportLength <= 5.1 && carportLength > 3.6) {
+                    intShedHeight = (int) (2.0 * 80);
+                }else if (carportLength <= 7.8 && carportLength > 5.1) {
+                    intShedHeight = (int) (3.0 * 80);
+            }
             int intShedWidth = width;
-            int intShedHeight = (int) (fullCarport.getShed().getShedLength() * 80);
-            if (fullCarport.getCarportParts().isHalfWidth() == true) {
+            if (customerOrder.shedHalf == true) {
                 //Shed
                 intShedWidth = intShedWidth / 2;
                 addRect(startX, startY, intShedHeight, intShedWidth);
@@ -205,7 +219,7 @@ public class Svg {
 
             } else {
                 intShedWidth = width;
-                intShedHeight = (int) (fullCarport.getShed().getShedLength() * 80);
+                // NOK FORKERT TEST SENERE
                 //Shed
                 addRect(startX, startY, intShedHeight, intShedWidth);
 

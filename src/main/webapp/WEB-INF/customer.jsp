@@ -30,7 +30,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/FogBrand.png"></a>
+        <a class="navbar-brand" href="FrontController?taget=redirect&modtagerside=index"><img src="img/FogBrand.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -78,14 +78,14 @@
 </nav>
 
 <!-- Table showing customer orders -->
-<form action="FrontController" method="post">
-    <input type="hidden" name="taget" value="openSvgDesign">
+<form action="FrontController" method="post" target="_blank">
+    <input type="hidden" name="taget" value="manageCommand">
 <div class="container-fluid padding">
     <div class="row">
         <div class="col-1"></div>
         <div class="col-10">
-            <h3 class="text-center">Velkommen til din side.</h3>
-            <h4 class="text-center">Her kan se en liste over dine tidligere designs.</h4>
+            <h3 class="text-center">Velkommen til din side: ${sessionScope.user.email}</h3>
+            <h4 class="text-center">Her kan du se en liste over dine tidligere designs:</h4>
             <hr>
                 <table class="table table-striped table-dark table-bordered table.responsive ">
                     <thead>
@@ -96,10 +96,10 @@
                         <th scope="col">Order ID</th>
                         <th scope="col">Carport længde</th>
                         <th scope="col">Carport bredde</th>
-                        <th scope="col">Antal sider med beklædning</th>
+                        <th scope="col">Beklædning sider</th>
                         <th scope="col">Tag materiale</th>
                         <th scope="col">Skur materiale</th>
-                        <th scope="col">Carport-skelet materiale</th>
+                        <th scope="col">Carport materiale</th>
                         <th scope="col">Tag vinkel</th>
                         <th scope="col">Pris</th>
                     </tr>
@@ -108,12 +108,12 @@
                     <tr>
                         <c:forEach var="customerOrder" items="${sessionScope.customerOrderList}">
                     <tr>
-                        <td><button class="btn btn-primary btn-style openSvgDesign" name="openSvgDesign">Åben Design</button></td>
 
+                        <td><button class="btn btn-primary btn-style openSvgDesign" name="openSvgDrawing" value="${customerOrder.orderId}">Se Design</button></td>
                         <td><c:out value="${customerOrder.customerOrderId}"/></td>
                         <td><c:out value="${customerOrder.userId}"/></td>
                         <td><c:out value="${customerOrder.orderId}"/></td>
-                        <td><c:out value="${customerOrder.cp_length}"/></td>
+                        <td><c:out value="${customerOrder.cp_height}"/></td>
                         <td><c:out value="${customerOrder.cp_width}"/></td>
                         <td><c:out value="${customerOrder.claddingSides}"/></td>
                         <td><c:out value="${customerOrder.roofMatId}"/></td>

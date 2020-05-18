@@ -2,16 +2,26 @@ package FunctionLayer;
 
 import java.util.List;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ * Class used for generating lists containing:
+ *      Roof materials, carport materials and customers which is accessed from the database.
+ *      These lists are static since these only need to be updated once on the JSP side.
+ *
+ *      Contains a list of orders as well, this list is non-static since we want it to generate a new list on the customerpage
+ *      containing all the orders at that time, so it needs to be able to update it "as we go".
+ *              //  Could might have been done with static as well.... //
+ *
+ */
 public class GenerateLists {
 
     private static List<RoofMaterials> roffMaterialList;
     private static List<CarportMaterials> carportMaterials;
     private static List<User> customerList;
-    private static List<Order> orderList;
+    private List<Order> orderList;
 
     /**
-     * initLists(): method uses logicFacade to fill the lists
-     * roffMaterialList, carportMaterials and customerList with data from the database
+     * Gets the static lists with from the datamappers through the logicfacade.
      */
 
     public static void initLists(){
@@ -24,14 +34,13 @@ public class GenerateLists {
         if(customerList == null){
             customerList = LogicFacade.getCustomerList();
         }
-
     }
 
     /**
-     * initOrderList(): method uses logicFacade and fills the list OrderList with orders
-     */
-
     public static void initOrderList(){
+     * Gets the non-static list with from the datamappers through the logicfacade.
+     */
+    public void initOrderList(){
         if(orderList == null){
             orderList = LogicFacade.getOrderList();
         }
@@ -53,7 +62,7 @@ public class GenerateLists {
         return carportMaterials;
     }
 
-    public static List<Order> getOrderList() {
+    public List<Order> getOrderList() {
         return orderList;
     }
 
@@ -61,9 +70,4 @@ public class GenerateLists {
         return customerList;
     }
 
-
-
-    public static void main(String[] args) {
-        System.out.println(LogicFacade.getOrderList());
-    }
 }

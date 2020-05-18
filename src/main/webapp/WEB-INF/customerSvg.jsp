@@ -1,6 +1,9 @@
+<%@ page import="FunctionLayer.GenerateLists" %>
 <%@ page import="FunctionLayer.User" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+
+
 
 <!--Header imports -->
 <!DOCTYPE html>
@@ -27,6 +30,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <!-- Show whos logged in -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link"> ${sessionScope.HeaderMessage} </a>
+                </li>
+            </ul>
+            <!-- Navbar items -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="FrontController?taget=redirect&modtagerside=index">Hjem</a>
@@ -62,48 +72,23 @@
     </div>
 </nav>
 
-
-<!-- Registrer form -->
-<div class="container-fluid padding">
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4">
-            <h1 class="text-center">Opret bruger</h1>
-            <table class="table table-borderless table.responsive">
-                <td>
-                    <form name="register" action="FrontController" method="POST" class="was-validated">
-                        <div class="form-group ml-2 mr-2">
-                            <input type="hidden" name="taget" value="register">
-                            Email:
-                            <input type="text" name="email" class="form-control"  placeholder="Email" required="required" pattern="[ÆØÅæøåA-Za-z0-9._%+-]+@[ÆØÅæøåA-Za-z0-9.-]+\.[ÆØÅæøåA-Za-z]{2,}$">
-                            <div class="valid-feedback">Godkendt.</div>
-                            <div class="invalid-feedback">Indtast email.</div>
-                        </div>
-                        <div class="form-group ml-2 mr-2">
-                            Kodeord:
-                            <input type="password" class="form-control" name="password1" placeholder="Kodeord" required="required">
-                            <div class="valid-feedback">Godkendt.</div>
-                            <div class="invalid-feedback">Indtast password.</div>
-                        </div>
-                        <div class="form-group ml-2 mr-2">
-                            Kodeord igen:
-                            <input type="password" class="form-control" name="password2" placeholder="Kodeord" required="required">
-                            <div class="valid-feedback">Godkendt.</div>
-                            <div class="invalid-feedback">Indtast password igen.</div>
-                        </div>
-                        <div class="form-footer text-center">
-                            <input type="submit" class="btn btn-primary btn-style " value="Register dig her">
-                        </div>
-                        <div class="alert alert-danger mt-4 <c:if test = "${empty requestScope.message}">d-none</c:if> "
-                             role="alert">
-                            ${requestScope.message}
-                        </div>
-                    </form>
-                </td>
-                </tr>
-            </table>
-        </div>
+<form action="FrontController" method="post">
+    <input type="hidden" name="taget" value="manageCommand"/>
+    <div class="container-fluid padding">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-6">
+                <h3 class="text-center">Plantegning:</h3>
+                <hr>
+                ${requestScope.svgCustomerDrawing}
+            </div>
     </div>
+    </div>
+</form>
 </div>
 
+</body>
+
+<!-- Footer -->
+<script src="JS/javascript.js"></script>
 <%@include file="../include/footer.inc" %>

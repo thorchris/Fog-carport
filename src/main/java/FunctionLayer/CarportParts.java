@@ -2,6 +2,9 @@ package FunctionLayer;
 
 import Util.CalcCarportMaterials;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class CarportParts {
 
     /**
@@ -35,8 +38,6 @@ public class CarportParts {
      * @param sidesWithCladding contains the amount of sides with cladding
      */
 
-
-    // MEGET VIGTIGT RÆKKEFØLGE
     public CarportParts(double length, double width, boolean hasAShed, boolean isHalfWidth, CarportMaterials carportMaterials, int sidesWithCladding) {
         CalcCarportMaterials calcCarportMaterials = new CalcCarportMaterials(this);
         this.length = length;

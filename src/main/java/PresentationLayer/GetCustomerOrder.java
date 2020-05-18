@@ -1,7 +1,6 @@
 package PresentationLayer;
 
 import FunctionLayer.*;
-import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,7 @@ public class GetCustomerOrder extends Command {
         HttpSession session = request.getSession();
 
         int orderId = Integer.parseInt(request.getParameter("orderId"));
-        Order order = LogicFacade.getCustomerOrder(orderId);
+        Order order = LogicFacade.getOrder(orderId);
 
         session.setAttribute("order", order);
 

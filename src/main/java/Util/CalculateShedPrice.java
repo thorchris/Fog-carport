@@ -5,6 +5,7 @@ import FunctionLayer.Shed;
 /**
  * Class for calculating the price of a shed.
  * Materials in a shed is defined in shed-class and calculated by the CalcShedMaterials
+ * @Author Josef, Hallur, Thor og Frederik
  */
 public class CalculateShedPrice {
     public Shed shed;

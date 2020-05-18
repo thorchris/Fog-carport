@@ -35,7 +35,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/FogBrand.png"></a>
+        <a class="navbar-brand" href="FrontController?taget=redirect&modtagerside=index"><img src="img/FogBrand.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -93,7 +93,7 @@
             <table class="table table-striped table-dark table-bordered table.responsive">
                 <thead>
                 <tr>
-                    <th scope="col">Kunde Order ID</th>
+                    <th scope="col">Design</th>
                     <th scope="col">Order ID</th>
                     <th scope="col">Kunde ID</th>
                     <th scope="col">Carport Længde</th>
@@ -111,10 +111,12 @@
                     <!-- https://www.codejava.net/java-ee/jsp/how-to-list-records-in-a-database-table-using-jsp-and-jstl -->
                     <c:forEach var="customerDesign" items="${requestScope.customerOrder}">
                 <tr>
+                    <td><button class="btn btn-primary btn-style openSvgDesign" name="openSvgDrawing" value="${customerDesign.orderId}">Se Design</button></td>
+
                     <td><c:out value="${customerDesign.customerOrderId}"/></td>
                     <td><c:out value="${customerDesign.orderId}"/></td>
                     <td><c:out value="${customerDesign.userId}"/></td>
-                    <td><c:out value="${customerDesign.cp_length}"/></td>
+                    <td><c:out value="${customerDesign.cp_height}"/></td>
                     <td><c:out value="${customerDesign.cp_width}"/></td>
                     <td><c:out value="${customerDesign.roofMatId}"/></td>
                     <td><c:out value="${customerDesign.shedMatId}"/></td>
@@ -131,7 +133,7 @@
             <div class="mt-4">
                 <div class="form-row">
                         <div class="mt-2">
-                            <input type="text" name="customerEmail" class="form-control" placeholder="Indtast Kunde Email">
+                            <input type="text" name="customerEmail" class="form-control" placeholder="Indtast Kunde Email" pattern="[ÆØÅæøåA-Za-z0-9._%+-]+@[ÆØÅæøåA-Za-z0-9.-]+\.[ÆØÅæøåA-Za-z]{2,}$">
                             <button type="submit" class="btn btn-primary btn-style mt-2" name="findCustomerOrder">Find kunde design</button>
                         </div>
                         <div class="mt-2 ml-2">

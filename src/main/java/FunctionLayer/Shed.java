@@ -1,6 +1,9 @@
 package FunctionLayer;
 
 import Util.CalcShedMaterials;
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 
 public class Shed {
     /**

@@ -23,7 +23,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/FogBrand.png"></a>
+        <a class="navbar-brand" href="FrontController?taget=redirect&modtagerside=index"><img src="img/FogBrand.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -71,6 +71,8 @@
 </nav>
 
 <div class="container-fluid">
+    <form action="FrontController" method="post">
+        <input type="hidden" name="taget" value="manageCommand"/>
     <div class="row">
         <div class="col-1"></div>
         <div class="col-10">
@@ -116,6 +118,7 @@
         </div>
         <div class="col-1"></div>
     </div>
+    </form>
 </div>
 
 <!-- Footer -->

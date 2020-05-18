@@ -2,6 +2,7 @@ package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderException;
+import FunctionLayer.SvgCustomer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,17 +18,15 @@ public class ManageCommand extends Command {
 
         String calcPrice = request.getParameter("calcPriceButton");
         String createOrder = request.getParameter("createOrderButton");
-        String svgDrawing = request.getParameter("svgDrawing");
 
+        String openSvgDrawing = request.getParameter("openSvgDrawing");
 
         String action = request.getParameter("action");
 
         if (calcPrice != null){
-            action = "calculatePrice";
+            action = "svgDrawing";
         } else if (createOrder != null){
             action = "createOrder";
-        } else if (svgDrawing != null){
-            action = "svgDrawing";
         }
 
         if (getCustomerOrder != null){
@@ -45,11 +44,12 @@ public class ManageCommand extends Command {
             action = "changePrice";
         }
 
-        switch (action) {
-            case "calculatePrice":
-                new CalculatePrice().execute(request, response);
-                return "design";
+        if(openSvgDrawing != null){
+            action = "openSvgDrawing";
+        }
 
+
+        switch (action) {
             case "createOrder":
                 new CreateOrder().execute(request, response);
                 return "design";
@@ -62,6 +62,7 @@ public class ManageCommand extends Command {
                 new FindCustomerOrder().execute(request,response);
                 return "editEmployee";
 
+                // Delete order and design order.
             case "deleteOrder":
                 new DeleteCustomerOrder().execute(request,response);
                 return "orderEmployee";
@@ -73,6 +74,10 @@ public class ManageCommand extends Command {
             case "svgDrawing":
                 new Drawing().execute(request, response);
                 return "design";
+
+            case "openSvgDrawing":
+                new DrawingCustomer().execute(request,response);
+                return "customerSvg";
 
 
             default:
