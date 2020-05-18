@@ -5,6 +5,7 @@ import FunctionLayer.Roof;
 /**
  * Class for calculating the price of a roof.
  * Materials in a roof is defined in roof-class and calculated by the CalcRoofMaterials
+ * @Author Josef, Hallur, Thor og Frederik
  */
 public class CalculateRoofPrice {
     private Roof roof;

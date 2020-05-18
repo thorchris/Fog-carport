@@ -7,6 +7,7 @@ import java.util.InputMismatchException;
 /**
  * Class used to calculate materials needed in a carport-skeleton.
  * Has one class variabels carportParts this is used for calculations throughout.
+ * @Author Josef, Hallur, Thor og Frederik
  */
 
 public class CalcCarportMaterials {
