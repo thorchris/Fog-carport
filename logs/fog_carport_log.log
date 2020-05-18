@@ -40,3 +40,17 @@
 2020-05-18T21:54:31.905+02:00 FINEST  getCustomerOrder Kunne ikke finde order
 2020-05-18T21:54:33.758+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
 2020-05-18T21:54:33.759+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-18T22:19:34.011+02:00 SEVERE  Create user Public Key Retrieval is not allowed
+2020-05-18T22:19:34.058+02:00 SEVERE  Login Public Key Retrieval is not allowed
+2020-05-18T22:19:34.085+02:00 SEVERE  Login Public Key Retrieval is not allowed
+2020-05-18T22:19:34.106+02:00 SEVERE  Login Public Key Retrieval is not allowed
+2020-05-18T22:19:37.025+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T22:19:38.927+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-18T22:19:38.928+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-18T22:22:42.803+02:00 SEVERE  Create user Public Key Retrieval is not allowed
+2020-05-18T22:22:42.861+02:00 SEVERE  Login Public Key Retrieval is not allowed
+2020-05-18T22:22:42.877+02:00 SEVERE  Login Public Key Retrieval is not allowed
+2020-05-18T22:22:42.890+02:00 SEVERE  Login Public Key Retrieval is not allowed
+2020-05-18T22:22:45.732+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T22:22:48.168+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-18T22:22:48.169+02:00 SEVERE  getCustomerOrder Databasen er nede.
