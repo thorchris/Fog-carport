@@ -1,6 +1,5 @@
-package SVGTest;
+package FunctionLayer;
 
-import FunctionLayer.*;
 import Util.CalcCarportMaterials;
 import org.junit.Before;
 import org.junit.Test;
