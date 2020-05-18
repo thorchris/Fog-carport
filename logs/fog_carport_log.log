@@ -68,3 +68,10 @@
 2020-05-18T22:38:22.427+02:00 FINEST  getCustomerOrder Kunne ikke finde order
 2020-05-18T22:38:24.796+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
 2020-05-18T22:38:24.798+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-18T22:47:01.918+02:00 SEVERE  Create user Public Key Retrieval is not allowed
+2020-05-18T22:47:01.964+02:00 SEVERE  Login Public Key Retrieval is not allowed
+2020-05-18T22:47:01.982+02:00 SEVERE  Login Public Key Retrieval is not allowed
+2020-05-18T22:47:02.030+02:00 SEVERE  Login Public Key Retrieval is not allowed
+2020-05-18T22:48:05.523+02:00 INFO    Login Could not validate user
+2020-05-18T22:48:05.654+02:00 INFO    Login Could not validate user
+2020-05-18T22:48:05.669+02:00 INFO    Login Could not validate user
