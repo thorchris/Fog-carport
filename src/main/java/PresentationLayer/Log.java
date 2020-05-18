@@ -4,7 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.*;
 
-
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ * Command used for getting an order from the database.
+ * Logger for logging errors on the webpage.
+ */
 public class Log {
 
     private static final String FILENAME = "fog_carport_log.log";
