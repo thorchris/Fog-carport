@@ -20,21 +20,21 @@ public class Drawing extends Command {
         new CalculatePrice().execute(request, response);
         FullCarport fullCarport = (FullCarport) session.getAttribute("fullCarport");
 
-        double carportWidth = fullCarport.getCarportParts().getLength();
-        double carportHeight = fullCarport.getCarportParts().getWidth();
-        //Converting to metric measurements as they are metric on the acutal site.
-        int carportHeigthDB = (int) (carportHeight * 100);
+        double carportLength = fullCarport.getCarportParts().getLength();
+        double carportWidth = fullCarport.getCarportParts().getWidth();
+        //Converting to metric measurements as they are metric on the actual site.
+        int carportHeigthDB = (int) (carportLength * 100);
         int carportWidthDB = (int) (carportWidth * 100);
 
         //Aspect Ratio
-        int intCarportHeight;
+        int intCarportLength;
         int intCarportWidth;
 
-        if(carportWidth < 5){
-            intCarportHeight = (int) (carportHeight*120);
+        if(carportLength < 5){
+            intCarportLength = (int) (carportLength*120);
             intCarportWidth = (int) (carportWidth*120);
         }else{
-            intCarportHeight = (int) (carportHeight*100);
+            intCarportLength = (int) (carportLength*100);
             intCarportWidth = (int) (carportWidth*100);
         }
 
@@ -43,33 +43,33 @@ public class Drawing extends Command {
         //Carport
         int startX = 0;
         int startY = 20;
-        svg.addRect(startX, startY, intCarportHeight, intCarportWidth);
+        svg.addRect(startX, startY, intCarportLength, intCarportWidth);
 
-        // REMME YDRE
-        svg.addRect(startX+10, startY+10, intCarportHeight-20, intCarportWidth-20);
+        // Outer strap
+        svg.addRect(startX+10, startY+10, intCarportLength-20, intCarportWidth-20);
 
 
-        // REMME INDENI ( STRAPS )
-        svg.addStraps(intCarportWidth,intCarportHeight);
+        //Inner straps
+        svg.addStraps(intCarportWidth,intCarportLength);
 
-        // Rafters
-        svg.addRafters(fullCarport, intCarportWidth,intCarportHeight);
+        //Rafters
+        svg.addRafters(fullCarport, intCarportWidth,intCarportLength);
 
         //Shed
         svg.addShedPosts(fullCarport, intCarportWidth);
 
         //Carport posts
-        svg.addPosts(fullCarport, intCarportWidth, intCarportHeight);
+        svg.addPosts(fullCarport, intCarportWidth, intCarportLength);
 
         //Pointer vertical
         int pointerX = intCarportWidth + 20;
         int pointerY = startY;
-        int finishY = intCarportHeight;
+        int finishY = intCarportLength;
         svg.addVerticalPointer(pointerX, pointerY,finishY, carportHeigthDB);
 
         //Horizontal pointer
         pointerX = startX;
-        pointerY = intCarportHeight + 20;
+        pointerY = intCarportLength + 20;
         int finishX = intCarportWidth;
         svg.addHorizontalPointer(pointerX, pointerY, finishX,carportWidthDB);
 

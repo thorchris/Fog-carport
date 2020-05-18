@@ -21,7 +21,7 @@ public class SvgTest {
     // Roof
     private boolean isHighRoof;
 
-    private int intCarportHeight;
+    private int intCarportLength;
     private int intCarportWidth;
 
 
@@ -60,13 +60,13 @@ public class SvgTest {
 
         fullCarport = new FullCarport(carportParts, roof, shed);
 
-        // Aspect Ratio for the addPosts test
-        if(width < 5){
-            intCarportHeight = (int) (length*120);
-            intCarportWidth = (int) (width*120);
-        }else{
-            intCarportHeight = (int) (length*100);
-            intCarportWidth = (int) (width*100);
+        // Aspect Ratio for the tests and converting to metric measurements as they are metric on the actual site.
+        if (width < 5) {
+            intCarportLength = (int) (length * 120);
+            intCarportWidth = (int) (width * 120);
+        } else {
+            intCarportLength = (int) (length * 100);
+            intCarportWidth = (int) (width * 100);
         }
 
 
@@ -90,11 +90,10 @@ public class SvgTest {
     /**
      * The FullCarport made for this tests has a shed and the shed is half width therefor
      * the amount of posts for the carport will be 6. Added the CalcCarportMats to assertEquals for extra test assurance.
-     *
      */
     @Test
     public void addPosts() {
-        svg.addPosts(fullCarport, intCarportWidth, intCarportHeight);
+        svg.addPosts(fullCarport, intCarportWidth, intCarportLength);
 
         CalcCarportMaterials CalcCarportMats = new CalcCarportMaterials(carportParts);
         int postsAmount = CalcCarportMats.calculateAmountOfPosts();
@@ -115,8 +114,64 @@ public class SvgTest {
         assertThat(svg.toString(), containsString(expectedRect));
     }
 
+    @Test
+    public void addStrap() {
+        svg.addStraps(intCarportWidth, intCarportLength);
 
+        String headerTemplate = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" height=\"800\" width=\"600\" viewBox=\"0,0,800,600\" preserveAspectRatio=\"xMinYMin\">";
+        String strap1 = "<rect x=\"0\" y=\"83\" height=\"9\" width=\"288\" style=\"stroke:#000000; fill: #ffffff\" />";
+        String strap2 = "<rect x=\"0\" y=\"227\" height=\"9\" width=\"288\" style=\"stroke:#000000; fill: #ffffff\" /></svg>";
 
+        String expectedRect = headerTemplate + strap1 + strap2;
+
+        assertThat(svg.toString(), containsString(expectedRect));
+    }
+
+    /**
+     * The FullCarport made for this tests has a width of 2.4 and length of 2.4 therefor
+     * the amount of rafters for the carport will be 5. Added the CalcCarportMats to assertEquals for extra test assurance.
+     */
+    @Test
+    public void addRafters() {
+        svg.addRafters(fullCarport, intCarportWidth, intCarportLength);
+
+        CalcCarportMaterials CalcCarportMats = new CalcCarportMaterials(carportParts);
+        int rafterAmount = CalcCarportMats.calculateRafters();
+
+        String headerTemplate = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" height=\"800\" width=\"600\" viewBox=\"0,0,800,600\" preserveAspectRatio=\"xMinYMin\">";
+        String rafter1 = "<rect x=\"53\" y=\"20\" height=\"288\" width=\"4\" style=\"stroke:#000000; fill: #ffffff\" />";
+        String rafter2 = "<rect x=\"106\" y=\"20\" height=\"288\" width=\"4\" style=\"stroke:#000000; fill: #ffffff\" />";
+        String rafter3 = "<rect x=\"159\" y=\"20\" height=\"288\" width=\"4\" style=\"stroke:#000000; fill: #ffffff\" />";
+        String rafter4 = "<rect x=\"212\" y=\"20\" height=\"288\" width=\"4\" style=\"stroke:#000000; fill: #ffffff\" />";
+        String rafter5 = "<rect x=\"265\" y=\"20\" height=\"288\" width=\"4\" style=\"stroke:#000000; fill: #ffffff\" /></svg>";
+
+        String expectedRect = headerTemplate + rafter1 + rafter2 + rafter3 + rafter4 + rafter5;
+
+        assertEquals(rafterAmount, fullCarport.getCarportParts().getTotalRafters(), 0);
+        assertThat(svg.toString(), containsString(expectedRect));
+
+    }
+
+    /**
+     * The FullCarport made for this tests has a Shed and the Shed is set to half width.
+     * The Shed is first drawn then a single strap inside and due to the half width 3 posts.
+     */
+
+    @Test
+    public void addShedPosts() {
+        svg.addShedPosts(fullCarport, intCarportWidth);
+
+        String headerTemplate = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" height=\"800\" width=\"600\" viewBox=\"0,0,800,600\" preserveAspectRatio=\"xMinYMin\">";
+        String shedRect = "<rect x=\"0\" y=\"20\" height=\"80\" width=\"144\" style=\"stroke:#000000; fill: #ffffff\" />";
+        String shedStrap = "<rect x=\"10\" y=\"30\" height=\"60\" width=\"124\" style=\"stroke:#000000; fill: #ffffff\" />";
+        String shedPost1 = "<rect x=\"0\" y=\"51\" height=\"9\" width=\"10\" style=\"stroke:#000000; fill: #ffffff\" />";
+        String shedPost2 = "<rect x=\"134\" y=\"51\" height=\"9\" width=\"10\" style=\"stroke:#000000; fill: #ffffff\" />";
+        String shedPost3 = "<rect x=\"72\" y=\"91\" height=\"9\" width=\"10\" style=\"stroke:#000000; fill: #ffffff\" /></svg>";
+
+        String expectedRect = headerTemplate + shedRect + shedStrap + shedPost1 + shedPost2 + shedPost3;
+
+        assertThat(svg.toString(), containsString(expectedRect));
+    }
 
 
 }
