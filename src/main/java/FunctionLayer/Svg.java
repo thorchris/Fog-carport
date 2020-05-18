@@ -141,10 +141,10 @@ public class Svg {
         int strapWidth = 9;
         int posX = 0;
         int posY = 20;
-        //Første rem
+        //First Strap
         posY += (height / 4) - strapWidth;
         addRect(posX, posY, strapWidth, width);
-        //Anden rem
+        //Second Strap
         posY = 20;
         posY += height - (height / 4) - strapWidth;
         addRect(posX, posY, strapWidth, width);
@@ -194,7 +194,7 @@ public class Svg {
                 intShedWidth = intShedWidth / 2;
                 addRect(startX, startY, intShedHeight, intShedWidth);
 
-                //Shed REMME
+                //Shed Straps
                 addRect(startX + 10, startY + 10, intShedHeight - 20, intShedWidth - 20);
                 int postHeight = 9;
                 int postWidth = 10;
@@ -210,7 +210,7 @@ public class Svg {
                 addRect(startX, startY, intShedHeight, intShedWidth);
 
 
-                //Shed REMME
+                //Shed Straps
                 addRect(startX + 10, startY + 10, intShedHeight - 20, intShedWidth - 20);
                 int postHeight = 9;
                 int postWidth = 10;
