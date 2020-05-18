@@ -1,5 +1,8 @@
 package FunctionLayer;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class FullCarport {
     private CarportParts carportParts;
     private Roof roof;

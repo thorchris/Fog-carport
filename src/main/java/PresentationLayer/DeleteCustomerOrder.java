@@ -16,6 +16,7 @@ public class DeleteCustomerOrder extends Command {
 
         int orderid = Integer.parseInt(request.getParameter("deleteOrder"));
 
+        LogicFacade.deleteCustomerOrder(orderid);
         LogicFacade.deleteOrder(orderid);
 
         return "orderEmployee";

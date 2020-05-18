@@ -15,14 +15,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 
-import javax.xml.crypto.Data;
 
 public class DataMapperTest {
 
 
     private static Connection testConnection;
     private static String USER = "root";
-    private static String USERPW = "kode";
+    private static String USERPW = "green8house17";
     private static String DBNAME = "fogcarport_test?serverTimezone=CET&useSSL=false";
     private static String HOST = "localhost";
 
@@ -49,6 +48,10 @@ public class DataMapperTest {
 
             // reset test database
             try (Statement stmt = testConnection.createStatement()) {
+                stmt.execute("DROP SCHEMA if exists fogcarport_test ");
+                stmt.execute("CREATE SCHEMA fogcarport_test ");
+                stmt.execute("use fogcarport_test; ");
+
                 stmt.execute("DROP TABLE if EXISTS carport_materials");
                 stmt.execute("CREATE TABLE carport_materials LIKE fogcarport.carport_materials");
                 stmt.execute("INSERT INTO carport_materials SELECT * FROM fogcarport.carport_materials");
@@ -237,7 +240,7 @@ public class DataMapperTest {
 
         int userId = UserMapper.getUserId("hafthor");
 
-        CustomerOrder co = new CustomerOrder(1,1,1,7,userId,510,330,1,10, 2100);
+        CustomerOrder co = new CustomerOrder(1,1,1,7,userId,510,330,true,false, 2,2,2100);
 
         DataMapper.createCustomerDesign(co);
 

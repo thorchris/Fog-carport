@@ -44,6 +44,9 @@ public class Redirect extends Command {
             case "customer":
                 return "customer";
 
+            case "customerSvg":
+                return "customerSvg";
+
             default:
                 return "index";
         }

@@ -39,7 +39,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/FogBrand.png"></a>
+        <a class="navbar-brand" href="FrontController?taget=redirect&modtagerside=index"><img src="img/FogBrand.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -151,7 +151,7 @@
                     </select>
                 </div>
 
-                <h5>Ønsker de et skur?</h5>
+                <h5>Ønsker du et skur?</h5>
                 <input type="radio" id="shedCheckbox" onclick="myFunction1()" name="shedYesOrNo" value="true">
                 Ja </input>
                 <input type="radio" name="shedYesOrNo" onclick="myFunction1()" value="false"> Nej </input>
@@ -165,7 +165,7 @@
                 </div>
 
 
-                <h5>Ønsker de beklædning til carporten?</h5>
+                <h5>Ønsker du beklædning til carporten?</h5>
                 <input type="radio" id="claddingCheckbox" onclick="myFunction3()" name="claddingYesOrNo" value="true">
                 Ja </input>
                 <input type="radio" name="claddingYesOrNo" value="false" onclick="myFunction3()"> Nej </input>
@@ -233,13 +233,15 @@
                     </div>
                 </div>
                 <br>
-                <button type="input" class="btn btn-primary btn-style mt-2 mb-2" name="calcPriceButton" >Beregn anslået pris
+                <button type="input" class="btn btn-primary btn-style mt-2 mb-2" name="calcPriceButton" >Se dit design
                 </button>
                 <h5>Anslået pris: ${sessionScope.totalPrice}</h5>
-
                 <button type="input" class="btn btn-primary btn-style mt-2" name="createOrderButton" >Send til sælger
                 </button>
-                <button type="input" class="btn btn-primary btn-style mt-2" name="svgDrawing">Plantegning</button>
+                <div class="alert alert-success mt-4 <c:if test = "${empty requestScope.message}">d-none</c:if> "
+                     role="alert">
+                    ${requestScope.message}
+                </div>
             </div>
             <div class="col-1"></div>
         </div>

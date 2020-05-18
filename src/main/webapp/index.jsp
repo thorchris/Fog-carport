@@ -22,7 +22,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/FogBrand.png"></a>
+        <a class="navbar-brand" href="FrontController?taget=redirect&modtagerside=index"><img src="img/FogBrand.png" ></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -109,13 +109,15 @@
 <div class="container-fluid padding">
     <div class="row welcome text-center">
         <div class="col-12">
-            <h1 class="display-4">Fog Trælast & Byggecenter.</h1>
+            <h1 class="display-4">Fog Trælast & Byggecenter</h1>
         </div>
         <hr>
         <div class="col-12">
-            <p class="lead">Fog trælast og byggecenter, er en trælast og et byggecenter som giver
-                muligheden for at designe en carport der passer perfekt til dit hus. Vi har eksperter
-                som sidder klar hvis du har brug for hjælp til at få designet carporten der passer til dig.
+            <p class="lead">Fog trælast og byggecenter er en trælast og et byggecenter,
+                som giver dig muligheden for at designe en carport,
+                der passer perfekt til dit hus.
+                Vi har eksperter, som sidder klar, hvis du har brug for hjælp til at få designet carporten,
+                der passer til netop dig.
             </p>
         </div>
     </div>
@@ -125,7 +127,7 @@
 <div class="container-fluid padding">
     <div class="row text-center padding">
         <div class="col-12">
-            <h2>Find os her.</h2>
+            <h2>Find os her</h2>
         </div>
         <div class="col 12 social padding">
             <a href="https://www.facebook.com/fogtraelastbyggecenter" target="_blank"><i class="fab fa-facebook"></i></a>

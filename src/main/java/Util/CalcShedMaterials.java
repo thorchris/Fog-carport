@@ -2,6 +2,9 @@ package Util;
 
 import FunctionLayer.Shed;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class CalcShedMaterials {
 
     /**

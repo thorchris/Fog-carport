@@ -1,18 +1,17 @@
 package PresentationLayer;
 
 import FunctionLayer.*;
-import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DecimalFormat;
 
 public class CreateOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-
+        new CalculatePrice().execute(request, response);
+        new Drawing().execute(request,response);
         HttpSession session = request.getSession();
         FullCarport fullCarport = (FullCarport) session.getAttribute("fullCarport");
         if(fullCarport == null){
@@ -34,15 +33,21 @@ public class CreateOrder extends Command {
         int shedMatId = shed.getShedMaterials().getMaterialID();
         int orderID = LogicFacade.getUserOrderId(user);
         int userId = user.getId();
-        int cp_length = (int) carportParts.getLength();
-        int cp_width = (int) carportParts.getWidth();
+        double cp_length = carportParts.getLength();
+        double  cp_width = carportParts.getWidth();
+        boolean hasShed = fullCarport.getCarportParts().isHasAShed();
+        boolean shedHalf = fullCarport.getCarportParts().isHalfWidth();
         int claddingSides = carportParts.getSidesWithCladding();
         int roofAngle = roof.getRoofAngle();
+
         double price = (double) session.getAttribute("price");
 
-        CustomerOrder customerOrder = new CustomerOrder(roofMatId, carportMatId, shedMatId, orderID, userId, cp_length, cp_width, claddingSides, roofAngle, (int) price);
+        //We only want two digits
+        price = (int)(price * 100 + 0.5) / 100.0;;
+        CustomerOrder customerOrder = new CustomerOrder(roofMatId, carportMatId, shedMatId, orderID, userId, cp_length, cp_width,hasShed,shedHalf, claddingSides, roofAngle, price);
         LogicFacade.createCustomerDesign(customerOrder);
 
+        request.setAttribute("message","DIN CARPORT ER NU GEMT OG DU KAN FINDE DEN PÅ DIN SIDE");
         return "design";
     }
 

@@ -7,7 +7,8 @@ import java.sql.SQLException;
 /**
  The purpose of Connector is to...
 
- @author kasper
+ @author kasper -> Original
+ @Author Josef, Hallur, Thor og Frederik -> edited
  */
 public class Connector {
 
@@ -42,7 +43,7 @@ public class Connector {
             //LOCALHOST
             URL = "jdbc:mysql://localhost:3306/fogcarport?serverTimezone=CET&useSSL=false";
             USERNAME = "root";
-            PASSWORD = "H7114bhs";
+            PASSWORD = "green8house17";
 
         }
     }
