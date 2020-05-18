@@ -9,19 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Her er en klasse der gør at kunden kan logge ind, hvis det er en admin der logger ind viderestilles administratoren til admin.jsp.
- *
+ * Command used for login, if the user is an employee it goes to the employee page and if it is a user it goes to the employee
  * @author Thor, Hallur, Josef og Frederik
  */
 public class Login extends Command {
-    /**
-     * @param request - den aktuelle HTTP request
-     * @param response - den aktuelle HTTP servlet response
-     * @return - en string, som er den side der skal returneres når metoden er kort.
-     * Denne sendes til frontcontrolleren, hvor der tilsættes den rette sti (WEB-INF/ ... )
-     * @throws - LoginSampleException, en hjemmelavet exception som propageres (VI KASTER DEN BARE VÆK) og ikke håndteres.
-     * @version - Færdige version for cupcake projektet.
-     */
+
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) {
         try {

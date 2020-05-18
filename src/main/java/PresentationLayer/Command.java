@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @Author Josef, Hallur, Thor og Frederik
  * EVERY COMMAND IN JSP IS CALLED FROM THIS HASHMAP.
+ * The string for an example "calculatePrice" is the name that needs to be written in a form in JSP.
  */
 abstract class Command {
 

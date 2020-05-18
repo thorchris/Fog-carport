@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Her er en klasse der benyttes til at navigere rundt imellem de forskellige side.
+ * This command is used for redirecting between pages.
  * @author Thor, Hallur, Josef og Frederik
  */
 
