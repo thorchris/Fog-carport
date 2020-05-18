@@ -45,7 +45,7 @@ public class CalculateCarportPartsPriceTest {
         isHalfWidth = false;
 
         // Samme priser som fra DB
-        screwPrice = 20;
+        screwPrice = 1;
         rafterPrice = 14;
         postPrice = 50;
         strapPrice = 20;
@@ -73,7 +73,7 @@ public class CalculateCarportPartsPriceTest {
 
         double expected = testScrews + testRafters + testPosts + testMaterial + testStraps;
         double result = calculateCarportPartPrice.calculateCarportPartPrice(screwPrice, rafterPrice, postPrice, strapPrice,carportMaterials);
-
+        System.out.println(expected);
         assertEquals(expected, result, 0);
 
     }
