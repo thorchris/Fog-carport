@@ -62,7 +62,6 @@ public class ManageCommand extends Command {
                 new FindCustomerOrder().execute(request,response);
                 return "editEmployee";
 
-                // Delete order and design order.
             case "deleteOrder":
                 new DeleteCustomerOrder().execute(request,response);
                 return "orderEmployee";
@@ -78,7 +77,6 @@ public class ManageCommand extends Command {
             case "openSvgDrawing":
                 new DrawingCustomer().execute(request,response);
                 return "customerSvg";
-
 
             default:
                 return "design";

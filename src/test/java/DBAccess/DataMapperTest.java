@@ -72,7 +72,7 @@ public class DataMapperTest {
                 stmt.execute( "CREATE TABLE fogcarport_test.users LIKE fogcarport.users" );
                 stmt.execute( "INSERT INTO fogcarport_test.users SELECT * FROM fogcarport.users" );
 
-                //stmt.execute("DROP TABLE if EXISTS fogcarport_test.customer_order");
+                stmt.execute("DROP TABLE if EXISTS fogcarport_test.customer_order");
                 stmt.execute("CREATE TABLE fogcarport_test.customer_order LIKE fogcarport.customer_order");
                 stmt.execute("INSERT INTO fogcarport_test.customer_order SELECT * FROM fogcarport.customer_order");
 

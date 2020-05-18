@@ -42,7 +42,7 @@ public class CarportParts {
         CalcCarportMaterials calcCarportMaterials = new CalcCarportMaterials(this);
         this.length = length;
         this.width = width;
-        this.totalScrews = 300; //you need 500 screws to do the carport parts
+        this.totalScrews = 300; //you need 300 screws to do the carport parts
         this.hasAShed = hasAShed;
         this.isHalfWidth = isHalfWidth;
         this.totalRafters = calcCarportMaterials.calculateRafters();

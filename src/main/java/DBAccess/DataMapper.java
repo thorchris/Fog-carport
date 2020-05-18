@@ -177,7 +177,7 @@ public class DataMapper {
         }
         return CarportItemList;
     }
-    
+
     /**
      * method inserts an object of customerOrder into database table 'customer_order'
      * @param customerOrder is an object of the CustomerOrder class
