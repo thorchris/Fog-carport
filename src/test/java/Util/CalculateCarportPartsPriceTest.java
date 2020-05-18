@@ -1,9 +1,7 @@
-package util.Util;
+package Util;
 
 import FunctionLayer.CarportMaterials;
 import FunctionLayer.CarportParts;
-import Util.CalcCarportMaterials;
-import Util.CalculateCarportPartsPrice;
 import org.junit.Before;
 import org.junit.Test;
 

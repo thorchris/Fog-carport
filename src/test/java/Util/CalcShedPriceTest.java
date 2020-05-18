@@ -1,8 +1,7 @@
-package util.Util;
+package Util;
 
 import FunctionLayer.Shed;
 import FunctionLayer.ShedMaterials;
-import Util.CalculateShedPrice;
 import org.junit.Before;
 import org.junit.Test;
 

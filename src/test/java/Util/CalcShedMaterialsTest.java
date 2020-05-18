@@ -1,11 +1,7 @@
-package util.Util;
+package Util;
 
-import FunctionLayer.CarportMaterials;
-import FunctionLayer.CarportParts;
 import FunctionLayer.Shed;
 import FunctionLayer.ShedMaterials;
-import Util.CalcCarportMaterials;
-import Util.CalcShedMaterials;
 import org.junit.Before;
 import org.junit.Test;
 
