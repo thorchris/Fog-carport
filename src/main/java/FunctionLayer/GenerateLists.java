@@ -9,6 +9,11 @@ public class GenerateLists {
     private static List<User> customerList;
     private static List<Order> orderList;
 
+    /**
+     * initLists(): method uses logicFacade to fill the lists
+     * roffMaterialList, carportMaterials and customerList with data from the database
+     */
+
     public static void initLists(){
         if(roffMaterialList == null){
             roffMaterialList = LogicFacade.getRoofMaterialList();
@@ -22,11 +27,23 @@ public class GenerateLists {
 
     }
 
+    /**
+     * initOrderList(): method uses logicFacade and fills the list OrderList with orders
+     */
+
     public static void initOrderList(){
         if(orderList == null){
             orderList = LogicFacade.getOrderList();
         }
     }
+
+    /**
+     * getRoffMaterialList()
+     * getCarportMaterialsList()
+     * getOrderList()
+     * getCustomerList()
+     * @return method returns lists made in initLists() and initOrderList() method.
+     */
 
     public static List<RoofMaterials> getRoffMaterialList() {
         return roffMaterialList; 
@@ -40,7 +57,9 @@ public class GenerateLists {
         return orderList;
     }
 
-    public static List<User> getCustomerList(){return customerList; }
+    public static List<User> getCustomerList(){
+        return customerList;
+    }
 
 
 

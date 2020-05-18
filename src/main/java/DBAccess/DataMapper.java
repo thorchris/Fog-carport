@@ -8,7 +8,9 @@ import java.util.List;
 
 public class DataMapper {
 
-
+    /**
+     * @return list of RoofMaterials objects using the database
+     */
 
     public static List<RoofMaterials> getRoofMaterialsList() {
         List<RoofMaterials> materialNames = new ArrayList<>();
@@ -33,6 +35,10 @@ public class DataMapper {
         return materialNames;
     }
 
+    /**
+     * @return list of Products objects using the database
+     */
+
     public static List<Product> getProductList() {
         List<Product> productsList = new ArrayList<>();
         try {
@@ -54,6 +60,10 @@ public class DataMapper {
         }
         return productsList;
     }
+
+    /**
+     * @return list of CarportMaterials objects using the database
+     */
 
     public static List<CarportMaterials> getCarportMaterialsList() {
         List<CarportMaterials> CarportMaterialNames = new ArrayList<>();
@@ -77,6 +87,12 @@ public class DataMapper {
         }
         return CarportMaterialNames;
     }
+
+    /**
+     * method inserts an Order into database table 'orders', using object of FullCarport and User
+     * @param user object of user class
+     * @param carport object of FullCarport class
+     */
 
     public static void addOrder(User user, FullCarport carport) {
         int rafters = (int) carport.getCarportParts().getTotalRafters();
@@ -110,6 +126,10 @@ public class DataMapper {
             System.out.println("FEJL! Kunne ikke finde oprette order med carporten");
         }
     }
+
+    /**
+     * @return list of Order objects using the database
+     */
 
     public static List<Order> getOrderList() {
         List<Order> CarportItemList = new ArrayList<>();
@@ -174,6 +194,11 @@ public class DataMapper {
         return customerOrderList;
     }
 
+    /**
+     * method inserts an object of customerOrder into database table 'customer_order'
+     * @param customerOrder is an object of the CustomerOrder class
+     */
+
     public static void createCustomerDesign(CustomerOrder customerOrder) {
         try {
             Connection con = Connector.connection();
@@ -198,6 +223,10 @@ public class DataMapper {
 
     }
 
+    /**
+     * @param customerId is a variable containing the 'user_id' of a user to then use in the method
+     * @return using the customerId varibale we can retrieve a list of CustomerOrder objects belongin to that specific user
+     */
 
     public static List<CustomerOrder> getCustomerDesignOrder(int customerId) {
         List<CustomerOrder> customerOrderList = new ArrayList();
@@ -229,6 +258,11 @@ public class DataMapper {
         return customerOrderList;
     }
 
+    /**
+     * @param user variable containing an object of user
+     * @return method retrieves orderId from database, belonging to a specific user, using the users userId
+     */
+
     public static int getUserOrderId(User user) {
         int orderid = 0;
         try {
@@ -247,6 +281,11 @@ public class DataMapper {
         return orderid;
     }
 
+    /**
+     * @param orderId is a variable to store the orderId for a specific order
+     * @return method returns an object of Order from the database, with the specific orderId
+     * @throws OrderException
+     */
 
     public static Order getCustomerOrder(int orderId) throws OrderException {
         try {
@@ -276,7 +315,10 @@ public class DataMapper {
         }
     }
 
-
+    /**
+     * @param order_id is a variable containing the orderId of a specific order
+     * the method removes/deletes an order in the database containing the given orderId
+     */
     public static void deleteOrder(int order_id) {
         try {
             String SQL = "DELETE FROM orders WHERE order_id = " + order_id;
@@ -290,7 +332,11 @@ public class DataMapper {
         }
     }
 
-
+    /**
+     * @param co_Id is a variable containing the customerId for at customerOrder
+     * @param price is a variable containing the price for a customerOrder
+     * the method updates/sets the price in the customer_order table in the database
+     */
     public static void updatePrice(int co_Id, int price) {
         try {
             Connection con = Connector.connection();
