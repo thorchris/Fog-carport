@@ -7,6 +7,7 @@ import java.util.InputMismatchException;
 /**
  * Class used to calculate materials needed in a roof.
  * Has two class variabels roofAreal and roof, those are used for calculations throughout.
+ * @Author Josef, Hallur, Thor og Frederik
  */
 public class CalcRoofMaterials {
 

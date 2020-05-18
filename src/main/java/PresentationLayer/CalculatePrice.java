@@ -6,10 +6,8 @@ import Util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 public class CalculatePrice extends Command {
-
     
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
