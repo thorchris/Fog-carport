@@ -242,6 +242,11 @@
                      role="alert">
                     ${requestScope.message}
                 </div>
+                <div class="alert alert-primary mt-4 <c:if test = "${empty requestScope.message}">d-none</c:if> "
+                     role="alert">
+                    ${requestScope.loginMessage}
+                </div>
+
             </div>
             <div class="col-1"></div>
         </div>
