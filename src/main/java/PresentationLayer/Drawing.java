@@ -22,11 +22,11 @@ public class Drawing extends Command {
 
         double carportWidth = fullCarport.getCarportParts().getLength();
         double carportHeight = fullCarport.getCarportParts().getWidth();
-        //Omregnes fordi de er m på siden.
+        //Converting to metric measurements as they are metric on the acutal site.
         int carportHeigthDB = (int) (carportHeight * 100);
         int carportWidthDB = (int) (carportWidth * 100);
 
-        //Størrelsesforhold
+        //Aspect Ratio
         int intCarportHeight;
         int intCarportWidth;
 
