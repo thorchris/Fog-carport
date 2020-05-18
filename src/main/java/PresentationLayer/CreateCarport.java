@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * @Author Josef, Hallur, Thor og Frederik
+ * Command used for creating carport
  */
 public class CreateCarport extends Command {
     @Override

@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ * Command used for finding an customerOrder from the database.
+ */
 public class FindCustomerOrder extends Command{
 
 

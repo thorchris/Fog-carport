@@ -5,8 +5,11 @@ import FunctionLayer.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.text.DecimalFormat;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ * Command used for creating an order and customerOrder in the database.
+ */
 public class CreateOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {

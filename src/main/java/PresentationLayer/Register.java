@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Her er en klasse der benyttes til at oprette en bruger og denne gemmes i databasen.
- * Admins skal oprettes direkte i databasen for at have admin rettigheder.
- *
+ * This command is used for creating users.
+ *      If the users need to be an employee, they must be generated directly in the database.
  * @author Thor, Hallur, Josef og Frederik
  */
 

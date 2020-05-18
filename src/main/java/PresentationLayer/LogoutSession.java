@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Her er en klasse der logger brugeren ud og reseter værdier i navbar.
  * @author Thor, Hallur, Josef og Frederik
+ * Command used reseting the session
  */
 
 public class LogoutSession extends Command {
 
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession();
         ServletContext context = request.getSession().getServletContext();

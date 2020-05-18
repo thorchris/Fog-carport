@@ -2,11 +2,13 @@ package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderException;
-import FunctionLayer.SvgCustomer;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @Author Josef, Hallur, Thor og Frederik
+ * Command used on JSP with multiple functions in the same form.
+ */
 public class ManageCommand extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderException {
