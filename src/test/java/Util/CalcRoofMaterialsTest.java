@@ -1,12 +1,9 @@
-package util.Util;
+package Util;
 
 import FunctionLayer.Roof;
 import FunctionLayer.RoofMaterials;
-import Util.CalcRoofMaterials;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.InputMismatchException;
 
 import static org.junit.Assert.*;
 
