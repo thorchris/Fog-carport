@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import FunctionLayer.*;
+import PresentationLayer.Log;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -18,12 +19,18 @@ import org.junit.Before;
 
 public class DataMapperTest {
 
-
     private static Connection testConnection;
     private static String USER = "root";
     private static String USERPW = "green8house17";
     private static String DBNAME = "fogcarport_test?serverTimezone=CET&useSSL=false";
     private static String HOST = "localhost";
+    private FullCarport carport;
+    private Shed shed;
+    private ShedMaterials shedMaterials;
+    private Roof roof;
+    private RoofMaterials roofMaterials;
+    private CarportParts carportParts;
+    private CarportMaterials carportMaterials;
 
     @BeforeClass
     public static void setUpConnection() {
@@ -43,44 +50,58 @@ public class DataMapperTest {
         }
     }
 
-        @Before
-                public void beforeEachTest(){
+    @Before
+    public void setup() {
+        carportMaterials = new CarportMaterials("Bøgetræsplade", 2, 12, 0.15, 3);
+        carportParts = new CarportParts(510, 330, true, false, carportMaterials, 1);
+        roofMaterials = new RoofMaterials("Betontagsten - rød", 2, 450, 1, 2);
+        roof = new Roof(false, roofMaterials, 510, 330);
+        shedMaterials = new ShedMaterials();
+        shed = new Shed(510, 330, false, shedMaterials);
+        carport = new FullCarport(carportParts, roof, shed);
+    }
 
-            // reset test database
-            try (Statement stmt = testConnection.createStatement()) {
-                stmt.execute("DROP SCHEMA if exists fogcarport_test ");
-                stmt.execute("CREATE SCHEMA fogcarport_test ");
-                stmt.execute("use fogcarport_test; ");
+    @Before
+    public void beforeEachTest() {
+        // reset test database
+        try (Statement stmt = testConnection.createStatement()) {
+            stmt.execute("DROP SCHEMA if exists fogcarport_test ");
+            stmt.execute("CREATE SCHEMA fogcarport_test ");
+            stmt.execute("use fogcarport_test; ");
 
-                stmt.execute("DROP TABLE if EXISTS fogcarport_test.carport_materials");
-                stmt.execute("CREATE TABLE fogcarport_test.carport_materials LIKE fogcarport.carport_materials");
-                stmt.execute("INSERT INTO fogcarport_test.carport_materials SELECT * FROM fogcarport.carport_materials");
+            stmt.execute("DROP TABLE if EXISTS fogcarport_test.carport_materials");
+            stmt.execute("CREATE TABLE fogcarport_test.carport_materials LIKE fogcarport.carport_materials");
+            stmt.execute("INSERT INTO fogcarport_test.carport_materials SELECT * FROM fogcarport.carport_materials");
 
-                stmt.execute("DROP TABLE if EXISTS fogcarport_test.roof_materials");
-                stmt.execute("CREATE TABLE fogcarport_test.roof_materials LIKE fogcarport.roof_materials");
-                stmt.execute("INSERT INTO fogcarport_test.roof_materials SELECT * FROM fogcarport.roof_materials");
+            stmt.execute("DROP TABLE if EXISTS fogcarport_test.roof_materials");
+            stmt.execute("CREATE TABLE fogcarport_test.roof_materials LIKE fogcarport.roof_materials");
+            stmt.execute("INSERT INTO fogcarport_test.roof_materials SELECT * FROM fogcarport.roof_materials");
 
-                stmt.execute("DROP TABLE if EXISTS fogcarport_test.products");
-                stmt.execute("CREATE TABLE fogcarport_test.products LIKE fogcarport.products");
-                stmt.execute("INSERT INTO fogcarport_test.products SELECT * FROM fogcarport.products");
+            stmt.execute("DROP TABLE if EXISTS fogcarport_test.products");
+            stmt.execute("CREATE TABLE fogcarport_test.products LIKE fogcarport.products");
+            stmt.execute("INSERT INTO fogcarport_test.products SELECT * FROM fogcarport.products");
 
-                stmt.execute("DROP TABLE if EXISTS fogcarport_test.orders");
-                stmt.execute("CREATE TABLE fogcarport_test.orders LIKE fogcarport.orders");
-                stmt.execute("INSERT INTO fogcarport_test.orders SELECT * FROM fogcarport.orders");
+            stmt.execute("DROP TABLE if EXISTS fogcarport_test.users");
+            stmt.execute("CREATE TABLE fogcarport_test.users LIKE fogcarport.users");
+            stmt.execute("INSERT INTO fogcarport_test.users VALUES (1,'admin@admin.com','admin','employee'),(2,'user@user.com','user','customer')");
 
-                stmt.execute( "DROP TABLE if EXISTS fogcarport_test.users" );
-                stmt.execute( "CREATE TABLE fogcarport_test.users LIKE fogcarport.users" );
-                stmt.execute( "INSERT INTO fogcarport_test.users SELECT * FROM fogcarport.users" );
+            stmt.execute("DROP TABLE if EXISTS fogcarport_test.orders");
+            stmt.execute("CREATE TABLE fogcarport_test.orders LIKE fogcarport.orders");
+            stmt.execute("INSERT INTO fogcarport_test.orders VALUES ('1','1','2','1','4','300','2','4','4','1','2') ");
+            stmt.execute("INSERT INTO fogcarport_test.orders VALUES ('2','2','3','2','4','300','2','4','4','1','2') ");
+            stmt.execute("INSERT INTO fogcarport_test.orders VALUES ('3','1','3','2','4','300','2','4','4','1','2') ");
 
-                stmt.execute("DROP TABLE if EXISTS fogcarport_test.customer_order");
-                stmt.execute("CREATE TABLE fogcarport_test.customer_order LIKE fogcarport.customer_order");
-                stmt.execute("INSERT INTO fogcarport_test.customer_order SELECT * FROM fogcarport.customer_order");
+            stmt.execute("DROP TABLE if EXISTS fogcarport_test.customer_order");
+            stmt.execute("CREATE TABLE fogcarport_test.customer_order LIKE fogcarport.customer_order");
+            stmt.execute("INSERT INTO fogcarport_test.customer_order VALUES ('1', '2', '1', '240', '240', '1', '1', '1', '1', '1', '2', '25', '10000');");
+            stmt.execute("INSERT INTO fogcarport_test.customer_order VALUES ('2', '1', '2', '240', '240', '1', '1', '1', '1', '1', '2', '25', '10000');");
+            stmt.execute("INSERT INTO fogcarport_test.customer_order VALUES ('3', '2', '1', '240', '240', '1', '1', '1', '1', '1', '2', '25', '10000');");
 
-            } catch (SQLException ex) {
-                System.out.println("Could not open connection to database: " + ex.getMessage());
-            }
-
+        } catch (SQLException ex) {
+            System.out.println("Could not open connection to database: " + ex.getMessage());
         }
+
+    }
 
 
     @Test
@@ -132,21 +153,9 @@ public class DataMapperTest {
     }
 
     @Test
-    public void testAddOrder()throws LoginSampleException {
-        //Skaber alt data til at lave en fuld carport
-        CarportMaterials carportMaterials = new CarportMaterials("Bøgetræsplade", 2, 12, 0.15, 3);
-        CarportParts carportParts = new CarportParts(510, 330, true, false, carportMaterials, 1);
-
-        RoofMaterials roofmaterials = new RoofMaterials("Betontagsten - rød", 2, 450, 1, 2);
-        Roof roof = new Roof(false, roofmaterials, 510, 330);
-
-        ShedMaterials shedMaterials = new ShedMaterials();
-        Shed shed = new Shed(510, 330, false, shedMaterials);
-
-        //instantierer en ny carport med alt dataet ovenfor
-        FullCarport carport = new FullCarport(carportParts, roof, shed);
-        User original = new User( "person", "kode");
-        UserMapper.createUser( original );
+    public void testAddOrder() throws LoginSampleException {
+        User original = new User("person", "kode");
+        UserMapper.createUser(original);
 
         List<Order> orderListDB = DataMapper.getOrderList();
         int tmp = orderListDB.size();
@@ -156,75 +165,54 @@ public class DataMapperTest {
         List<Order> updatedOrderListDB = DataMapper.getOrderList();
         int actual = updatedOrderListDB.size();
 
-        assertNotEquals(tmp,actual);
-
-
+        assertNotEquals(tmp, actual);
     }
 
     @Test(expected = NullPointerException.class)
-    public void testAddOrderException()throws LoginSampleException {
-
-
-        //Skaber alt data til at lave en fuld carport
-        CarportMaterials carportMaterials = new CarportMaterials("Bøgetræsplade", 2, 12, 0.15, 3);
-        CarportParts carportParts = new CarportParts(510, 330, true, false, carportMaterials, 1);
-
-        RoofMaterials roofmaterials = new RoofMaterials("Betontagsten - rød", 2, 450, 1, 2);
-        Roof roof = new Roof(false, roofmaterials, 510, 330);
-
-        ShedMaterials shedMaterials = new ShedMaterials();
-        Shed shed = new Shed(510, 330, false, shedMaterials);
-
-        //instantierer en ny carport med alt dataet ovenfor
-        FullCarport carport = new FullCarport(carportParts, roof, shed);
-        User original = new User( "hej", "kode");
-
+    public void testAddOrderException() {
         DataMapper.addOrder(null, carport);
-
     }
 
     @Test
     public void testDeleteOrder() throws LoginSampleException {
-
-        //Skaber alt data til at lave en fuld carport
-        CarportMaterials carportMaterials = new CarportMaterials("Bøgetræsplade", 2, 12, 0.15, 3);
-        CarportParts carportParts = new CarportParts(510, 330, true, false, carportMaterials, 1);
-
-        RoofMaterials roofmaterials = new RoofMaterials("Betontagsten - rød", 2, 450, 1, 2);
-        Roof roof = new Roof(false, roofmaterials, 510, 330);
-
-        ShedMaterials shedMaterials = new ShedMaterials();
-        Shed shed = new Shed(510, 330, false, shedMaterials);
-
-        //instantierer en ny carport med alt dataet ovenfor
-        FullCarport carport = new FullCarport(carportParts, roof, shed);
-        User original = new User( "person", "kode");
-        UserMapper.createUser( original );
-
-        //tilføjer en ordre til databasen
+        User original = new User("person", "kode");
+        UserMapper.createUser(original);
         DataMapper.addOrder(original, carport);
-
-        //checker størrelsen af listen af ordrer på databasen, og sætter tallet ind i en variabel
         List<Order> orderListDB = DataMapper.getOrderList();
         int tmp = orderListDB.size();
-
-        //sletter ordre fra databasen
         int orderId = DataMapper.getUserOrderId(original);
         DataMapper.deleteOrder(orderId);
-
-        //checker igen størrelsen af listen af ordrer, og sætter det ind i en variabel
         List<Order> updatedOrderListDB = DataMapper.getOrderList();
         int actual = updatedOrderListDB.size();
+        assertNotEquals(tmp, actual);
+    }
 
-        //checker om der er forskel på før deleteorder blev kaldt og efter
-        assertNotEquals(tmp,actual);
+    @Test(expected = OrderException.class)
+    public void testGetOrderExpectedOrderException() throws OrderException {
+        LogicFacade.getOrder(5);
+    }
 
+    /**
+     *
+     * @throws SQLException exception is thrown when the connection is unestablished.
+     */
+    @Test(expected = SQLException.class)
+    public void testGetCustomerDesignSQLException() throws SQLException {
+        String url = "fakeurl";
+        USERPW = "fakePassword";
+        testConnection = DriverManager.getConnection(url, USER, USERPW);
+        LogicFacade.getCustomerDesignOrder(1);
     }
 
     @Test
-    public void testGetCustomerDesign(){
-        //User user = new User("hafthor", "bjornsson");
-        //CustomerOrder co = new CustomerOrder(1,1,1,7,3,510,330,1,10, 2000);
+    public void testGetCustomerDesign() {
+        int customerId = 1;
+        List<CustomerOrder> getCustomerDesignOrderList = LogicFacade.getCustomerDesignOrder(customerId);
+
+        int expected = 2;
+        int result = getCustomerDesignOrderList.size();
+
+        assertEquals(expected, result);
     }
 
     @Test
@@ -234,7 +222,7 @@ public class DataMapperTest {
 
         int userId = UserMapper.getUserId("hafthor");
 
-        CustomerOrder co = new CustomerOrder(1,1,1,7,userId,510,330,true,false, 2,2,2100);
+        CustomerOrder co = new CustomerOrder(1, 1, 1, 7, userId, 510, 330, true, false, 2, 2, 2100);
 
         DataMapper.createCustomerDesign(co);
 
@@ -244,56 +232,39 @@ public class DataMapperTest {
         int expected = UserMapper.getUserId("hafthor");
         int result = CustomerOrderList.get(0).getUserId();
 
-        assertEquals(expected,result);
+        assertEquals(expected, result);
 
     }
 
     @Test
     public void testGetUserOrderId() throws LoginSampleException {
+        User original = new User("person", "kode");
 
-        //Skaber alt data til at lave en fuld carport
-        CarportMaterials carportMaterials = new CarportMaterials("Bøgetræsplade", 2, 12, 0.15, 3);
-        CarportParts carportParts = new CarportParts(510, 330, true, false, carportMaterials, 1);
-
-        RoofMaterials roofmaterials = new RoofMaterials("Betontagsten - rød", 2, 450, 1, 2);
-        Roof roof = new Roof(false, roofmaterials, 510, 330);
-
-        ShedMaterials shedMaterials = new ShedMaterials();
-        Shed shed = new Shed(510, 330, false, shedMaterials);
-
-        FullCarport carport = new FullCarport(carportParts, roof, shed);
-        User original = new User( "person", "kode");
-
-        UserMapper.createUser( original );
+        UserMapper.createUser(original);
 
         DataMapper.addOrder(original, carport);
 
         List<Order> sizeOfOrderList = DataMapper.getOrderList();
 
-
         int expected = sizeOfOrderList.size();
         int result = DataMapper.getUserOrderId(original);
 
-        assertEquals(expected,result);
-
-
+        assertEquals(expected, result);
     }
 
 
+    @Test
+    public void testUpdatePrice() throws OrderException {
+        CustomerOrder co = LogicFacade.getCustomerOrder(1);
+        double resultFirstPrice = co.getPrice();
+        double expectedFirstPrice = 10000;
+        assertEquals(resultFirstPrice, expectedFirstPrice, 0.1);
 
-   /* @Test
-    public void testUpdatePrice() throws LoginSampleException {
-
-        CustomerOrder co = new CustomerOrder(1,1,1,7,1,510,330,1,10, 2100);
-
-        DataMapper.createCustomerDesign(co);
-        co.setCustomerOrderId(1);
-
-        DataMapper.updatePrice(1, 2500);
-
-
-        assertEquals(2500,co.getPrice());
-
-    }*/
+        DataMapper.updatePrice(2, 2500);
+        co = LogicFacade.getCustomerOrder(1);
+        double resultUpdatedPrice = co.getPrice();
+        double expectedUpdatedPrice = 2500;
+        assertEquals(resultUpdatedPrice,expectedUpdatedPrice, 0.1);
+    }
 
 }
