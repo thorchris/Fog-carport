@@ -32,10 +32,12 @@ public class SvgTest {
     ShedMaterials shedMaterials;
     Shed shed;
     FullCarport fullCarport;
+    StringBuilder stringBuilder;
 
     @Before
     public void setUp() throws Exception {
         svg = new Svg(800, 600, "0,0,800,600", 0, 0);
+        stringBuilder = new StringBuilder();
 
         // Test data CarportParts
         length = 2.4;
@@ -106,11 +108,10 @@ public class SvgTest {
         String post5 = "<rect x=\"134\" y=\"299\" height=\"9\" width=\"10\" style=\"stroke:#000000; fill: #ffffff\" />";
         String post6 = "<rect x=\"278\" y=\"299\" height=\"9\" width=\"10\" style=\"stroke:#000000; fill: #ffffff\" /></svg>";
 
-        String expectedRect = headerTemplate + post1 + post2 + post3 + post4 + post5 + post6;
-
+        stringBuilder.append(String.format(headerTemplate, post1, post2, post3, post4, post5, post6));
 
         assertEquals(postsAmount, fullCarport.getCarportParts().getTotalPosts());
-        assertThat(svg.toString(), containsString(expectedRect));
+        assertThat(svg.toString(), containsString(stringBuilder.toString()));
     }
 
     @Test
@@ -121,9 +122,9 @@ public class SvgTest {
         String strap1 = "<rect x=\"0\" y=\"83\" height=\"9\" width=\"288\" style=\"stroke:#000000; fill: #ffffff\" />";
         String strap2 = "<rect x=\"0\" y=\"227\" height=\"9\" width=\"288\" style=\"stroke:#000000; fill: #ffffff\" /></svg>";
 
-        String expectedRect = headerTemplate + strap1 + strap2;
+        stringBuilder.append(String.format(headerTemplate, strap1, strap2));
 
-        assertThat(svg.toString(), containsString(expectedRect));
+        assertThat(svg.toString(), containsString(stringBuilder.toString()));
     }
 
     /**
@@ -144,10 +145,10 @@ public class SvgTest {
         String rafter4 = "<rect x=\"212\" y=\"20\" height=\"288\" width=\"4\" style=\"stroke:#000000; fill: #ffffff\" />";
         String rafter5 = "<rect x=\"265\" y=\"20\" height=\"288\" width=\"4\" style=\"stroke:#000000; fill: #ffffff\" /></svg>";
 
-        String expectedRect = headerTemplate + rafter1 + rafter2 + rafter3 + rafter4 + rafter5;
+        stringBuilder.append(String.format(headerTemplate, rafter1, rafter2, rafter3, rafter4, rafter5));
 
         assertEquals(rafterAmount, fullCarport.getCarportParts().getTotalRafters(), 0);
-        assertThat(svg.toString(), containsString(expectedRect));
+        assertThat(svg.toString(), containsString(stringBuilder.toString()));
 
     }
 
@@ -167,9 +168,9 @@ public class SvgTest {
         String shedPost2 = "<rect x=\"134\" y=\"51\" height=\"9\" width=\"10\" style=\"stroke:#000000; fill: #ffffff\" />";
         String shedPost3 = "<rect x=\"72\" y=\"91\" height=\"9\" width=\"10\" style=\"stroke:#000000; fill: #ffffff\" /></svg>";
 
-        String expectedRect = headerTemplate + shedRect + shedStrap + shedPost1 + shedPost2 + shedPost3;
+        stringBuilder.append(String.format(headerTemplate, shedRect, shedStrap, shedPost1, shedPost2, shedPost3));
 
-        assertThat(svg.toString(), containsString(expectedRect));
+        assertThat(svg.toString(), containsString(stringBuilder.toString()));
     }
 
     @Test
@@ -179,7 +180,6 @@ public class SvgTest {
         int finishY = intCarportLength;
         svg.addVerticalPointer(pointerX, pointerY, finishY, intCarportLength - 20);
 
-        System.out.println(svg.toString());
         String headerTemplate = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" height=\"800\" width=\"600\" viewBox=\"0,0,800,600\" preserveAspectRatio=\"xMinYMin\">  <defs>\n";
         String arrowTemplate = "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"0\" refY=\"6\" orient=\"auto\">\n" +
                 "            <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #000000;\" />\n" +
@@ -192,18 +192,19 @@ public class SvgTest {
                 "        marker-start: url(#beginArrow);\n" +
                 "        marker-end: url(#endArrow);\" /><text style=\"text-anchor: middle\" transform=\"translate(308,154) rotate(-90)\"> 268 cm</text></svg>";
 
-        String expectedRect = headerTemplate + arrowTemplate + arrowAndVerticalPointerText;
 
-        assertThat(svg.toString(), containsString(expectedRect));
+        stringBuilder.append(String.format(headerTemplate, arrowTemplate, arrowAndVerticalPointerText));
+
+
+        assertThat(svg.toString(), containsString(stringBuilder.toString()));
     }
 
-    /*@Test
+    @Test
     public void addHorizontalPointer() {
         int pointerX = intCarportWidth + 20;
         int pointerY = intCarportLength + 20;
         int finishX = intCarportWidth;
-        svg.addHorizontalPointer(pointerX, pointerY, finishX,intCarportWidth -20);
-
+        svg.addHorizontalPointer(pointerX, pointerY, finishX, intCarportWidth - 20);
 
 
         String headerTemplate = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" height=\"800\" width=\"600\" viewBox=\"0,0,800,600\" preserveAspectRatio=\"xMinYMin\">  <defs>\n";
@@ -214,16 +215,14 @@ public class SvgTest {
                 "            <path d=\"M0,0 L12,6 L0,12 L0,0 \" style=\"fill: #000000;\" />\n" +
                 "        </marker>\n" +
                 "    </defs> ";
-        String arrowAndHorizontalPointerText ="</defs> <line x1=\"308\" y1=\"338\" x2=\"288\" y2=\"338\" style=\"stroke:#000000;\n" +
+        String arrowAndHorizontalPointerText = "</defs> <line x1=\"308\" y1=\"338\" x2=\"288\" y2=\"338\" style=\"stroke:#000000;\n" +
                 "        marker-start: url(#beginArrow);\n" +
                 "        marker-end: url(#endArrow);\" /> <text style=\"text-anchor: middle\" x=\"144\" y=\"328\"> 268 cm</text></svg>\"";
 
 
-        String expectedRect = headerTemplate + arrowTemplate + arrowAndHorizontalPointerText;
+        stringBuilder.append(String.format(headerTemplate, arrowTemplate, arrowAndHorizontalPointerText));
 
-        assertThat(svg.toString(), containsString(expectedRect));
-
-
-    }*/
+        assertThat(svg.toString(), containsString(stringBuilder.toString()));
+    }
 
 }
