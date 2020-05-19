@@ -75,3 +75,48 @@
 2020-05-18T22:48:05.523+02:00 INFO    Login Could not validate user
 2020-05-18T22:48:05.654+02:00 INFO    Login Could not validate user
 2020-05-18T22:48:05.669+02:00 INFO    Login Could not validate user
+2020-05-18T22:48:35.106+02:00 SEVERE  Create user Duplicate entry 'testperson' for key 'email_UNIQUE'
+2020-05-18T22:48:35.177+02:00 INFO    Login Could not validate user
+2020-05-18T22:48:35.219+02:00 INFO    Login Could not validate user
+2020-05-18T22:48:35.225+02:00 INFO    Login Could not validate user
+2020-05-18T22:49:01.086+02:00 SEVERE  Create user Duplicate entry 'testperson' for key 'email_UNIQUE'
+2020-05-18T22:49:01.167+02:00 INFO    Login Could not validate user
+2020-05-18T22:49:01.195+02:00 INFO    Login Could not validate user
+2020-05-18T22:49:01.212+02:00 INFO    Login Could not validate user
+2020-05-18T22:49:04.403+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T22:49:06.458+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-18T22:49:06.460+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-18T22:52:14.743+02:00 SEVERE  Create user Duplicate entry 'testperson' for key 'email_UNIQUE'
+2020-05-18T22:52:14.978+02:00 INFO    Login Could not validate user
+2020-05-18T22:52:19.072+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T22:52:21.987+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-18T22:52:21.989+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-18T22:52:22.342+02:00 SEVERE  Create user Duplicate entry 'testperson' for key 'email_UNIQUE'
+2020-05-18T22:52:22.481+02:00 INFO    Login Could not validate user
+2020-05-18T22:52:22.948+02:00 SEVERE  CarportMaterialsList Unknown database 'fogcarport_test'Databasen er nede.
+2020-05-18T22:52:23.069+02:00 SEVERE  Create user Unknown database 'fogcarport_test'
+2020-05-18T22:52:23.121+02:00 SEVERE  GetProductList No database selectedDatabasen er nede.
+2020-05-18T22:52:23.141+02:00 SEVERE  Create user No database selected
+2020-05-18T22:52:23.240+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-18T22:52:23.271+02:00 SEVERE  GetProductList No database selectedDatabasen er nede.
+2020-05-18T22:52:23.290+02:00 SEVERE  GetRoofMaterials No database selectedDatabasen er nede.
+2020-05-18T22:52:23.345+02:00 SEVERE  CarportMaterialsList Unknown database 'fogcarport_test'Databasen er nede.
+2020-05-18T22:52:25.261+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T22:52:27.986+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-18T22:52:27.987+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-18T22:53:31.489+02:00 INFO    Login Could not validate user
+2020-05-18T22:53:34.510+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-18T22:53:36.640+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-18T22:53:36.641+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-19T00:03:51.598+02:00 INFO    Login Could not validate user
+2020-05-19T00:03:54.987+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-19T00:03:57.109+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-19T00:03:57.111+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-19T00:06:19.134+02:00 INFO    Login Could not validate user
+2020-05-19T00:06:21.759+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-19T00:06:23.691+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-19T00:06:23.692+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-19T00:07:57.354+02:00 INFO    Login Could not validate user
+2020-05-19T00:08:00.266+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-19T00:08:02.198+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-19T00:08:02.199+02:00 SEVERE  getCustomerOrder Databasen er nede.

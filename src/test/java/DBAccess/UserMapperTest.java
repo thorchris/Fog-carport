@@ -1,11 +1,13 @@
 package DBAccess;
 
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -17,7 +19,7 @@ public class UserMapperTest {
 
     private static Connection testConnection;
     private static String USER = "root";
-    private static String USERPW = "H7114bhs";
+    private static String USERPW = "green8house17";
     private static String DBNAME = "fogcarport_test?serverTimezone=CET&useSSL=false";
     private static String HOST = "localhost";
 
@@ -35,9 +37,9 @@ public class UserMapperTest {
             }
             // reset test database
             try ( Statement stmt = testConnection.createStatement() ) {
-                stmt.execute( "DROP TABLE if EXISTS users" );
-                stmt.execute( "CREATE TABLE users LIKE fogcarport.users" );
-                stmt.execute( "INSERT INTO users SELECT * FROM fogcarport.users" );
+                stmt.execute("DROP TABLE if EXISTS fogcarport_test.users");
+                stmt.execute("CREATE TABLE fogcarport_test.users LIKE fogcarport.users");
+                stmt.execute("INSERT INTO fogcarport_test.users VALUES (1,'admin@admin.com','admin','employee'),(2,'user@user.com','user','customer')");
             }
 
         } catch ( ClassNotFoundException | SQLException ex ) {
@@ -55,20 +57,19 @@ public class UserMapperTest {
     @Test
     public void testLogin01() throws LoginSampleException {
         // Can we log in
-        User user = UserMapper.login( "test", "test" );
+        User user = UserMapper.login( "admin@admin.com", "admin" );
         assertTrue( user != null );
     }
 
     @Test( expected = LoginSampleException.class )
     public void testLogin02() throws LoginSampleException {
-        // We should get an exception if we use the wrong password
         UserMapper.login( "test@test.dk", "forkert" );
     }
 
     @Test
     public void testLogin03() throws LoginSampleException {
         // test is supposed to be a customer
-        User user = UserMapper.login( "test", "test" );
+        User user = UserMapper.login( "user@user.com", "user" );
         assertEquals( "customer", user.getRole() );
     }
 
@@ -81,4 +82,24 @@ public class UserMapperTest {
         User retrieved = UserMapper.login( "testperson", "test" );
         assertEquals( "customer", retrieved.getRole() );
     }
+
+    @Test(expected = SQLException.class)
+    public void testGetUserIdSQLException() throws SQLException {
+        String url = "fakeurl";
+        USERPW = "fakePassword";
+        testConnection = DriverManager.getConnection(url, USER, USERPW);
+        LogicFacade.getUserId("user@user.com");
+    }
+
+    @Test
+    public void testUserList(){
+        setUp();
+        List<User> userList = LogicFacade.getCustomerList();
+        int expectedSize = 2;
+        int actualSize = userList.size();
+        assertEquals(expectedSize, actualSize);
+
+    }
+
+
 }
