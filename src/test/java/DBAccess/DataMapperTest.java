@@ -21,7 +21,7 @@ public class DataMapperTest {
 
     private static Connection testConnection;
     private static String USER = "root";
-    private static String USERPW = "kode";
+    private static String USERPW = "green8house17";
     private static String DBNAME = "fogcarport_test?serverTimezone=CET&useSSL=false";
     private static String HOST = "localhost";
     private FullCarport carport;
