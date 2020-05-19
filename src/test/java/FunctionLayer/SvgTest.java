@@ -172,5 +172,58 @@ public class SvgTest {
         assertThat(svg.toString(), containsString(expectedRect));
     }
 
+    @Test
+    public void addVerticalPointer() {
+        int pointerX = intCarportWidth + 20;
+        int pointerY = 20;
+        int finishY = intCarportLength;
+        svg.addVerticalPointer(pointerX, pointerY, finishY, intCarportLength - 20);
+
+        System.out.println(svg.toString());
+        String headerTemplate = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" height=\"800\" width=\"600\" viewBox=\"0,0,800,600\" preserveAspectRatio=\"xMinYMin\">  <defs>\n";
+        String arrowTemplate = "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"0\" refY=\"6\" orient=\"auto\">\n" +
+                "            <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #000000;\" />\n" +
+                "        </marker>\n" +
+                "        <marker id=\"endArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"12\" refY=\"6\" orient=\"auto\">\n" +
+                "            <path d=\"M0,0 L12,6 L0,12 L0,0 \" style=\"fill: #000000;\" />\n" +
+                "        </marker>\n" +
+                "    </defs> ";
+        String arrowAndVerticalPointerText = "<line x1=\"328\" y1=\"20\" x2=\"328\" y2=\"288\" style=\"stroke:#000000;\n" +
+                "        marker-start: url(#beginArrow);\n" +
+                "        marker-end: url(#endArrow);\" /><text style=\"text-anchor: middle\" transform=\"translate(308,154) rotate(-90)\"> 268 cm</text></svg>";
+
+        String expectedRect = headerTemplate + arrowTemplate + arrowAndVerticalPointerText;
+
+        assertThat(svg.toString(), containsString(expectedRect));
+    }
+
+    /*@Test
+    public void addHorizontalPointer() {
+        int pointerX = intCarportWidth + 20;
+        int pointerY = intCarportLength + 20;
+        int finishX = intCarportWidth;
+        svg.addHorizontalPointer(pointerX, pointerY, finishX,intCarportWidth -20);
+
+
+
+        String headerTemplate = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" height=\"800\" width=\"600\" viewBox=\"0,0,800,600\" preserveAspectRatio=\"xMinYMin\">  <defs>\n";
+        String arrowTemplate = "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"0\" refY=\"6\" orient=\"auto\">\n" +
+                "            <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #000000;\" />\n" +
+                "        </marker>\n" +
+                "        <marker id=\"endArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"12\" refY=\"6\" orient=\"auto\">\n" +
+                "            <path d=\"M0,0 L12,6 L0,12 L0,0 \" style=\"fill: #000000;\" />\n" +
+                "        </marker>\n" +
+                "    </defs> ";
+        String arrowAndHorizontalPointerText ="</defs> <line x1=\"308\" y1=\"338\" x2=\"288\" y2=\"338\" style=\"stroke:#000000;\n" +
+                "        marker-start: url(#beginArrow);\n" +
+                "        marker-end: url(#endArrow);\" /> <text style=\"text-anchor: middle\" x=\"144\" y=\"328\"> 268 cm</text></svg>\"";
+
+
+        String expectedRect = headerTemplate + arrowTemplate + arrowAndHorizontalPointerText;
+
+        assertThat(svg.toString(), containsString(expectedRect));
+
+
+    }*/
 
 }
