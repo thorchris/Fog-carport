@@ -193,7 +193,7 @@ public class SvgCustomer {
         int intShedHeight = 0;
 
 
-        if (customerOrder.hasShed == true) {
+        if (customerOrder.getHasShed() == true) {
 
             if (carportLength <= 3.6) {
                     intShedHeight = (int) (1.0 * 80);
@@ -203,7 +203,7 @@ public class SvgCustomer {
                     intShedHeight = (int) (3.0 * 80);
             }
             int intShedWidth = width;
-            if (customerOrder.shedHalf == true) {
+            if (customerOrder.getHasShed() == true) {
                 //Shed
                 intShedWidth = intShedWidth / 2;
                 addRect(startX, startY, intShedHeight, intShedWidth);
