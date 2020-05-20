@@ -9,11 +9,11 @@ import static org.junit.Assert.*;
 
 public class CalcRoofMaterialsTest {
     private Roof roof;
-    boolean isHighRoof;
-    RoofMaterials roofmaterial;
-    double carportLength;
-    double carportWidth;
-    CalcRoofMaterials calcRoofMaterials;
+    private boolean isHighRoof;
+    private RoofMaterials roofmaterial;
+    private double carportLength;
+    private double carportWidth;
+    private CalcRoofMaterials calcRoofMaterials;
 
     @Before
     public void setup(){

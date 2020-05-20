@@ -15,7 +15,7 @@ public class CalcShedPriceTest {
     private double carportLength, carportWidth;
     private boolean isHalfWidth;
 
-    double doorKnobPrice, doorHingesPrice, strapsPricePrM;
+    private double doorKnobPrice, doorHingesPrice, strapsPricePrM;
 
     /**
      *@Before notation makes sure that this method is run pre every test.
