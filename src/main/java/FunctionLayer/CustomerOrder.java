@@ -6,9 +6,9 @@ package FunctionLayer;
 
 public class CustomerOrder {
 
-    double cp_height, cp_width, price;
-    int customerOrderId, orderId, userId, claddingSides, roofAngle,roofMatId, cpMatId, shedMatId;
-    boolean hasShed, shedHalf;
+    private double cp_height, cp_width, price;
+    private int customerOrderId, orderId, userId, claddingSides, roofAngle,roofMatId, cpMatId, shedMatId;
+    private boolean hasShed, shedHalf;
 
     /**
      * @param roofMatId the ID specifying which roof material is used

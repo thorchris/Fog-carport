@@ -136,3 +136,7 @@
 2020-05-20T20:40:51.659+02:00 FINEST  getCustomerOrder Kunne ikke finde order
 2020-05-20T20:40:53.956+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
 2020-05-20T20:40:53.957+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-20T20:45:10.822+02:00 INFO    Login Could not validate user
+2020-05-20T20:45:16.034+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-20T20:45:18.665+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-20T20:45:18.667+02:00 SEVERE  getCustomerOrder Databasen er nede.
