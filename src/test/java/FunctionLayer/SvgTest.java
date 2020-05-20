@@ -7,7 +7,11 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-
+/**
+ * Class for testing the SVG drawing.
+ * All tests are "basicly" comparing two strings since SVG drawings are made based in HTML-style code.
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class SvgTest {
 
     // CarportParts
@@ -23,7 +27,6 @@ public class SvgTest {
     private int intCarportLength;
     private int intCarportWidth;
 
-
     private Svg svg;
     private CarportMaterials carportMaterials;
     private CarportParts carportParts;
@@ -34,6 +37,10 @@ public class SvgTest {
     private FullCarport fullCarport;
     private StringBuilder stringBuilder;
 
+    /**
+     * Run before each test to asure data is as expected.
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         svg = new Svg(800, 600, "0,0,800,600", 0, 0);
