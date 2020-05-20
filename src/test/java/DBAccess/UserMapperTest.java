@@ -37,6 +37,10 @@ public class UserMapperTest {
             }
             // reset test database
             try ( Statement stmt = testConnection.createStatement() ) {
+                stmt.execute("DROP SCHEMA if exists fogcarport_test ");
+                stmt.execute("CREATE SCHEMA fogcarport_test ");
+                stmt.execute("use fogcarport_test; ");
+
                 stmt.execute("DROP TABLE if EXISTS fogcarport_test.users");
                 stmt.execute("CREATE TABLE fogcarport_test.users LIKE fogcarport.users");
                 stmt.execute("INSERT INTO fogcarport_test.users VALUES (1,'admin@admin.com','admin','employee'),(2,'user@user.com','user','customer')");

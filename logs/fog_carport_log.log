@@ -124,3 +124,15 @@
 2020-05-20T20:31:01.784+02:00 FINEST  getCustomerOrder Kunne ikke finde order
 2020-05-20T20:31:04.158+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
 2020-05-20T20:31:04.159+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-20T20:38:46.245+02:00 INFO    Login Could not validate user
+2020-05-20T20:38:53.123+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-20T20:38:56.665+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-20T20:38:56.667+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-20T20:39:32.400+02:00 INFO    Login Could not validate user
+2020-05-20T20:39:37.092+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-20T20:39:39.725+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-20T20:39:39.727+02:00 SEVERE  getCustomerOrder Databasen er nede.
+2020-05-20T20:40:47.047+02:00 INFO    Login Could not validate user
+2020-05-20T20:40:51.659+02:00 FINEST  getCustomerOrder Kunne ikke finde order
+2020-05-20T20:40:53.956+02:00 FINEST  getCustomerSingleOrder Kunne ikke finde order
+2020-05-20T20:40:53.957+02:00 SEVERE  getCustomerOrder Databasen er nede.
