@@ -14,6 +14,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
+/**
+ * Class for testing the UserMapper.
+ * @Author Josef, Hallur, Thor og Frederik
+ */
 public class UserMapperTest {
 
 
@@ -23,6 +27,9 @@ public class UserMapperTest {
     private static String DBNAME = "fogcarport_test?serverTimezone=CET&useSSL=false";
     private static String HOST = "localhost";
 
+    /**
+     * Run before the first test.
+     */
     @BeforeClass
     public static void setUp() {
         try {
@@ -36,19 +43,28 @@ public class UserMapperTest {
                 Connector.setConnection( testConnection );
             }
             // reset test database
-            try ( Statement stmt = testConnection.createStatement() ) {
-                stmt.execute("DROP SCHEMA if exists fogcarport_test ");
-                stmt.execute("CREATE SCHEMA fogcarport_test ");
-                stmt.execute("use fogcarport_test; ");
 
-                stmt.execute("DROP TABLE if EXISTS fogcarport_test.users");
-                stmt.execute("CREATE TABLE fogcarport_test.users LIKE fogcarport.users");
-                stmt.execute("INSERT INTO fogcarport_test.users VALUES (1,'admin@admin.com','admin','employee'),(2,'user@user.com','user','customer')");
-            }
 
-        } catch ( ClassNotFoundException | SQLException ex ) {
+        } catch (ClassNotFoundException | SQLException ex ) {
             testConnection = null;
             System.out.println( "Could not open connection to database: " + ex.getMessage() );
+        }
+    }
+
+    /**
+     * Run pre everytest to assure it's the same database tables being tested.
+     */
+    @Before
+    public void setUpDB(){
+        try ( Statement stmt = testConnection.createStatement() ) {
+            stmt.execute("DROP SCHEMA if exists fogcarport_test ");
+            stmt.execute("CREATE SCHEMA fogcarport_test ");
+            stmt.execute("use fogcarport_test; ");
+            stmt.execute("DROP TABLE if EXISTS fogcarport_test.users");
+            stmt.execute("CREATE TABLE fogcarport_test.users LIKE fogcarport.users");
+            stmt.execute("INSERT INTO fogcarport_test.users VALUES (1,'admin@admin.com','admin','employee'),(2,'user@user.com','user','customer')");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -79,14 +95,16 @@ public class UserMapperTest {
 
     @Test
     public void testCreateUser01() throws LoginSampleException {
-        // Can we create a new user - Notice, if login fails, this will fail
-        // but so would login01, so this is OK
         User original = new User( "testperson", "test");
         UserMapper.createUser( original );
         User retrieved = UserMapper.login( "testperson", "test" );
         assertEquals( "customer", retrieved.getRole() );
     }
 
+    /**
+     * Gives a fake password for the connection so that it will throw an SQL exception
+     * @throws SQLException exception is thrown when the connection is unestablished.
+     */
     @Test(expected = SQLException.class)
     public void testGetUserIdSQLException() throws SQLException {
         String url = "fakeurl";
@@ -97,7 +115,6 @@ public class UserMapperTest {
 
     @Test
     public void testUserList(){
-        setUp();
         List<User> userList = LogicFacade.getCustomerList();
         int expectedSize = 2;
         int actualSize = userList.size();

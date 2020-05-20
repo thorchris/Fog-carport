@@ -131,6 +131,10 @@ public class DataMapperTest {
         assertNotEquals(expected, result);
     }
 
+    /**
+     * Gives a fake password for the connection so that it will throw an SQL exception
+     * @throws SQLException exception is thrown when the connection is unestablished.
+     */
     @Test(expected = SQLException.class)
     public void testGetCarportMaterialListSQLExpection() throws SQLException {
         String url = "fakeurl";
@@ -159,6 +163,10 @@ public class DataMapperTest {
         assertNotEquals(expected, result);
     }
 
+    /**
+     * Gives a fake password for the connection so that it will throw an SQL exception
+     * @throws SQLException exception is thrown when the connection is unestablished.
+     */
     @Test(expected = SQLException.class)
     public void testGetRoofMaterialSQLException() throws SQLException {
         String url = "fakeurl";
@@ -187,6 +195,10 @@ public class DataMapperTest {
         assertNotEquals(expected, result);
     }
 
+    /**
+     * Gives a fake password for the connection so that it will throw an SQL exception
+     * @throws SQLException exception is thrown when the connection is unestablished.
+     */
     @Test(expected = SQLException.class)
     public void testGetProductListSQLException() throws SQLException {
         String url = "fakeurl";
@@ -232,6 +244,10 @@ public class DataMapperTest {
         assertNotEquals(tmp, actual);
     }
 
+    /**
+     * Gives a fake password for the connection so that it will throw an SQL exception
+     * @throws SQLException exception is thrown when the connection is unestablished.
+     */
     @Test(expected = NullPointerException.class)
     public void testAddOrderException() {
         DataMapper.addOrder(null, carport);
@@ -260,13 +276,16 @@ public class DataMapperTest {
         assertNotEquals(tmp, actual);
     }
 
+    /**
+     * @throws OrderException homemade exception thrown when the order dosen't exits.
+     */
     @Test(expected = OrderException.class)
     public void testGetOrderExpectedOrderException() throws OrderException {
         LogicFacade.getOrder(5);
     }
 
     /**
-     *
+     * Gives a fake password for the connection so that it will throw an SQL exception
      * @throws SQLException exception is thrown when the connection is unestablished.
      */
     @Test(expected = SQLException.class)
