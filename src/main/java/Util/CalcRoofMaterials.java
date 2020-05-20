@@ -46,7 +46,6 @@ public class CalcRoofMaterials {
 
         return amountOfRafters;
     }
-    //TODO: GENNEMGÅ OM DET ER NOK BRACKETS
 
     /**
      * Takes the amount of rafter calculated in the method before and multiplies it by 2.
@@ -86,10 +85,5 @@ public class CalcRoofMaterials {
     public double highRoofArealCalc() {
         return ((roof.getLength() * roof.getWidth() * 2));
     }
-
-    public double amountOfStraps() {
-        return 4;
-    }
-
 
 }
