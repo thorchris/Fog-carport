@@ -18,10 +18,10 @@ public class CalculateCarportPartsPriceTest {
 
     private double screwPrice, rafterPrice, postPrice, strapPrice;
 
-    CarportParts carportParts;
-    CarportMaterials carportMaterials;
-    CalcCarportMaterials calcCarportMaterials;
-    CalculateCarportPartsPrice calculateCarportPartPrice;
+    private CarportParts carportParts;
+    private CarportMaterials carportMaterials;
+    private CalcCarportMaterials calcCarportMaterials;
+    private CalculateCarportPartsPrice calculateCarportPartPrice;
 
     /**
      *@Before notation makes sure that this method is run pre every test.
