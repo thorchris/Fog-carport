@@ -15,9 +15,9 @@ public class CalcCarportMaterialsTest {
     private int sidesWithCladding;
     private boolean hasAShed, isHalfWidth;
 
-    CarportParts carportParts;
-    CarportMaterials carportMaterials;
-    CalcCarportMaterials calcCarportMaterials;
+    private CarportParts carportParts;
+    private CarportMaterials carportMaterials;
+    private CalcCarportMaterials calcCarportMaterials;
 
 
     /**

@@ -24,15 +24,15 @@ public class SvgTest {
     private int intCarportWidth;
 
 
-    Svg svg;
-    CarportMaterials carportMaterials;
-    CarportParts carportParts;
-    RoofMaterials roofMaterials;
-    Roof roof;
-    ShedMaterials shedMaterials;
-    Shed shed;
-    FullCarport fullCarport;
-    StringBuilder stringBuilder;
+    private Svg svg;
+    private CarportMaterials carportMaterials;
+    private CarportParts carportParts;
+    private RoofMaterials roofMaterials;
+    private Roof roof;
+    private ShedMaterials shedMaterials;
+    private Shed shed;
+    private FullCarport fullCarport;
+    private StringBuilder stringBuilder;
 
     @Before
     public void setUp() throws Exception {
