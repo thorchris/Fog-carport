@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class CalcShedMaterialsTest {
-    double carportLength = 0;
+    private double carportLength = 0;
     double carportWidth = 0;
     boolean isHalfWidth = false;
     ShedMaterials shedMaterials = null;

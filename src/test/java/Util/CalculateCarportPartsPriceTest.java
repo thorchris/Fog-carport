@@ -16,7 +16,7 @@ public class CalculateCarportPartsPriceTest {
     private int sidesWithCladding;
     private boolean hasAShed, isHalfWidth;
 
-    double screwPrice, rafterPrice, postPrice, strapPrice;
+    private double screwPrice, rafterPrice, postPrice, strapPrice;
 
     CarportParts carportParts;
     CarportMaterials carportMaterials;
