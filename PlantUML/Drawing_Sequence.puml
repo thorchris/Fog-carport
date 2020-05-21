@@ -1,0 +1,24 @@
+@startuml
+       Title CreateOrder
+       actor User
+       boundary Design.jsp
+       participant FrontController
+       participant Command
+       participant Drawing
+       participant Svg
+
+
+
+       User -> Design.jsp : Send til sælger
+       Design.jsp -> FrontController : doPost()
+       FrontController -> FrontController: proscessRequest()
+       FrontController -> Command: from()
+       Command --> FrontController: Object = CreateOrder
+       FrontController -> Drawing: Execute()
+       Drawing -> Svg: addRect()\naddRafters()\naddStraps()\naddPosts()\naddShedPosts()
+       Svg --> Drawing: OK
+       Drawing --> FrontController: OK
+       FrontController --> Design.jsp: forward()
+       Design.jsp --> User: Din plantegning er nu klar
+
+       @enduml
