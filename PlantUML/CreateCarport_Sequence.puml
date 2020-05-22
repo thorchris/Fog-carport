@@ -17,13 +17,13 @@
        Command --> FrontController: Object = CreateOrder
        FrontController -> CreateOrder: Execute()
        CreateOrder -> LogicFacade: createOrder()\ncreateCustomerDesign()
-       LogicFacade -> DataMapper: createCustomerDesign()
+       LogicFacade -> DataMapper: createCustomerDesign()\ncreateOrder()
        DataMapper -> FogCarporte: executeQuery()
        FogCarporte --> DataMapper: OK
        DataMapper --> LogicFacade: OK
        LogicFacade --> CreateOrder: OK
        CreateOrder --> FrontController: OK
        FrontController --> Design.jsp: forward()
-       Design.jsp --> User: Order er modtaget
+       Design.jsp --> User: "Din carport er gemt.."
 
        @enduml
