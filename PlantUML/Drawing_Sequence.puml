@@ -1,5 +1,5 @@
 @startuml
-       Title CreateOrder
+       Title Drawing
        actor User
        boundary Design.jsp
        participant FrontController
@@ -9,7 +9,7 @@
 
 
 
-       User -> Design.jsp : Send til sælger
+       User -> Design.jsp : Plantegning
        Design.jsp -> FrontController : doPost()
        FrontController -> FrontController: proscessRequest()
        FrontController -> Command: from()
