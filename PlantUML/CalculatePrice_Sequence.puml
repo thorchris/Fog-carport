@@ -1,0 +1,26 @@
+@startuml
+       Title CalculatePrice
+       actor User
+       boundary Design.jsp
+       participant FrontController
+       participant Command
+       participant CalculatePrice
+       participant LogicFacade
+       database Fogcarport
+
+
+
+       User -> Design.jsp : Plantegning
+       Design.jsp -> FrontController : doPost()
+       FrontController -> FrontController: proscessRequest()
+       FrontController -> Command: from()
+       Command --> FrontController: Object = CalculatePrice
+       FrontController -> CalculatePrice: Execute()
+       CalculatePrice -> LogicFacade: getProductList()
+       LogicFacade -> Fogcarport: executeQuery()
+       Fogcarport --> CalculatePrice: OK
+       CalculatePrice --> FrontController: carportPrice\nshedPrice\nroofPrice\nTotalPrice
+       FrontController --> Design.jsp: forward()
+       Design.jsp --> User: Prisen på valgte carport
+
+       @enduml
