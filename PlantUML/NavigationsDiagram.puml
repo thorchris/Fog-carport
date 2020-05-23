@@ -1,0 +1,62 @@
+@startuml
+scale max 800 width
+
+title "Fog Carport - Navigationsdiagram"
+
+state IkkeLoggetInd {
+
+    note right of IkkeLoggetInd : ikkeLoggetInd foregår på index.jsp siden
+
+    DesignEnCarport1 : design.jsp
+    OpretBruger : Register.jsp
+    Login : Login.jsp
+    LoggetUd : index.jsp
+
+    [*] -left-> DesignEnCarport1
+    [*] -down-> Login
+    LoggetUd--> [*]
+
+    DesignEnCarport1 -down-> MidlertidigBruger
+    Login -down-> LoggetInd : Logget ind
+    Login -right-> OpretBruger
+    OpretBruger -down-> LoggetInd : Logget ind
+}
+
+state LoggetInd {
+    LogUd :
+    LoggetInd --> Medarbejder
+    LoggetInd --> Kunde
+
+    state Medarbejder {
+
+        KundeOrdrerOversigt : employee.jsp
+        RedigerOrdrer : editEmployee.jsp
+        SeKundeOrdre : orderEmployee.jsp
+
+        note left of KundeOrdrerOversigt : Oversigt over kunders ordrer
+        note right of RedigerOrdrer : Søgefunktion/sætte pris af kunde ordrer/Se design
+        note left of SeKundeOrdre : Slette ordrer
+
+        Medarbejder --> KundeOrdrerOversigt
+        KundeOrdrerOversigt -down-> RedigerOrdrer
+        RedigerOrdrer -down-> SeKundeOrdre
+    }
+
+    state Kunde {
+        Index : Index.jsp
+        MinSide : customer.jsp
+        DesignEnCarport2 : design.jsp
+        SeUserDesign : customerSvg.jsp
+
+        note right of MinSide : oversigt over designs
+
+        Kunde -down->Index
+        Index -down->MinSide
+        Index -down->DesignEnCarport2
+        MinSide -down-> SeUserDesign
+
+        }
+    }
+    LogUd -up-> LoggetUd
+}
+@enduml
