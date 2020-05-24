@@ -52,7 +52,6 @@ public class CarportParts {
         this.carportCladding = calcCarportMaterials.calculateCarportCladding();
         this.amountOfStraps =  calcCarportMaterials.amountOfStraps();
         this.strapLength = calcCarportMaterials.calcStrapLength();
-
     }
 
     public double getLength() {
