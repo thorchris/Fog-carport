@@ -59,7 +59,6 @@ public class CalcCarportMaterials {
      * Using the carport-skeletons width it calculates the amount of rafter needed for a carport-skeleton
      * @return the amount of rafter for the carport-skeleton
      */
-    //Spær rafters
     public int calculateRafters() {
         double width = carportParts.getWidth();
         int amountOfRafters = 0;
