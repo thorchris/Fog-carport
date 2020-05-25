@@ -143,7 +143,7 @@
                             <button type="submit" class="btn btn-primary btn-style mt-2" name="getCustomerOrder">Se kunde ordre</button>
                         </div>
                         <div class="mt-2 ml-2">
-                            <input type="text" class="form-control" placeholder="Indtast Ordre id" name="co_id">
+                            <input type="text" class="form-control" placeholder="Indtast kunde ordre id" name="co_id">
                             <input type="text" class="form-control" placeholder="Ny pris" name="updatePrice">
                             <button type="submit" class="btn btn-primary btn-style mt-2" name="changePrice">Ændre pris</button>
                         </div>

@@ -115,9 +115,9 @@
         <div class="col-12">
             <p class="lead">Fog trælast og byggecenter er en trælast og et byggecenter,
                 som giver dig muligheden for at designe en carport,
-                der passer perfekt Util dit hus.
-                Vi har eksperter, som sidder klar, hvis du har brug for hjælp Util at få designet carporten,
-                der passer Util netop dig.
+                der passer perfekt til dit hus.
+                Vi har eksperter, som sidder klar, hvis du har brug for hjælp til at få designet carporten,
+                der passer til netop dig.
             </p>
         </div>
     </div>

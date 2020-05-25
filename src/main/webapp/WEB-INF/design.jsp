@@ -165,14 +165,14 @@
                 </div>
 
 
-                <h5>Ønsker du beklædning Util carporten?</h5>
+                <h5>Ønsker du beklædning til carporten?</h5>
                 <input type="radio" id="claddingCheckbox" onclick="myFunction3()" name="claddingYesOrNo" value="true">
                 Ja </input>
                 <input type="radio" name="claddingYesOrNo" value="false" onclick="myFunction3()"> Nej </input>
 
                 <div class="dropdown" style="display:none" id="carportDropdowns">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Beklædning Util carporten:</label>
+                        <label for="exampleFormControlSelect1">Beklædning til carporten:</label>
                         <select class="form-control dropbtn btn-primary btn-style mb-2 btn-block"
                                 name="carportMaterial"
                                 id="carportMat">
@@ -221,7 +221,7 @@
 
                     <div class="dropdown">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Materialer Util taget:</label>
+                            <label for="exampleFormControlSelect1">Materialer til taget:</label>
                             <select class="form-control dropbtn btn-primary btn-style mb-2 btn-block"
                                     name="roofMaterial"
                                     id="topping">
@@ -236,7 +236,7 @@
                 <button type="input" class="btn btn-primary btn-style mt-2 mb-2" name="calcPriceButton" >Se dit design
                 </button>
                 <h5>Anslået pris: ${sessionScope.totalPrice}</h5>
-                <button type="input" class="btn btn-primary btn-style mt-2" name="createOrderButton" >Send Util sælger
+                <button type="input" class="btn btn-primary btn-style mt-2" name="createOrderButton" >Send til sælger
                 </button>
                 <div class="alert alert-success mt-4 <c:if test = "${empty requestScope.message}">d-none</c:if> "
                      role="alert">
