@@ -12,8 +12,8 @@ import java.util.logging.*;
 public class Log {
 
     private static final String FILENAME = "fog_carport_log.log";
-    private static final String FILEPATH = "logs/";
-   // private static final String FILEPATH = "/opt/tomcat/logs";
+    //private static final String FILEPATH = "logs/";
+    private static final String FILEPATH = "/opt/tomcat/logs";
     private static final String PATH = FILEPATH + FILENAME;
 
     private Log() {
