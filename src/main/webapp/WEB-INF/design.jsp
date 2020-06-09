@@ -206,6 +206,7 @@
                 <input type="radio" id="roofCheckbox" onclick="myFunction2()" name="isHighRoof" value="true"> Rejsning på taget </input>
 
                 <div class="form-group" id="roofDropdowns" style="display: none">
+                    <label for="exampleFormControlSelect1">Tagets hældning:</label>
                     <select class="form-control dropbtn btn-primary btn-style mb-2 btn-block"
                             id="emptyDropdown2" type="text" name="angle">
                         <option value="0" disabled selected> Tagets hældning</option>
